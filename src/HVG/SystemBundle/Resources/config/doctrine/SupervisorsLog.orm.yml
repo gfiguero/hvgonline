@@ -1,0 +1,35 @@
+HVG\SystemBundle\Entity\SupervisorsLog:
+    type: entity
+    table: SupervisorsLog
+    repositoryClass: HVG\SystemBundle\Entity\SupervisorsLogRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        supervisor:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+    fields:
+        news:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

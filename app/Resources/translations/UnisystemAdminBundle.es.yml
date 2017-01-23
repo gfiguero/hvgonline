@@ -1,0 +1,218 @@
+frontpage:
+    index:
+        link: Ir a Portada
+
+member:
+    sidemenu:
+        root: Voluntarios
+        index: Lista de Voluntarios
+        course: Cursos
+        role: Cargos
+    new:
+        link: Registrar Voluntario
+        title: Registro de Voluntario
+        confirm: Confirmar Registro
+        flash: Voluntario registrado satistactoriamente
+    index:
+        link: Lista de Voluntarios
+        title: Lista de Voluntarios
+    edit:
+        link: Editar Voluntario
+        title: Editar Voluntario
+        confirm: Guardar Cambios
+        flash: Voluntario editado satistactoriamente
+    delete:
+        link: Eliminar Voluntario
+        title: Eliminación de Voluntario
+        message: Los datos del voluntario no podrán ser recuperados
+        confirm: Confirmar Eliminación
+        flash: Voluntario eliminado
+    form:
+        photography: Foto
+        name: Nombre
+        code: Código Bombero
+        phone: Número de Contacto
+        email: Correo Electrónico
+        birth_date: Fecha de Nacimiento
+        admission_date: Fecha de Admisión
+        courses: Cursos Realizados
+        role: Cargo Actual
+        previous_roles: Cargos Anteriores
+        enabled: El voluntario se encuentra activo
+        actions: Acciones
+
+membercourse:
+    new:
+        link: Registrar Curso
+        title: Registro de Curso
+        confirm: Confirmar Registro
+    index:
+        link: Lista de Cursos
+        title: Lista de Cursos
+        actions: Acciones
+    edit:
+        link: Editar Curso
+        title: Editar Curso
+        confirm: Guardar Cambios
+    delete:
+        link: Eliminar Curso
+        title: Eliminación de Curso
+        message: Los datos del curso no podrán ser recuperados
+        confirm: Confirmar Eliminación
+    flash:
+        created: Curso creado satistactoriamente
+        edited: Curso editado satistactoriamente
+        deleted: Curso eliminado
+    form:
+        name: Nombre
+        initials: Nombre Corto
+        rank: Número Ordinal
+
+memberrole:
+    new:
+        link: Registrar Cargo
+        title: Registro de Cargo
+        confirm: Confirmar Registro
+    index:
+        link: Lista de Cargos
+        title: Lista de Cargos
+        actions: Acciones
+    edit:
+        link: Editar Cargo
+        title: Editar Cargo
+        confirm: Guardar Cambios
+    delete:
+        link: Eliminar Cargo
+        title: Eliminación de Cargo
+        message: Los datos del cargo no podrán ser recuperados
+        confirm: Confirmar Eliminación
+    flash:
+        created: Cargo creado satistactoriamente
+        edited: Cargo editado satistactoriamente
+        deleted: Cargo eliminado
+    form:
+        name: Nombre
+        rank: Número Ordinal
+        officer: Cargo Oficial
+
+resource:
+    sidemenu:
+        root: Material mayor
+        index: Lista de material mayor
+    new:
+        link: Registrar nuevo material mayor
+        title: Registrar nuevo material mayor
+        confirm: Confirmar Registro
+        flash: Material mayor creado satistactoriamente
+    index:
+        link: Lista de material mayor
+        title: Lista de material mayor
+    edit:
+        link: Editar material mayor
+        title: Editar material mayor
+        confirm: Guardar Cambios
+        flash: Material mayor editado satistactoriamente
+    delete:
+        link: Eliminar material mayor
+        title: Eliminación de material mayor
+        message: Los datos del material mayor no podrán ser recuperados
+        confirm: Confirmar Eliminación
+        flash: Material mayor eliminado
+    form:
+        name: Nombre
+        description: Descripción
+        photography: Fotografía
+        actions: Acciones
+
+history:
+    sidemenu:
+        root: Historia
+        index: Lista de eventos
+    new:
+        link: Registrar nuevo evento
+        title: Registrar nuevo evento
+        confirm: Confirmar Registro
+        flash: Evento creado satistactoriamente
+    index:
+        link: Lista de eventos
+        title: Lista de eventos
+    edit:
+        link: Editar evento
+        title: Editar evento
+        confirm: Guardar Cambios
+        flash: Evento editado satistactoriamente
+    delete:
+        link: Eliminar evento
+        title: Eliminación de evento
+        message: Los datos del evento no podrán ser recuperados
+        confirm: Confirmar Eliminación
+        flash: Evento eliminado
+    form:
+        name: Nombre
+        actions: Acciones
+
+academy:
+    sidemenu:
+        root: Academia
+        index: Lista de academias
+        future: Academias futuras
+        past: Academias pasadas
+    new:
+        link: Registrar nueva academia
+        title: Registrar nueva academia
+        confirm: Confirmar Registro
+    index:
+        link: Lista de academias
+        title: Lista de academias
+    edit:
+        link: Editar academia
+        title: Editar academia
+        confirm: Guardar Cambios
+    delete:
+        link: Eliminar academia
+        title: Eliminación de academia
+        message: Los datos de la academia no podrán ser recuperados
+        confirm: Confirmar Eliminación
+    flash:
+        created: Academia creada satistactoriamente
+        edited: Academia editada satistactoriamente
+        deleted: Academia eliminada
+    form:
+        name: Nombre
+        schedule: Agendada
+        description: Descripción
+        place: Lugar
+        actions: Acciones
+
+main:
+    sidemenu:
+        root: Página principal
+    photography:
+        sidemenu:
+            root: Fotografías
+            index: Lista de fotografías
+        new:
+            link: Registrar nueva fotografía
+            title: Registrar nueva fotografía
+            confirm: Confirmar Registro
+        index:
+            link: Lista de fotografías
+            title: Lista de fotografías
+        edit:
+            link: Editar fotografía
+            title: Editar fotografía
+            confirm: Guardar Cambios
+        delete:
+            link: Eliminar fotografía
+            title: Eliminación de fotografía
+            message: Los datos de la fotografía no podrán ser recuperados
+            confirm: Confirmar Eliminación
+        flash:
+            created: Fotografía creada satistactoriamente
+            edited: Fotografía editada satistactoriamente
+            deleted: Fotografía eliminada
+        form:
+            title: Título
+            caption: Descripción breve
+            photography: Fotografía
+            actions: Acciones

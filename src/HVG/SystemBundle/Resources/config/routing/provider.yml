@@ -1,0 +1,24 @@
+provider_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Provider:index" }
+    methods:  GET
+
+provider_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Provider:show" }
+    methods:  GET
+
+provider_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Provider:new" }
+    methods:  [GET, POST]
+
+provider_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Provider:edit" }
+    methods:  [GET, POST]
+
+provider_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Provider:delete" }
+    methods:  DELETE

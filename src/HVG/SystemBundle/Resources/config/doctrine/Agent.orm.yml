@@ -1,0 +1,41 @@
+HVG\SystemBundle\Entity\Agent:
+    type: entity
+    table: Agent
+    repositoryClass: HVG\SystemBundle\Entity\AgentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        requirements:
+            targetEntity: HVG\SystemBundle\Entity\Requirement
+            mappedBy: carrier
+    fields:
+        fullname:
+            type: string
+            length: 100
+            nullable: true
+        shortname:
+            type: string
+            length: 10
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

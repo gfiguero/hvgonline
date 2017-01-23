@@ -1,0 +1,14 @@
+session_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Session:index" }
+    methods:  GET
+
+session_login:
+    path:     /login
+    defaults: { _controller: "HVGSystemBundle:Session:login" }
+    methods:  [GET, POST]
+
+session_logout:
+    path:     /logout
+    defaults: { _controller: "HVGSystemBundle:Session:logout" }
+    methods:  [GET, POST]

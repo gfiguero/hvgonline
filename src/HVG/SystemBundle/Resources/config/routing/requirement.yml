@@ -1,0 +1,30 @@
+requirement_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Requirement:index" }
+    methods:  GET
+
+requirement_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Requirement:show" }
+    methods:  GET
+
+requirement_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Requirement:new" }
+    methods:  [GET, POST]
+
+requirement_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Requirement:edit" }
+    methods:  [GET, POST]
+
+requirement_edit_status:
+    path:     /{id}/editStatus
+    defaults: { _controller: "HVGSystemBundle:Requirement:edit_status" }
+    methods:  [GET, POST]
+
+requirement_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Requirement:delete" }
+    methods:  DELETE
+

@@ -1,0 +1,29 @@
+community_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Community:index" }
+    methods:  GET
+
+community_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Community:show" }
+    methods:  GET
+
+community_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Community:new" }
+    methods:  [GET, POST]
+
+community_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Community:edit" }
+    methods:  [GET, POST]
+
+community_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Community:delete" }
+    methods:  DELETE
+
+community_filter:
+    path:     /filter
+    defaults: { _controller: "HVGSystemBundle:Community:filter" }
+    methods:  [GET, POST]

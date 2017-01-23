@@ -1,0 +1,24 @@
+bank_account_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:BankAccount:index" }
+    methods:  GET
+
+bank_account_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:BankAccount:show" }
+    methods:  GET
+
+bank_account_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:BankAccount:new" }
+    methods:  [GET, POST]
+
+bank_account_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:BankAccount:edit" }
+    methods:  [GET, POST]
+
+bank_account_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:BankAccount:delete" }
+    methods:  DELETE

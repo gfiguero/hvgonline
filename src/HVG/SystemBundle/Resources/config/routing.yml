@@ -1,0 +1,39 @@
+hvg_system_requirement_type:
+    resource: "@HVGSystemBundle/Resources/config/routing/requirement_type.yml"
+    prefix:   /requirementtype
+
+hvg_system_agent:
+    resource: "@HVGSystemBundle/Resources/config/routing/agent.yml"
+    prefix:   /agent
+
+hvg_system_requirement_comment:
+    resource: "@HVGSystemBundle/Resources/config/routing/requirement_comment.yml"
+    prefix:   /requirementcomment
+
+hvg_system_requirement:
+    resource: "@HVGSystemBundle/Resources/config/routing/requirement.yml"
+    prefix:   /requirement
+
+hvg_system_community:
+    resource: "@HVGSystemBundle/Resources/config/routing/community.yml"
+    prefix:   /community
+
+hvg_system_bank_account:
+    resource: "@HVGSystemBundle/Resources/config/routing/bank_account.yml"
+    prefix:   /bank_account
+
+hvg_system_provider:
+    resource: "@HVGSystemBundle/Resources/config/routing/provider.yml"
+    prefix:   /provider
+
+hvg_system_supervisors_log:
+    resource: "@HVGSystemBundle/Resources/config/routing/supervisorsLog.yml"
+    prefix:   /supervisorslog
+
+hvg_system_pay_order:
+    resource: "@HVGSystemBundle/Resources/config/routing/payOrder.yml"
+    prefix:   /payorder
+
+hvg_system_homepage:
+    path:     /
+    defaults: { _controller: HVGSystemBundle:Default:index }

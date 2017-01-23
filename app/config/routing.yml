@@ -1,0 +1,17 @@
+hvg_admin:
+    resource: "@HVGAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+hvg_user:
+    resource: "@HVGUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@HVGUserBundle/Resources/config/management.yml"
+
+hvg_system:
+    resource: "@HVGSystemBundle/Resources/config/routing.yml"
+    prefix:   /
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

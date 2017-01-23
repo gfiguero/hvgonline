@@ -1,0 +1,177 @@
+community:
+    sidemenu:
+        root: Comunidades
+requirement:
+    sidemenu:
+        root: Requerimientos
+        index: Lista de Requerimientos
+    index:
+        title: Requerimientos
+    new:
+        link: Agregar
+        title: Nuevo Requerimiento
+        confirm: Agregar Requerimiento
+        flash: Registro agregado exitosamente
+    delete:
+        link: Borrar
+        title: Borrar Requerimiento
+    edit:
+        link: Editar
+        title: Editar Requerimiento
+        confirm: Editar Requerimiento
+        flash: El registro ha sido actualizado exitosamente
+    show:
+        link: Ver
+        title: Requerimiento N°
+    form:
+        id: ID
+        community: Comunidad
+        issue: Asunto
+        status: Estado
+        committal: Fecha comprometida
+        channel: Canal
+        creator: Requirente
+        carrier: Asignado A
+        start_observation: Observación Inicial
+        end_observation: Observación Final
+        createdAt: Fecha Requerimiento
+        actions: Acciones
+requirementComment:
+    new:
+        link: Agregar comentario
+        title: Agregar comentario
+        confirm: Agregar
+    edit:
+        link: Editar
+        title: Editar Comentario
+        confirm: Editar
+    delete:
+        link: Borrar
+        title: Borrar Comentario
+        message: ¿Está seguro que desea borrar el comentario?
+        confirm: Borrar
+    form:
+        name: Comentario
+        content: Comentarios
+        createdAt: Fecha
+        actions: Acciones
+agent:
+    sidemenu:
+        index: Agentes de Requerimientos
+    index:
+        title: Agentes de Requerimientos
+    new:
+        link: Agregar
+        title: Nuevo Agente
+        confirm: Agregar Agente
+    delete:
+        link: Borrar
+        title: Borrar Agente
+    edit:
+        link: Editar
+        title: Editar Agente
+        confirm: Editar Agente
+    form:
+        id: ID
+        name: Nombre Agente
+        actions: Acciones
+requirementType:
+    sidemenu:
+        index: Tipos de Requerimientos
+    index:
+        title: Tipos de Requerimientos
+    new:
+        link: Agregar
+        title: Nuevo Tipo
+        confirm: Agregar Tipo
+    delete:
+        link: Borrar
+        title: Borrar Tipo
+    edit:
+        link: Editar
+        title: Editar Tipo
+        confirm: Editar Tipo
+    form:
+        id: ID
+        name: Nombre Tipo
+        actions: Acciones
+bankAccount:
+    index:
+        title: Cuentas Bancarias
+    form:
+        bank: Banco
+        bankAccountType: Tipo de Cuenta
+        rut: Rut
+        name: Nombre
+        number: N° Cuenta
+        mail: E-mail
+        actions: Acciones
+    edit:
+        link: Editar
+    delete:
+        link: Borrar
+    new:
+        link: Nueva Cuenta
+    sidemenu:
+        index: Cuentas Bancarias
+supervisorsLog:
+    index:
+        title: Bitácora del Supervisor
+    form:
+        id: id
+        supervisor: 
+            shortname: Supervisor
+        createdAt: Fecha
+        news: Novedades
+        actions: Acciones
+    edit:
+        link: Editar
+    delete:
+        link: Borrar
+    new:
+        link: Agregar Novedad
+    sidemenu:
+        root: Bitácora del Supervisor
+        index: Novedades
+provider:
+    sidemenu:
+        root: Proveedores
+        index: Lista de Proveedores
+    new:
+        link: Nuevo Proveedor
+    form:
+        name: Proveedor
+        rut: Rut
+        phone: Teléfono
+        mail: E-mail
+        expert_name: Técnico o Contacto
+    edit:
+        link: Editar
+    delete: 
+        link: Borrar
+payOrder:
+    sidemenu:
+        root: Orden de Pago
+        index: Ordenes de Pago
+    new:
+        link: Nueva Orden de Pago
+        confirm: Registrar Orden de Pago
+        flash: Orden de Pago registrada correctamente
+    form:
+        actions: Acciones
+        community: Comunidad
+        provider: Proveedor
+        agent: Encargado
+        totalPrice: Precio Total
+        description: Descripción
+        finishedDate: Fecha comprometida
+        documentLink: Link de Documento
+    edit:
+        link: Editar
+    delete: 
+        link: Borrar
+    index:
+        title: Ordenes de Pago
+contabilidad:
+    sidemenu:
+        root: Contabilidad

@@ -1,0 +1,41 @@
+HVG\SystemBundle\Entity\RequirementStatus:
+    type: entity
+    table: RequirementStatus
+    repositoryClass: HVG\SystemBundle\Entity\RequirementStatusRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        requirements:
+            targetEntity: HVG\SystemBundle\Entity\Requirement
+            mappedBy: status
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        flag:
+            type: string
+            length: 20
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

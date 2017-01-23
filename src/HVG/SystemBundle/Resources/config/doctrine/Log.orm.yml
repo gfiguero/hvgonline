@@ -1,0 +1,38 @@
+HVG\SystemBundle\Entity\Log:
+    type: entity
+    table: Log
+    repositoryClass: HVG\SystemBundle\Entity\LogRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        agent:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: log
+    fields:
+        content:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

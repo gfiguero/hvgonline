@@ -1,0 +1,37 @@
+HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1`
+setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX app/cache app/logs
+setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads web/media
+setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads web/media
+
+php app/console generate:bundle --namespace HVG/SystemBundle --dir src --bundle-name HVGSystemBundle --format yml --shared --no-interaction
+php app/console generate:bundle --namespace HVG/UserBundle --dir src --bundle-name HVGUserBundle --format yml --shared --no-interaction
+php app/console generate:bundle --namespace HVG/AdminBundle --dir src --bundle-name HVGAdminBundle --format yml --shared --no-interaction
+
+php app/console assetic:dump --env=dev
+
+php app/console doctrine:generate:entities HVGSystemBundle:Community --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Agent --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:CommunicationChannel --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Log --path=src
+
+php app/console doctrine:generate:entities HVGSystemBundle:RequirementStatus --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:RequirementType --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Requirement --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:RequirementComment --path=src
+
+php app/console doctrine:generate:entities HVGSystemBundle:Bank --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:BankAccountType --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:BankAccount --path=src
+
+php app/console doctrine:generate:entities HVGSystemBundle:Provider --path=src
+
+php app/console doctrine:generate:entities HVGSystemBundle:SupervisorsLog --path=src
+
+
+php app/console doctrine:generate:entities HVGUserBundle:User --path=src
+
+php app/console doctrine:database:drop --force
+php app/console doctrine:database:create
+php app/console doctrine:schema:update --force
+

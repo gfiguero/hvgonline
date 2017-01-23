@@ -1,0 +1,32 @@
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+    default_filename_attribute_suffix:  _name
+    storage: file_system
+    twig: true
+    metadata:
+        cache: file
+        file_cache:
+            dir: '%kernel.cache_dir%/vich_uploader'
+        auto_detection: true
+    mappings:
+        member:
+            uri_prefix: uploads/member
+            upload_destination: %kernel.root_dir%/../web/uploads/member
+            namer: vich_uploader.namer_origname
+        resource:
+            uri_prefix: uploads/resource
+            upload_destination: %kernel.root_dir%/../web/uploads/resource
+            namer: vich_uploader.namer_origname
+        history:
+            uri_prefix: uploads/history
+            upload_destination: %kernel.root_dir%/../web/uploads/history
+            namer: vich_uploader.namer_origname
+        notice:
+            uri_prefix: uploads/notice
+            upload_destination: %kernel.root_dir%/../web/uploads/notice
+            namer: vich_uploader.namer_origname
+        mainphotography:
+            uri_prefix: uploads/mainphotography
+            upload_destination: %kernel.root_dir%/../web/uploads/mainphotography
+            namer: vich_uploader.namer_origname
+

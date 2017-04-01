@@ -56,6 +56,13 @@ class Builder implements ContainerAwareInterface
         $sidemenu['ticket.sidemenu.root']->addChild('ticketstatus.sidemenu.index', array('route' => 'ticketstatus_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['ticket.sidemenu.root']->addChild('ticketaction.sidemenu.index', array('route' => 'ticketaction_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
 
+        $sidemenu->addChild('request.sidemenu.root')->setAttribute('icon', 'list fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+        $sidemenu['request.sidemenu.root']->setChildrenAttribute('class', 'nav nav-second-level collapse');
+        $sidemenu['request.sidemenu.root']->addChild('request.sidemenu.index', array('route' => 'request_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
+        $sidemenu['request.sidemenu.root']->addChild('requeststatus.sidemenu.index', array('route' => 'requeststatus_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
+        $sidemenu['request.sidemenu.root']->addChild('requestaction.sidemenu.index', array('route' => 'requestaction_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
+        $sidemenu['request.sidemenu.root']->addChild('requestevaluation.sidemenu.index', array('route' => 'requestevaluation_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
+
         $sidemenu->addChild('project.sidemenu.root')->setAttribute('icon', 'list fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['project.sidemenu.root']->setChildrenAttribute('class', 'nav nav-second-level collapse');
         $sidemenu['project.sidemenu.root']->addChild('project.sidemenu.index', array('route' => 'project_index'))->setAttribute('translation_domain', 'HVGSystemBundle');

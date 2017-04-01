@@ -1,6 +1,6 @@
-HVG\SystemBundle\Entity\CommandStatus:
+HVG\SystemBundle\Entity\RequestEvaluation:
     type: entity
-    table: CommandStatus
+    table: RequestEvaluation
     id:
         id:
             type: integer
@@ -8,20 +8,15 @@ HVG\SystemBundle\Entity\CommandStatus:
             generator:
                 strategy: AUTO
     manyToOne:
-        result:
-            targetEntity: HVG\SystemBundle\Entity\Result
-    oneToMany:
-        commands:
-            targetEntity: HVG\SystemBundle\Entity\Command
-            mappedBy: status
+        request:
+            targetEntity: HVG\SystemBundle\Entity\Request
+            inversedBy: request_evaluations
+        agent:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+            inversedBy: request_evaluations
     fields:
-        name:
-            type: string
-            length: 300
-            nullable: true
-        description:
-            type: string
-            length: 300
+        value:
+            type: integer
             nullable: true
         createdAt:
             type: datetime

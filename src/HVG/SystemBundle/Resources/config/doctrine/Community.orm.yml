@@ -8,6 +8,10 @@ HVG\SystemBundle\Entity\Community:
             id: true
             generator:
                 strategy: AUTO
+    oneToMany:
+        requests:
+            targetEntity: HVG\SystemBundle\Entity\Request
+            mappedBy: community
     fields:
         name:
             type: string

@@ -9,8 +9,8 @@ HVG\SystemBundle\Entity\Area:
             generator:
                 strategy: AUTO
     oneToMany:
-        commands:
-            targetEntity: HVG\SystemBundle\Entity\Command
+        requests:
+            targetEntity: HVG\SystemBundle\Entity\Request
             mappedBy: area
         agents:
             targetEntity: HVG\SystemBundle\Entity\Agent

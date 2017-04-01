@@ -38,13 +38,15 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:Ticket --format=
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:TicketAction --format=yml --with-write --overwrite --no-interaction --route-prefix=ticketaction
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:TicketStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=ticketstatus
 
----------------- Seguimiento de Ordenes
-php app/console doctrine:generate:entities HVGSystemBundle:Command --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:CommandAction --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:CommandStatus --path=src
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:Command --format=yml --with-write --overwrite --no-interaction --route-prefix=command
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:CommandAction --format=yml --with-write --overwrite --no-interaction --route-prefix=commandaction
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:CommandStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=commandstatus
+---------------- Seguimiento de Solicitudes
+php app/console doctrine:generate:entities HVGSystemBundle:Request --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:RequestAction --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:RequestEvaluation --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:RequestStatus --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Request --format=yml --with-write --overwrite --no-interaction --route-prefix=request
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:RequestAction --format=yml --with-write --overwrite --no-interaction --route-prefix=requestaction
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:RequestEvaluation --format=yml --with-write --overwrite --no-interaction --route-prefix=requestevaluation
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:RequestStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=requeststatus
 
 ------------- Contabilidad
 php app/console doctrine:generate:entities HVGSystemBundle:Expenditure --path=src

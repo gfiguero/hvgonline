@@ -11,9 +11,9 @@ HVG\SystemBundle\Entity\RequestStatus:
         result:
             targetEntity: HVG\SystemBundle\Entity\Result
     oneToMany:
-        commands:
+        requests:
             targetEntity: HVG\SystemBundle\Entity\Request
-            mappedBy: status
+            mappedBy: request_status
     fields:
         name:
             type: string

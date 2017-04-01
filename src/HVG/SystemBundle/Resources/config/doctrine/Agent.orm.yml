@@ -15,6 +15,16 @@ HVG\SystemBundle\Entity\Agent:
         area:
             targetEntity: HVG\SystemBundle\Entity\Area
             inversedBy: agents
+    oneToMany:
+        request_actions:
+            targetEntity: HVG\SystemBundle\Entity\RequestAction
+            mappedBy: agent
+        request_evaluations:
+            targetEntity: HVG\SystemBundle\Entity\RequestEvaluation
+            mappedBy: agent
+        requests:
+            targetEntity: HVG\SystemBundle\Entity\Request
+            mappedBy: agent
     fields:
         short_name:
             type: string

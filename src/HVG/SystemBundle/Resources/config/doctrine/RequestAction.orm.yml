@@ -10,7 +10,10 @@ HVG\SystemBundle\Entity\RequestAction:
     manyToOne:
         request:
             targetEntity: HVG\SystemBundle\Entity\Request
-            inversedBy: actions
+            inversedBy: request_actions
+        agent:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+            inversedBy: request_actions
     fields:
         description:
             type: string

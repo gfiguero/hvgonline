@@ -358,5 +358,91 @@ class Ticket
     {
         return $this->status;
     }
-}
+    /**
+     * @var string
+     */
+    private $description;
 
+    /**
+     * @var \HVG\SystemBundle\Entity\Unit
+     */
+    private $unit;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Area
+     */
+    private $area;
+
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Ticket
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set unit
+     *
+     * @param \HVG\SystemBundle\Entity\Unit $unit
+     *
+     * @return Ticket
+     */
+    public function setUnit(\HVG\SystemBundle\Entity\Unit $unit = null)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return \HVG\SystemBundle\Entity\Unit
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set area
+     *
+     * @param \HVG\SystemBundle\Entity\Area $area
+     *
+     * @return Ticket
+     */
+    public function setArea(\HVG\SystemBundle\Entity\Area $area = null)
+    {
+        $this->area = $area;
+
+        return $this;
+    }
+
+    /**
+     * Get area
+     *
+     * @return \HVG\SystemBundle\Entity\Area
+     */
+    public function getArea()
+    {
+        return $this->area;
+    }
+}

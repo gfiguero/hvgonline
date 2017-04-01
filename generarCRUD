@@ -39,14 +39,14 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:TicketAction --f
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:TicketStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=ticketstatus
 
 ---------------- Seguimiento de Solicitudes
-php app/console doctrine:generate:entities HVGSystemBundle:Request --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:RequestAction --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:RequestEvaluation --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:RequestStatus --path=src
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:Request --format=yml --with-write --overwrite --no-interaction --route-prefix=request
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:RequestAction --format=yml --with-write --overwrite --no-interaction --route-prefix=requestaction
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:RequestEvaluation --format=yml --with-write --overwrite --no-interaction --route-prefix=requestevaluation
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:RequestStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=requeststatus
+php app/console doctrine:generate:entities HVGSystemBundle:Petition --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:PetitionAction --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:PetitionEvaluation --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:PetitionStatus --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Petition --format=yml --with-write --overwrite --no-interaction --route-prefix=petition
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:PetitionAction --format=yml --with-write --overwrite --no-interaction --route-prefix=petitionaction
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:PetitionEvaluation --format=yml --with-write --overwrite --no-interaction --route-prefix=petitionevaluation
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:PetitionStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=petitionstatus
 
 ------------- Contabilidad
 php app/console doctrine:generate:entities HVGSystemBundle:Expenditure --path=src

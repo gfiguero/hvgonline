@@ -167,4 +167,62 @@ class TicketAction
     {
         return $this->project;
     }
+    /**
+     * @var string
+     */
+    private $file;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Ticket
+     */
+    private $ticket;
+
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     *
+     * @return TicketAction
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set ticket
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticket
+     *
+     * @return TicketAction
+     */
+    public function setTicket(\HVG\SystemBundle\Entity\Ticket $ticket = null)
+    {
+        $this->ticket = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \HVG\SystemBundle\Entity\Ticket
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
+    }
 }

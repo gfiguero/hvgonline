@@ -77,6 +77,23 @@ hvg_system_ticket:
     resource: "@HVGSystemBundle/Resources/config/routing/ticket.yml"
     prefix:   /ticket
 
+#Request
+hvg_system_petitionevaluation:
+    resource: "@HVGSystemBundle/Resources/config/routing/petitionevaluation.yml"
+    prefix:   /petitionevaluation
+
+hvg_system_petitionstatus:
+    resource: "@HVGSystemBundle/Resources/config/routing/petitionstatus.yml"
+    prefix:   /petitionstatus
+
+hvg_system_petitionaction:
+    resource: "@HVGSystemBundle/Resources/config/routing/petitionaction.yml"
+    prefix:   /petitionaction
+
+hvg_system_petition:
+    resource: "@HVGSystemBundle/Resources/config/routing/petition.yml"
+    prefix:   /petition
+
 #Projects
 hvg_system_projectproposal:
     resource: "@HVGSystemBundle/Resources/config/routing/projectproposal.yml"

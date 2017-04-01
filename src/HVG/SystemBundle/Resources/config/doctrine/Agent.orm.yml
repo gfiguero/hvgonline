@@ -22,14 +22,14 @@ HVG\SystemBundle\Entity\Agent:
         ticket_actions:
             targetEntity: HVG\SystemBundle\Entity\TicketAction
             mappedBy: agent
-        request_actions:
-            targetEntity: HVG\SystemBundle\Entity\RequestAction
+        petition_actions:
+            targetEntity: HVG\SystemBundle\Entity\PetitionAction
             mappedBy: agent
-        request_evaluations:
-            targetEntity: HVG\SystemBundle\Entity\RequestEvaluation
+        petition_evaluations:
+            targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
             mappedBy: agent
-        requests:
-            targetEntity: HVG\SystemBundle\Entity\Request
+        petitions:
+            targetEntity: HVG\SystemBundle\Entity\Petition
             mappedBy: agent
     fields:
         short_name:

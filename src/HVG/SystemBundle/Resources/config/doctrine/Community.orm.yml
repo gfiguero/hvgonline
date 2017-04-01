@@ -9,8 +9,8 @@ HVG\SystemBundle\Entity\Community:
             generator:
                 strategy: AUTO
     oneToMany:
-        requests:
-            targetEntity: HVG\SystemBundle\Entity\Request
+        petitions:
+            targetEntity: HVG\SystemBundle\Entity\Petition
             mappedBy: community
     fields:
         name:

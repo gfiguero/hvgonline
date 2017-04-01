@@ -1,17 +1,33 @@
-hvg_admin:
-    resource: "@HVGAdminBundle/Resources/config/routing.yml"
+hvg_agent:
+    resource: "@HVGAgentBundle/Resources/config/routing.yml"
+    prefix:   /agent
+
+hvg_customer:
+    resource: "@HVGCustomerBundle/Resources/config/routing.yml"
     prefix:   /
 
-hvg_user:
-    resource: "@HVGUserBundle/Resources/config/routing.yml"
-    prefix:   /
+hvg_resource_planner:
+    resource: "@HVGResourcePlannerBundle/Resources/config/routing.yml"
+    prefix:   /resource
 
-fos_user:
-    resource: "@HVGUserBundle/Resources/config/management.yml"
-
-hvg_system:
-    resource: "@HVGSystemBundle/Resources/config/routing.yml"
-    prefix:   /
+hvg_security:
+    resource: "@HVGUserBundle/Resources/config/routing/security.yml"
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+fos_user:
+    resource: "@HVGUserBundle/Resources/config/routing/management.yml"
+    prefix:   /user
+
+hvg_user:
+    resource: "@HVGUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+hvg_admin:
+    resource: "@HVGAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+hvg_system:
+    resource: "@HVGSystemBundle/Resources/config/routing.yml"
+    prefix:   /system

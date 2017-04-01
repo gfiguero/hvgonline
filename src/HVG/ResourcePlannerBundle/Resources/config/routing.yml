@@ -1,0 +1,3 @@
+hvg_resource_planner_homepage:
+    path:     /
+    defaults: { _controller: HVGResourcePlannerBundle:Default:index }

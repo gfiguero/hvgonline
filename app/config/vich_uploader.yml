@@ -9,24 +9,11 @@ vich_uploader:
             dir: '%kernel.cache_dir%/vich_uploader'
         auto_detection: true
     mappings:
-        member:
-            uri_prefix: uploads/member
-            upload_destination: %kernel.root_dir%/../web/uploads/member
+        testing:
+            uri_prefix: uploads/testing
+            upload_destination: %kernel.root_dir%/../web/uploads/testing
             namer: vich_uploader.namer_origname
-        resource:
-            uri_prefix: uploads/resource
-            upload_destination: %kernel.root_dir%/../web/uploads/resource
+        proposal:
+            uri_prefix: uploads/proposal
+            upload_destination: %kernel.root_dir%/../web/uploads/proposal
             namer: vich_uploader.namer_origname
-        history:
-            uri_prefix: uploads/history
-            upload_destination: %kernel.root_dir%/../web/uploads/history
-            namer: vich_uploader.namer_origname
-        notice:
-            uri_prefix: uploads/notice
-            upload_destination: %kernel.root_dir%/../web/uploads/notice
-            namer: vich_uploader.namer_origname
-        mainphotography:
-            uri_prefix: uploads/mainphotography
-            upload_destination: %kernel.root_dir%/../web/uploads/mainphotography
-            namer: vich_uploader.namer_origname
-

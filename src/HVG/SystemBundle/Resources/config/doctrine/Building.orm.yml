@@ -1,0 +1,36 @@
+HVG\SystemBundle\Entity\Building:
+    type: entity
+    table: Building
+    repositoryClass: HVG\SystemBundle\Entity\BuildingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,43 @@
+HVG\SystemBundle\Entity\CommandStatus:
+    type: entity
+    table: CommandStatus
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        result:
+            targetEntity: HVG\SystemBundle\Entity\Result
+    oneToMany:
+        commands:
+            targetEntity: HVG\SystemBundle\Entity\Command
+            mappedBy: status
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        description:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

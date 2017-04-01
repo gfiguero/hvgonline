@@ -1,0 +1,91 @@
+<?php
+
+namespace {{ namespace }}\Form{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
+
+{% block use_statements %}
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+{% endblock use_statements %}
+
+{% block class_definition %}
+class {{ form_class }} extends AbstractType
+{% endblock class_definition %}
+{
+{% block class_body %}
+    {%- if fields|length > 0 %}
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+
+        {%- for field in fields -%}
+            {%- if field not in ['createdAt', 'updatedAt', 'deletedAt'] %} {# excluding unnecessary fields #}
+
+                {%- if fields_mapping[field] is defined and fields_mapping[field]['type'] in ['date', 'time', 'datetime'] %} {# setting specific field type #}
+
+            ->add('{{ field }}', '{{ fields_mapping[field]['type'] }}', array(
+
+                {%- else -%} {# generic field type #}
+
+            ->add('{{ field }}', null, array(
+
+                {%- endif -%}
+
+                {%- if fields_mapping[field] is defined and fields_mapping[field]['type'] in ['boolean'] %} {# setting specific field attributes #}
+
+                'attr'  => array( 'class' => 'switch', 'label_col' => 3, 'widget_col' => 9 ),
+                'required' => false,
+
+                {%- else -%} {# generic field attributes #}
+
+                'attr' => array( 'label_col' => 3, 'widget_col' => 9 ),
+
+
+                {%- endif %}
+
+                'label' => '{{ entity_class|lower ~ '.form.' ~ field }}',
+                'translation_domain' => '{{ bundle }}',
+            ))
+
+            {%- endif -%}
+
+        {%- endfor %}
+
+        ;
+    }
+    {% endif %}
+
+    /**
+     * {@inheritdoc}
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => '{{ namespace }}\Entity{{ entity_namespace ? '\\' ~ entity_namespace : '' }}\{{ entity_class }}'
+        ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return '{{ form_type_name }}';
+    }
+
+{# BC with Symfony 2.7 #}
+{%- if get_name_required %}
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+{% endif %}
+
+{% endblock class_body %}
+}

@@ -1,0 +1,24 @@
+projectstatus_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:ProjectStatus:index" }
+    methods:  GET
+
+projectstatus_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:ProjectStatus:show" }
+    methods:  GET
+
+projectstatus_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:ProjectStatus:new" }
+    methods:  [GET, POST]
+
+projectstatus_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:ProjectStatus:edit" }
+    methods:  [GET, POST]
+
+projectstatus_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:ProjectStatus:delete" }
+    methods:  DELETE

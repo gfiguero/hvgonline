@@ -15,17 +15,17 @@ HVG\SystemBundle\Entity\Provider:
             nullable: true
         rut:
             type: string
-            length: 10
+            length: 20
             nullable: true
-        phone:
+        contact_phone:
             type: string
-            length: 10
+            length: 20
             nullable: true
-        mail:
+        contact_email:
             type: string
-            length: 30
+            length: 50
             nullable: true
-        expert_name:
+        contact_name:
             type: string
             length: 300
             nullable: true

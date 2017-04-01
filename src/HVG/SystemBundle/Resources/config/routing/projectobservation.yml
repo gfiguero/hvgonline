@@ -1,0 +1,24 @@
+projectobservation_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:ProjectObservation:index" }
+    methods:  GET
+
+projectobservation_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:ProjectObservation:show" }
+    methods:  GET
+
+projectobservation_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:ProjectObservation:new" }
+    methods:  [GET, POST]
+
+projectobservation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:ProjectObservation:edit" }
+    methods:  [GET, POST]
+
+projectobservation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:ProjectObservation:delete" }
+    methods:  DELETE

@@ -8,18 +8,25 @@ HVG\SystemBundle\Entity\Agent:
             id: true
             generator:
                 strategy: AUTO
-    oneToMany:
-        requirements:
-            targetEntity: HVG\SystemBundle\Entity\Requirement
-            mappedBy: carrier
+    oneToOne:
+        person:
+            targetEntity: HVG\SystemBundle\Entity\Person
+    manyToOne:
+        area:
+            targetEntity: HVG\SystemBundle\Entity\Area
+            inversedBy: agents
     fields:
-        fullname:
+        short_name:
             type: string
-            length: 100
+            length: 300
             nullable: true
-        shortname:
+        contact_phone:
             type: string
-            length: 10
+            length: 300
+            nullable: true
+        contact_email:
+            type: string
+            length: 300
             nullable: true
         createdAt:
             type: datetime

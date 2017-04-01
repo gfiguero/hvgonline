@@ -1,0 +1,43 @@
+HVG\SystemBundle\Entity\Fund:
+    type: entity
+    table: Fund
+    repositoryClass: HVG\SystemBundle\Entity\FundRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+    oneToMany:
+        inflows:
+            targetEntity: HVG\SystemBundle\Entity\Inflow
+            mappedBy: fund
+        outflows:
+            targetEntity: HVG\SystemBundle\Entity\Outflow
+            mappedBy: fund
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

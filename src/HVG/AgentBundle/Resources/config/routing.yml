@@ -1,0 +1,3 @@
+hvg_agent_homepage:
+    path:     /
+    defaults: { _controller: HVGAgentBundle:Default:index }

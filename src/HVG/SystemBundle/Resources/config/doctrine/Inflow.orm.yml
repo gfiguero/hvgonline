@@ -1,0 +1,40 @@
+HVG\SystemBundle\Entity\Inflow:
+    type: entity
+    table: Inflow
+    repositoryClass: HVG\SystemBundle\Entity\InflowRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        fund:
+            targetEntity: HVG\SystemBundle\Entity\Fund
+            inversedBy: inflows
+    oneToOne:
+        allowance:
+            targetEntity: HVG\SystemBundle\Entity\Allowance
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

@@ -1,7 +1,0 @@
-hvg_user_user:
-    resource: "@HVGUserBundle/Resources/config/routing/user.yml"
-    prefix:   /user
-
-hvg_user_homepage:
-    path:     /
-    defaults: { _controller: HVGUserBundle:Default:index }

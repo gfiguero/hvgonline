@@ -1,0 +1,41 @@
+HVG\SystemBundle\Entity\Expenditure:
+    type: entity
+    table: Expenditure
+    repositoryClass: HVG\SystemBundle\Entity\ExpenditureRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        amount:
+            type: integer
+        description:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

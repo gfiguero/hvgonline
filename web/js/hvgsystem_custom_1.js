@@ -1,8 +1,18 @@
 jQuery(document).ready(function($) {
-    $(".clickableRow").click(function() { window.document.location = $(this).attr("href"); });
-    $(".clickableRow").css('cursor', 'pointer');
     $('#side-menu').metisMenu();
 });
+
+var optionsFileinput = {
+    showPreview: false,
+    showRemove: false,
+    showUpload: false,
+    showCancel: false,
+    showClose: false,
+    showZoom: false,
+    browseClass: 'btn btn-primary btn-block',
+    browseLabel: 'Seleccionar Archivo'
+}
+$(".fileinput").find('input').fileinput(optionsFileinput);
 
 $(function() {
     $(window).bind("load resize", function() {
@@ -25,3 +35,4 @@ $(function() {
         element.addClass('active');
     }
 });
+

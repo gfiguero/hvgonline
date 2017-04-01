@@ -1,0 +1,24 @@
+charge_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Charge:index" }
+    methods:  GET
+
+charge_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Charge:show" }
+    methods:  GET
+
+charge_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Charge:new" }
+    methods:  [GET, POST]
+
+charge_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Charge:edit" }
+    methods:  [GET, POST]
+
+charge_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Charge:delete" }
+    methods:  DELETE

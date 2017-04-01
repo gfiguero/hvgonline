@@ -1,0 +1,3 @@
+hvg_customer_homepage:
+    path:     /
+    defaults: { _controller: HVGCustomerBundle:Default:index }

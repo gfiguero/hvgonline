@@ -1,0 +1,24 @@
+outflow_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Outflow:index" }
+    methods:  GET
+
+outflow_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Outflow:show" }
+    methods:  GET
+
+outflow_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Outflow:new" }
+    methods:  [GET, POST]
+
+outflow_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Outflow:edit" }
+    methods:  [GET, POST]
+
+outflow_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Outflow:delete" }
+    methods:  DELETE

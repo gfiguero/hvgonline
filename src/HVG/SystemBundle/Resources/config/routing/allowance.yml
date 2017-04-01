@@ -1,0 +1,24 @@
+allowance_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Allowance:index" }
+    methods:  GET
+
+allowance_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Allowance:show" }
+    methods:  GET
+
+allowance_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Allowance:new" }
+    methods:  [GET, POST]
+
+allowance_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Allowance:edit" }
+    methods:  [GET, POST]
+
+allowance_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Allowance:delete" }
+    methods:  DELETE

@@ -1,0 +1,250 @@
+<?php
+
+namespace HVG\SystemBundle\Entity;
+
+/**
+ * TicketStatus
+ */
+class TicketStatus
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $deletedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tickets;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Result
+     */
+    private $result;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return TicketStatus
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return TicketStatus
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return TicketStatus
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return TicketStatus
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     *
+     * @return TicketStatus
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Add ticket
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticket
+     *
+     * @return TicketStatus
+     */
+    public function addTicket(\HVG\SystemBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets[] = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticket
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticket
+     */
+    public function removeTicket(\HVG\SystemBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+
+    /**
+     * Set result
+     *
+     * @param \HVG\SystemBundle\Entity\Result $result
+     *
+     * @return TicketStatus
+     */
+    public function setResult(\HVG\SystemBundle\Entity\Result $result = null)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
+     * Get result
+     *
+     * @return \HVG\SystemBundle\Entity\Result
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+}

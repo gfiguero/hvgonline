@@ -1,0 +1,24 @@
+unit_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Unit:index" }
+    methods:  GET
+
+unit_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Unit:show" }
+    methods:  GET
+
+unit_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Unit:new" }
+    methods:  [GET, POST]
+
+unit_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Unit:edit" }
+    methods:  [GET, POST]
+
+unit_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Unit:delete" }
+    methods:  DELETE

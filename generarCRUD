@@ -1,0 +1,77 @@
+----------------------------Configuración
+php app/console doctrine:generate:entities HVGSystemBundle:Result --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Provider --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Person --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Agent --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Community --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Building --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Unit --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Area --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Result --format=yml --with-write --overwrite --no-interaction --route-prefix=result
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Provider --format=yml --with-write --overwrite --no-interaction --route-prefix=provider
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Person --format=yml --with-write --overwrite --no-interaction --route-prefix=person
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Agent --format=yml --with-write --overwrite --no-interaction --route-prefix=agent
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Community --format=yml --with-write --overwrite --no-interaction --route-prefix=community
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Building --format=yml --with-write --overwrite --no-interaction --route-prefix=building
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Unit --format=yml --with-write --overwrite --no-interaction --route-prefix=unit
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Area --format=yml --with-write --overwrite --no-interaction --route-prefix=area
+
+---------------- Seguimiento de Proyectos
+php app/console doctrine:generate:entities HVGSystemBundle:Project --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProjectObservation --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProjectAction --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProjectStatus --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProjectProposal --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProjectCommand --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Project --format=yml --with-write --overwrite --no-interaction --route-prefix=project
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectObservation --format=yml --with-write --overwrite --no-interaction --route-prefix=projectobservation
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectAction --format=yml --with-write --overwrite --no-interaction --route-prefix=projectaction
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=projectstatus
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectProposal --format=yml --with-write --overwrite --no-interaction --route-prefix=projectproposal
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectCommand --format=yml --with-write --overwrite --no-interaction --route-prefix=projectcommand
+
+---------------- Seguimiento de Tickets
+php app/console doctrine:generate:entities HVGSystemBundle:Ticket --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:TicketAction --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:TicketStatus --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Ticket --format=yml --with-write --overwrite --no-interaction --route-prefix=ticket
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:TicketAction --format=yml --with-write --overwrite --no-interaction --route-prefix=ticketaction
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:TicketStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=ticketstatus
+
+---------------- Seguimiento de Ordenes
+php app/console doctrine:generate:entities HVGSystemBundle:Command --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:CommandAction --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:CommandStatus --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Command --format=yml --with-write --overwrite --no-interaction --route-prefix=command
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:CommandAction --format=yml --with-write --overwrite --no-interaction --route-prefix=commandaction
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:CommandStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=commandstatus
+
+------------- Contabilidad
+php app/console doctrine:generate:entities HVGSystemBundle:Expenditure --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Payment --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Outflow --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Fund --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Inflow --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Charge --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Allowance --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:AllowanceCharge --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Expenditure --format=yml --with-write --overwrite --no-interaction --route-prefix=expenditure
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Payment --format=yml --with-write --overwrite --no-interaction --route-prefix=payment
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Outflow --format=yml --with-write --overwrite --no-interaction --route-prefix=outflow
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Fund --format=yml --with-write --overwrite --no-interaction --route-prefix=fund
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Inflow --format=yml --with-write --overwrite --no-interaction --route-prefix=inflow
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Charge --format=yml --with-write --overwrite --no-interaction --route-prefix=charge
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Allowance --format=yml --with-write --overwrite --no-interaction --route-prefix=allowance
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:AllowanceCharge --format=yml --with-write --overwrite --no-interaction --route-prefix=allowancecharge
+
+
+
+
+
+php app/console doctrine:schema:update --force
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+

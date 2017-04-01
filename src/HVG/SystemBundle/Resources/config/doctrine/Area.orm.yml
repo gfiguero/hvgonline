@@ -1,0 +1,47 @@
+HVG\SystemBundle\Entity\Area:
+    type: entity
+    table: Area
+    repositoryClass: HVG\SystemBundle\Entity\AreaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        commands:
+            targetEntity: HVG\SystemBundle\Entity\Command
+            mappedBy: area
+        agents:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+            mappedBy: area
+        tickets:
+            targetEntity: HVG\SystemBundle\Entity\Ticket
+            mappedBy: area
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        description:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

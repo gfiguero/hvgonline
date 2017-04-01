@@ -1,0 +1,56 @@
+HVG\SystemBundle\Entity\Project:
+    type: entity
+    table: Project
+    repositoryClass: HVG\SystemBundle\Entity\ProjectRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        status:
+            targetEntity: HVG\SystemBundle\Entity\ProjectStatus
+            inversedBy: projects
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+    oneToMany:
+        observations:
+            targetEntity: HVG\SystemBundle\Entity\ProjectObservation
+            mappedBy: project
+        actions:
+            targetEntity: HVG\SystemBundle\Entity\ProjectAction
+            mappedBy: project
+        commands:
+            targetEntity: HVG\SystemBundle\Entity\ProjectCommand
+            mappedBy: project
+        proposals:
+            targetEntity: HVG\SystemBundle\Entity\ProjectProposal
+            mappedBy: project
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        objetive:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

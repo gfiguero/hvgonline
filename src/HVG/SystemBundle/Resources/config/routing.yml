@@ -1,38 +1,111 @@
-hvg_system_requirement_type:
-    resource: "@HVGSystemBundle/Resources/config/routing/requirement_type.yml"
-    prefix:   /requirementtype
+#Accounting
+hvg_system_expenditure:
+    resource: "@HVGSystemBundle/Resources/config/routing/expenditure.yml"
+    prefix:   /expenditure
 
+hvg_system_payment:
+    resource: "@HVGSystemBundle/Resources/config/routing/payment.yml"
+    prefix:   /payment
+
+hvg_system_outflow:
+    resource: "@HVGSystemBundle/Resources/config/routing/outflow.yml"
+    prefix:   /outflow
+
+hvg_system_inflow:
+    resource: "@HVGSystemBundle/Resources/config/routing/inflow.yml"
+    prefix:   /inflow
+
+hvg_system_charge:
+    resource: "@HVGSystemBundle/Resources/config/routing/charge.yml"
+    prefix:   /charge
+
+hvg_system_allowance:
+    resource: "@HVGSystemBundle/Resources/config/routing/allowance.yml"
+    prefix:   /allowance
+
+hvg_system_allowancecharge:
+    resource: "@HVGSystemBundle/Resources/config/routing/allowancecharge.yml"
+    prefix:   /allowancecharge
+
+#Configuration
 hvg_system_agent:
     resource: "@HVGSystemBundle/Resources/config/routing/agent.yml"
     prefix:   /agent
 
-hvg_system_requirement_comment:
-    resource: "@HVGSystemBundle/Resources/config/routing/requirement_comment.yml"
-    prefix:   /requirementcomment
+hvg_system_person:
+    resource: "@HVGSystemBundle/Resources/config/routing/person.yml"
+    prefix:   /person
 
-hvg_system_requirement:
-    resource: "@HVGSystemBundle/Resources/config/routing/requirement.yml"
-    prefix:   /requirement
+hvg_system_result:
+    resource: "@HVGSystemBundle/Resources/config/routing/result.yml"
+    prefix:   /result
+
+hvg_system_area:
+    resource: "@HVGSystemBundle/Resources/config/routing/area.yml"
+    prefix:   /area
+
+hvg_system_unit:
+    resource: "@HVGSystemBundle/Resources/config/routing/unit.yml"
+    prefix:   /unit
+
+hvg_system_building:
+    resource: "@HVGSystemBundle/Resources/config/routing/building.yml"
+    prefix:   /building
 
 hvg_system_community:
     resource: "@HVGSystemBundle/Resources/config/routing/community.yml"
     prefix:   /community
 
-hvg_system_bank_account:
-    resource: "@HVGSystemBundle/Resources/config/routing/bank_account.yml"
-    prefix:   /bank_account
+hvg_system_fund:
+    resource: "@HVGSystemBundle/Resources/config/routing/fund.yml"
+    prefix:   /fund
 
 hvg_system_provider:
     resource: "@HVGSystemBundle/Resources/config/routing/provider.yml"
     prefix:   /provider
 
-hvg_system_supervisors_log:
-    resource: "@HVGSystemBundle/Resources/config/routing/supervisorsLog.yml"
-    prefix:   /supervisorslog
+#Tickets
+hvg_system_ticketstatus:
+    resource: "@HVGSystemBundle/Resources/config/routing/ticketstatus.yml"
+    prefix:   /ticketstatus
 
-hvg_system_pay_order:
-    resource: "@HVGSystemBundle/Resources/config/routing/payOrder.yml"
-    prefix:   /payorder
+hvg_system_ticketaction:
+    resource: "@HVGSystemBundle/Resources/config/routing/ticketaction.yml"
+    prefix:   /ticketaction
+
+hvg_system_ticket:
+    resource: "@HVGSystemBundle/Resources/config/routing/ticket.yml"
+    prefix:   /ticket
+
+#Projects
+hvg_system_projectproposal:
+    resource: "@HVGSystemBundle/Resources/config/routing/projectproposal.yml"
+    prefix:   /projectproposal
+
+hvg_system_projectstatus:
+    resource: "@HVGSystemBundle/Resources/config/routing/projectstatus.yml"
+    prefix:   /projectstatus
+
+hvg_system_projectaction:
+    resource: "@HVGSystemBundle/Resources/config/routing/projectaction.yml"
+    prefix:   /projectaction
+
+hvg_system_projectcommand:
+    resource: "@HVGSystemBundle/Resources/config/routing/projectcommand.yml"
+    prefix:   /projectcommand
+
+hvg_system_projectobservation:
+    resource: "@HVGSystemBundle/Resources/config/routing/projectobservation.yml"
+    prefix:   /projectobservation
+
+hvg_system_project:
+    resource: "@HVGSystemBundle/Resources/config/routing/project.yml"
+    prefix:   /project
+
+#Testing
+hvg_system_testing:
+    resource: "@HVGSystemBundle/Resources/config/routing/testing.yml"
+    prefix:   /testing
 
 hvg_system_homepage:
     path:     /

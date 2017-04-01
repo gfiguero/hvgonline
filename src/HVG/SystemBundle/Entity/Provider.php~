@@ -25,27 +25,17 @@ class Provider
     /**
      * @var string
      */
-    private $phone;
+    private $contact_phone;
 
     /**
      * @var string
      */
-    private $mail;
+    private $contact_email;
 
     /**
      * @var string
      */
-    private $expert_name;
-
-    /**
-     * @var \DateTime
-     */
-    private $contract_start;
-
-    /**
-     * @var \DateTime
-     */
-    private $contract_end;
+    private $contact_name;
 
     /**
      * @var \DateTime
@@ -62,11 +52,10 @@ class Provider
      */
     private $deletedAt;
 
-    /**
-     * @var \HVG\SystemBundle\Entity\BankAccount
-     */
-    private $bank_account;
-
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
@@ -127,123 +116,75 @@ class Provider
     }
 
     /**
-     * Set phone
+     * Set contactPhone
      *
-     * @param string $phone
+     * @param string $contactPhone
      *
      * @return Provider
      */
-    public function setPhone($phone)
+    public function setContactPhone($contactPhone)
     {
-        $this->phone = $phone;
+        $this->contact_phone = $contactPhone;
 
         return $this;
     }
 
     /**
-     * Get phone
+     * Get contactPhone
      *
      * @return string
      */
-    public function getPhone()
+    public function getContactPhone()
     {
-        return $this->phone;
+        return $this->contact_phone;
     }
 
     /**
-     * Set mail
+     * Set contactEmail
      *
-     * @param string $mail
+     * @param string $contactEmail
      *
      * @return Provider
      */
-    public function setMail($mail)
+    public function setContactEmail($contactEmail)
     {
-        $this->mail = $mail;
+        $this->contact_email = $contactEmail;
 
         return $this;
     }
 
     /**
-     * Get mail
+     * Get contactEmail
      *
      * @return string
      */
-    public function getMail()
+    public function getContactEmail()
     {
-        return $this->mail;
+        return $this->contact_email;
     }
 
     /**
-     * Set expertName
+     * Set contactName
      *
-     * @param string $expertName
+     * @param string $contactName
      *
      * @return Provider
      */
-    public function setExpertName($expertName)
+    public function setContactName($contactName)
     {
-        $this->expert_name = $expertName;
+        $this->contact_name = $contactName;
 
         return $this;
     }
 
     /**
-     * Get expertName
+     * Get contactName
      *
      * @return string
      */
-    public function getExpertName()
+    public function getContactName()
     {
-        return $this->expert_name;
-    }
-
-    /**
-     * Set contractStart
-     *
-     * @param \DateTime $contractStart
-     *
-     * @return Provider
-     */
-    public function setContractStart($contractStart)
-    {
-        $this->contract_start = $contractStart;
-
-        return $this;
-    }
-
-    /**
-     * Get contractStart
-     *
-     * @return \DateTime
-     */
-    public function getContractStart()
-    {
-        return $this->contract_start;
-    }
-
-    /**
-     * Set contractEnd
-     *
-     * @param \DateTime $contractEnd
-     *
-     * @return Provider
-     */
-    public function setContractEnd($contractEnd)
-    {
-        $this->contract_end = $contractEnd;
-
-        return $this;
-    }
-
-    /**
-     * Get contractEnd
-     *
-     * @return \DateTime
-     */
-    public function getContractEnd()
-    {
-        return $this->contract_end;
+        return $this->contact_name;
     }
 
     /**
@@ -317,29 +258,4 @@ class Provider
     {
         return $this->deletedAt;
     }
-
-    /**
-     * Set bankAccount
-     *
-     * @param \HVG\SystemBundle\Entity\BankAccount $bankAccount
-     *
-     * @return Provider
-     */
-    public function setBankAccount(\HVG\SystemBundle\Entity\BankAccount $bankAccount = null)
-    {
-        $this->bank_account = $bankAccount;
-
-        return $this;
-    }
-
-    /**
-     * Get bankAccount
-     *
-     * @return \HVG\SystemBundle\Entity\BankAccount
-     */
-    public function getBankAccount()
-    {
-        return $this->bank_account;
-    }
 }
-

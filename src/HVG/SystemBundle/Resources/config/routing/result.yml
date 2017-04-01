@@ -1,0 +1,24 @@
+result_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Result:index" }
+    methods:  GET
+
+result_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Result:show" }
+    methods:  GET
+
+result_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Result:new" }
+    methods:  [GET, POST]
+
+result_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Result:edit" }
+    methods:  [GET, POST]
+
+result_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Result:delete" }
+    methods:  DELETE

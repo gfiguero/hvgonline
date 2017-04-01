@@ -1,0 +1,45 @@
+HVG\SystemBundle\Entity\Payment:
+    type: entity
+    table: Payment
+    repositoryClass: HVG\SystemBundle\Entity\PaymentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToMany:
+        expenditure:
+            targetEntity: HVG\SystemBundle\Entity\Expenditure
+            joinTable:
+                name: PaymentExpenditure
+                joinColumns:
+                    expenditure_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    payment_id:
+                        referencedColumnName: id
+                        unique: true
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

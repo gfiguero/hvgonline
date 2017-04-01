@@ -1,0 +1,50 @@
+HVG\SystemBundle\Entity\Command:
+    type: entity
+    table: Command
+    repositoryClass: HVG\SystemBundle\Entity\CommandRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: commands
+        area:
+            targetEntity: HVG\SystemBundle\Entity\Area
+            inversedBy: commands
+        status:
+            targetEntity: HVG\SystemBundle\Entity\CommandStatus
+            inversedBy: commands
+    oneToMany:
+        actions:
+            targetEntity: HVG\SystemBundle\Entity\CommandAction
+            mappedBy: command
+    fields:
+        description:
+            type: string
+            length: 300
+            nullable: true
+        expiry:
+            type: datetime
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

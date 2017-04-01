@@ -74,6 +74,9 @@
         "require-npm": {
             "less": "*"
         },
+        "require-bower": {
+            "bootstrap-toggle": "*"
+        },
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",

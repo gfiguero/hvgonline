@@ -1,0 +1,160 @@
+{% extends 'HVGSystemBundle:System:base.html.twig' %}
+{% use 'HVGSystemBundle:System:navbar.html.twig' %}
+{% use 'HVGSystemBundle:System:sidebar.html.twig' %}
+
+{% set translation_domain = 'HVGSystemBundle' %}
+{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'projectproposal.list.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row" id="page-header">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'projectproposal.list.title'|trans }}</h1>
+                {% include 'HVGSystemBundle:System:flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+            </div>
+        </div>
+        <!-- /#page-header -->
+
+        <div class="row" id="page-list">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-toolbar">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNew">{{ icon('plus') }}&nbsp;{{ 'projectproposal.new.link'|trans }}</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'projectProposal.form.actions'|trans }}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.entity_name'|trans, 'entity_name') }}{% if sort == 'entity_name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.contact_name'|trans, 'contact_name') }}{% if sort == 'contact_name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.contact_phone'|trans, 'contact_phone') }}{% if sort == 'contact_phone' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.contact_email'|trans, 'contact_email') }}{% if sort == 'contact_email' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.contact_address'|trans, 'contact_address') }}{% if sort == 'contact_address' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.plan'|trans, 'plan') }}{% if sort == 'plan' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.budget'|trans, 'budget') }}{% if sort == 'budget' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.expiry'|trans, 'expiry') }}{% if sort == 'expiry' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.observation'|trans, 'observation') }}{% if sort == 'observation' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(projectProposals, 'projectproposal.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, projectproposal in projectProposals %}
+                                <tr>
+                                    <td>
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group" role="group">
+                                                <a type="button" class="btn btn-warning" href="{{ path('projectproposal_show', { 'id': projectproposal.id }) }}" aria-label="{{ 'projectproposal.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit{{ projectproposal.id }}">{{ icon('edit') }}</button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete{{ projectproposal.id }}">{{ icon('trash') }}</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{% if projectproposal.id %}{{ projectproposal.id }}{% endif %}</td>
+                                    <td>{% if projectproposal.entityname %}{{ projectproposal.entityname }}{% endif %}</td>
+                                    <td>{% if projectproposal.contactname %}{{ projectproposal.contactname }}{% endif %}</td>
+                                    <td>{% if projectproposal.contactphone %}{{ projectproposal.contactphone }}{% endif %}</td>
+                                    <td>{% if projectproposal.contactemail %}{{ projectproposal.contactemail }}{% endif %}</td>
+                                    <td>{% if projectproposal.contactaddress %}{{ projectproposal.contactaddress }}{% endif %}</td>
+                                    <td>{% if projectproposal.plan %}{{ projectproposal.plan }}{% endif %}</td>
+                                    <td>{% if projectproposal.budget %}{{ projectproposal.budget }}{% endif %}</td>
+                                    <td>{% if projectproposal.expiry %}{{ projectproposal.expiry|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if projectproposal.observation %}{{ projectproposal.observation }}{% endif %}</td>
+                                    <td>{% if projectproposal.createdAt %}{{ projectproposal.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if projectproposal.updatedAt %}{{ projectproposal.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ knp_pagination_render(projectProposals) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-list -->
+
+        <div id="page-modal">
+            <div class="modal fade" id="modalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'projectproposal.new.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(newForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(newForm) }}
+                                        <button type="submit" class="btn btn-primary btn-block">{{ icon('check') }}&nbsp;{{ 'projectproposal.new.submit'|trans }}</button>
+                                    {{ form_end(newForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% for key, projectproposal in projectProposals %}
+            <div class="modal fade" id="modalEdit{{ projectproposal.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'projectproposal.edit.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {% set editForm = attribute(editForms, key) %}
+                                    {{ form_start(editForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(editForm) }}
+                                        <button type="submit" class="btn btn-primary btn-block">{{ icon('check') }}&nbsp;{{ 'projectproposal.edit.submit'|trans }}</button>
+                                    {{ form_end(editForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalDelete{{ projectproposal.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'projectproposal.delete.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-2 text-center">{{ icon('exclamation-triangle fa-5x') }}</div>
+                                <div class="col-xs-10"><p>{{ 'projectproposal.delete.message'|trans }}</p></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            {% set deleteForm = attribute(deleteForms, key) %}
+                            {{ form_start(deleteForm) }}
+                                {{ form_widget(deleteForm) }}
+                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash') }}&nbsp;{{ 'projectproposal.delete.submit'|trans }}</button>
+                            {{ form_end(deleteForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- /#page-modal -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}

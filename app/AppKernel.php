@@ -31,6 +31,9 @@ class AppKernel extends Kernel
 //            new Unisystem\UploadBundle\UnisystemUploadBundle(),
             new HVG\SystemBundle\HVGSystemBundle(),
             new HVG\AdminBundle\HVGAdminBundle(),
+            new HVG\ResourcePlannerBundle\HVGResourcePlannerBundle(),
+            new HVG\CustomerBundle\HVGCustomerBundle(),
+            new HVG\AgentBundle\HVGAgentBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

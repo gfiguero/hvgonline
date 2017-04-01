@@ -1,0 +1,42 @@
+{% extends 'HVGSystemBundle:System:base.html.twig' %}
+
+{% block title %}{{ 'building.new.title'|trans({}, 'HVGSystemBundle') }}{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'building.new.title'|trans({}, 'HVGSystemBundle') }}</h1>
+                {% include 'HVGSystemBundle:System:flashbag.html.twig' %}
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-toolbar">
+                            <a type="button" class="btn btn-default" href="{{ path('building_index') }}">{{ icon('list') }}&nbsp;{{ 'building.list.link'|trans }}</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        {{ form_start(form, { 'style': 'horizontal' }) }}
+                            {{ form_widget(form) }}
+                                <div class="form-group"><div class="col-lg-offset-3 col-lg-9">
+                                    <button type="submit" class="btn btn-primary">{{ icon('save') }}&nbsp;{{ 'building.new.submit'|trans({}, 'HVGSystemBundle') }}</button>
+                                </div></div>
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}
+
+

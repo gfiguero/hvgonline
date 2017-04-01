@@ -1,0 +1,24 @@
+projectcommand_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:ProjectCommand:index" }
+    methods:  GET
+
+projectcommand_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:ProjectCommand:show" }
+    methods:  GET
+
+projectcommand_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:ProjectCommand:new" }
+    methods:  [GET, POST]
+
+projectcommand_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:ProjectCommand:edit" }
+    methods:  [GET, POST]
+
+projectcommand_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:ProjectCommand:delete" }
+    methods:  DELETE

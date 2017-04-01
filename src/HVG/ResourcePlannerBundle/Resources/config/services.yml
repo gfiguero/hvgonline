@@ -1,0 +1,4 @@
+services:
+#    hvg_resource_planner.example:
+#        class: HVG\ResourcePlannerBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

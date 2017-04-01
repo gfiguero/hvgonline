@@ -1,0 +1,102 @@
+{% extends 'HVGSystemBundle:System:base.html.twig' %}
+{% use 'HVGSystemBundle:System:navbar.html.twig' %}
+{% use 'HVGSystemBundle:System:sidebar.html.twig' %}
+
+{% set translation_domain = 'HVGSystemBundle' %}
+{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'ticketaction.show.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row" id="page-header">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'ticketaction.show.title'|trans }}</h1>
+                {% include 'HVGSystemBundle:System:flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+            </div>
+        </div>
+        <!-- /#page-header -->
+
+        <div class="row" id="page-show">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-toolbar">
+                            <a type="button" class="btn btn-default" href="{{ path('ticketaction_index') }}">{{ icon('list') }}&nbsp;{{ 'ticketaction.list.link'|trans }}</a>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit">{{ icon('edit') }}&nbsp;{{ 'ticketaction.edit.link'|trans }}</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">{{ icon('trash-o') }}&nbsp;{{ 'ticketaction.delete.link'|trans }}</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                            <dt>{{ 'ticketaction.form.id'|trans }}</dt>
+                                <dd>{% if ticketAction.id %}{{ ticketAction.id }}{% endif %}</dd>
+                            <dt>{{ 'ticketaction.form.description'|trans }}</dt>
+                                <dd>{% if ticketAction.description %}{{ ticketAction.description }}{% endif %}</dd>
+                            <dt>{{ 'ticketaction.form.file'|trans }}</dt>
+                                <dd>{% if ticketAction.file %}{{ ticketAction.file }}{% endif %}</dd>
+                            <dt>{{ 'ticketaction.form.createdAt'|trans }}</dt>
+                                <dd>{% if ticketAction.createdAt %}{{ ticketAction.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'ticketaction.form.updatedAt'|trans }}</dt>
+                                <dd>{% if ticketAction.updatedAt %}{{ ticketAction.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'ticketaction.form.deletedAt'|trans }}</dt>
+                                <dd>{% if ticketAction.deletedAt %}{{ ticketAction.deletedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-show -->
+
+        <div id="page-modal">
+            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'ticketaction.new.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(editForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(editForm) }}
+                                        <button type="submit" class="btn btn-primary btn-block">{{ icon('check fa-fw') }}&nbsp;{{ 'ticketaction.new.confirm'|trans }}</button>
+                                    {{ form_end(editForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'ticketaction.delete.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-2 text-center">{{ icon('exclamation-triangle fa-5x') }}</div>
+                                <div class="col-xs-10"><p>{{ 'ticketaction.delete.message'|trans }}</p></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            {{ form_start(deleteForm) }}
+                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash-o') }}&nbsp;{{ 'ticketaction.delete.confirm'|trans }}</button>
+                            {{ form_end(deleteForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /#page-modal -->
+
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}
+

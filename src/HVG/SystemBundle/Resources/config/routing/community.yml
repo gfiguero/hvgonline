@@ -22,8 +22,3 @@ community_delete:
     path:     /{id}/delete
     defaults: { _controller: "HVGSystemBundle:Community:delete" }
     methods:  DELETE
-
-community_filter:
-    path:     /filter
-    defaults: { _controller: "HVGSystemBundle:Community:filter" }
-    methods:  [GET, POST]

@@ -175,3 +175,83 @@ payOrder:
 contabilidad:
     sidemenu:
         root: Contabilidad
+
+testing:
+    list:
+        link: Explorar
+        title: Lista de testing
+    show:
+        link: Mostrar
+        title: Mostrar Testing
+    new:
+        link: Crear Nuevo
+        title: Crear Nuevo Testing
+        submit: Guardar
+        flash: Nuevo testing ha sido creado exitosamente
+    edit:
+        link: Editar
+        title: Editar Testing
+        submit: Guardar Cambios
+        flash: Los cambios se guardaron satisfactoriamente
+    delete:
+        link: Eliminar
+        title: Eliminar Testing
+        message: El Testing eliminado no podrá ser recuperado. ¿Está seguro de eliminarlo?
+        submit: Confirmar
+        flash: El testing ha sido eliminado
+    form:
+        actions: Acciones
+        id: ID
+        a_string: Palabra
+        a_integer: Entero
+        a_boolean: Buleano
+        a_decimal: Decimal
+        a_float: Precisión
+        a_date: Fecha
+        a_time: Hora
+        a_datetime: FechaHora
+        a_text: Texto
+        a_file: Archivo
+        createdAt: Creado
+        updatedAt: Actualizado
+        deletedAt: Borrado
+
+project:
+    sidemenu:
+        root: Proyectos
+        index: Lista de Proyectos
+    list:
+        link: Explorar
+        title: Lista de Proyectos
+    show:
+        link: Detalles
+        title: Detalles del Proyecto
+    new:
+        link: Crear Nuevo
+        title: Crear Nuevo Proyecto
+        submit: Guardar
+        flash: Nuevo Proyecto ha sido creado exitosamente
+    edit:
+        link: Editar
+        title: Editar Proyecto
+        submit: Guardar Cambios
+        flash: Los cambios se guardaron satisfactoriamente
+    delete:
+        link: Eliminar
+        title: Eliminar Proyecto
+        message: El Proyecto eliminado no podrá ser recuperado. ¿Está seguro de eliminarlo?
+        submit: Confirmar
+        flash: El Proyecto ha sido eliminado
+    form:
+        id: ID
+        actions: Acciones
+        createdAt: Creado
+        updatedAt: Actualizado
+        deletedAt: Borrado
+        status: Estado
+        community: Comunidad
+        observations: Observaciones
+        actions: Acciones
+        proposals: Propuestas
+        name: Nombre del Proyecto
+        objetive: Objetivo del Proyecto

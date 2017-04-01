@@ -2,16 +2,22 @@
 
 namespace HVG\SystemBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use HVG\SystemBundle\Entity\Community;
 use HVG\SystemBundle\Form\CommunityType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
-use HVG\SystemBundle\Entity\Filter;
-
+/**
+ * Community controller.
+ *
+ */
 class CommunityController extends Controller
 {
+
+    /**
+     * Lists all Community entities.
+     *
+     */
     public function indexAction(Request $request)
     {
         $sort = $request->query->get('sort');
@@ -20,25 +26,18 @@ class CommunityController extends Controller
         if($sort) $communities = $em->getRepository('HVGSystemBundle:Community')->findBy(array(), array($sort => $direction));
         else $communities = $em->getRepository('HVGSystemBundle:Community')->findAll();
         $paginator = $this->get('knp_paginator');
-        $communities = $paginator->paginate($communities, $request->query->getInt('page', 1), 24);
-
-        $deleteForms = array();
-        $editForms = array();
+        $communities = $paginator->paginate($communities, $request->query->getInt('page', 1), 100);
         $community = new Community();
-        $newForm = $this->createForm('HVG\SystemBundle\Form\CommunityType', $community, array(
-            'action' => $this->generateUrl('community_new'),
-        ))->createView();
+        $newForm = $this->createNewForm($community)->createView();
 
-        foreach ($communities as $key => $community) {
-            $editForms[] = $this->createForm('HVG\SystemBundle\Form\CommunityType', $community, array(
-                'action' => $this->generateUrl('community_edit', array('id' => $community->getId())),
-            ))->createView();
-            $deleteForms[] = $this->createDeleteForm($community, array(
-                'action' => $this->generateUrl('community_delete', array('id' => $community->getId())),
-            ))->createView();
+        $editForms = array();
+        $deleteForms = array();
+        foreach($communities as $key => $community) {
+            $editForms[] = $this->createEditForm($community)->createView();
+            $deleteForms[] = $this->createDeleteForm($community)->createView();
         }
 
-        return $this->render('HVGSystemBundle:Community:index.html.twig', array(
+        return $this->render('community/index.html.twig', array(
             'communities' => $communities,
             'direction' => $direction,
             'sort' => $sort,
@@ -55,18 +54,47 @@ class CommunityController extends Controller
     public function newAction(Request $request)
     {
         $community = new Community();
-        $form = $this->createForm('HVG\SystemBundle\Form\CommunityType', $community);
-        $form->handleRequest($request);
+        $newForm = $this->createNewForm($community);
+        $newForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($newForm->isSubmitted() && $newForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($community);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'community.new.flash' );
-
+            $request->getSession()->getFlashBag()->add( 'success', 'community.flash.created' );    
         }
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * Creates a form to create a new Community entity.
+     *
+     * @param Community $community The Community entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createNewForm(Community $community)
+    {
+        return $this->createForm('HVG\SystemBundle\Form\CommunityType', $community, array(
+            'action' => $this->generateUrl('community_new'),
+        ));
+    }
+
+    /**
+     * Finds and displays a Community entity.
+     *
+     */
+    public function showAction(Community $community)
+    {
+        $editForm = $this->createEditForm($community);
+        $deleteForm = $this->createDeleteForm($community);
+
+        return $this->render('community/show.html.twig', array(
+            'community' => $community,
+            'editForm' => $editForm->createView(),
+            'deleteForm' => $deleteForm->createView(),
+        ));
     }
 
     /**
@@ -75,23 +103,30 @@ class CommunityController extends Controller
      */
     public function editAction(Request $request, Community $community)
     {
-        $deleteForm = $this->createDeleteForm($community);
-        $editForm = $this->createForm('HVG\SystemBundle\Form\CommunityType', $community);
+        $editForm = $this->createEditForm($community);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($community);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'community.edit.flash' );
-
-            return $this->redirect($request->headers->get('referer'));
+            $request->getSession()->getFlashBag()->add( 'success', 'community.flash.updated' );    
         }
 
-        return $this->render('community/edit.html.twig', array(
-            'community' => $community,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * Creates a form to edit a Community entity.
+     *
+     * @param Community $community The Community entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Community $community)
+    {
+        return $this->createForm('HVG\SystemBundle\Form\CommunityType', $community, array(
+            'action' => $this->generateUrl('community_edit', array('id' => $community->getId())),
         ));
     }
 
@@ -101,14 +136,14 @@ class CommunityController extends Controller
      */
     public function deleteAction(Request $request, Community $community)
     {
-        $form = $this->createDeleteForm($community);
-        $form->handleRequest($request);
+        $deleteForm = $this->createDeleteForm($community);
+        $deleteForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($community);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'community.delete.flash' );
+            $request->getSession()->getFlashBag()->add( 'danger', 'community.flash.deleted' );    
         }
 
         return $this->redirect($request->headers->get('referer'));
@@ -129,18 +164,4 @@ class CommunityController extends Controller
             ->getForm()
         ;
     }
-
-    public function filterAction(Request $request)
-    {
-        $filter = new Filter();
-        $form = $this->createForm('HVG\SystemBundle\Form\FilterType', $filter);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $request->getSession()->set('community', $filter->getCommunity());
-        }
-
-        return $this->redirect($request->headers->get('referer'));
-    }
-
 }

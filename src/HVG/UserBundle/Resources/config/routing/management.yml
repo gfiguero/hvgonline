@@ -1,0 +1,16 @@
+hvg_user_profile:
+    resource: "@HVGUserBundle/Resources/config/routing/profile.yml"
+    prefix: /profile
+
+hvg_user_register:
+    resource: "@HVGUserBundle/Resources/config/routing/registration.yml"
+    prefix: /register
+
+hvg_user_resetting:
+    resource: "@HVGUserBundle/Resources/config/routing/resetting.yml"
+    prefix: /resetting
+
+hvg_user_change_password:
+    resource: "@HVGUserBundle/Resources/config/routing/change_password.yml"
+    prefix: /password
+

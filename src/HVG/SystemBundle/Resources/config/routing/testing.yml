@@ -1,0 +1,24 @@
+testing_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Testing:index" }
+    methods:  GET
+
+testing_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Testing:show" }
+    methods:  GET
+
+testing_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Testing:new" }
+    methods:  [GET, POST]
+
+testing_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Testing:edit" }
+    methods:  [GET, POST]
+
+testing_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Testing:delete" }
+    methods:  DELETE

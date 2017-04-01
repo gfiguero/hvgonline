@@ -1,0 +1,24 @@
+ticketstatus_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:TicketStatus:index" }
+    methods:  GET
+
+ticketstatus_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:TicketStatus:show" }
+    methods:  GET
+
+ticketstatus_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:TicketStatus:new" }
+    methods:  [GET, POST]
+
+ticketstatus_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:TicketStatus:edit" }
+    methods:  [GET, POST]
+
+ticketstatus_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:TicketStatus:delete" }
+    methods:  DELETE

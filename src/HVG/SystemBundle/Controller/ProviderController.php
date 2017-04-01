@@ -2,14 +2,22 @@
 
 namespace HVG\SystemBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use HVG\SystemBundle\Entity\Provider;
 use HVG\SystemBundle\Form\ProviderType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Provider controller.
+ *
+ */
 class ProviderController extends Controller
 {
+
+    /**
+     * Lists all Provider entities.
+     *
+     */
     public function indexAction(Request $request)
     {
         $sort = $request->query->get('sort');
@@ -18,25 +26,18 @@ class ProviderController extends Controller
         if($sort) $providers = $em->getRepository('HVGSystemBundle:Provider')->findBy(array(), array($sort => $direction));
         else $providers = $em->getRepository('HVGSystemBundle:Provider')->findAll();
         $paginator = $this->get('knp_paginator');
-        $providers = $paginator->paginate($providers, $request->query->getInt('page', 1), 24);
-
-        $deleteForms = array();
-        $editForms = array();
+        $providers = $paginator->paginate($providers, $request->query->getInt('page', 1), 100);
         $provider = new Provider();
-        $newForm = $this->createForm('HVG\SystemBundle\Form\ProviderType', $provider, array(
-            'action' => $this->generateUrl('provider_new'),
-        ))->createView();
+        $newForm = $this->createNewForm($provider)->createView();
 
-        foreach ($providers as $key => $provider) {
-            $editForms[] = $this->createForm('HVG\SystemBundle\Form\ProviderType', $provider, array(
-                'action' => $this->generateUrl('provider_edit', array('id' => $provider->getId())),
-            ))->createView();
-            $deleteForms[] = $this->createDeleteForm($provider, array(
-                'action' => $this->generateUrl('provider_delete', array('id' => $provider->getId())),
-            ))->createView();
+        $editForms = array();
+        $deleteForms = array();
+        foreach($providers as $key => $provider) {
+            $editForms[] = $this->createEditForm($provider)->createView();
+            $deleteForms[] = $this->createDeleteForm($provider)->createView();
         }
 
-        return $this->render('HVGSystemBundle:Provider:index.html.twig', array(
+        return $this->render('provider/index.html.twig', array(
             'providers' => $providers,
             'direction' => $direction,
             'sort' => $sort,
@@ -53,18 +54,47 @@ class ProviderController extends Controller
     public function newAction(Request $request)
     {
         $provider = new Provider();
-        $form = $this->createForm('HVG\SystemBundle\Form\ProviderType', $provider);
-        $form->handleRequest($request);
+        $newForm = $this->createNewForm($provider);
+        $newForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($newForm->isSubmitted() && $newForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($provider);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'provider.new.flash' );
-
+            $request->getSession()->getFlashBag()->add( 'success', 'provider.flash.created' );    
         }
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * Creates a form to create a new Provider entity.
+     *
+     * @param Provider $provider The Provider entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createNewForm(Provider $provider)
+    {
+        return $this->createForm('HVG\SystemBundle\Form\ProviderType', $provider, array(
+            'action' => $this->generateUrl('provider_new'),
+        ));
+    }
+
+    /**
+     * Finds and displays a Provider entity.
+     *
+     */
+    public function showAction(Provider $provider)
+    {
+        $editForm = $this->createEditForm($provider);
+        $deleteForm = $this->createDeleteForm($provider);
+
+        return $this->render('provider/show.html.twig', array(
+            'provider' => $provider,
+            'editForm' => $editForm->createView(),
+            'deleteForm' => $deleteForm->createView(),
+        ));
     }
 
     /**
@@ -73,23 +103,30 @@ class ProviderController extends Controller
      */
     public function editAction(Request $request, Provider $provider)
     {
-        $deleteForm = $this->createDeleteForm($provider);
-        $editForm = $this->createForm('HVG\SystemBundle\Form\ProviderType', $provider);
+        $editForm = $this->createEditForm($provider);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($provider);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'provider.edit.flash' );
-
-            return $this->redirect($request->headers->get('referer'));
+            $request->getSession()->getFlashBag()->add( 'success', 'provider.flash.updated' );    
         }
 
-        return $this->render('provider/edit.html.twig', array(
-            'provider' => $provider,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * Creates a form to edit a Provider entity.
+     *
+     * @param Provider $provider The Provider entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(Provider $provider)
+    {
+        return $this->createForm('HVG\SystemBundle\Form\ProviderType', $provider, array(
+            'action' => $this->generateUrl('provider_edit', array('id' => $provider->getId())),
         ));
     }
 
@@ -99,14 +136,14 @@ class ProviderController extends Controller
      */
     public function deleteAction(Request $request, Provider $provider)
     {
-        $form = $this->createDeleteForm($provider);
-        $form->handleRequest($request);
+        $deleteForm = $this->createDeleteForm($provider);
+        $deleteForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($provider);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'provider.delete.flash' );
+            $request->getSession()->getFlashBag()->add( 'danger', 'provider.flash.deleted' );    
         }
 
         return $this->redirect($request->headers->get('referer'));

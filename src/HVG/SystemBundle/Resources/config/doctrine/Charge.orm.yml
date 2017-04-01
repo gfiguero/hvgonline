@@ -1,0 +1,39 @@
+HVG\SystemBundle\Entity\Charge:
+    type: entity
+    table: Charge
+    repositoryClass: HVG\SystemBundle\Entity\ChargeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        unit:
+            targetEntity: HVG\SystemBundle\Entity\Unit
+            inversedBy: charges
+    oneToMany:
+        allowancecharge:
+            targetEntity: HVG\SystemBundle\Entity\AllowanceCharge
+            mappedBy: charge
+    fields:
+        amount:
+            type: integer
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

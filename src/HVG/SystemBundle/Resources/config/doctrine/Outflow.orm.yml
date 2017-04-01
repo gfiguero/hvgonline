@@ -1,0 +1,39 @@
+HVG\SystemBundle\Entity\Outflow:
+    type: entity
+    table: Outflow
+    repositoryClass: HVG\SystemBundle\Entity\OutflowRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        fund:
+            targetEntity: HVG\SystemBundle\Entity\Fund
+            inversedBy: outflows
+        expenditure:
+            targetEntity: HVG\SystemBundle\Entity\Expenditure
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

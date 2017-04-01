@@ -232,6 +232,7 @@
     {% spaceless %}
         {% set style = style|default(bootstrap_get_style()) %}
         {% set col_size = col_size|default(bootstrap_get_col_size()) %}
+        {% set align_with_widget = true %} {# parche #}
 
         {% if attr.label_col is defined and attr.label_col is not empty %}
             {% set label_col = attr.label_col %}
@@ -369,7 +370,7 @@
 
 {% block checkbox_widget %}
     {% spaceless %}
-        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} data-toggle="toggle" />
     {% endspaceless %}
 {% endblock checkbox_widget %}
 
@@ -805,10 +806,10 @@
             {{ bootstrap_set_col_size('lg') }}
         {% endif %}
         {% if bootstrap_get_widget_col() %}
-            {{ bootstrap_set_widget_col(10) }}
+            {{ bootstrap_set_widget_col(8) }}
         {% endif %}
         {% if bootstrap_get_label_col() %}
-            {{ bootstrap_set_label_col(2) }}
+            {{ bootstrap_set_label_col(4) }}
         {% endif %}
         {% if bootstrap_get_simple_col() %}
             {{ bootstrap_set_simple_col(false) }}

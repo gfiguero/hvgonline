@@ -1,0 +1,49 @@
+HVG\SystemBundle\Entity\Person:
+    type: entity
+    table: Person
+    repositoryClass: HVG\SystemBundle\Entity\PersonRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        rut:
+            type: string
+            length: 50
+            nullable: true
+        contact_phone:
+            type: string
+            length: 20
+            nullable: true
+        contact_email:
+            type: string
+            length: 300
+            nullable: true
+        contact_address:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

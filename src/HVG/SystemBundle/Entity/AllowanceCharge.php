@@ -1,0 +1,199 @@
+<?php
+
+namespace HVG\SystemBundle\Entity;
+
+/**
+ * AllowanceCharge
+ */
+class AllowanceCharge
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $amount;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $deletedAt;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Allowance
+     */
+    private $allowance;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Charge
+     */
+    private $charge;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return AllowanceCharge
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return AllowanceCharge
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return AllowanceCharge
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     *
+     * @return AllowanceCharge
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Set allowance
+     *
+     * @param \HVG\SystemBundle\Entity\Allowance $allowance
+     *
+     * @return AllowanceCharge
+     */
+    public function setAllowance(\HVG\SystemBundle\Entity\Allowance $allowance = null)
+    {
+        $this->allowance = $allowance;
+
+        return $this;
+    }
+
+    /**
+     * Get allowance
+     *
+     * @return \HVG\SystemBundle\Entity\Allowance
+     */
+    public function getAllowance()
+    {
+        return $this->allowance;
+    }
+
+    /**
+     * Set charge
+     *
+     * @param \HVG\SystemBundle\Entity\Charge $charge
+     *
+     * @return AllowanceCharge
+     */
+    public function setCharge(\HVG\SystemBundle\Entity\Charge $charge = null)
+    {
+        $this->charge = $charge;
+
+        return $this;
+    }
+
+    /**
+     * Get charge
+     *
+     * @return \HVG\SystemBundle\Entity\Charge
+     */
+    public function getCharge()
+    {
+        return $this->charge;
+    }
+}

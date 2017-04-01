@@ -1,0 +1,36 @@
+HVG\SystemBundle\Entity\ProjectAction:
+    type: entity
+    table: ProjectAction
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        project:
+            targetEntity: HVG\SystemBundle\Entity\Project
+            inversedBy: actions
+    fields:
+        description:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

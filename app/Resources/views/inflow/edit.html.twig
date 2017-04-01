@@ -1,0 +1,63 @@
+{% extends 'HVGSystemBundle:System:base.html.twig' %}
+
+{% block title %}{{ 'inflow.edit.title'|trans({}, 'HVGSystemBundle') }}{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'inflow.edit.title'|trans({}, 'HVGSystemBundle') }}</h1>
+                {% include 'HVGSystemBundle:System:flashbag.html.twig' %}
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-toolbar">
+                            <a type="button" class="btn btn-default" href="{{ path('inflow_index') }}">{{ icon('list') }}&nbsp;{{ 'inflow.list.link'|trans }}</a>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">{{ icon('trash-o') }}&nbsp;{{ 'inflow.delete.link'|trans }}</button>
+                            <div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog modal-md" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">{{ 'inflow.delete.title'|trans }}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="col-xs-2 text-center">{{ icon('exclamation-triangle fa-5x') }}</div>
+                                            <div class="col-xs-10"><p>{{ 'inflow.delete.message'|trans }}</p></div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="pull-right" style="height:34px;">
+                                                {{ form_start(delete_form) }}
+                                                    <button type="submit" class="btn btn-danger">{{ icon('trash-o') }}&nbsp;{{ 'inflow.delete.submit'|trans }}</button>
+                                                {{ form_end(delete_form) }}</div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        {{ form_start(edit_form, { 'style': 'horizontal' }) }}
+                            {{ form_widget(edit_form) }}
+                                <div class="form-group"><div class="col-lg-offset-3 col-lg-9">
+                                    <button type="submit" class="btn btn-primary">{{ icon('save') }}&nbsp;{{ 'inflow.edit.submit'|trans({}, 'HVGSystemBundle') }}</button>
+                                </div></div>
+                        {{ form_end(edit_form) }}
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}
+

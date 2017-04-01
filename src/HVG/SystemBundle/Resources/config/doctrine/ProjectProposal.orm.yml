@@ -1,0 +1,70 @@
+HVG\SystemBundle\Entity\ProjectProposal:
+    type: entity
+    table: ProjectProposal
+    repositoryClass: HVG\SystemBundle\Entity\ProjectProposalRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        project:
+            targetEntity: HVG\SystemBundle\Entity\Project
+            inversedBy: proposals
+    fields:
+        entity_name:
+            type: string
+            length: 300
+            nullable: true
+        contact_name:
+            type: string
+            length: 300
+            nullable: true
+        contact_phone:
+            type: string
+            length: 300
+            nullable: true
+        contact_email:
+            type: string
+            length: 300
+            nullable: true
+        contact_address:
+            type: string
+            length: 300
+            nullable: true
+        plan:
+            type: text
+            nullable: true
+        budget:
+            type: integer
+            nullable: true
+        expiry:
+            type: datetime
+            nullable: true
+        file:
+            type: string
+            length: 300
+            nullable: true
+        observation:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

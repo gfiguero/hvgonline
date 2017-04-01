@@ -1,0 +1,74 @@
+HVG\SystemBundle\Entity\Testing:
+    type: entity
+    table: Testing
+    repositoryClass: HVG\SystemBundle\Entity\TestingRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        a_string:
+            type: string
+            nullable: true
+        a_integer:
+            type: integer
+            nullable: true
+        a_boolean:
+            type: boolean
+            nullable: true
+        a_decimal:
+            type: decimal
+            nullable: true
+        a_float:
+            type: float
+            nullable: true
+        a_date:
+            type: date
+            nullable: true
+        a_time:
+            type: time
+            nullable: true
+        a_datetime:
+            type: datetime
+            nullable: true
+        a_text:
+            type: text
+            nullable: true
+        a_file:
+            type: string
+            nullable: true
+#        object:
+#            type: object
+#            nullable: true
+#        array:
+#            type: array
+#            nullable: true
+#        simple_array:
+#            type: simple_array
+#            nullable: true
+#        json_array:
+#            type: json_array
+#            nullable: true
+#        float:
+#            type: float
+#            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

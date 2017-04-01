@@ -1,0 +1,48 @@
+HVG\SystemBundle\Entity\Unit:
+    type: entity
+    table: Unit
+    repositoryClass: HVG\SystemBundle\Entity\UnitRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        building:
+            targetEntity: HVG\SystemBundle\Entity\Building
+        owner:
+            targetEntity: HVG\SystemBundle\Entity\Person
+    oneToMany:
+        tickets:
+            targetEntity: HVG\SystemBundle\Entity\Ticket
+            mappedBy: unit
+        allowances:
+            targetEntity: HVG\SystemBundle\Entity\Allowance
+            mappedBy: unit
+        charges:
+            targetEntity: HVG\SystemBundle\Entity\Charge
+            mappedBy: unit
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

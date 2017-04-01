@@ -49,7 +49,7 @@ class Agent
 
     public function __toString()
     {
-        return $this->person->name;
+        return $this->short_name;
     }
 
     /**

@@ -54,6 +54,11 @@ class PetitionStatus
     {
         $this->petitions = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id

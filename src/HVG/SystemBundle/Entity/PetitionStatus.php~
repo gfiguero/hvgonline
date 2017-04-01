@@ -243,4 +243,3 @@ class PetitionStatus
         return $this->result;
     }
 }
-

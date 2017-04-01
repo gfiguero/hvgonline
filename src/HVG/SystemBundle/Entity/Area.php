@@ -297,4 +297,43 @@ class Area
     {
         return $this->tickets;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitions;
+
+
+    /**
+     * Add petition
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petition
+     *
+     * @return Area
+     */
+    public function addPetition(\HVG\SystemBundle\Entity\Petition $petition)
+    {
+        $this->petitions[] = $petition;
+
+        return $this;
+    }
+
+    /**
+     * Remove petition
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petition
+     */
+    public function removePetition(\HVG\SystemBundle\Entity\Petition $petition)
+    {
+        $this->petitions->removeElement($petition);
+    }
+
+    /**
+     * Get petitions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPetitions()
+    {
+        return $this->petitions;
+    }
 }

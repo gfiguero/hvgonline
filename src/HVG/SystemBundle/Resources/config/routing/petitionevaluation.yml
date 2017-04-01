@@ -1,0 +1,24 @@
+petitionevaluation_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:PetitionEvaluation:index" }
+    methods:  GET
+
+petitionevaluation_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:PetitionEvaluation:show" }
+    methods:  GET
+
+petitionevaluation_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:PetitionEvaluation:new" }
+    methods:  [GET, POST]
+
+petitionevaluation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:PetitionEvaluation:edit" }
+    methods:  [GET, POST]
+
+petitionevaluation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:PetitionEvaluation:delete" }
+    methods:  DELETE

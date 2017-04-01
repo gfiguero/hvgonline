@@ -56,6 +56,11 @@ class Area
         $this->agents = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * Get id
      *
@@ -252,5 +257,44 @@ class Area
     public function getAgents()
     {
         return $this->agents;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tickets;
+
+
+    /**
+     * Add ticket
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticket
+     *
+     * @return Area
+     */
+    public function addTicket(\HVG\SystemBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets[] = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticket
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticket
+     */
+    public function removeTicket(\HVG\SystemBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 }

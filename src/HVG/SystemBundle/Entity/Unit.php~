@@ -63,7 +63,7 @@ class Unit
 
     public function __toString()
     {
-        return $this->name;
+        return $this->building . ' - ' . $this->name;
     }
 
     /**
@@ -315,5 +315,44 @@ class Unit
     public function getBuilding()
     {
         return $this->building;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tickets;
+
+
+    /**
+     * Add ticket
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticket
+     *
+     * @return Unit
+     */
+    public function addTicket(\HVG\SystemBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets[] = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticket
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticket
+     */
+    public function removeTicket(\HVG\SystemBundle\Entity\Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
+
+    /**
+     * Get tickets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
     }
 }

@@ -37,6 +37,10 @@ class Building
      */
     private $community;
 
+    public function __toString()
+    {
+        return $this->community . ' - ' . $this->name;
+    }
 
     /**
      * Get id
@@ -168,4 +172,3 @@ class Building
         return $this->community;
     }
 }
-

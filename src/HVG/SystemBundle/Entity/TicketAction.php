@@ -225,4 +225,33 @@ class TicketAction
     {
         return $this->ticket;
     }
+    /**
+     * @var \HVG\SystemBundle\Entity\Agent
+     */
+    private $agent;
+
+
+    /**
+     * Set agent
+     *
+     * @param \HVG\SystemBundle\Entity\Agent $agent
+     *
+     * @return TicketAction
+     */
+    public function setAgent(\HVG\SystemBundle\Entity\Agent $agent = null)
+    {
+        $this->agent = $agent;
+
+        return $this;
+    }
+
+    /**
+     * Get agent
+     *
+     * @return \HVG\SystemBundle\Entity\Agent
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
 }

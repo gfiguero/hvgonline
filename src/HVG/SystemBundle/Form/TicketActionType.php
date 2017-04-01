@@ -28,6 +28,11 @@ class TicketActionType extends AbstractType
                 'label' => 'ticketaction.form.ticket',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('agent', null, array(
+                'label' => 'ticketaction.form.agent',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
             ))
         ;
     }

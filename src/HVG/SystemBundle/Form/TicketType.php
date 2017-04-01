@@ -44,13 +44,18 @@ class TicketType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('status', null, array(
-                'label' => 'ticket.form.status',
+            ->add('ticket_status', null, array(
+                'label' => 'ticket.form.ticket_status',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
             ->add('area', null, array(
                 'label' => 'ticket.form.area',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('agent', null, array(
+                'label' => 'ticket.form.agent',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))

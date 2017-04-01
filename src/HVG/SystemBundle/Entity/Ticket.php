@@ -445,4 +445,101 @@ class Ticket
     {
         return $this->area;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ticket_actions;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\TicketStatus
+     */
+    private $ticket_status;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Agent
+     */
+    private $agent;
+
+
+    /**
+     * Add ticketAction
+     *
+     * @param \HVG\SystemBundle\Entity\TicketAction $ticketAction
+     *
+     * @return Ticket
+     */
+    public function addTicketAction(\HVG\SystemBundle\Entity\TicketAction $ticketAction)
+    {
+        $this->ticket_actions[] = $ticketAction;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticketAction
+     *
+     * @param \HVG\SystemBundle\Entity\TicketAction $ticketAction
+     */
+    public function removeTicketAction(\HVG\SystemBundle\Entity\TicketAction $ticketAction)
+    {
+        $this->ticket_actions->removeElement($ticketAction);
+    }
+
+    /**
+     * Get ticketActions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTicketActions()
+    {
+        return $this->ticket_actions;
+    }
+
+    /**
+     * Set ticketStatus
+     *
+     * @param \HVG\SystemBundle\Entity\TicketStatus $ticketStatus
+     *
+     * @return Ticket
+     */
+    public function setTicketStatus(\HVG\SystemBundle\Entity\TicketStatus $ticketStatus = null)
+    {
+        $this->ticket_status = $ticketStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get ticketStatus
+     *
+     * @return \HVG\SystemBundle\Entity\TicketStatus
+     */
+    public function getTicketStatus()
+    {
+        return $this->ticket_status;
+    }
+
+    /**
+     * Set agent
+     *
+     * @param \HVG\SystemBundle\Entity\Agent $agent
+     *
+     * @return Ticket
+     */
+    public function setAgent(\HVG\SystemBundle\Entity\Agent $agent = null)
+    {
+        $this->agent = $agent;
+
+        return $this;
+    }
+
+    /**
+     * Get agent
+     *
+     * @return \HVG\SystemBundle\Entity\Agent
+     */
+    public function getAgent()
+    {
+        return $this->agent;
+    }
 }

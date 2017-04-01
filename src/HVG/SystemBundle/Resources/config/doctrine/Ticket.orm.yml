@@ -12,14 +12,17 @@ HVG\SystemBundle\Entity\Ticket:
         unit:
             targetEntity: HVG\SystemBundle\Entity\Unit
             inversedBy: tickets
-        status:
+        ticket_status:
             targetEntity: HVG\SystemBundle\Entity\TicketStatus
             inversedBy: tickets
         area:
             targetEntity: HVG\SystemBundle\Entity\Area
             inversedBy: tickets
+        agent:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+            inversedBy: tickets
     oneToMany:
-        actions:
+        ticket_actions:
             targetEntity: HVG\SystemBundle\Entity\TicketAction
             mappedBy: ticket
     fields:

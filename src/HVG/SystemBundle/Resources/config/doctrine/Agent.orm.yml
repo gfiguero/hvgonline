@@ -16,6 +16,12 @@ HVG\SystemBundle\Entity\Agent:
             targetEntity: HVG\SystemBundle\Entity\Area
             inversedBy: agents
     oneToMany:
+        tickets:
+            targetEntity: HVG\SystemBundle\Entity\Ticket
+            mappedBy: agent
+        ticket_actions:
+            targetEntity: HVG\SystemBundle\Entity\TicketAction
+            mappedBy: agent
         request_actions:
             targetEntity: HVG\SystemBundle\Entity\RequestAction
             mappedBy: agent

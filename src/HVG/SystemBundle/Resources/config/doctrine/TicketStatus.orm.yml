@@ -13,7 +13,7 @@ HVG\SystemBundle\Entity\TicketStatus:
     oneToMany:
         tickets:
             targetEntity: HVG\SystemBundle\Entity\Ticket
-            mappedBy: status
+            mappedBy: ticket_status
     fields:
         name:
             type: string

@@ -1,0 +1,38 @@
+HVG\SystemBundle\Entity\PetitionEvaluation:
+    type: entity
+    table: PetitionEvaluation
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        petition:
+            targetEntity: HVG\SystemBundle\Entity\Petition
+            inversedBy: petition_evaluations
+        agent:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+            inversedBy: petition_evaluations
+    fields:
+        value:
+            type: integer
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

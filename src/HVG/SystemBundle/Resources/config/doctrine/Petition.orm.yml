@@ -1,0 +1,56 @@
+HVG\SystemBundle\Entity\Petition:
+    type: entity
+    table: Petition
+    repositoryClass: HVG\SystemBundle\Entity\PetitionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        petition_status:
+            targetEntity: HVG\SystemBundle\Entity\PetitionStatus
+            inversedBy: petitions
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: petitions
+        area:
+            targetEntity: HVG\SystemBundle\Entity\Area
+            inversedBy: petitions
+        agent:
+            targetEntity: HVG\SystemBundle\Entity\Agent
+            inversedBy: petitions
+    oneToMany:
+        petition_actions:
+            targetEntity: HVG\SystemBundle\Entity\PetitionAction
+            mappedBy: petition
+        petition_evaluations:
+            targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
+            mappedBy: petition
+    fields:
+        description:
+            type: string
+            length: 300
+            nullable: true
+        expiry:
+            type: datetime
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

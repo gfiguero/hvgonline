@@ -1,0 +1,245 @@
+<?php
+
+namespace HVG\SystemBundle\Entity;
+
+/**
+ * PetitionStatus
+ */
+class PetitionStatus
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $deletedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitions;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Result
+     */
+    private $result;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->petitions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return PetitionStatus
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return PetitionStatus
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return PetitionStatus
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return PetitionStatus
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     *
+     * @return PetitionStatus
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Add petition
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petition
+     *
+     * @return PetitionStatus
+     */
+    public function addPetition(\HVG\SystemBundle\Entity\Petition $petition)
+    {
+        $this->petitions[] = $petition;
+
+        return $this;
+    }
+
+    /**
+     * Remove petition
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petition
+     */
+    public function removePetition(\HVG\SystemBundle\Entity\Petition $petition)
+    {
+        $this->petitions->removeElement($petition);
+    }
+
+    /**
+     * Get petitions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPetitions()
+    {
+        return $this->petitions;
+    }
+
+    /**
+     * Set result
+     *
+     * @param \HVG\SystemBundle\Entity\Result $result
+     *
+     * @return PetitionStatus
+     */
+    public function setResult(\HVG\SystemBundle\Entity\Result $result = null)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
+     * Get result
+     *
+     * @return \HVG\SystemBundle\Entity\Result
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+}

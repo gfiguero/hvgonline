@@ -7,6 +7,7 @@ php app/console doctrine:generate:entities HVGSystemBundle:Community --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Building --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Unit --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Area --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Service --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Result --format=yml --with-write --overwrite --no-interaction --route-prefix=result
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Provider --format=yml --with-write --overwrite --no-interaction --route-prefix=provider
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Person --format=yml --with-write --overwrite --no-interaction --route-prefix=person
@@ -15,6 +16,7 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:Community --form
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Building --format=yml --with-write --overwrite --no-interaction --route-prefix=building
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Unit --format=yml --with-write --overwrite --no-interaction --route-prefix=unit
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Area --format=yml --with-write --overwrite --no-interaction --route-prefix=area
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Service --format=yml --with-write --overwrite --no-interaction --route-prefix=service
 
 ---------------- Seguimiento de Proyectos
 php app/console doctrine:generate:entities HVGSystemBundle:Project --path=src

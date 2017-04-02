@@ -258,4 +258,33 @@ class Provider
     {
         return $this->deletedAt;
     }
+    /**
+     * @var \HVG\SystemBundle\Entity\Services
+     */
+    private $services;
+
+
+    /**
+     * Set services
+     *
+     * @param \HVG\SystemBundle\Entity\Services $services
+     *
+     * @return Provider
+     */
+    public function setServices(\HVG\SystemBundle\Entity\Services $services = null)
+    {
+        $this->services = $services;
+
+        return $this;
+    }
+
+    /**
+     * Get services
+     *
+     * @return \HVG\SystemBundle\Entity\Services
+     */
+    public function getServices()
+    {
+        return $this->services;
+    }
 }

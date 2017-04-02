@@ -52,10 +52,11 @@ class Provider
      */
     private $deletedAt;
 
-    public function __toString()
-    {
-        return $this->name;
-    }
+    /**
+     * @var \HVG\SystemBundle\Entity\Service
+     */
+    private $service;
+
 
     /**
      * Get id
@@ -258,33 +259,29 @@ class Provider
     {
         return $this->deletedAt;
     }
-    /**
-     * @var \HVG\SystemBundle\Entity\Services
-     */
-    private $services;
-
 
     /**
-     * Set services
+     * Set service
      *
-     * @param \HVG\SystemBundle\Entity\Services $services
+     * @param \HVG\SystemBundle\Entity\Service $service
      *
      * @return Provider
      */
-    public function setServices(\HVG\SystemBundle\Entity\Services $services = null)
+    public function setService(\HVG\SystemBundle\Entity\Service $service = null)
     {
-        $this->services = $services;
+        $this->service = $service;
 
         return $this;
     }
 
     /**
-     * Get services
+     * Get service
      *
-     * @return \HVG\SystemBundle\Entity\Services
+     * @return \HVG\SystemBundle\Entity\Service
      */
-    public function getServices()
+    public function getService()
     {
-        return $this->services;
+        return $this->service;
     }
 }
+

@@ -8,10 +8,10 @@ HVG\SystemBundle\Entity\Provider:
             id: true
             generator:
                 strategy: AUTO
-    manytoOne:
+    manyToOne:
         service:
             targetEntity: HVG\SystemBundle\Entity\Service
-            mappedBy: providers
+            inversedBy: providers
     fields:
         name:
             type: string

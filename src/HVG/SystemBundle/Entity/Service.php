@@ -32,6 +32,23 @@ class Service
      */
     private $deletedAt;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $providers;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->providers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
@@ -137,6 +154,40 @@ class Service
     public function getDeletedAt()
     {
         return $this->deletedAt;
+    }
+
+    /**
+     * Add provider
+     *
+     * @param \HVG\SystemBundle\Entity\Provider $provider
+     *
+     * @return Service
+     */
+    public function addProvider(\HVG\SystemBundle\Entity\Provider $provider)
+    {
+        $this->providers[] = $provider;
+
+        return $this;
+    }
+
+    /**
+     * Remove provider
+     *
+     * @param \HVG\SystemBundle\Entity\Provider $provider
+     */
+    public function removeProvider(\HVG\SystemBundle\Entity\Provider $provider)
+    {
+        $this->providers->removeElement($provider);
+    }
+
+    /**
+     * Get providers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProviders()
+    {
+        return $this->providers;
     }
 }
 

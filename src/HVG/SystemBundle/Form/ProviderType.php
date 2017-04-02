@@ -38,6 +38,11 @@ class ProviderType extends AbstractType
                 'label' => 'provider.form.contact_name',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('service', null, array(
+                'label' => 'provider.form.service',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
             ))
         ;
     }

@@ -54,7 +54,7 @@ class ProjectProposalType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('data', 'fileinput', array(
+            ->add('file', null, array(
                 'label' => 'projectproposal.form.file',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',

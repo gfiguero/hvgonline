@@ -26,7 +26,7 @@ class AllowanceChargeController extends Controller
         if($sort) $allowanceCharges = $em->getRepository('HVGSystemBundle:AllowanceCharge')->findBy(array(), array($sort => $direction));
         else $allowanceCharges = $em->getRepository('HVGSystemBundle:AllowanceCharge')->findAll();
         $paginator = $this->get('knp_paginator');
-        $allowanceCharges = $paginator->paginate($allowanceCharges, $request->query->getInt('page', 1), 30);
+        $allowanceCharges = $paginator->paginate($allowanceCharges, $request->query->getInt('page', 1), 100);
         $allowanceCharge = new AllowanceCharge();
         $newForm = $this->createNewForm($allowanceCharge)->createView();
 

@@ -26,7 +26,7 @@ class PaymentController extends Controller
         if($sort) $payments = $em->getRepository('HVGSystemBundle:Payment')->findBy(array(), array($sort => $direction));
         else $payments = $em->getRepository('HVGSystemBundle:Payment')->findAll();
         $paginator = $this->get('knp_paginator');
-        $payments = $paginator->paginate($payments, $request->query->getInt('page', 1), 30);
+        $payments = $paginator->paginate($payments, $request->query->getInt('page', 1), 100);
         $payment = new Payment();
         $newForm = $this->createNewForm($payment)->createView();
 

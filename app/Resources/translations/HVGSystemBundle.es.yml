@@ -1,180 +1,75 @@
-community:
+person:
     sidemenu:
-        root: Comunidades
-requirement:
-    sidemenu:
-        root: Requerimientos
-        index: Lista de Requerimientos
-    index:
-        title: Requerimientos
-    new:
-        link: Agregar
-        title: Nuevo Requerimiento
-        confirm: Agregar Requerimiento
-        flash: Registro agregado exitosamente
-    delete:
-        link: Borrar
-        title: Borrar Requerimiento
-    edit:
-        link: Editar
-        title: Editar Requerimiento
-        confirm: Editar Requerimiento
-        flash: El registro ha sido actualizado exitosamente
+        index: Personas
+    list:
+        link: Explorar
+        title: Lista de Personas
     show:
-        link: Ver
-        title: Requerimiento N°
-    form:
-        id: ID
-        community: Comunidad
-        issue: Asunto
-        status: Estado
-        committal: Fecha comprometida
-        channel: Canal
-        creator: Requirente
-        carrier: Asignado A
-        start_observation: Observación Inicial
-        end_observation: Observación Final
-        createdAt: Fecha Requerimiento
-        actions: Acciones
-requirementComment:
+        link: Mostrar
+        title: Mostrar Persona
     new:
-        link: Agregar comentario
-        title: Agregar comentario
-        confirm: Agregar
+        link: Registrar
+        title: Registrar Persona
+        submit: Aceptar
+        flash: Los datos nuevos han sido registrados exitosamente
     edit:
         link: Editar
-        title: Editar Comentario
-        confirm: Editar
+        title: Editar Persona
+        submit: Aceptar
+        flash: Los cambios han sido realizados satisfactoriamente
     delete:
-        link: Borrar
-        title: Borrar Comentario
-        message: ¿Está seguro que desea borrar el comentario?
-        confirm: Borrar
+        link: Eliminar
+        title: Eliminar Persona
+        message: Los datos que desea eliminar no podrán ser recuperados
+        submit: Aceptar
+        flash: Los datos han sido eliminados
     form:
-        name: Comentario
-        content: Comentarios
-        createdAt: Fecha
+        createdAt: Creado
+        updatedAt: Actualizado
+        deletedAt: Borrado
         actions: Acciones
-agent:
-    sidemenu:
-        index: Agentes de Requerimientos
-    index:
-        title: Agentes de Requerimientos
-    new:
-        link: Agregar
-        title: Nuevo Agente
-        confirm: Agregar Agente
-    delete:
-        link: Borrar
-        title: Borrar Agente
-    edit:
-        link: Editar
-        title: Editar Agente
-        confirm: Editar Agente
-    form:
         id: ID
-        name: Nombre Agente
-        actions: Acciones
-requirementType:
-    sidemenu:
-        index: Tipos de Requerimientos
-    index:
-        title: Tipos de Requerimientos
-    new:
-        link: Agregar
-        title: Nuevo Tipo
-        confirm: Agregar Tipo
-    delete:
-        link: Borrar
-        title: Borrar Tipo
-    edit:
-        link: Editar
-        title: Editar Tipo
-        confirm: Editar Tipo
-    form:
-        id: ID
-        name: Nombre Tipo
-        actions: Acciones
-bankAccount:
-    index:
-        title: Cuentas Bancarias
-    form:
-        bank: Banco
-        bankAccountType: Tipo de Cuenta
-        rut: Rut
         name: Nombre
-        number: N° Cuenta
-        mail: E-mail
-        actions: Acciones
-    edit:
-        link: Editar
-    delete:
-        link: Borrar
-    new:
-        link: Nueva Cuenta
-    sidemenu:
-        index: Cuentas Bancarias
-supervisorsLog:
-    index:
-        title: Bitácora del Supervisor
-    form:
-        id: id
-        supervisor: 
-            shortname: Supervisor
-        createdAt: Fecha
-        news: Novedades
-        actions: Acciones
-    edit:
-        link: Editar
-    delete:
-        link: Borrar
-    new:
-        link: Agregar Novedad
-    sidemenu:
-        root: Bitácora del Supervisor
-        index: Novedades
-provider:
-    sidemenu:
-        root: Proveedores
-        index: Lista de Proveedores
-    new:
-        link: Nuevo Proveedor
-    form:
-        name: Proveedor
         rut: Rut
-        phone: Teléfono
-        mail: E-mail
-        expert_name: Técnico o Contacto
-    edit:
-        link: Editar
-    delete: 
-        link: Borrar
-payOrder:
+
+project:
     sidemenu:
-        root: Orden de Pago
-        index: Ordenes de Pago
+        root: Proyectos
+        index: Lista de Proyectos
+    list:
+        link: Explorar
+        title: Lista de Proyectos
+    show:
+        link: Mostrar
+        title: Mostrar Proyecto
     new:
-        link: Nueva Orden de Pago
-        confirm: Registrar Orden de Pago
-        flash: Orden de Pago registrada correctamente
-    form:
-        actions: Acciones
-        community: Comunidad
-        provider: Proveedor
-        agent: Encargado
-        totalPrice: Precio Total
-        description: Descripción
-        finishedDate: Fecha comprometida
-        documentLink: Link de Documento
+        link: Registrar
+        title: Registrar Proyecto
+        submit: Aceptar
+        flash: Los datos nuevos han sido registrados exitosamente
     edit:
         link: Editar
-    delete: 
-        link: Borrar
-    index:
-        title: Ordenes de Pago
-contabilidad:
-    sidemenu:
-        root: Contabilidad
+        title: Editar Proyecto
+        submit: Aceptar
+        flash: Los cambios han sido realizados satisfactoriamente
+    delete:
+        link: Eliminar
+        title: Eliminar Proyecto
+        message: Los datos que desea eliminar no podrán ser recuperados
+        submit: Aceptar
+        flash: Los datos han sido eliminados
+    form:
+        createdAt: Creado
+        updatedAt: Actualizado
+        deletedAt: Borrado
+        actions: Acciones
+        id: ID
+        name: Nombre del Proyecto
+        status: Estado
+        community: Comunidad
+        observations: Observaciones
+        proposals: Propuestas
+        objetive: Objetivo del Proyecto
 
 testing:
     list:
@@ -216,42 +111,3 @@ testing:
         updatedAt: Actualizado
         deletedAt: Borrado
 
-project:
-    sidemenu:
-        root: Proyectos
-        index: Lista de Proyectos
-    list:
-        link: Explorar
-        title: Lista de Proyectos
-    show:
-        link: Detalles
-        title: Detalles del Proyecto
-    new:
-        link: Crear Nuevo
-        title: Crear Nuevo Proyecto
-        submit: Guardar
-        flash: Nuevo Proyecto ha sido creado exitosamente
-    edit:
-        link: Editar
-        title: Editar Proyecto
-        submit: Guardar Cambios
-        flash: Los cambios se guardaron satisfactoriamente
-    delete:
-        link: Eliminar
-        title: Eliminar Proyecto
-        message: El Proyecto eliminado no podrá ser recuperado. ¿Está seguro de eliminarlo?
-        submit: Confirmar
-        flash: El Proyecto ha sido eliminado
-    form:
-        id: ID
-        actions: Acciones
-        createdAt: Creado
-        updatedAt: Actualizado
-        deletedAt: Borrado
-        status: Estado
-        community: Comunidad
-        observations: Observaciones
-        actions: Acciones
-        proposals: Propuestas
-        name: Nombre del Proyecto
-        objetive: Objetivo del Proyecto

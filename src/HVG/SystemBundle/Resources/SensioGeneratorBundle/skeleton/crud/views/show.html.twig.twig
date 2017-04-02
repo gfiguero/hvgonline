@@ -1,7 +1,7 @@
 {% block extends %}
-{{ "{% extends 'HVGSystemBundle:System:base.html.twig' %}" }}
-{{ "{% use 'HVGSystemBundle:System:navbar.html.twig' %}" }}
-{{ "{% use 'HVGSystemBundle:System:sidebar.html.twig' %}" }}
+{{ "{% extends 'HVGSystemBundle::base.html.twig' %}" }}
+{{ "{% use 'HVGSystemBundle::navbar.html.twig' %}" }}
+{{ "{% use 'HVGSystemBundle::sidebar.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
@@ -14,8 +14,8 @@
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{{ "{% include 'HVGSystemBundle:System:icon.html.twig' %}" }}{{ "{{ '" ~ entity_singularized|lower ~ ".show.title'|trans }}" }}</h1>
-                {{ "{% include 'HVGSystemBundle:System:flashbag.html.twig' with { 'translation_domain': translation_domain } %}" }}
+                <h1 class="page-header">{{ "{% include 'HVGSystemBundle::icon.html.twig' %}" }}{{ "{{ '" ~ entity_singularized|lower ~ ".show.title'|trans }}" }}</h1>
+                {{ "{% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}" }}
             </div>
         </div>
         <!-- /#page-header -->
@@ -33,7 +33,7 @@
 
                     <div class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
-                        {%- for field, metadata in fields %}
+                        {%- for field, metadata in fields if field not in ['deletedAt'] %}
 
                             <dt>{{ "{{ '" }}{{ entity_singularized|lower ~ ".form." ~ field }}{{ "'|trans }}" }}</dt>
 

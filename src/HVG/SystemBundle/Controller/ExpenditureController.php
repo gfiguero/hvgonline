@@ -26,7 +26,7 @@ class ExpenditureController extends Controller
         if($sort) $expenditures = $em->getRepository('HVGSystemBundle:Expenditure')->findBy(array(), array($sort => $direction));
         else $expenditures = $em->getRepository('HVGSystemBundle:Expenditure')->findAll();
         $paginator = $this->get('knp_paginator');
-        $expenditures = $paginator->paginate($expenditures, $request->query->getInt('page', 1), 30);
+        $expenditures = $paginator->paginate($expenditures, $request->query->getInt('page', 1), 100);
         $expenditure = new Expenditure();
         $newForm = $this->createNewForm($expenditure)->createView();
 

@@ -1,6 +1,6 @@
-{% extends 'HVGSystemBundle:System:base.html.twig' %}
-{% use 'HVGSystemBundle:System:navbar.html.twig' %}
-{% use 'HVGSystemBundle:System:sidebar.html.twig' %}
+{% extends 'HVGSystemBundle::base.html.twig' %}
+{% use 'HVGSystemBundle::navbar.html.twig' %}
+{% use 'HVGSystemBundle::sidebar.html.twig' %}
 
 {% set translation_domain = 'HVGSystemBundle' %}
 {% trans_default_domain translation_domain %}
@@ -11,8 +11,8 @@
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'projectcommand.show.title'|trans }}</h1>
-                {% include 'HVGSystemBundle:System:flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+                <h1 class="page-header">{% include 'HVGSystemBundle::icon.html.twig' %}{{ 'projectcommand.show.title'|trans }}</h1>
+                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
         <!-- /#page-header -->
@@ -40,8 +40,6 @@
                                 <dd>{% if projectCommand.createdAt %}{{ projectCommand.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'projectcommand.form.updatedAt'|trans }}</dt>
                                 <dd>{% if projectCommand.updatedAt %}{{ projectCommand.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                            <dt>{{ 'projectcommand.form.deletedAt'|trans }}</dt>
-                                <dd>{% if projectCommand.deletedAt %}{{ projectCommand.deletedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                         </dl>
                     </div>
                 </div>

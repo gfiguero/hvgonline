@@ -185,4 +185,3 @@ class Payment
         return $this->expenditure;
     }
 }
-

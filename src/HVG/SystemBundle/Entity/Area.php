@@ -40,7 +40,7 @@ class Area
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $commands;
+    private $petitions;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -48,12 +48,18 @@ class Area
     private $agents;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tickets;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->commands = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->petitions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->agents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString()
@@ -192,37 +198,37 @@ class Area
     }
 
     /**
-     * Add command
+     * Add petition
      *
-     * @param \HVG\SystemBundle\Entity\Command $command
+     * @param \HVG\SystemBundle\Entity\Petition $petition
      *
      * @return Area
      */
-    public function addCommand(\HVG\SystemBundle\Entity\Command $command)
+    public function addPetition(\HVG\SystemBundle\Entity\Petition $petition)
     {
-        $this->commands[] = $command;
+        $this->petitions[] = $petition;
 
         return $this;
     }
 
     /**
-     * Remove command
+     * Remove petition
      *
-     * @param \HVG\SystemBundle\Entity\Command $command
+     * @param \HVG\SystemBundle\Entity\Petition $petition
      */
-    public function removeCommand(\HVG\SystemBundle\Entity\Command $command)
+    public function removePetition(\HVG\SystemBundle\Entity\Petition $petition)
     {
-        $this->commands->removeElement($command);
+        $this->petitions->removeElement($petition);
     }
 
     /**
-     * Get commands
+     * Get petitions
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCommands()
+    public function getPetitions()
     {
-        return $this->commands;
+        return $this->petitions;
     }
 
     /**
@@ -258,11 +264,6 @@ class Area
     {
         return $this->agents;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tickets;
-
 
     /**
      * Add ticket
@@ -297,43 +298,5 @@ class Area
     {
         return $this->tickets;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $petitions;
-
-
-    /**
-     * Add petition
-     *
-     * @param \HVG\SystemBundle\Entity\Petition $petition
-     *
-     * @return Area
-     */
-    public function addPetition(\HVG\SystemBundle\Entity\Petition $petition)
-    {
-        $this->petitions[] = $petition;
-
-        return $this;
-    }
-
-    /**
-     * Remove petition
-     *
-     * @param \HVG\SystemBundle\Entity\Petition $petition
-     */
-    public function removePetition(\HVG\SystemBundle\Entity\Petition $petition)
-    {
-        $this->petitions->removeElement($petition);
-    }
-
-    /**
-     * Get petitions
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPetitions()
-    {
-        return $this->petitions;
-    }
 }
+

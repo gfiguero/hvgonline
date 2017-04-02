@@ -142,4 +142,50 @@ class Community
     {
         return $this->deletedAt;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitions;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->petitions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add petition
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petition
+     *
+     * @return Community
+     */
+    public function addPetition(\HVG\SystemBundle\Entity\Petition $petition)
+    {
+        $this->petitions[] = $petition;
+
+        return $this;
+    }
+
+    /**
+     * Remove petition
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petition
+     */
+    public function removePetition(\HVG\SystemBundle\Entity\Petition $petition)
+    {
+        $this->petitions->removeElement($petition);
+    }
+
+    /**
+     * Get petitions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPetitions()
+    {
+        return $this->petitions;
+    }
 }

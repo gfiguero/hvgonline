@@ -1,35 +1,19 @@
-HVG\SystemBundle\Entity\Provider:
+HVG\SystemBundle\Entity\Service:
     type: entity
-    table: Provider
-    repositoryClass: HVG\SystemBundle\Entity\ProviderRepository
+    table: Service
+    repositoryClass: HVG\SystemBundle\Entity\ServiceRepository
     id:
         id:
             type: integer
             id: true
             generator:
                 strategy: AUTO
-    manytoOne:
-        service:
-            targetEntity: HVG\SystemBundle\Entity\Service
-            mappedBy: providers
+    onetoMany:
+        providers:
+            targetEntity: HVG\SystemBundle\Entity\Provider
+            inversedBy: service
     fields:
         name:
-            type: string
-            length: 300
-            nullable: true
-        rut:
-            type: string
-            length: 20
-            nullable: true
-        contact_phone:
-            type: string
-            length: 20
-            nullable: true
-        contact_email:
-            type: string
-            length: 50
-            nullable: true
-        contact_name:
             type: string
             length: 300
             nullable: true

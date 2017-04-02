@@ -56,6 +56,10 @@ hvg_system_community:
     resource: "@HVGSystemBundle/Resources/config/routing/community.yml"
     prefix:   /community
 
+hvg_system_service:
+    resource: "@HVGSystemBundle/Resources/config/routing/service.yml"
+    prefix:   /service
+
 hvg_system_fund:
     resource: "@HVGSystemBundle/Resources/config/routing/fund.yml"
     prefix:   /fund

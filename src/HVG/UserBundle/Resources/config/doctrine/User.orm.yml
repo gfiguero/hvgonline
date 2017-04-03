@@ -11,11 +11,11 @@ HVG\UserBundle\Entity\User:
     fields:
         fullname:
             type: string
-            length: 100
+            length: 300
             nullable: true
         shortname:
             type: string
-            length: 10
+            length: 100
             nullable: true
         createdAt:
             type: datetime

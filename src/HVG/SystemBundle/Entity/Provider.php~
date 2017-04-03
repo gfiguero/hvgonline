@@ -3,9 +3,9 @@
 namespace HVG\SystemBundle\Entity;
 
 /**
- * Person
+ * Provider
  */
-class Person
+class Provider
 {
     /**
      * @var integer
@@ -33,6 +33,11 @@ class Person
     private $contact_email;
 
     /**
+     * @var string
+     */
+    private $contact_name;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -47,10 +52,11 @@ class Person
      */
     private $deletedAt;
 
-    public function __toString()
-    {
-        return $this->name;
-    }
+    /**
+     * @var \HVG\SystemBundle\Entity\Service
+     */
+    private $service;
+
 
     /**
      * Get id
@@ -67,7 +73,7 @@ class Person
      *
      * @param string $name
      *
-     * @return Person
+     * @return Provider
      */
     public function setName($name)
     {
@@ -91,7 +97,7 @@ class Person
      *
      * @param string $rut
      *
-     * @return Person
+     * @return Provider
      */
     public function setRut($rut)
     {
@@ -115,7 +121,7 @@ class Person
      *
      * @param string $contactPhone
      *
-     * @return Person
+     * @return Provider
      */
     public function setContactPhone($contactPhone)
     {
@@ -139,7 +145,7 @@ class Person
      *
      * @param string $contactEmail
      *
-     * @return Person
+     * @return Provider
      */
     public function setContactEmail($contactEmail)
     {
@@ -159,11 +165,35 @@ class Person
     }
 
     /**
+     * Set contactName
+     *
+     * @param string $contactName
+     *
+     * @return Provider
+     */
+    public function setContactName($contactName)
+    {
+        $this->contact_name = $contactName;
+
+        return $this;
+    }
+
+    /**
+     * Get contactName
+     *
+     * @return string
+     */
+    public function getContactName()
+    {
+        return $this->contact_name;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
-     * @return Person
+     * @return Provider
      */
     public function setCreatedAt($createdAt)
     {
@@ -187,7 +217,7 @@ class Person
      *
      * @param \DateTime $updatedAt
      *
-     * @return Person
+     * @return Provider
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -211,7 +241,7 @@ class Person
      *
      * @param \DateTime $deletedAt
      *
-     * @return Person
+     * @return Provider
      */
     public function setDeletedAt($deletedAt)
     {
@@ -229,80 +259,58 @@ class Person
     {
         return $this->deletedAt;
     }
-    /**
-     * @var string
-     */
-    private $contact_address;
-
 
     /**
-     * Set contactAddress
+     * Set service
      *
-     * @param string $contactAddress
+     * @param \HVG\SystemBundle\Entity\Service $service
      *
-     * @return Person
+     * @return Provider
      */
-    public function setContactAddress($contactAddress)
+    public function setService(\HVG\SystemBundle\Entity\Service $service = null)
     {
-        $this->contact_address = $contactAddress;
+        $this->service = $service;
 
         return $this;
     }
 
     /**
-     * Get contactAddress
+     * Get service
      *
-     * @return string
+     * @return \HVG\SystemBundle\Entity\Service
      */
-    public function getContactAddress()
+    public function getService()
     {
-        return $this->contact_address;
+        return $this->service;
     }
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \HVG\SystemBundle\Entity\Person
      */
-    private $contacts_person;
+    private $person;
+
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->contacts_person = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add contactsPerson
+     * Set person
      *
-     * @param \HVG\SystemBundle\Entity\ContactPerson $contactsPerson
+     * @param \HVG\SystemBundle\Entity\Person $person
      *
-     * @return Person
+     * @return Provider
      */
-    public function addContactsPerson(\HVG\SystemBundle\Entity\ContactPerson $contactsPerson)
+    public function setPerson(\HVG\SystemBundle\Entity\Person $person = null)
     {
-        $this->contacts_person[] = $contactsPerson;
+        $this->person = $person;
 
         return $this;
     }
 
     /**
-     * Remove contactsPerson
+     * Get person
      *
-     * @param \HVG\SystemBundle\Entity\ContactPerson $contactsPerson
+     * @return \HVG\SystemBundle\Entity\Person
      */
-    public function removeContactsPerson(\HVG\SystemBundle\Entity\ContactPerson $contactsPerson)
+    public function getPerson()
     {
-        $this->contacts_person->removeElement($contactsPerson);
-    }
-
-    /**
-     * Get contactsPerson
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getContactsPerson()
-    {
-        return $this->contacts_person;
+        return $this->person;
     }
     /**
      * @var \HVG\SystemBundle\Entity\PersonProvider
@@ -315,7 +323,7 @@ class Person
      *
      * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
      *
-     * @return Person
+     * @return Provider
      */
     public function setPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider = null)
     {
@@ -333,13 +341,20 @@ class Person
     {
         return $this->person_provider;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->person_provider = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Add personProvider
      *
      * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
      *
-     * @return Person
+     * @return Provider
      */
     public function addPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
     {

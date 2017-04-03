@@ -33,9 +33,6 @@
                                     <th>{{ knp_pagination_sortable(people, 'person.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(people, 'person.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(people, 'person.form.rut'|trans, 'rut') }}{% if sort == 'rut' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(people, 'person.form.contact_phone'|trans, 'contact_phone') }}{% if sort == 'contact_phone' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(people, 'person.form.contact_email'|trans, 'contact_email') }}{% if sort == 'contact_email' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(people, 'person.form.contact_address'|trans, 'contact_address') }}{% if sort == 'contact_address' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(people, 'person.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(people, 'person.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
@@ -55,9 +52,6 @@
                                     <td>{% if person.id %}{{ person.id }}{% endif %}</td>
                                     <td>{% if person.name %}{{ person.name }}{% endif %}</td>
                                     <td>{% if person.rut %}{{ person.rut }}{% endif %}</td>
-                                    <td>{% if person.contactphone %}{{ person.contactphone }}{% endif %}</td>
-                                    <td>{% if person.contactemail %}{{ person.contactemail }}{% endif %}</td>
-                                    <td>{% if person.contactaddress %}{{ person.contactaddress }}{% endif %}</td>
                                     <td>{% if person.createdAt %}{{ person.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if person.updatedAt %}{{ person.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

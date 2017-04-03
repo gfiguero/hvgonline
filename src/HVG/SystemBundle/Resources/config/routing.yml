@@ -36,9 +36,29 @@ hvg_system_person:
     resource: "@HVGSystemBundle/Resources/config/routing/person.yml"
     prefix:   /person
 
+hvg_system_contactperson:
+    resource: "@HVGSystemBundle/Resources/config/routing/contactperson.yml"
+    prefix:   /contactperson
+
+hvg_system_personprovider: 
+    resource: "@HVGSystemBundle/Resources/config/routing/personprovider.yml"
+    prefix:   /personprovider  
+
 hvg_system_result:
     resource: "@HVGSystemBundle/Resources/config/routing/result.yml"
     prefix:   /result
+
+hvg_system_bank:
+    resource: "@HVGSystemBundle/Resources/config/routing/bank.yml"
+    prefix:   /bank
+
+hvg_system_bankaccount:
+    resource: "@HVGSystemBundle/Resources/config/routing/bankaccount.yml"
+    prefix:   /bankaccount
+
+hvg_system_bankaccountkind:
+    resource: "@HVGSystemBundle/Resources/config/routing/bankaccountkind.yml"
+    prefix:   /bankaccountkind    
 
 hvg_system_area:
     resource: "@HVGSystemBundle/Resources/config/routing/area.yml"

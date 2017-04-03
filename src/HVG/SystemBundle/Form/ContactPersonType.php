@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProviderType extends AbstractType
+class ContactPersonType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,13 +14,23 @@ class ProviderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-            ->add('person', null, array(
-                'label' => 'provider.form.person',
+            ->add('phone', null, array(
+                'label' => 'contactperson.form.phone',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('service', null, array(
-                'label' => 'provider.form.service',
+            ->add('email', null, array(
+                'label' => 'contactperson.form.email',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('address', null, array(
+                'label' => 'contactperson.form.address',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('person', null, array(
+                'label' => 'contactperson.form.person',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))
@@ -33,7 +43,7 @@ class ProviderType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'HVG\SystemBundle\Entity\Provider'
+            'data_class' => 'HVG\SystemBundle\Entity\ContactPerson'
         ));
     }
 
@@ -42,7 +52,7 @@ class ProviderType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'hvg_systembundle_provider';
+        return 'hvg_systembundle_contactperson';
     }
 
 

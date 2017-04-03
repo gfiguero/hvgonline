@@ -8,6 +8,14 @@ HVG\SystemBundle\Entity\Person:
             id: true
             generator:
                 strategy: AUTO
+    oneToMany:
+        person_provider:
+            targetEntity: HVG\SystemBundle\Entity\PersonProvider
+            mappedBy: person
+    oneToMany:
+        contacts_person:
+            targetEntity: HVG\SystemBundle\Entity\ContactPerson
+            mappedBy: person
     fields:
         name:
             type: string
@@ -16,18 +24,6 @@ HVG\SystemBundle\Entity\Person:
         rut:
             type: string
             length: 50
-            nullable: true
-        contact_phone:
-            type: string
-            length: 20
-            nullable: true
-        contact_email:
-            type: string
-            length: 300
-            nullable: true
-        contact_address:
-            type: string
-            length: 300
             nullable: true
         createdAt:
             type: datetime

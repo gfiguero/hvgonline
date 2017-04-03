@@ -1,7 +1,7 @@
-HVG\SystemBundle\Entity\Provider:
+HVG\SystemBundle\Entity\PersonProvider:
     type: entity
-    table: Provider
-    repositoryClass: HVG\SystemBundle\Entity\ProviderRepository
+    table: PersonProvider
+    repositoryClass: HVG\SystemBundle\Entity\PersonProviderRepository
     id:
         id:
             type: integer
@@ -9,20 +9,15 @@ HVG\SystemBundle\Entity\Provider:
             generator:
                 strategy: AUTO
     manyToOne:
-        service:
-            targetEntity: HVG\SystemBundle\Entity\Service
-            inversedBy: providers
-    oneToOne:
         person:
             targetEntity: HVG\SystemBundle\Entity\Person
-    oneToMany:
-        person_provider:
-            targetEntity: HVG\SystemBundle\Entity\PersonProvider
-            mappedBy: provider
-        bank_accounts:
-            targetEntity: HVG\SystemBundle\Entity\BankAccount
-            mappedBy: provider
+        provider:
+            targetEntity: HVG\SystemBundle\Entity\Provider
     fields:
+        position:
+            type: string
+            length: 300
+            nullable: true
         createdAt:
             type: datetime
             gedmo:

@@ -32,16 +32,6 @@
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
                             <dt>{{ 'provider.form.id'|trans }}</dt>
                                 <dd>{% if provider.id %}{{ provider.id }}{% endif %}</dd>
-                            <dt>{{ 'provider.form.name'|trans }}</dt>
-                                <dd>{% if provider.name %}{{ provider.name }}{% endif %}</dd>
-                            <dt>{{ 'provider.form.rut'|trans }}</dt>
-                                <dd>{% if provider.rut %}{{ provider.rut }}{% endif %}</dd>
-                            <dt>{{ 'provider.form.contact_phone'|trans }}</dt>
-                                <dd>{% if provider.contactphone %}{{ provider.contactphone }}{% endif %}</dd>
-                            <dt>{{ 'provider.form.contact_email'|trans }}</dt>
-                                <dd>{% if provider.contactemail %}{{ provider.contactemail }}{% endif %}</dd>
-                            <dt>{{ 'provider.form.contact_name'|trans }}</dt>
-                                <dd>{% if provider.contactname %}{{ provider.contactname }}{% endif %}</dd>
                             <dt>{{ 'provider.form.createdAt'|trans }}</dt>
                                 <dd>{% if provider.createdAt %}{{ provider.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'provider.form.updatedAt'|trans }}</dt>

@@ -5,13 +5,13 @@
 {% set translation_domain = 'HVGSystemBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'person.show.title'|trans }}{% endblock %}
+{% block title %}{{ 'bankaccountkind.show.title'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'person.show.title'|trans }}</h1>
+                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'bankaccountkind.show.title'|trans }}</h1>
                 {% include 'HVGSystemBundle:System:flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
@@ -22,26 +22,24 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="btn-toolbar">
-                            <a type="button" class="btn btn-default" href="{{ path('person_index') }}">{{ icon('list') }}&nbsp;{{ 'person.list.link'|trans }}</a>
-                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit">{{ icon('edit') }}&nbsp;{{ 'person.edit.link'|trans }}</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">{{ icon('trash-o') }}&nbsp;{{ 'person.delete.link'|trans }}</button>
+                            <a type="button" class="btn btn-default" href="{{ path('bankaccountkind_index') }}">{{ icon('list') }}&nbsp;{{ 'bankaccountkind.list.link'|trans }}</a>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalEdit">{{ icon('edit') }}&nbsp;{{ 'bankaccountkind.edit.link'|trans }}</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">{{ icon('trash-o') }}&nbsp;{{ 'bankaccountkind.delete.link'|trans }}</button>
                         </div>
                     </div>
 
                     <div class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
-                            <dt>{{ 'person.form.id'|trans }}</dt>
-                                <dd>{% if person.id %}{{ person.id }}{% endif %}</dd>
-                            <dt>{{ 'person.form.name'|trans }}</dt>
-                                <dd>{% if person.name %}{{ person.name }}{% endif %}</dd>
-                            <dt>{{ 'person.form.rut'|trans }}</dt>
-                                <dd>{% if person.rut %}{{ person.rut }}{% endif %}</dd>
-                            <dt>{{ 'person.form.createdAt'|trans }}</dt>
-                                <dd>{% if person.createdAt %}{{ person.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                            <dt>{{ 'person.form.updatedAt'|trans }}</dt>
-                                <dd>{% if person.updatedAt %}{{ person.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                            <dt>{{ 'person.form.deletedAt'|trans }}</dt>
-                                <dd>{% if person.deletedAt %}{{ person.deletedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'bankaccountkind.form.id'|trans }}</dt>
+                                <dd>{% if bankAccountKind.id %}{{ bankAccountKind.id }}{% endif %}</dd>
+                            <dt>{{ 'bankaccountkind.form.name'|trans }}</dt>
+                                <dd>{% if bankAccountKind.name %}{{ bankAccountKind.name }}{% endif %}</dd>
+                            <dt>{{ 'bankaccountkind.form.createdAt'|trans }}</dt>
+                                <dd>{% if bankAccountKind.createdAt %}{{ bankAccountKind.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'bankaccountkind.form.updatedAt'|trans }}</dt>
+                                <dd>{% if bankAccountKind.updatedAt %}{{ bankAccountKind.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'bankaccountkind.form.deletedAt'|trans }}</dt>
+                                <dd>{% if bankAccountKind.deletedAt %}{{ bankAccountKind.deletedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                         </dl>
                     </div>
                 </div>
@@ -55,14 +53,14 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'person.new.title'|trans }}</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'bankaccountkind.new.title'|trans }}</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-12">
                                     {{ form_start(editForm, { 'style': 'horizontal' }) }}
                                         {{ form_widget(editForm) }}
-                                        <button type="submit" class="btn btn-primary btn-block">{{ icon('check fa-fw') }}&nbsp;{{ 'person.new.confirm'|trans }}</button>
+                                        <button type="submit" class="btn btn-primary btn-block">{{ icon('check fa-fw') }}&nbsp;{{ 'bankaccountkind.new.confirm'|trans }}</button>
                                     {{ form_end(editForm) }}
                                 </div>
                             </div>
@@ -76,17 +74,17 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'person.delete.title'|trans }}</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'bankaccountkind.delete.title'|trans }}</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-2 text-center">{{ icon('exclamation-triangle fa-5x') }}</div>
-                                <div class="col-xs-10"><p>{{ 'person.delete.message'|trans }}</p></div>
+                                <div class="col-xs-10"><p>{{ 'bankaccountkind.delete.message'|trans }}</p></div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             {{ form_start(deleteForm) }}
-                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash-o') }}&nbsp;{{ 'person.delete.confirm'|trans }}</button>
+                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash-o') }}&nbsp;{{ 'bankaccountkind.delete.confirm'|trans }}</button>
                             {{ form_end(deleteForm) }}
                         </div>
                     </div>

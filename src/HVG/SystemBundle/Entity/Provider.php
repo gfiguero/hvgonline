@@ -56,7 +56,11 @@ class Provider
      * @var \HVG\SystemBundle\Entity\Service
      */
     private $service;
-
+    
+    public function __toString()
+    {
+        return $this->person->getName();
+    }
 
     /**
      * Get id
@@ -283,5 +287,132 @@ class Provider
     {
         return $this->service;
     }
-}
+    /**
+     * @var \HVG\SystemBundle\Entity\Person
+     */
+    private $person;
 
+
+    /**
+     * Set person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     *
+     * @return Provider
+     */
+    public function setPerson(\HVG\SystemBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \HVG\SystemBundle\Entity\Person
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\PersonProvider
+     */
+    private $person_provider;
+
+
+    /**
+     * Set personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     *
+     * @return Provider
+     */
+    public function setPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider = null)
+    {
+        $this->person_provider = $personProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get personProvider
+     *
+     * @return \HVG\SystemBundle\Entity\PersonProvider
+     */
+    public function getPersonProvider()
+    {
+        return $this->person_provider;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->person_provider = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     *
+     * @return Provider
+     */
+    public function addPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider[] = $personProvider;
+
+        return $this;
+    }
+
+    /**
+     * Remove personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     */
+    public function removePersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider->removeElement($personProvider);
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $bank_accounts;
+
+
+    /**
+     * Add bankAccount
+     *
+     * @param \HVG\SystemBundle\Entity\BankAccount $bankAccount
+     *
+     * @return Provider
+     */
+    public function addBankAccount(\HVG\SystemBundle\Entity\BankAccount $bankAccount)
+    {
+        $this->bank_accounts[] = $bankAccount;
+
+        return $this;
+    }
+
+    /**
+     * Remove bankAccount
+     *
+     * @param \HVG\SystemBundle\Entity\BankAccount $bankAccount
+     */
+    public function removeBankAccount(\HVG\SystemBundle\Entity\BankAccount $bankAccount)
+    {
+        $this->bank_accounts->removeElement($bankAccount);
+    }
+
+    /**
+     * Get bankAccounts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBankAccounts()
+    {
+        return $this->bank_accounts;
+    }
+}

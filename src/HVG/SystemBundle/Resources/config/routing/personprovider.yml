@@ -1,0 +1,24 @@
+personprovider_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:PersonProvider:index" }
+    methods:  GET
+
+personprovider_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:PersonProvider:show" }
+    methods:  GET
+
+personprovider_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:PersonProvider:new" }
+    methods:  [GET, POST]
+
+personprovider_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:PersonProvider:edit" }
+    methods:  [GET, POST]
+
+personprovider_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:PersonProvider:delete" }
+    methods:  DELETE

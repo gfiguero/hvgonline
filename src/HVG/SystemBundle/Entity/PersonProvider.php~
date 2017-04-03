@@ -1,0 +1,284 @@
+<?php
+
+namespace HVG\SystemBundle\Entity;
+
+/**
+ * PersonProvider
+ */
+class PersonProvider
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $rut;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $deletedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $person;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $provider;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->person = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->provider = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return PersonProvider
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set rut
+     *
+     * @param string $rut
+     *
+     * @return PersonProvider
+     */
+    public function setRut($rut)
+    {
+        $this->rut = $rut;
+
+        return $this;
+    }
+
+    /**
+     * Get rut
+     *
+     * @return string
+     */
+    public function getRut()
+    {
+        return $this->rut;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return PersonProvider
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return PersonProvider
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set deletedAt
+     *
+     * @param \DateTime $deletedAt
+     *
+     * @return PersonProvider
+     */
+    public function setDeletedAt($deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get deletedAt
+     *
+     * @return \DateTime
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Add person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     *
+     * @return PersonProvider
+     */
+    public function addPerson(\HVG\SystemBundle\Entity\Person $person)
+    {
+        $this->person[] = $person;
+
+        return $this;
+    }
+
+    /**
+     * Remove person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     */
+    public function removePerson(\HVG\SystemBundle\Entity\Person $person)
+    {
+        $this->person->removeElement($person);
+    }
+
+    /**
+     * Get person
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+
+    /**
+     * Add provider
+     *
+     * @param \HVG\SystemBundle\Entity\Provider $provider
+     *
+     * @return PersonProvider
+     */
+    public function addProvider(\HVG\SystemBundle\Entity\Provider $provider)
+    {
+        $this->provider[] = $provider;
+
+        return $this;
+    }
+
+    /**
+     * Remove provider
+     *
+     * @param \HVG\SystemBundle\Entity\Provider $provider
+     */
+    public function removeProvider(\HVG\SystemBundle\Entity\Provider $provider)
+    {
+        $this->provider->removeElement($provider);
+    }
+
+    /**
+     * Get provider
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * Set person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     *
+     * @return PersonProvider
+     */
+    public function setPerson(\HVG\SystemBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Set provider
+     *
+     * @param \HVG\SystemBundle\Entity\Provider $provider
+     *
+     * @return PersonProvider
+     */
+    public function setProvider(\HVG\SystemBundle\Entity\Provider $provider = null)
+    {
+        $this->provider = $provider;
+
+        return $this;
+    }
+}

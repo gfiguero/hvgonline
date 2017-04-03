@@ -1,4 +1,6 @@
-{% extends 'HVGSystemBundle:System:base.html.twig' %}
+{% extends 'HVGSystemBundle::base.html.twig' %}
+{% use 'HVGSystemBundle::navbar.html.twig' %}
+{% use 'HVGSystemBundle::sidebar.html.twig' %}
 
 {% block title %}{{ 'contactperson.edit.title'|trans({}, 'HVGSystemBundle') }}{% endblock %}
 
@@ -6,8 +8,8 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">{% include 'HVGSystemBundle:System:icon.html.twig' %}{{ 'contactperson.edit.title'|trans({}, 'HVGSystemBundle') }}</h1>
-                {% include 'HVGSystemBundle:System:flashbag.html.twig' %}
+                <h1 class="page-header">{% include 'HVGSystemBundle::icon.html.twig' %}{{ 'contactperson.edit.title'|trans({}, 'HVGSystemBundle') }}</h1>
+                {% include 'HVGSystemBundle::flashbag.html.twig' %}
             </div>
             <!-- /.col-lg-12 -->
         </div>

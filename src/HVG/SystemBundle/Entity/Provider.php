@@ -56,6 +56,11 @@ class Provider
         $this->bank_accounts = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->person->getName();
+    }
+
     /**
      * Get id
      *

@@ -283,4 +283,96 @@ class Provider
     {
         return $this->service;
     }
+<<<<<<< HEAD
+    /**
+     * @var \HVG\SystemBundle\Entity\Person
+     */
+    private $person;
+
+
+    /**
+     * Set person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     *
+     * @return Provider
+     */
+    public function setPerson(\HVG\SystemBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \HVG\SystemBundle\Entity\Person
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\PersonProvider
+     */
+    private $person_provider;
+
+
+    /**
+     * Set personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     *
+     * @return Provider
+     */
+    public function setPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider = null)
+    {
+        $this->person_provider = $personProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get personProvider
+     *
+     * @return \HVG\SystemBundle\Entity\PersonProvider
+     */
+    public function getPersonProvider()
+    {
+        return $this->person_provider;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->person_provider = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     *
+     * @return Provider
+     */
+    public function addPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider[] = $personProvider;
+
+        return $this;
+    }
+
+    /**
+     * Remove personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     */
+    public function removePersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider->removeElement($personProvider);
+    }
+=======
+>>>>>>> ab68e04fe40e1aadff7645893d97de34caf1b095
 }

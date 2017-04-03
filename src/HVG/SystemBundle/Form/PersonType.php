@@ -23,21 +23,6 @@ class PersonType extends AbstractType
                 'label' => 'person.form.rut',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('contact_phone', null, array(
-                'label' => 'person.form.contact_phone',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('contact_email', null, array(
-                'label' => 'person.form.contact_email',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('contact_address', null, array(
-                'label' => 'person.form.contact_address',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
             ))
         ;
     }

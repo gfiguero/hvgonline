@@ -258,4 +258,103 @@ class Person
     {
         return $this->contact_address;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contacts_person;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contacts_person = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add contactsPerson
+     *
+     * @param \HVG\SystemBundle\Entity\ContactPerson $contactsPerson
+     *
+     * @return Person
+     */
+    public function addContactsPerson(\HVG\SystemBundle\Entity\ContactPerson $contactsPerson)
+    {
+        $this->contacts_person[] = $contactsPerson;
+
+        return $this;
+    }
+
+    /**
+     * Remove contactsPerson
+     *
+     * @param \HVG\SystemBundle\Entity\ContactPerson $contactsPerson
+     */
+    public function removeContactsPerson(\HVG\SystemBundle\Entity\ContactPerson $contactsPerson)
+    {
+        $this->contacts_person->removeElement($contactsPerson);
+    }
+
+    /**
+     * Get contactsPerson
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContactsPerson()
+    {
+        return $this->contacts_person;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\PersonProvider
+     */
+    private $person_provider;
+
+
+    /**
+     * Set personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     *
+     * @return Person
+     */
+    public function setPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider = null)
+    {
+        $this->person_provider = $personProvider;
+
+        return $this;
+    }
+
+    /**
+     * Get personProvider
+     *
+     * @return \HVG\SystemBundle\Entity\PersonProvider
+     */
+    public function getPersonProvider()
+    {
+        return $this->person_provider;
+    }
+
+    /**
+     * Add personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     *
+     * @return Person
+     */
+    public function addPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider[] = $personProvider;
+
+        return $this;
+    }
+
+    /**
+     * Remove personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     */
+    public function removePersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider->removeElement($personProvider);
+    }
 }

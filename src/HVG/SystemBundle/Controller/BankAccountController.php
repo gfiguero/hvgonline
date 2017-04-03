@@ -2,14 +2,22 @@
 
 namespace HVG\SystemBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use HVG\SystemBundle\Entity\BankAccount;
 use HVG\SystemBundle\Form\BankAccountType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Bankaccount controller.
+ *
+ */
 class BankAccountController extends Controller
 {
+
+    /**
+     * Lists all BankAccount entities.
+     *
+     */
     public function indexAction(Request $request)
     {
         $sort = $request->query->get('sort');
@@ -18,25 +26,18 @@ class BankAccountController extends Controller
         if($sort) $bankAccounts = $em->getRepository('HVGSystemBundle:BankAccount')->findBy(array(), array($sort => $direction));
         else $bankAccounts = $em->getRepository('HVGSystemBundle:BankAccount')->findAll();
         $paginator = $this->get('knp_paginator');
-        $bankAccounts = $paginator->paginate($bankAccounts, $request->query->getInt('page', 1), 24);
-
-        $deleteForms = array();
-        $editForms = array();
+        $bankAccounts = $paginator->paginate($bankAccounts, $request->query->getInt('page', 1), 100);
         $bankAccount = new BankAccount();
-        $newForm = $this->createForm('HVG\SystemBundle\Form\BankAccountType', $bankAccount, array(
-            'action' => $this->generateUrl('bank_account_new'),
-        ))->createView();
+        $newForm = $this->createNewForm($bankAccount)->createView();
 
-        foreach ($bankAccounts as $key => $bankAccount) {
-            $editForms[] = $this->createForm('HVG\SystemBundle\Form\BankAccountType', $bankAccount, array(
-                'action' => $this->generateUrl('bank_account_edit', array('id' => $bankAccount->getId())),
-            ))->createView();
-            $deleteForms[] = $this->createDeleteForm($bankAccount, array(
-                'action' => $this->generateUrl('bank_account_delete', array('id' => $bankAccount->getId())),
-            ))->createView();
+        $editForms = array();
+        $deleteForms = array();
+        foreach($bankAccounts as $key => $bankAccount) {
+            $editForms[] = $this->createEditForm($bankAccount)->createView();
+            $deleteForms[] = $this->createDeleteForm($bankAccount)->createView();
         }
 
-        return $this->render('HVGSystemBundle:BankAccount:index.html.twig', array(
+        return $this->render('bankaccount/index.html.twig', array(
             'bankAccounts' => $bankAccounts,
             'direction' => $direction,
             'sort' => $sort,
@@ -53,18 +54,47 @@ class BankAccountController extends Controller
     public function newAction(Request $request)
     {
         $bankAccount = new BankAccount();
-        $form = $this->createForm('HVG\SystemBundle\Form\BankAccountType', $bankAccount);
-        $form->handleRequest($request);
+        $newForm = $this->createNewForm($bankAccount);
+        $newForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($newForm->isSubmitted() && $newForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($bankAccount);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'bankAccount.new.flash' );
-
+            $request->getSession()->getFlashBag()->add( 'success', 'bankAccount.flash.created' );    
         }
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * Creates a form to create a new BankAccount entity.
+     *
+     * @param BankAccount $bankAccount The BankAccount entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createNewForm(BankAccount $bankAccount)
+    {
+        return $this->createForm('HVG\SystemBundle\Form\BankAccountType', $bankAccount, array(
+            'action' => $this->generateUrl('bankaccount_new'),
+        ));
+    }
+
+    /**
+     * Finds and displays a BankAccount entity.
+     *
+     */
+    public function showAction(BankAccount $bankAccount)
+    {
+        $editForm = $this->createEditForm($bankAccount);
+        $deleteForm = $this->createDeleteForm($bankAccount);
+
+        return $this->render('bankaccount/show.html.twig', array(
+            'bankAccount' => $bankAccount,
+            'editForm' => $editForm->createView(),
+            'deleteForm' => $deleteForm->createView(),
+        ));
     }
 
     /**
@@ -73,23 +103,30 @@ class BankAccountController extends Controller
      */
     public function editAction(Request $request, BankAccount $bankAccount)
     {
-        $deleteForm = $this->createDeleteForm($bankAccount);
-        $editForm = $this->createForm('HVG\SystemBundle\Form\BankAccountType', $bankAccount);
+        $editForm = $this->createEditForm($bankAccount);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($bankAccount);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'bankAccount.edit.flash' );
-
-            return $this->redirect($request->headers->get('referer'));
+            $request->getSession()->getFlashBag()->add( 'success', 'bankAccount.flash.updated' );    
         }
 
-        return $this->render('bankAccount/edit.html.twig', array(
-            'bankAccount' => $bankAccount,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    /**
+     * Creates a form to edit a BankAccount entity.
+     *
+     * @param BankAccount $bankAccount The BankAccount entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(BankAccount $bankAccount)
+    {
+        return $this->createForm('HVG\SystemBundle\Form\BankAccountType', $bankAccount, array(
+            'action' => $this->generateUrl('bankaccount_edit', array('id' => $bankAccount->getId())),
         ));
     }
 
@@ -99,14 +136,14 @@ class BankAccountController extends Controller
      */
     public function deleteAction(Request $request, BankAccount $bankAccount)
     {
-        $form = $this->createDeleteForm($bankAccount);
-        $form->handleRequest($request);
+        $deleteForm = $this->createDeleteForm($bankAccount);
+        $deleteForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($deleteForm->isSubmitted() && $deleteForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($bankAccount);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'bankAccount.delete.flash' );
+            $request->getSession()->getFlashBag()->add( 'danger', 'bankAccount.flash.deleted' );    
         }
 
         return $this->redirect($request->headers->get('referer'));
@@ -122,7 +159,7 @@ class BankAccountController extends Controller
     private function createDeleteForm(BankAccount $bankAccount)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('bank_account_delete', array('id' => $bankAccount->getId())))
+            ->setAction($this->generateUrl('bankaccount_delete', array('id' => $bankAccount->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

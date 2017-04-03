@@ -13,31 +13,6 @@ class Provider
     private $id;
 
     /**
-     * @var string
-     */
-    private $name;
-
-    /**
-     * @var string
-     */
-    private $rut;
-
-    /**
-     * @var string
-     */
-    private $contact_phone;
-
-    /**
-     * @var string
-     */
-    private $contact_email;
-
-    /**
-     * @var string
-     */
-    private $contact_name;
-
-    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -53,10 +28,38 @@ class Provider
     private $deletedAt;
 
     /**
+     * @var \HVG\SystemBundle\Entity\Person
+     */
+    private $person;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $person_provider;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $bank_accounts;
+
+    /**
      * @var \HVG\SystemBundle\Entity\Service
      */
     private $service;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->person_provider = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->bank_accounts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->person->getName();
+    }
 
     /**
      * Get id
@@ -66,126 +69,6 @@ class Provider
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Provider
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set rut
-     *
-     * @param string $rut
-     *
-     * @return Provider
-     */
-    public function setRut($rut)
-    {
-        $this->rut = $rut;
-
-        return $this;
-    }
-
-    /**
-     * Get rut
-     *
-     * @return string
-     */
-    public function getRut()
-    {
-        return $this->rut;
-    }
-
-    /**
-     * Set contactPhone
-     *
-     * @param string $contactPhone
-     *
-     * @return Provider
-     */
-    public function setContactPhone($contactPhone)
-    {
-        $this->contact_phone = $contactPhone;
-
-        return $this;
-    }
-
-    /**
-     * Get contactPhone
-     *
-     * @return string
-     */
-    public function getContactPhone()
-    {
-        return $this->contact_phone;
-    }
-
-    /**
-     * Set contactEmail
-     *
-     * @param string $contactEmail
-     *
-     * @return Provider
-     */
-    public function setContactEmail($contactEmail)
-    {
-        $this->contact_email = $contactEmail;
-
-        return $this;
-    }
-
-    /**
-     * Get contactEmail
-     *
-     * @return string
-     */
-    public function getContactEmail()
-    {
-        return $this->contact_email;
-    }
-
-    /**
-     * Set contactName
-     *
-     * @param string $contactName
-     *
-     * @return Provider
-     */
-    public function setContactName($contactName)
-    {
-        $this->contact_name = $contactName;
-
-        return $this;
-    }
-
-    /**
-     * Get contactName
-     *
-     * @return string
-     */
-    public function getContactName()
-    {
-        return $this->contact_name;
     }
 
     /**
@@ -261,6 +144,98 @@ class Provider
     }
 
     /**
+     * Set person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     *
+     * @return Provider
+     */
+    public function setPerson(\HVG\SystemBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \HVG\SystemBundle\Entity\Person
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+
+    /**
+     * Add personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     *
+     * @return Provider
+     */
+    public function addPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider[] = $personProvider;
+
+        return $this;
+    }
+
+    /**
+     * Remove personProvider
+     *
+     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
+     */
+    public function removePersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
+    {
+        $this->person_provider->removeElement($personProvider);
+    }
+
+    /**
+     * Get personProvider
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPersonProvider()
+    {
+        return $this->person_provider;
+    }
+
+    /**
+     * Add bankAccount
+     *
+     * @param \HVG\SystemBundle\Entity\BankAccount $bankAccount
+     *
+     * @return Provider
+     */
+    public function addBankAccount(\HVG\SystemBundle\Entity\BankAccount $bankAccount)
+    {
+        $this->bank_accounts[] = $bankAccount;
+
+        return $this;
+    }
+
+    /**
+     * Remove bankAccount
+     *
+     * @param \HVG\SystemBundle\Entity\BankAccount $bankAccount
+     */
+    public function removeBankAccount(\HVG\SystemBundle\Entity\BankAccount $bankAccount)
+    {
+        $this->bank_accounts->removeElement($bankAccount);
+    }
+
+    /**
+     * Get bankAccounts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBankAccounts()
+    {
+        return $this->bank_accounts;
+    }
+
+    /**
      * Set service
      *
      * @param \HVG\SystemBundle\Entity\Service $service
@@ -284,3 +259,4 @@ class Provider
         return $this->service;
     }
 }
+

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProviderType extends AbstractType
+class BankAccountType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,13 +14,23 @@ class ProviderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-            ->add('person', null, array(
-                'label' => 'provider.form.person',
+            ->add('ncuenta', null, array(
+                'label' => 'bankaccount.form.ncuenta',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('service', null, array(
-                'label' => 'provider.form.service',
+            ->add('bank', null, array(
+                'label' => 'bankaccount.form.bank',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('bank_account_kind', null, array(
+                'label' => 'bankaccount.form.bank_account_kind',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('provider', null, array(
+                'label' => 'bankaccount.form.provider',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))
@@ -33,7 +43,7 @@ class ProviderType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'HVG\SystemBundle\Entity\Provider'
+            'data_class' => 'HVG\SystemBundle\Entity\BankAccount'
         ));
     }
 
@@ -42,7 +52,7 @@ class ProviderType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'hvg_systembundle_provider';
+        return 'hvg_systembundle_bankaccount';
     }
 
 

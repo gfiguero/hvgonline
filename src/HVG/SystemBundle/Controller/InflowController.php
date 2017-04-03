@@ -26,7 +26,7 @@ class InflowController extends Controller
         if($sort) $inflows = $em->getRepository('HVGSystemBundle:Inflow')->findBy(array(), array($sort => $direction));
         else $inflows = $em->getRepository('HVGSystemBundle:Inflow')->findAll();
         $paginator = $this->get('knp_paginator');
-        $inflows = $paginator->paginate($inflows, $request->query->getInt('page', 1), 30);
+        $inflows = $paginator->paginate($inflows, $request->query->getInt('page', 1), 100);
         $inflow = new Inflow();
         $newForm = $this->createNewForm($inflow)->createView();
 

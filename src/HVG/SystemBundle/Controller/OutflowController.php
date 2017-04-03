@@ -26,7 +26,7 @@ class OutflowController extends Controller
         if($sort) $outflows = $em->getRepository('HVGSystemBundle:Outflow')->findBy(array(), array($sort => $direction));
         else $outflows = $em->getRepository('HVGSystemBundle:Outflow')->findAll();
         $paginator = $this->get('knp_paginator');
-        $outflows = $paginator->paginate($outflows, $request->query->getInt('page', 1), 30);
+        $outflows = $paginator->paginate($outflows, $request->query->getInt('page', 1), 100);
         $outflow = new Outflow();
         $newForm = $this->createNewForm($outflow)->createView();
 

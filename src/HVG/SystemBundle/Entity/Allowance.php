@@ -214,4 +214,3 @@ class Allowance
         return $this->unit;
     }
 }
-

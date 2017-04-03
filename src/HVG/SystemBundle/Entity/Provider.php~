@@ -283,6 +283,7 @@ class Provider
     {
         return $this->service;
     }
+<<<<<<< HEAD
     /**
      * @var \HVG\SystemBundle\Entity\Person
      */
@@ -372,4 +373,6 @@ class Provider
     {
         $this->person_provider->removeElement($personProvider);
     }
+=======
+>>>>>>> ab68e04fe40e1aadff7645893d97de34caf1b095
 }

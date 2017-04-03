@@ -1,16 +1,24 @@
-hvg_user_profile:
-    resource: "@HVGUserBundle/Resources/config/routing/profile.yml"
-    prefix: /profile
+user_index:
+    path:     /
+    defaults: { _controller: "HVGUserBundle:User:index" }
+    methods:  GET
 
-hvg_user_register:
-    resource: "@HVGUserBundle/Resources/config/routing/registration.yml"
-    prefix: /register
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGUserBundle:User:show" }
+    methods:  GET
 
-hvg_user_resetting:
-    resource: "@HVGUserBundle/Resources/config/routing/resetting.yml"
-    prefix: /resetting
+user_new:
+    path:     /new
+    defaults: { _controller: "HVGUserBundle:User:new" }
+    methods:  [GET, POST]
 
-hvg_user_change_password:
-    resource: "@HVGUserBundle/Resources/config/routing/change_password.yml"
-    prefix: /password
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGUserBundle:User:edit" }
+    methods:  [GET, POST]
 
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGUserBundle:User:delete" }
+    methods:  DELETE

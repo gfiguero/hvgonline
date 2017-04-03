@@ -17,11 +17,7 @@ _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
 fos_user:
-    resource: "@HVGUserBundle/Resources/config/routing/management.yml"
-    prefix:   /user
-
-hvg_user:
-    resource: "@HVGUserBundle/Resources/config/routing/user.yml"
+    resource: "@HVGUserBundle/Resources/config/routing.yml"
     prefix:   /user
 
 hvg_admin:

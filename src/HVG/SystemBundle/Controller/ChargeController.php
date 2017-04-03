@@ -26,7 +26,7 @@ class ChargeController extends Controller
         if($sort) $charges = $em->getRepository('HVGSystemBundle:Charge')->findBy(array(), array($sort => $direction));
         else $charges = $em->getRepository('HVGSystemBundle:Charge')->findAll();
         $paginator = $this->get('knp_paginator');
-        $charges = $paginator->paginate($charges, $request->query->getInt('page', 1), 30);
+        $charges = $paginator->paginate($charges, $request->query->getInt('page', 1), 100);
         $charge = new Charge();
         $newForm = $this->createNewForm($charge)->createView();
 

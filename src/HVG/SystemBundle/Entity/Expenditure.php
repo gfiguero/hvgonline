@@ -226,4 +226,3 @@ class Expenditure
         return $this->community;
     }
 }
-

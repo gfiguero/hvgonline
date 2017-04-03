@@ -26,7 +26,7 @@ class FundController extends Controller
         if($sort) $funds = $em->getRepository('HVGSystemBundle:Fund')->findBy(array(), array($sort => $direction));
         else $funds = $em->getRepository('HVGSystemBundle:Fund')->findAll();
         $paginator = $this->get('knp_paginator');
-        $funds = $paginator->paginate($funds, $request->query->getInt('page', 1), 30);
+        $funds = $paginator->paginate($funds, $request->query->getInt('page', 1), 100);
         $fund = new Fund();
         $newForm = $this->createNewForm($fund)->createView();
 

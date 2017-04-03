@@ -2,8 +2,13 @@
 
 namespace HVG\SystemBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * ProjectProposal
+ * @Vich\Uploadable
  */
 class ProjectProposal
 {
@@ -308,6 +313,37 @@ class ProjectProposal
     {
         return $this->file;
     }
+
+    /**
+     * @Vich\UploadableField(mapping="proposal", fileNameProperty="file")
+     * @var File
+     */
+    private $data;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $data
+     * @return ProjectProposal
+     */
+    
+    public function setData(File $data = null)
+    {
+        $this->data = $data;
+
+        if ($data) {
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
 
     /**
      * Set observation

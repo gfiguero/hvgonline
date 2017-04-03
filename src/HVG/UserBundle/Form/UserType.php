@@ -1,6 +1,6 @@
 <?php
 
-namespace Unisystem\UserBundle\Form;
+namespace HVG\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -9,27 +9,41 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UserType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-            ->add('name', null, array(
-                'attr' => array( 'label_col' => 3, 'widget_col' => 9 ),
-                'label' => 'user.form.name',
-                'translation_domain' => 'UnisystemUserBundle',
+            ->add('fullname', null, array(
+                'label' => 'user.form.fullname',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGUserBundle',
+            )) 
+            ->add('shortname', null, array(
+                'label' => 'user.form.shortname',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGUserBundle',
             ))
         ;
     }
     
     /**
-     * @param OptionsResolver $resolver
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Unisystem\UserBundle\Entity\User'
+            'data_class' => 'HVG\UserBundle\Entity\User'
         ));
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'hvg_userbundle_user';
+    }
+
+
 }

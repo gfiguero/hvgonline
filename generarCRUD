@@ -68,6 +68,9 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:Charge --format=
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Allowance --format=yml --with-write --overwrite --no-interaction --route-prefix=allowance
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:AllowanceCharge --format=yml --with-write --overwrite --no-interaction --route-prefix=allowancecharge
 
+---------------- Usuarios
+php app/console doctrine:generate:entities HVGUserBundle:User --path=src
+php app/console generate:doctrine:crud --entity=HVGUserBundle:User --format=yml --with-write --overwrite --no-interaction --route-prefix=user
 
 
 

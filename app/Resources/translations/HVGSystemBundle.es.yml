@@ -1,6 +1,43 @@
+sidemenu:
+    configuration:
+        root: Configuración
+        person: Personas
+        agent: Agentes
+        community: Comunidades
+        building: Edificios
+        unit: Unidades
+        area: Áreas de Trabajo
+        fund: Fondos
+        provider: Proveedores
+    accounting:
+        root: Contabilidad
+        expenditure: Gastos
+        payment: Pagos
+        outflow: Egresos
+        inflow: Ingresos
+        charge: Cobros
+        allowance: Abonos
+        allowancecharge: Abonos-Cobros
+    ticket:
+        root: Tickets
+        ticket: Lista de Tickets
+        ticketstatus: Estados de Ticket
+        ticketaction: Acciones de Ticket
+    petition:
+        root: Solicitudes
+        petition: Lista de Solicitudes
+        petitionstatus: Estados de Solicitudes
+        petitionaction: Acciones de Solicitudes
+        petitionevaluation: Evaluaciones de Solicitudes
+    project:
+        root: Proyectos
+        project: Lista de Proyectos
+        projectstatus: Estados de Proyectos
+        projectaction: Acciones de Proyectos
+        projectobservation: Observaciones de Proyectos
+        projectproposal: Cotizaciones de Proyectos
+
 person:
-    sidemenu:
-        index: Personas
     list:
         link: Explorar
         title: Lista de Personas
@@ -33,9 +70,6 @@ person:
         rut: Rut
 
 project:
-    sidemenu:
-        root: Proyectos
-        index: Lista de Proyectos
     list:
         link: Explorar
         title: Lista de Proyectos

@@ -18,8 +18,8 @@ HVG\SystemBundle\Entity\Ticket:
         area:
             targetEntity: HVG\SystemBundle\Entity\Area
             inversedBy: tickets
-        agent:
-            targetEntity: HVG\SystemBundle\Entity\Agent
+        user:
+            targetEntity: HVG\UserBundle\Entity\User
             inversedBy: tickets
     oneToMany:
         ticket_actions:

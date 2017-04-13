@@ -11,8 +11,8 @@ HVG\SystemBundle\Entity\TicketAction:
         ticket:
             targetEntity: HVG\SystemBundle\Entity\Ticket
             inversedBy: ticket_actions
-        agent:
-            targetEntity: HVG\SystemBundle\Entity\Agent
+        user:
+            targetEntity: HVG\UserBundle\Entity\User
             inversedBy: ticket_actions
     fields:
         description:

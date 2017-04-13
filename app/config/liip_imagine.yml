@@ -4,6 +4,12 @@ liip_imagine:
             web_path: ~
     filter_sets:
         cache: ~
+        logo_login:
+            quality: 75
+            default_image: /img/HVGLOGO.jpg
+            filters:
+                upscale: { min: [800, 600] }
+                thumbnail: { size: [800, 600], mode: outbound }
         member_photography_small:
             quality: 75
             default_image: /uploads/member/BomberoDefaultSmall.jpg

@@ -1,29 +1,37 @@
 {% extends 'HVGSystemBundle::base.html.twig' %}
 {% use 'HVGSystemBundle::navbar.html.twig' %}
 {% use 'HVGSystemBundle::sidebar.html.twig' %}
+{% use 'HVGSystemBundle::icons.html.twig' %}
 
 {% set translation_domain = 'HVGSystemBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'petitionevaluation.list.title'|trans }}{% endblock %}
+{% block title %}{{ 'petitionevaluation.index.title'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% include 'HVGSystemBundle::icon.html.twig' %}{{ 'petitionevaluation.list.title'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'petitionevaluation.index.title'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
         <!-- /#page-header -->
 
+        <div class="row" id="page-toolbar">
+            <div class="col-lg-12">
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNew">{{ icon('plus') }}&nbsp;{{ 'petitionevaluation.new.link'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-toolbar -->
+
         <div class="row" id="page-list">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="btn-toolbar">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNew">{{ icon('plus') }}&nbsp;{{ 'petitionevaluation.new.link'|trans }}</button>
-                        </div>
+                        <h2 class="panel-title">{{ 'petitionevaluation.list.title'|trans }}</h2>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
@@ -69,7 +77,7 @@
 
         <div id="page-modal">
             <div class="modal fade" id="modalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
@@ -80,7 +88,9 @@
                                 <div class="col-xs-12">
                                     {{ form_start(newForm, { 'style': 'horizontal' }) }}
                                         {{ form_widget(newForm) }}
-                                        <button type="submit" class="btn btn-primary btn-block">{{ icon('check') }}&nbsp;{{ 'petitionevaluation.new.submit'|trans }}</button>
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petitionevaluation.new.submit'|trans }}</button>
+                                        </div></div>
                                     {{ form_end(newForm) }}
                                 </div>
                             </div>
@@ -91,7 +101,7 @@
 
             {% for key, petitionevaluation in petitionEvaluations %}
             <div class="modal fade" id="modalEdit{{ petitionevaluation.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
@@ -103,7 +113,9 @@
                                     {% set editForm = attribute(editForms, key) %}
                                     {{ form_start(editForm, { 'style': 'horizontal' }) }}
                                         {{ form_widget(editForm) }}
-                                        <button type="submit" class="btn btn-primary btn-block">{{ icon('check') }}&nbsp;{{ 'petitionevaluation.edit.submit'|trans }}</button>
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petitionevaluation.edit.submit'|trans }}</button>
+                                        </div></div>
                                     {{ form_end(editForm) }}
                                 </div>
                             </div>

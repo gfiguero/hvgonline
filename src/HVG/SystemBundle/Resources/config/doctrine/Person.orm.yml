@@ -9,12 +9,8 @@ HVG\SystemBundle\Entity\Person:
             generator:
                 strategy: AUTO
     oneToMany:
-        person_provider:
-            targetEntity: HVG\SystemBundle\Entity\PersonProvider
-            mappedBy: person
-    oneToMany:
-        contacts_person:
-            targetEntity: HVG\SystemBundle\Entity\ContactPerson
+        contacts:
+            targetEntity: HVG\SystemBundle\Entity\Contact
             mappedBy: person
     fields:
         name:
@@ -25,6 +21,7 @@ HVG\SystemBundle\Entity\Person:
             type: string
             length: 50
             nullable: true
+            unique: true
         createdAt:
             type: datetime
             gedmo:

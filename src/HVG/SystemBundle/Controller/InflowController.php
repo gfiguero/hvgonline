@@ -57,14 +57,21 @@ class InflowController extends Controller
         $newForm = $this->createNewForm($inflow);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($inflow);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'inflow.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($inflow);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'inflow.flash.created' );
+            } else {
+                return $this->render('inflow/new.html.twig', array(
+                    'inflow' => $inflow,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('inflow_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class InflowController extends Controller
     public function editAction(Request $request, Inflow $inflow)
     {
         $editForm = $this->createEditForm($inflow);
+        $deleteForm = $this->createDeleteForm($inflow);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($inflow);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'inflow.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($inflow);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'inflow.flash.updated' );
+            } else {
+                return $this->render('inflow/edit.html.twig', array(
+                    'inflow' => $inflow,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('inflow_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class InflowController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($inflow);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'inflow.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'inflow.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('inflow_index'));
     }
 
     /**

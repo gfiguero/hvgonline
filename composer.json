@@ -40,7 +40,8 @@
         "mrohnstock/bootstrap-multiselect": "^0.9.13",
         "vich/uploader-bundle": "^0.14.0",
         "components/bootstrap": "^3.3",
-        "kartik-v/bootstrap-fileinput": "dev-master"
+        "kartik-v/bootstrap-fileinput": "dev-master",
+        "symfony/validator": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

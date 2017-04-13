@@ -1,0 +1,24 @@
+role_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Role:index" }
+    methods:  GET
+
+role_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Role:show" }
+    methods:  GET
+
+role_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Role:new" }
+    methods:  [GET, POST]
+
+role_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Role:edit" }
+    methods:  [GET, POST]
+
+role_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Role:delete" }
+    methods:  DELETE

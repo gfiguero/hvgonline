@@ -36,7 +36,7 @@ security:
                 failure_path: /login
                 check_path: /login_check
                 always_use_default_target_path: true
-                default_target_path: /requirement
+                default_target_path: /agent
                 csrf_token_generator: security.csrf.token_manager
                 failure_path: /login
             logout:

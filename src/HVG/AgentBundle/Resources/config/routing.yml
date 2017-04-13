@@ -1,3 +1,31 @@
-hvg_agent_homepage:
+hvg_agent_dashboard:
     path:     /
-    defaults: { _controller: HVGAgentBundle:Default:index }
+    defaults: { _controller: HVGAgentBundle:Dashboard:index }
+
+hvg_agent_building:
+    resource: "@HVGAgentBundle/Resources/config/routing/building.yml"
+    prefix:   /building
+
+hvg_agent_community:
+    resource: "@HVGAgentBundle/Resources/config/routing/community.yml"
+    prefix:   /community
+
+hvg_agent_communitystaff:
+    resource: "@HVGAgentBundle/Resources/config/routing/communitystaff.yml"
+    prefix:   /communitystaff
+
+hvg_agent_contact:
+    resource: "@HVGAgentBundle/Resources/config/routing/contact.yml"
+    prefix:   /contact
+
+hvg_agent_person:
+    resource: "@HVGAgentBundle/Resources/config/routing/person.yml"
+    prefix:   /person
+
+hvg_agent_provider:
+    resource: "@HVGAgentBundle/Resources/config/routing/provider.yml"
+    prefix:   /provider
+
+hvg_agent_unit:
+    resource: "@HVGAgentBundle/Resources/config/routing/unit.yml"
+    prefix:   /unit

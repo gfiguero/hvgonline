@@ -20,16 +20,23 @@
         $newForm = $this->createNewForm(${{ entity_singularized }});
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist(${{ entity_singularized }});
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', '{{ entity_singularized ~ '.flash.created' }}' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist(${{ entity_singularized }});
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', '{{ entity_singularized ~ '.flash.created' }}' );
+            } else {
+                return $this->render('{{ entity|lower|replace({'\\': '/'}) }}/new.html.twig', array(
+                    '{{ entity_singularized }}' => ${{ entity_singularized }},
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 {% endblock method_body %}
 
 {% block method_return %}
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}_index'));
 {% endblock method_return %}
     }
 

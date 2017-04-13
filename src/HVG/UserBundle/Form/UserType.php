@@ -14,13 +14,13 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-            ->add('fullname', null, array(
-                'label' => 'user.form.fullname',
+            ->add('person', null, array(
+                'label' => 'user.form.person',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGUserBundle',
             )) 
-            ->add('shortname', null, array(
-                'label' => 'user.form.shortname',
+            ->add('area', null, array(
+                'label' => 'user.form.area',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGUserBundle',
             ))

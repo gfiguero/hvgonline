@@ -259,4 +259,3 @@ class Fund
         return $this->community;
     }
 }
-

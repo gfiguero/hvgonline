@@ -143,4 +143,3 @@ class Bank
         return $this->deletedAt;
     }
 }
-

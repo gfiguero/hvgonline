@@ -57,14 +57,21 @@ class BuildingController extends Controller
         $newForm = $this->createNewForm($building);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($building);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'building.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($building);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'building.flash.created' );
+            } else {
+                return $this->render('building/new.html.twig', array(
+                    'building' => $building,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('building_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class BuildingController extends Controller
     public function editAction(Request $request, Building $building)
     {
         $editForm = $this->createEditForm($building);
+        $deleteForm = $this->createDeleteForm($building);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($building);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'building.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($building);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'building.flash.updated' );
+            } else {
+                return $this->render('building/edit.html.twig', array(
+                    'building' => $building,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('building_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class BuildingController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($building);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'building.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'building.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('building_index'));
     }
 
     /**

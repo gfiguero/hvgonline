@@ -16,4 +16,4 @@ hvg_user_change_password:
 
 hvg_user_management:
     resource: "@HVGUserBundle/Resources/config/routing/management.yml"
-    prefix: /management
+    prefix: /

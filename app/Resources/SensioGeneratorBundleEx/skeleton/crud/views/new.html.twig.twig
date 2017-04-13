@@ -22,12 +22,12 @@
                     {%- set hide_edit, hide_delete = true, true -%}
                     {{- include('crud/views/others/record_actions.html.twig.twig') }}
                     <div class="panel-body">
-                        {{ "{{ form_start(form, { 'style': 'horizontal' }) }}" }}
-                            {{ '{{ form_widget(form) }}' }}
-                                <div class="form-group"><div class="col-lg-offset-3 col-lg-9">
+                        {{ "{{ form_start(newForm, { 'style': 'horizontal' }) }}" }}
+                            {{ '{{ form_widget(newForm) }}' }}
+                                <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
                                     <button type="submit" class="btn btn-primary">{{ "{{ icon('save') }}&nbsp;{{ '" ~ entity_singularized|lower ~ ".new.submit'|trans({}, '" ~ bundle ~ "') }}" }}</button>
                                 </div></div>
-                        {{ '{{ form_end(form) }}' }}
+                        {{ '{{ form_end(newForm) }}' }}
 
                     </div>
                 </div>

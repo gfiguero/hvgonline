@@ -1,80 +1,48 @@
 <?php
 
-namespace Unisystem\UserBundle\Form;
+namespace HVG\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use FOS\UserBundle\Util\LegacyFormHelper;
 
 class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array(
+            ->add('email', 'email', array(
                 'label' => 'user.form.email',
-                'translation_domain' => 'UnisystemUserBundle',
-                'attr' => array(
-                    'class' => 'text-center',
-                    'placeholder' => 'user.form.email',
-                    'label_col' => 4,
-                    'widget_col' => 8,
-                    'input_group' => array(
-                        'prepend' => '.icon-envelope',
-                    ),
-                ),
+                'translation_domain' => 'HVGUserBundle',
+                'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
             ))
             ->add('username', null, array(
                 'label' => 'user.form.username',
-                'translation_domain' => 'UnisystemUserBundle',
-                'attr' => array(
-                    'class' => 'text-center',
-                    'placeholder' => 'user.form.username',
-                    'label_col' => 4,
-                    'widget_col' => 8,
-                    'input_group' => array(
-                        'prepend' => '.icon-user',
-                    ),
-                ),
+                'translation_domain' => 'HVGUserBundle',
+                'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
             ))
-            ->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
-                'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
-                'options' => array('translation_domain' => 'UnisystemUserBundle'),
+            ->add('plainPassword', 'repeated', array(
+                'type' => 'password',
+                'options' => array('translation_domain' => 'HVGUserBundle'),
                 'first_options' => array(
                     'label' => 'user.form.password',
-                    'attr' => array(
-                        'class' => 'text-center',
-                        'placeholder' => 'user.form.password',
-                        'input_group' => array(
-                            'prepend' => '.icon-key',
-                        ),
-                    ),
+                    'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
                 ),
                 'second_options' => array(
                     'label' => 'user.form.password_confirmation',
-                    'attr' => array(
-                        'class' => 'text-center',
-                        'placeholder' => 'user.form.password_confirmation',
-                        'input_group' => array(
-                            'prepend' => '.icon-key',
-                        ),
-                    ),
+                    'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
                 ),
                 'invalid_message' => 'user.password.mismatch',
-                'attr' => array(
-                    'label_col' => 4,
-                    'widget_col' => 8,
-                ),
+                'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
             ))
-            ->add('name', null, array(
-                'label' => 'user.form.name',
-                'translation_domain' => 'UnisystemUserBundle',
-                'attr' => array(
-                    'class' => 'text-center',
-                    'placeholder' => 'user.form.name',
-                    'label_col' => 4,
-                    'widget_col' => 8,
-                ),
+            ->add('person', null, array(
+                'label' => 'user.form.person',
+                'translation_domain' => 'HVGUserBundle',
+                'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
+            ))
+            ->add('area', null, array(
+                'label' => 'user.form.area',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGUserBundle',
             ))
         ;
     }
@@ -86,7 +54,7 @@ class RegistrationType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'unisystem_user_registration';
+        return 'hvg_user_registration';
     }
 
     public function getName()

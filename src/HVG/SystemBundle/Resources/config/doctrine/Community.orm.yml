@@ -8,9 +8,18 @@ HVG\SystemBundle\Entity\Community:
             id: true
             generator:
                 strategy: AUTO
+    oneToOne:
+        person:
+            targetEntity: HVG\SystemBundle\Entity\Person
     oneToMany:
         petitions:
             targetEntity: HVG\SystemBundle\Entity\Petition
+            mappedBy: community
+        buildings:
+            targetEntity: HVG\SystemBundle\Entity\Building
+            mappedBy: community
+        community_staffs:
+            targetEntity: HVG\SystemBundle\Entity\CommunityStaff
             mappedBy: community
     fields:
         name:

@@ -1,0 +1,24 @@
+agent_communitystaff_index:
+    path:     /
+    defaults: { _controller: "HVGAgentBundle:CommunityStaff:index" }
+    methods:  GET
+
+agent_communitystaff_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGAgentBundle:CommunityStaff:show" }
+    methods:  GET
+
+agent_communitystaff_new:
+    path:     /new
+    defaults: { _controller: "HVGAgentBundle:CommunityStaff:new" }
+    methods:  [GET, POST]
+
+agent_communitystaff_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:CommunityStaff:edit" }
+    methods:  [GET, POST]
+
+agent_communitystaff_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGAgentBundle:CommunityStaff:delete" }
+    methods:  DELETE

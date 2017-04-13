@@ -57,14 +57,21 @@ class ProviderController extends Controller
         $newForm = $this->createNewForm($provider);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($provider);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'provider.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($provider);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'provider.flash.created' );
+            } else {
+                return $this->render('provider/new.html.twig', array(
+                    'provider' => $provider,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('provider_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class ProviderController extends Controller
     public function editAction(Request $request, Provider $provider)
     {
         $editForm = $this->createEditForm($provider);
+        $deleteForm = $this->createDeleteForm($provider);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($provider);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'provider.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($provider);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'provider.flash.updated' );
+            } else {
+                return $this->render('provider/edit.html.twig', array(
+                    'provider' => $provider,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('provider_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class ProviderController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($provider);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'provider.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'provider.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('provider_index'));
     }
 
     /**

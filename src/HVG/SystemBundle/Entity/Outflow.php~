@@ -197,4 +197,3 @@ class Outflow
         return $this->expenditure;
     }
 }
-

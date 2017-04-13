@@ -57,14 +57,21 @@ class UnitController extends Controller
         $newForm = $this->createNewForm($unit);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($unit);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'unit.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($unit);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'unit.flash.created' );
+            } else {
+                return $this->render('unit/new.html.twig', array(
+                    'unit' => $unit,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('unit_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class UnitController extends Controller
     public function editAction(Request $request, Unit $unit)
     {
         $editForm = $this->createEditForm($unit);
+        $deleteForm = $this->createDeleteForm($unit);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($unit);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'unit.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($unit);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'unit.flash.updated' );
+            } else {
+                return $this->render('unit/edit.html.twig', array(
+                    'unit' => $unit,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('unit_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class UnitController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($unit);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'unit.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'unit.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('unit_index'));
     }
 
     /**

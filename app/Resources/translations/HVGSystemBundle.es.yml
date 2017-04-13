@@ -1,3 +1,9 @@
+topmenu:
+    user: Usuarios
+    agentdashboard: Vista General
+    systemdashboard: Configuración de Sistema
+    logout: Desconectar
+
 sidemenu:
     configuration:
         root: Configuración
@@ -36,6 +42,81 @@ sidemenu:
         projectaction: Acciones de Proyectos
         projectobservation: Observaciones de Proyectos
         projectproposal: Cotizaciones de Proyectos
+
+community:
+    title:
+        index: Comunidades
+        properties: Datos de la comunidad
+        communitystaff: Colaboradores
+        buildings: Torres
+        list: Lista de Comunidades
+    list:
+        link: Explorar
+        title: Lista de Comunidades
+    show:
+        link: Mostrar
+        title: Mostrar Comunidad
+    new:
+        link: Registrar
+        title: Registrar Comunidad
+        submit: Aceptar
+        flash: Los datos nuevos han sido registrados exitosamente
+    edit:
+        link: Editar
+        title: Editar Comunidad
+        submit: Aceptar
+        flash: Los cambios han sido realizados satisfactoriamente
+    delete:
+        link: Eliminar
+        title: Eliminar Comunidad
+        message: Los datos que desea eliminar no podrán ser recuperados
+        submit: Aceptar
+        flash: Los datos han sido eliminados
+    form:
+        createdAt: Creado
+        updatedAt: Actualizado
+        deletedAt: Borrado
+        actions: Acciones
+        id: ID
+        name: Nombre
+
+communitystaff:
+    title:
+        index: Colaboradores
+        properties: Datos del colaborador
+        list: Lista de Colaboradores
+    list:
+        link: Explorar
+        title: Lista de Colaboradores
+    show:
+        link: Mostrar
+        title: Mostrar Colaborador
+    new:
+        link: Registrar
+        title: Registrar Colaborador
+        submit: Aceptar
+        flash: Los datos nuevos han sido registrados exitosamente
+    edit:
+        link: Editar
+        title: Editar Colaborador
+        submit: Aceptar
+        flash: Los cambios han sido realizados satisfactoriamente
+    delete:
+        link: Eliminar
+        title: Eliminar Colaborador
+        message: Los datos que desea eliminar no podrán ser recuperados
+        submit: Aceptar
+        flash: Los datos han sido eliminados
+    form:
+        createdAt: Creado
+        updatedAt: Actualizado
+        deletedAt: Borrado
+        actions: Acciones
+        id: ID
+        name: Nombre
+        person: Persona
+        community: Comunidad
+        role: Cargo
 
 person:
     list:

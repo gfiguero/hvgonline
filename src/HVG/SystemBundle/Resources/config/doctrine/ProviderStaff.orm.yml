@@ -1,0 +1,39 @@
+HVG\SystemBundle\Entity\ProviderStaff:
+    type: entity
+    table: ProviderStaff
+    repositoryClass: HVG\SystemBundle\Entity\ProviderStaffRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        person:
+            targetEntity: HVG\SystemBundle\Entity\Person
+        provider:
+            targetEntity: HVG\SystemBundle\Entity\Provider
+            inversedBy: provider_staff
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

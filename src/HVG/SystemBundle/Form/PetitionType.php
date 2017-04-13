@@ -39,8 +39,8 @@ class PetitionType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('agent', null, array(
-                'label' => 'petition.form.agent',
+            ->add('user', null, array(
+                'label' => 'petition.form.user',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))

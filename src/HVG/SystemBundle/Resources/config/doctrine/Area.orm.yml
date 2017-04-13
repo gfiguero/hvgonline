@@ -12,8 +12,8 @@ HVG\SystemBundle\Entity\Area:
         petitions:
             targetEntity: HVG\SystemBundle\Entity\Petition
             mappedBy: area
-        agents:
-            targetEntity: HVG\SystemBundle\Entity\Agent
+        users:
+            targetEntity: HVG\UserBundle\Entity\User
             mappedBy: area
         tickets:
             targetEntity: HVG\SystemBundle\Entity\Ticket

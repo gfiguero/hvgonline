@@ -2,31 +2,39 @@
 {{ "{% extends 'HVGSystemBundle::base.html.twig' %}" }}
 {{ "{% use 'HVGSystemBundle::navbar.html.twig' %}" }}
 {{ "{% use 'HVGSystemBundle::sidebar.html.twig' %}" }}
+{{ "{% use 'HVGSystemBundle::icons.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
-{{ "{% set translation_domain = 'HVGSystemBundle' %}" }}
+{{ "{% set translation_domain = '" ~ bundle ~ "' %}" }}
 {{ "{% trans_default_domain translation_domain %}" }}
 
-{{ "{% block title %}" }}{{ "{{ '" ~ entity_singularized|lower ~ ".list.title'|trans }}" }}{{ "{% endblock %}" }}
+{{ "{% block title %}" }}{{ "{{ '" ~ entity_singularized|lower ~ ".title.index'|trans }}" }}{{ "{% endblock %}" }}
 
 {{ "{% block body %}" }}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{{ "{% include 'HVGSystemBundle::icon.html.twig' %}" }}{{ "{{ '" ~ entity_singularized|lower ~ ".list.title'|trans }}" }}</h1>
+                <h1 class="page-header">{{ "{% block icons %}{{ parent() }}{% endblock %}{{ '" ~ entity_singularized|lower ~ ".title.index'|trans }}" }}</h1>
                 {{ "{% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}" }}
             </div>
         </div>
         <!-- /#page-header -->
 
+        <div class="row" id="page-toolbar">
+            <div class="col-lg-12">
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNew">{{ "{{ icon('plus') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".new.link'|trans }}" }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-toolbar -->
+
         <div class="row" id="page-list">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="btn-toolbar">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNew">{{ "{{ icon('plus') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".new.link'|trans }}" }}</button>
-                        </div>
+                        <h2 class="panel-title">{{ "{{ '" ~ entity_singularized|lower ~ ".list.title'|trans }}" }}</h2>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
@@ -89,19 +97,6 @@
                             {%- endif %}
 
                             {%- endfor %}
-{#}
-                                    <td>
-                                        <div class="btn-toolbar">
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modalEdit{{ "{{ " ~ entity_singularized|lower ~ ".id }}" }}">{{ "{{ icon('edit') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".edit.link'|trans }}" }}</button>
-                                                <a type="button" class="btn btn-sm btn-warning" href="{{ "{{ path('" ~ route_name_prefix ~ "_show', { 'id': " ~ entity_singularized ~ "." ~ identifier ~ " }) }}" }}">{{ "{{ icon('search') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".show.link'|trans }}" }}</a>
-                                            </div>
-                                            <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDelete{{ "{{ " ~ entity_singularized|lower ~ ".id }}" }}">{{ "{{ icon('trash') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".delete.link'|trans }}" }}</button>
-                                            </div>
-                                        </div>
-                                    </td>
-{#}
 
                                 </tr>
                             {{ '{% endfor %}' }}
@@ -120,7 +115,7 @@
 
         <div id="page-modal">
             <div class="modal fade" id="modalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ "{{ icon('times') }}" }}</button>
@@ -131,7 +126,9 @@
                                 <div class="col-xs-12">
                                     {{ "{{ form_start(newForm, { 'style': 'horizontal' }) }}" }}
                                         {{ "{{ form_widget(newForm) }}" }}
-                                        <button type="submit" class="btn btn-primary btn-block">{{ "{{ icon('check') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".new.submit'|trans }}" }}</button>
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ "{{ icon('check fa-fw') }}&nbsp;{{ '" ~ entity_singularized|lower ~ ".new.submit'|trans }}" }}</button>
+                                        </div></div>
                                     {{ "{{ form_end(newForm) }}" }}
                                 </div>
                             </div>
@@ -142,7 +139,7 @@
 
             {{ '{% for key, ' ~ entity_singularized|lower ~ ' in ' ~ entity_pluralized ~ ' %}' }}
             <div class="modal fade" id="modalEdit{{ '{{ ' ~ entity_singularized|lower ~ '.id }}' }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ "{{ icon('times') }}" }}</button>
@@ -154,7 +151,9 @@
                                     {{ "{% set editForm = attribute(editForms, key) %}" }}
                                     {{ "{{ form_start(editForm, { 'style': 'horizontal' }) }}" }}
                                         {{ "{{ form_widget(editForm) }}" }}
-                                        <button type="submit" class="btn btn-primary btn-block">{{ "{{ icon('check') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".edit.submit'|trans }}" }}</button>
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ "{{ icon('check fa-fw') }}&nbsp;{{ '" ~ entity_singularized|lower ~ ".edit.submit'|trans }}" }}</button>
+                                        </div></div>
                                     {{ "{{ form_end(editForm) }}" }}
                                 </div>
                             </div>

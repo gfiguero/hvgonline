@@ -18,6 +18,11 @@ class CommunityType extends AbstractType
                 'label' => 'community.form.name',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('person', null, array(
+                'label' => 'community.form.person',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
             ))
         ;
     }

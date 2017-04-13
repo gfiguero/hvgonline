@@ -11,6 +11,7 @@ HVG\SystemBundle\Entity\Building:
     manyToOne:
         community:
             targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: buildings
     fields:
         name:
             type: string

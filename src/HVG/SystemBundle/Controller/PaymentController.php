@@ -57,14 +57,21 @@ class PaymentController extends Controller
         $newForm = $this->createNewForm($payment);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($payment);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'payment.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($payment);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'payment.flash.created' );
+            } else {
+                return $this->render('payment/new.html.twig', array(
+                    'payment' => $payment,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('payment_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class PaymentController extends Controller
     public function editAction(Request $request, Payment $payment)
     {
         $editForm = $this->createEditForm($payment);
+        $deleteForm = $this->createDeleteForm($payment);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($payment);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'payment.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($payment);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'payment.flash.updated' );
+            } else {
+                return $this->render('payment/edit.html.twig', array(
+                    'payment' => $payment,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('payment_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class PaymentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($payment);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'payment.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'payment.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('payment_index'));
     }
 
     /**

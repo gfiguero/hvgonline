@@ -57,14 +57,21 @@ class BankAccountKindController extends Controller
         $newForm = $this->createNewForm($bankAccountKind);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($bankAccountKind);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'bankAccountKind.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($bankAccountKind);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'bankAccountKind.flash.created' );
+            } else {
+                return $this->render('bankaccountkind/new.html.twig', array(
+                    'bankAccountKind' => $bankAccountKind,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('bankaccountkind_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class BankAccountKindController extends Controller
     public function editAction(Request $request, BankAccountKind $bankAccountKind)
     {
         $editForm = $this->createEditForm($bankAccountKind);
+        $deleteForm = $this->createDeleteForm($bankAccountKind);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($bankAccountKind);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'bankAccountKind.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($bankAccountKind);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'bankAccountKind.flash.updated' );
+            } else {
+                return $this->render('bankaccountkind/edit.html.twig', array(
+                    'bankAccountKind' => $bankAccountKind,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('bankaccountkind_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class BankAccountKindController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($bankAccountKind);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'bankAccountKind.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'bankAccountKind.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('bankaccountkind_index'));
     }
 
     /**

@@ -57,14 +57,21 @@ class ResultController extends Controller
         $newForm = $this->createNewForm($result);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($result);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'result.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($result);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'result.flash.created' );
+            } else {
+                return $this->render('result/new.html.twig', array(
+                    'result' => $result,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('result_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class ResultController extends Controller
     public function editAction(Request $request, Result $result)
     {
         $editForm = $this->createEditForm($result);
+        $deleteForm = $this->createDeleteForm($result);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($result);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'result.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($result);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'result.flash.updated' );
+            } else {
+                return $this->render('result/edit.html.twig', array(
+                    'result' => $result,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('result_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class ResultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($result);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'result.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'result.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('result_index'));
     }
 
     /**

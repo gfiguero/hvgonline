@@ -57,14 +57,21 @@ class AllowanceChargeController extends Controller
         $newForm = $this->createNewForm($allowanceCharge);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($allowanceCharge);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'allowanceCharge.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($allowanceCharge);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'allowanceCharge.flash.created' );
+            } else {
+                return $this->render('allowancecharge/new.html.twig', array(
+                    'allowanceCharge' => $allowanceCharge,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('allowancecharge_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class AllowanceChargeController extends Controller
     public function editAction(Request $request, AllowanceCharge $allowanceCharge)
     {
         $editForm = $this->createEditForm($allowanceCharge);
+        $deleteForm = $this->createDeleteForm($allowanceCharge);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($allowanceCharge);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'allowanceCharge.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($allowanceCharge);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'allowanceCharge.flash.updated' );
+            } else {
+                return $this->render('allowancecharge/edit.html.twig', array(
+                    'allowanceCharge' => $allowanceCharge,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('allowancecharge_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class AllowanceChargeController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($allowanceCharge);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'allowanceCharge.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'allowanceCharge.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('allowancecharge_index'));
     }
 
     /**

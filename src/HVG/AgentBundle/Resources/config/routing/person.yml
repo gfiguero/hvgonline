@@ -1,0 +1,24 @@
+agent_person_index:
+    path:     /
+    defaults: { _controller: "HVGAgentBundle:Person:index" }
+    methods:  GET
+
+agent_person_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGAgentBundle:Person:show" }
+    methods:  GET
+
+agent_person_new:
+    path:     /new
+    defaults: { _controller: "HVGAgentBundle:Person:new" }
+    methods:  [GET, POST]
+
+agent_person_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:Person:edit" }
+    methods:  [GET, POST]
+
+agent_person_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGAgentBundle:Person:delete" }
+    methods:  DELETE

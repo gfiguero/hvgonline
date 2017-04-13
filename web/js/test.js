@@ -8,4 +8,10 @@
         maxHeight: 400,
         disableIfEmpty: true
     };
-    $('#hvg_systembundle_ticket_unit').multiselect(optionsUnit);
+    $('.multiselect_person').multiselect(optionsUnit);
+    var optionsRut = {
+        formatOn: 'keyup',
+        minimumLength: 8,
+        validateOn: 'change keyup'
+    }
+    $('.rut').rut(optionsRut);

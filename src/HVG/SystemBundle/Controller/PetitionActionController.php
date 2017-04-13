@@ -57,14 +57,21 @@ class PetitionActionController extends Controller
         $newForm = $this->createNewForm($petitionAction);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($petitionAction);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'petitionAction.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($petitionAction);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'petitionAction.flash.created' );
+            } else {
+                return $this->render('petitionaction/new.html.twig', array(
+                    'petitionAction' => $petitionAction,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('petitionaction_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class PetitionActionController extends Controller
     public function editAction(Request $request, PetitionAction $petitionAction)
     {
         $editForm = $this->createEditForm($petitionAction);
+        $deleteForm = $this->createDeleteForm($petitionAction);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($petitionAction);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'petitionAction.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($petitionAction);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'petitionAction.flash.updated' );
+            } else {
+                return $this->render('petitionaction/edit.html.twig', array(
+                    'petitionAction' => $petitionAction,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('petitionaction_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class PetitionActionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($petitionAction);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'petitionAction.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'petitionAction.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('petitionaction_index'));
     }
 
     /**

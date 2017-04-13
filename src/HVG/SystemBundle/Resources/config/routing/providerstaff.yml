@@ -1,0 +1,24 @@
+providerstaff_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:ProviderStaff:index" }
+    methods:  GET
+
+providerstaff_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:ProviderStaff:show" }
+    methods:  GET
+
+providerstaff_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:ProviderStaff:new" }
+    methods:  [GET, POST]
+
+providerstaff_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:ProviderStaff:edit" }
+    methods:  [GET, POST]
+
+providerstaff_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:ProviderStaff:delete" }
+    methods:  DELETE

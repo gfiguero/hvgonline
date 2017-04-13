@@ -57,14 +57,21 @@ class FundController extends Controller
         $newForm = $this->createNewForm($fund);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($fund);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'fund.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($fund);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'fund.flash.created' );
+            } else {
+                return $this->render('fund/new.html.twig', array(
+                    'fund' => $fund,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('fund_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class FundController extends Controller
     public function editAction(Request $request, Fund $fund)
     {
         $editForm = $this->createEditForm($fund);
+        $deleteForm = $this->createDeleteForm($fund);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($fund);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'fund.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($fund);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'fund.flash.updated' );
+            } else {
+                return $this->render('fund/edit.html.twig', array(
+                    'fund' => $fund,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('fund_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class FundController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($fund);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'fund.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'fund.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('fund_index'));
     }
 
     /**

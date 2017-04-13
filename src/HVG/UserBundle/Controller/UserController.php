@@ -6,6 +6,14 @@ use HVG\UserBundle\Entity\User;
 use HVG\UserBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+use FOS\UserBundle\Model\UserInterface;
 
 /**
  * User controller.
@@ -27,57 +35,11 @@ class UserController extends Controller
         else $users = $em->getRepository('HVGUserBundle:User')->findAll();
         $paginator = $this->get('knp_paginator');
         $users = $paginator->paginate($users, $request->query->getInt('page', 1), 100);
-        $user = new User();
-        $newForm = $this->createNewForm($user)->createView();
 
-        $editForms = array();
-        $deleteForms = array();
-        foreach($users as $key => $user) {
-            $editForms[] = $this->createEditForm($user)->createView();
-            $deleteForms[] = $this->createDeleteForm($user)->createView();
-        }
-
-        return $this->render('user/index.html.twig', array(
+        return $this->render('HVGUserBundle:User:index.html.twig', array(
             'users' => $users,
             'direction' => $direction,
             'sort' => $sort,
-            'newForm' => $newForm,
-            'editForms' => $editForms,
-            'deleteForms' => $deleteForms,
-        ));
-    }
-
-    /**
-     * Creates a new User entity.
-     *
-     */
-    public function newAction(Request $request)
-    {
-        $user = new User();
-        $newForm = $this->createNewForm($user);
-        $newForm->handleRequest($request);
-
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'user.flash.created' );    
-        }
-
-        return $this->redirect($request->headers->get('referer'));
-    }
-
-    /**
-     * Creates a form to create a new User entity.
-     *
-     * @param User $user The User entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createNewForm(User $user)
-    {
-        return $this->createForm('HVG\UserBundle\Form\UserType', $user, array(
-            'action' => $this->generateUrl('user_new'),
         ));
     }
 
@@ -87,13 +49,8 @@ class UserController extends Controller
      */
     public function showAction(User $user)
     {
-        $editForm = $this->createEditForm($user);
-        $deleteForm = $this->createDeleteForm($user);
-
-        return $this->render('user/show.html.twig', array(
+        return $this->render('HVGUserBundle:User:show.html.twig', array(
             'user' => $user,
-            'editForm' => $editForm->createView(),
-            'deleteForm' => $deleteForm->createView(),
         ));
     }
 
@@ -111,9 +68,12 @@ class UserController extends Controller
             $em->persist($user);
             $em->flush();
             $request->getSession()->getFlashBag()->add( 'success', 'user.flash.updated' );    
+            return $this->redirect($this->generateUrl('user_show', array('id' => $user->getId())));
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->render('HVGUserBundle:User:edit.html.twig', array(
+            'editForm' => $editForm->createView(),
+        ));
     }
 
     /**

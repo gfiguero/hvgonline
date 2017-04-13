@@ -57,14 +57,21 @@ class PersonController extends Controller
         $newForm = $this->createNewForm($person);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($person);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'person.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($person);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'person.flash.created' );
+            } else {
+                return $this->render('person/new.html.twig', array(
+                    'person' => $person,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('person_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class PersonController extends Controller
     public function editAction(Request $request, Person $person)
     {
         $editForm = $this->createEditForm($person);
+        $deleteForm = $this->createDeleteForm($person);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($person);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'person.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($person);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'person.flash.updated' );
+            } else {
+                return $this->render('person/edit.html.twig', array(
+                    'person' => $person,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('person_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class PersonController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($person);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'person.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'person.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('person_index'));
     }
 
     /**

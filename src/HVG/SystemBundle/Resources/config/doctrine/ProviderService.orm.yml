@@ -1,0 +1,37 @@
+HVG\SystemBundle\Entity\ProviderService:
+    type: entity
+    table: ProviderService
+    repositoryClass: HVG\SystemBundle\Entity\ProviderServiceRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        providers:
+            targetEntity: HVG\SystemBundle\Entity\Provider
+            mappedBy: provider_service
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

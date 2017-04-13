@@ -57,14 +57,21 @@ class AllowanceController extends Controller
         $newForm = $this->createNewForm($allowance);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($allowance);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'allowance.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($allowance);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'allowance.flash.created' );
+            } else {
+                return $this->render('allowance/new.html.twig', array(
+                    'allowance' => $allowance,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('allowance_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class AllowanceController extends Controller
     public function editAction(Request $request, Allowance $allowance)
     {
         $editForm = $this->createEditForm($allowance);
+        $deleteForm = $this->createDeleteForm($allowance);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($allowance);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'allowance.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($allowance);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'allowance.flash.updated' );
+            } else {
+                return $this->render('allowance/edit.html.twig', array(
+                    'allowance' => $allowance,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('allowance_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class AllowanceController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($allowance);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'allowance.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'allowance.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('allowance_index'));
     }
 
     /**

@@ -57,14 +57,21 @@ class ChargeController extends Controller
         $newForm = $this->createNewForm($charge);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($charge);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'charge.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($charge);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'charge.flash.created' );
+            } else {
+                return $this->render('charge/new.html.twig', array(
+                    'charge' => $charge,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('charge_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class ChargeController extends Controller
     public function editAction(Request $request, Charge $charge)
     {
         $editForm = $this->createEditForm($charge);
+        $deleteForm = $this->createDeleteForm($charge);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($charge);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'charge.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($charge);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'charge.flash.updated' );
+            } else {
+                return $this->render('charge/edit.html.twig', array(
+                    'charge' => $charge,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('charge_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class ChargeController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($charge);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'charge.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'charge.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('charge_index'));
     }
 
     /**

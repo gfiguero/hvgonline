@@ -18,8 +18,8 @@ HVG\SystemBundle\Entity\Petition:
         area:
             targetEntity: HVG\SystemBundle\Entity\Area
             inversedBy: petitions
-        agent:
-            targetEntity: HVG\SystemBundle\Entity\Agent
+        user:
+            targetEntity: HVG\UserBundle\Entity\User
             inversedBy: petitions
     oneToMany:
         petition_actions:

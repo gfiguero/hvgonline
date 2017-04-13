@@ -11,8 +11,8 @@ HVG\SystemBundle\Entity\PetitionEvaluation:
         petition:
             targetEntity: HVG\SystemBundle\Entity\Petition
             inversedBy: petition_evaluations
-        agent:
-            targetEntity: HVG\SystemBundle\Entity\Agent
+        user:
+            targetEntity: HVG\UserBundle\Entity\User
             inversedBy: petition_evaluations
     fields:
         value:

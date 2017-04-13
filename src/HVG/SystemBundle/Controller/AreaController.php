@@ -57,14 +57,21 @@ class AreaController extends Controller
         $newForm = $this->createNewForm($area);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($area);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'area.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($area);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'area.flash.created' );
+            } else {
+                return $this->render('area/new.html.twig', array(
+                    'area' => $area,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('area_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class AreaController extends Controller
     public function editAction(Request $request, Area $area)
     {
         $editForm = $this->createEditForm($area);
+        $deleteForm = $this->createDeleteForm($area);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($area);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'area.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($area);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'area.flash.updated' );
+            } else {
+                return $this->render('area/edit.html.twig', array(
+                    'area' => $area,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('area_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class AreaController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($area);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'area.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'area.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('area_index'));
     }
 
     /**

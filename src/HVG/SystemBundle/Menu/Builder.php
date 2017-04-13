@@ -16,8 +16,10 @@ class Builder implements ContainerAwareInterface
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
         $menu->setChildrenAttribute('id', 'top-menu');
-//        $menu->addChild('frontpage.index.link', array('route' => 'unisystem_frontpage_main'))->setAttribute('icon', 'flag fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
-        $menu->addChild('topmenu.user.link', array('route' => 'user_index'))->setAttribute('icon', 'user fa-fw')->setAttribute('translation_domain', 'HVGUserBundle');
+        $menu->addChild('topmenu.user', array('route' => 'user_index'))->setAttribute('icon', 'id-card fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+        $menu->addChild('topmenu.agentdashboard', array('route' => 'hvg_agent_dashboard'))->setAttribute('icon', 'dashboard fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+        $menu->addChild('topmenu.systemdashboard', array('route' => 'hvg_system_dashboard'))->setAttribute('icon', 'gears fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+        $menu->addChild('topmenu.logout', array('route' => 'fos_user_security_logout'))->setAttribute('icon', 'sign-out fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
 
         return $menu;
 
@@ -33,13 +35,17 @@ class Builder implements ContainerAwareInterface
         $sidemenu->addChild('sidemenu.configuration.root')->setAttribute('icon', 'list fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->setChildrenAttribute('class', 'nav nav-second-level collapse');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.person', array('route' => 'person_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
-        $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.agent', array('route' => 'agent_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.community', array('route' => 'community_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.building', array('route' => 'building_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.unit', array('route' => 'unit_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.area', array('route' => 'area_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.fund', array('route' => 'fund_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.provider', array('route' => 'provider_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
+
+        $sidemenu->addChild('sidemenu.resource.root')->setAttribute('icon', 'list fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+        $sidemenu['sidemenu.resource.root']->setChildrenAttribute('class', 'nav nav-second-level collapse');
+        $sidemenu['sidemenu.resource.root']->addChild('sidemenu.resource.role', array('route' => 'role_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
+        $sidemenu['sidemenu.resource.root']->addChild('sidemenu.resource.communitystaff', array('route' => 'communitystaff_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
 
         $sidemenu->addChild('sidemenu.accounting.root')->setAttribute('icon', 'list fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.accounting.root']->setChildrenAttribute('class', 'nav nav-second-level collapse');

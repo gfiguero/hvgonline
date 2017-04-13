@@ -11,8 +11,8 @@ HVG\SystemBundle\Entity\PetitionAction:
         petition:
             targetEntity: HVG\SystemBundle\Entity\Petition
             inversedBy: petition_actions
-        agent:
-            targetEntity: HVG\SystemBundle\Entity\Agent
+        user:
+            targetEntity: HVG\UserBundle\Entity\User
             inversedBy: petition_actions
     fields:
         description:

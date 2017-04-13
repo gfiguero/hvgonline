@@ -8,15 +8,30 @@ HVG\UserBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+    oneToOne:
+        person:
+            targetEntity: HVG\SystemBundle\Entity\Person
+    manyToOne:
+        area:
+            targetEntity: HVG\SystemBundle\Entity\Area
+            inversedBy: users
+    oneToMany:
+        tickets:
+            targetEntity: HVG\SystemBundle\Entity\Ticket
+            mappedBy: user
+        ticket_actions:
+            targetEntity: HVG\SystemBundle\Entity\TicketAction
+            mappedBy: user
+        petition_actions:
+            targetEntity: HVG\SystemBundle\Entity\PetitionAction
+            mappedBy: user
+        petition_evaluations:
+            targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
+            mappedBy: user
+        petitions:
+            targetEntity: HVG\SystemBundle\Entity\Petition
+            mappedBy: user
     fields:
-        fullname:
-            type: string
-            length: 300
-            nullable: true
-        shortname:
-            type: string
-            length: 100
-            nullable: true
         createdAt:
             type: datetime
             gedmo:

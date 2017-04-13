@@ -21,9 +21,6 @@ HVG\SystemBundle\Entity\Project:
         actions:
             targetEntity: HVG\SystemBundle\Entity\ProjectAction
             mappedBy: project
-        commands:
-            targetEntity: HVG\SystemBundle\Entity\ProjectCommand
-            mappedBy: project
         proposals:
             targetEntity: HVG\SystemBundle\Entity\ProjectProposal
             mappedBy: project

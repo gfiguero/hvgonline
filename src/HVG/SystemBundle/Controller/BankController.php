@@ -57,14 +57,21 @@ class BankController extends Controller
         $newForm = $this->createNewForm($bank);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($bank);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'bank.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($bank);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'bank.flash.created' );
+            } else {
+                return $this->render('bank/new.html.twig', array(
+                    'bank' => $bank,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('bank_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class BankController extends Controller
     public function editAction(Request $request, Bank $bank)
     {
         $editForm = $this->createEditForm($bank);
+        $deleteForm = $this->createDeleteForm($bank);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($bank);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'bank.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($bank);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'bank.flash.updated' );
+            } else {
+                return $this->render('bank/edit.html.twig', array(
+                    'bank' => $bank,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('bank_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class BankController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($bank);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'bank.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'bank.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('bank_index'));
     }
 
     /**

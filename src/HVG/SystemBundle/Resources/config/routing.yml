@@ -1,3 +1,8 @@
+#Dashboard
+hvg_system_dashboard:
+    path:     /
+    defaults: { _controller: HVGSystemBundle:Dashboard:index }
+
 #Accounting
 hvg_system_expenditure:
     resource: "@HVGSystemBundle/Resources/config/routing/expenditure.yml"
@@ -27,18 +32,23 @@ hvg_system_allowancecharge:
     resource: "@HVGSystemBundle/Resources/config/routing/allowancecharge.yml"
     prefix:   /allowancecharge
 
-#Configuration
-hvg_system_agent:
-    resource: "@HVGSystemBundle/Resources/config/routing/agent.yml"
-    prefix:   /agent
+#Human Resources
+hvg_system_communitystaff:
+    resource: "@HVGSystemBundle/Resources/config/routing/communitystaff.yml"
+    prefix:   /communitystaff
 
+hvg_system_role:
+    resource: "@HVGSystemBundle/Resources/config/routing/role.yml"
+    prefix:   /role
+
+#Configuration
 hvg_system_person:
     resource: "@HVGSystemBundle/Resources/config/routing/person.yml"
     prefix:   /person
 
-hvg_system_contactperson:
-    resource: "@HVGSystemBundle/Resources/config/routing/contactperson.yml"
-    prefix:   /contactperson
+hvg_system_contact:
+    resource: "@HVGSystemBundle/Resources/config/routing/contact.yml"
+    prefix:   /contact
 
 hvg_system_personprovider: 
     resource: "@HVGSystemBundle/Resources/config/routing/personprovider.yml"

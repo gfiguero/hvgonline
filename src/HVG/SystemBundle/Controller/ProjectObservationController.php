@@ -57,14 +57,21 @@ class ProjectObservationController extends Controller
         $newForm = $this->createNewForm($projectObservation);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($projectObservation);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'projectObservation.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($projectObservation);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'projectObservation.flash.created' );
+            } else {
+                return $this->render('projectobservation/new.html.twig', array(
+                    'projectObservation' => $projectObservation,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectobservation_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class ProjectObservationController extends Controller
     public function editAction(Request $request, ProjectObservation $projectObservation)
     {
         $editForm = $this->createEditForm($projectObservation);
+        $deleteForm = $this->createDeleteForm($projectObservation);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($projectObservation);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'projectObservation.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($projectObservation);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'projectObservation.flash.updated' );
+            } else {
+                return $this->render('projectobservation/edit.html.twig', array(
+                    'projectObservation' => $projectObservation,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectobservation_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class ProjectObservationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($projectObservation);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'projectObservation.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'projectObservation.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectobservation_index'));
     }
 
     /**

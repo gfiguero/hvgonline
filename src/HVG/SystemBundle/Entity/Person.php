@@ -49,7 +49,7 @@ class Person
 
     public function __toString()
     {
-        return $this->name;
+        return (string) $this->name;
     }
 
     /**
@@ -356,5 +356,44 @@ class Person
     public function removePersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
     {
         $this->person_provider->removeElement($personProvider);
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contacts;
+
+
+    /**
+     * Add contact
+     *
+     * @param \HVG\SystemBundle\Entity\Contact $contact
+     *
+     * @return Person
+     */
+    public function addContact(\HVG\SystemBundle\Entity\Contact $contact)
+    {
+        $this->contacts[] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Remove contact
+     *
+     * @param \HVG\SystemBundle\Entity\Contact $contact
+     */
+    public function removeContact(\HVG\SystemBundle\Entity\Contact $contact)
+    {
+        $this->contacts->removeElement($contact);
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }

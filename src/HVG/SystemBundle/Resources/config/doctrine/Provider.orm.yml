@@ -8,19 +8,19 @@ HVG\SystemBundle\Entity\Provider:
             id: true
             generator:
                 strategy: AUTO
-    manyToOne:
-        service:
-            targetEntity: HVG\SystemBundle\Entity\Service
-            inversedBy: providers
     oneToOne:
         person:
             targetEntity: HVG\SystemBundle\Entity\Person
+    manyToOne:
+        provider_service:
+            targetEntity: HVG\SystemBundle\Entity\ProviderService
+            inversedBy: providers
     oneToMany:
-        person_provider:
-            targetEntity: HVG\SystemBundle\Entity\PersonProvider
+        provider_staff:
+            targetEntity: HVG\SystemBundle\Entity\ProviderStaff
             mappedBy: provider
-        bank_accounts:
-            targetEntity: HVG\SystemBundle\Entity\BankAccount
+        provider_accounts:
+            targetEntity: HVG\SystemBundle\Entity\ProviderAccount
             mappedBy: provider
     fields:
         createdAt:

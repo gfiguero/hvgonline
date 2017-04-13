@@ -1,0 +1,24 @@
+providerservice_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:ProviderService:index" }
+    methods:  GET
+
+providerservice_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:ProviderService:show" }
+    methods:  GET
+
+providerservice_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:ProviderService:new" }
+    methods:  [GET, POST]
+
+providerservice_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:ProviderService:edit" }
+    methods:  [GET, POST]
+
+providerservice_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:ProviderService:delete" }
+    methods:  DELETE

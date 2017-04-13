@@ -188,4 +188,111 @@ class Community
     {
         return $this->petitions;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $buildings;
+
+
+    /**
+     * Add building
+     *
+     * @param \HVG\SystemBundle\Entity\Building $building
+     *
+     * @return Community
+     */
+    public function addBuilding(\HVG\SystemBundle\Entity\Building $building)
+    {
+        $this->buildings[] = $building;
+
+        return $this;
+    }
+
+    /**
+     * Remove building
+     *
+     * @param \HVG\SystemBundle\Entity\Building $building
+     */
+    public function removeBuilding(\HVG\SystemBundle\Entity\Building $building)
+    {
+        $this->buildings->removeElement($building);
+    }
+
+    /**
+     * Get buildings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBuildings()
+    {
+        return $this->buildings;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $community_staffs;
+
+
+    /**
+     * Add communityStaff
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityStaff $communityStaff
+     *
+     * @return Community
+     */
+    public function addCommunityStaff(\HVG\SystemBundle\Entity\CommunityStaff $communityStaff)
+    {
+        $this->community_staffs[] = $communityStaff;
+
+        return $this;
+    }
+
+    /**
+     * Remove communityStaff
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityStaff $communityStaff
+     */
+    public function removeCommunityStaff(\HVG\SystemBundle\Entity\CommunityStaff $communityStaff)
+    {
+        $this->community_staffs->removeElement($communityStaff);
+    }
+
+    /**
+     * Get communityStaffs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommunityStaffs()
+    {
+        return $this->community_staffs;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\Person
+     */
+    private $person;
+
+
+    /**
+     * Set person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     *
+     * @return Community
+     */
+    public function setPerson(\HVG\SystemBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \HVG\SystemBundle\Entity\Person
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
 }

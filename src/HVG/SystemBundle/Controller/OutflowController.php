@@ -57,14 +57,21 @@ class OutflowController extends Controller
         $newForm = $this->createNewForm($outflow);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($outflow);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'outflow.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($outflow);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'outflow.flash.created' );
+            } else {
+                return $this->render('outflow/new.html.twig', array(
+                    'outflow' => $outflow,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('outflow_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class OutflowController extends Controller
     public function editAction(Request $request, Outflow $outflow)
     {
         $editForm = $this->createEditForm($outflow);
+        $deleteForm = $this->createDeleteForm($outflow);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($outflow);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'outflow.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($outflow);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'outflow.flash.updated' );
+            } else {
+                return $this->render('outflow/edit.html.twig', array(
+                    'outflow' => $outflow,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('outflow_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class OutflowController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($outflow);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'outflow.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'outflow.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('outflow_index'));
     }
 
     /**

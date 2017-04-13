@@ -57,14 +57,21 @@ class ExpenditureController extends Controller
         $newForm = $this->createNewForm($expenditure);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($expenditure);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'expenditure.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($expenditure);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'expenditure.flash.created' );
+            } else {
+                return $this->render('expenditure/new.html.twig', array(
+                    'expenditure' => $expenditure,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('expenditure_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class ExpenditureController extends Controller
     public function editAction(Request $request, Expenditure $expenditure)
     {
         $editForm = $this->createEditForm($expenditure);
+        $deleteForm = $this->createDeleteForm($expenditure);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($expenditure);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'expenditure.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($expenditure);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'expenditure.flash.updated' );
+            } else {
+                return $this->render('expenditure/edit.html.twig', array(
+                    'expenditure' => $expenditure,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('expenditure_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class ExpenditureController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($expenditure);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'expenditure.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'expenditure.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('expenditure_index'));
     }
 
     /**

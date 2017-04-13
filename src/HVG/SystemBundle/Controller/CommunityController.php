@@ -57,14 +57,21 @@ class CommunityController extends Controller
         $newForm = $this->createNewForm($community);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($community);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'community.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($community);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'community.flash.created' );
+            } else {
+                return $this->render('community/new.html.twig', array(
+                    'community' => $community,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('community_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class CommunityController extends Controller
     public function editAction(Request $request, Community $community)
     {
         $editForm = $this->createEditForm($community);
+        $deleteForm = $this->createDeleteForm($community);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($community);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'community.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($community);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'community.flash.updated' );
+            } else {
+                return $this->render('community/edit.html.twig', array(
+                    'community' => $community,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('community_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class CommunityController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($community);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'community.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'community.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('community_index'));
     }
 
     /**

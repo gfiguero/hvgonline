@@ -1,0 +1,24 @@
+communitystaff_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:CommunityStaff:index" }
+    methods:  GET
+
+communitystaff_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:CommunityStaff:show" }
+    methods:  GET
+
+communitystaff_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:CommunityStaff:new" }
+    methods:  [GET, POST]
+
+communitystaff_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:CommunityStaff:edit" }
+    methods:  [GET, POST]
+
+communitystaff_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:CommunityStaff:delete" }
+    methods:  DELETE

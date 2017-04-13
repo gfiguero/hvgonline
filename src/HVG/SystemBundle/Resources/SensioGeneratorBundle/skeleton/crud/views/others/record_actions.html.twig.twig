@@ -11,9 +11,9 @@
 
                             {%- if ('delete' in actions) and (not hide_delete) %}
 
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-confirm">{{ "{{ icon('trash-o') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".delete.link'|trans }}" }}</button>
-                            <div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <div class="modal-dialog modal-md" role="document">
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">{{ "{{ icon('trash-o') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".delete.link'|trans }}" }}</button>
+                            <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                <div class="modal-dialog modal-sm" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -26,9 +26,9 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="pull-right" style="height:34px;">
-                                                {{ '{{ form_start(delete_form) }}' }}
+                                                {{ '{{ form_start(deleteForm) }}' }}
                                                     <button type="submit" class="btn btn-danger">{{ "{{ icon('trash-o') }}" }}&nbsp;{{ "{{ '" ~ entity_singularized|lower ~ ".delete.submit'|trans }}" }}</button>
-                                                {{ '{{ form_end(delete_form) }}' -}}
+                                                {{ '{{ form_end(deleteForm) }}' -}}
 
                                             </div>
                                             <div class="clearfix"></div>

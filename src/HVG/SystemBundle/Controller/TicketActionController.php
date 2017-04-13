@@ -57,14 +57,21 @@ class TicketActionController extends Controller
         $newForm = $this->createNewForm($ticketAction);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($ticketAction);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'ticketAction.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($ticketAction);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'ticketAction.flash.created' );
+            } else {
+                return $this->render('ticketaction/new.html.twig', array(
+                    'ticketAction' => $ticketAction,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('ticketaction_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class TicketActionController extends Controller
     public function editAction(Request $request, TicketAction $ticketAction)
     {
         $editForm = $this->createEditForm($ticketAction);
+        $deleteForm = $this->createDeleteForm($ticketAction);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($ticketAction);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'ticketAction.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($ticketAction);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'ticketAction.flash.updated' );
+            } else {
+                return $this->render('ticketaction/edit.html.twig', array(
+                    'ticketAction' => $ticketAction,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('ticketaction_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class TicketActionController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($ticketAction);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'ticketAction.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'ticketAction.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('ticketaction_index'));
     }
 
     /**

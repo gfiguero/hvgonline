@@ -57,14 +57,21 @@ class ProjectProposalController extends Controller
         $newForm = $this->createNewForm($projectProposal);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($projectProposal);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'projectProposal.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($projectProposal);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'projectProposal.flash.created' );
+            } else {
+                return $this->render('projectproposal/new.html.twig', array(
+                    'projectProposal' => $projectProposal,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectproposal_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class ProjectProposalController extends Controller
     public function editAction(Request $request, ProjectProposal $projectProposal)
     {
         $editForm = $this->createEditForm($projectProposal);
+        $deleteForm = $this->createDeleteForm($projectProposal);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($projectProposal);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'projectProposal.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($projectProposal);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'projectProposal.flash.updated' );
+            } else {
+                return $this->render('projectproposal/edit.html.twig', array(
+                    'projectProposal' => $projectProposal,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectproposal_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class ProjectProposalController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($projectProposal);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'projectProposal.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'projectProposal.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectproposal_index'));
     }
 
     /**

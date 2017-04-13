@@ -35,9 +35,9 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="pull-right" style="height:34px;">
-                                                {{ form_start(delete_form) }}
+                                                {{ form_start(deleteForm) }}
                                                     <button type="submit" class="btn btn-danger">{{ icon('trash-o') }}&nbsp;{{ 'projectcommand.delete.submit'|trans }}</button>
-                                                {{ form_end(delete_form) }}</div>
+                                                {{ form_end(deleteForm) }}</div>
                                             <div class="clearfix"></div>
                                         </div>
                                     </div>
@@ -46,12 +46,12 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        {{ form_start(edit_form, { 'style': 'horizontal' }) }}
-                            {{ form_widget(edit_form) }}
-                                <div class="form-group"><div class="col-lg-offset-3 col-lg-9">
+                        {{ form_start(editForm, { 'style': 'horizontal' }) }}
+                            {{ form_widget(editForm) }}
+                                <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
                                     <button type="submit" class="btn btn-primary">{{ icon('save') }}&nbsp;{{ 'projectcommand.edit.submit'|trans({}, 'HVGSystemBundle') }}</button>
                                 </div></div>
-                        {{ form_end(edit_form) }}
+                        {{ form_end(editForm) }}
                     </div>
                 </div>
             </div>

@@ -1,37 +1,44 @@
 ----------------------------Configuración
 php app/console doctrine:generate:entities HVGSystemBundle:Result --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:Bank --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:BankAccountKind --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Agent --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Community --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Building --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Unit --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Area --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:Service --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Result --format=yml --with-write --overwrite --no-interaction --route-prefix=result
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:Bank --format=yml --with-write --overwrite --no-interaction --route-prefix=bank
-
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:BankAccountKind --format=yml --with-write --overwrite --no-interaction --route-prefix=bankaccountkind
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Agent --format=yml --with-write --overwrite --no-interaction --route-prefix=agent
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Community --format=yml --with-write --overwrite --no-interaction --route-prefix=community
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Building --format=yml --with-write --overwrite --no-interaction --route-prefix=building
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Unit --format=yml --with-write --overwrite --no-interaction --route-prefix=unit
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Area --format=yml --with-write --overwrite --no-interaction --route-prefix=area
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:Provider --format=yml --with-write --overwrite --no-interaction --route-prefix=provider
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:Service --format=yml --with-write --overwrite --no-interaction --route-prefix=service
 
-php app/console doctrine:generate:entities HVGSystemBundle:BankAccount --path=src
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:BankAccount --format=yml --with-write --overwrite --no-interaction --route-prefix=bankaccount
+--------------- Colaboradores
+php app/console doctrine:generate:entities HVGSystemBundle:Role --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:CommunityStaff --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Role --format=yml --with-write --overwrite --no-interaction --route-prefix=role
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:CommunityStaff --format=yml --with-write --overwrite --no-interaction --route-prefix=communitystaff
 
-php app/console doctrine:generate:entities HVGSystemBundle:ContactPerson --path=src
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:ContactPerson --format=yml --with-write --overwrite --no-interaction --route-prefix=contactperson
-
+--------------- Contactos
 php app/console doctrine:generate:entities HVGSystemBundle:Person --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Contact --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Person --format=yml --with-write --overwrite --no-interaction --route-prefix=person
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Contact --format=yml --with-write --overwrite --no-interaction --route-prefix=contact
+
+--------------- Cuentas Bancarias
+php app/console doctrine:generate:entities HVGSystemBundle:Bank --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:BankAccountKind --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Bank --format=yml --with-write --overwrite --no-interaction --route-prefix=bank
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:BankAccountKind --format=yml --with-write --overwrite --no-interaction --route-prefix=bankaccountkind
+
+---------------- Proveedores
 php app/console doctrine:generate:entities HVGSystemBundle:Provider --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProviderAccount --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProviderStaff --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProviderService --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Provider --format=yml --with-write --overwrite --no-interaction --route-prefix=provider
-php app/console doctrine:generate:entities HVGSystemBundle:PersonProvider --path=src
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:PersonProvider --format=yml --with-write --overwrite --no-interaction --route-prefix=personprovider
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProviderAccount --format=yml --with-write --overwrite --no-interaction --route-prefix=provideraccount
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProviderStaff --format=yml --with-write --overwrite --no-interaction --route-prefix=providerstaff
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProviderService --format=yml --with-write --overwrite --no-interaction --route-prefix=providerservice
 
 ---------------- Seguimiento de Proyectos
 php app/console doctrine:generate:entities HVGSystemBundle:Project --path=src
@@ -39,13 +46,11 @@ php app/console doctrine:generate:entities HVGSystemBundle:ProjectObservation --
 php app/console doctrine:generate:entities HVGSystemBundle:ProjectAction --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:ProjectStatus --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:ProjectProposal --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:ProjectCommand --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Project --format=yml --with-write --overwrite --no-interaction --route-prefix=project
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectObservation --format=yml --with-write --overwrite --no-interaction --route-prefix=projectobservation
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectAction --format=yml --with-write --overwrite --no-interaction --route-prefix=projectaction
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectStatus --format=yml --with-write --overwrite --no-interaction --route-prefix=projectstatus
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectProposal --format=yml --with-write --overwrite --no-interaction --route-prefix=projectproposal
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProjectCommand --format=yml --with-write --overwrite --no-interaction --route-prefix=projectcommand
 
 ---------------- Seguimiento de Tickets
 php app/console doctrine:generate:entities HVGSystemBundle:Ticket --path=src
@@ -94,6 +99,6 @@ php app/console doctrine:schema:update --force
 
     public function __toString()
     {
-        return $this->name;
+        return (string) $this->name;
     }
 

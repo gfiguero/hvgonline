@@ -57,14 +57,21 @@ class ProjectCommandController extends Controller
         $newForm = $this->createNewForm($projectCommand);
         $newForm->handleRequest($request);
 
-        if ($newForm->isSubmitted() && $newForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($projectCommand);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'projectCommand.flash.created' );    
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($projectCommand);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'projectCommand.flash.created' );
+            } else {
+                return $this->render('projectcommand/new.html.twig', array(
+                    'projectCommand' => $projectCommand,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectcommand_index'));
     }
 
     /**
@@ -104,16 +111,25 @@ class ProjectCommandController extends Controller
     public function editAction(Request $request, ProjectCommand $projectCommand)
     {
         $editForm = $this->createEditForm($projectCommand);
+        $deleteForm = $this->createDeleteForm($projectCommand);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($projectCommand);
-            $em->flush();
-            $request->getSession()->getFlashBag()->add( 'success', 'projectCommand.flash.updated' );    
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($projectCommand);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'projectCommand.flash.updated' );
+            } else {
+                return $this->render('projectcommand/edit.html.twig', array(
+                    'projectCommand' => $projectCommand,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
+            }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectcommand_index'));
     }
 
     /**
@@ -143,10 +159,10 @@ class ProjectCommandController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($projectCommand);
             $em->flush();
-            $request->getSession()->getFlashBag()->add( 'danger', 'projectCommand.flash.deleted' );    
+            $request->getSession()->getFlashBag()->add( 'danger', 'projectCommand.flash.deleted' );
         }
 
-        return $this->redirect($request->headers->get('referer'));
+        return $this->redirect($this->generateUrl('projectcommand_index'));
     }
 
     /**

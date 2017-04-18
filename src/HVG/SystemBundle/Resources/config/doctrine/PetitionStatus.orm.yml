@@ -13,7 +13,7 @@ HVG\SystemBundle\Entity\PetitionStatus:
     oneToMany:
         petitions:
             targetEntity: HVG\SystemBundle\Entity\Petition
-            mappedBy: petition_status
+            mappedBy: petitionstatus
     fields:
         name:
             type: string

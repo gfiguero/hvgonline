@@ -6,13 +6,13 @@
 {% set translation_domain = 'HVGSystemBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'building.index.title'|trans }}{% endblock %}
+{% block title %}{{ 'unitgroup.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'building.index.title'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unitgroup.title.index'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
@@ -21,7 +21,7 @@
         <div class="row" id="page-toolbar">
             <div class="col-lg-12">
                 <div class="btn-toolbar">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNew">{{ icon('plus') }}&nbsp;{{ 'building.new.link'|trans }}</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNew">{{ icon('plus') }}&nbsp;{{ 'unitgroup.new.link'|trans }}</button>
                 </div>
             </div>
         </div>
@@ -31,35 +31,35 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">{{ 'building.list.title'|trans }}</h2>
+                        <h2 class="panel-title">{{ 'unitgroup.list.title'|trans }}</h2>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ 'building.form.actions'|trans }}</th>
-                                    <th>{{ knp_pagination_sortable(buildings, 'building.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(buildings, 'building.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(buildings, 'building.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(buildings, 'building.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ 'unitGroup.form.actions'|trans }}</th>
+                                    <th>{{ knp_pagination_sortable(unitGroups, 'unitgroup.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(unitGroups, 'unitgroup.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(unitGroups, 'unitgroup.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(unitGroups, 'unitgroup.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for key, building in buildings %}
+                            {% for key, unitgroup in unitGroups %}
                                 <tr>
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('building_show', { 'id': building.id }) }}" aria-label="{{ 'building.show.link'|trans }}">{{ icon('search') }}</a>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit{{ building.id }}">{{ icon('edit') }}</button>
-                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete{{ building.id }}">{{ icon('trash') }}</button>
+                                                <a type="button" class="btn btn-warning" href="{{ path('unitgroup_show', { 'id': unitgroup.id }) }}" aria-label="{{ 'unitgroup.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit{{ unitgroup.id }}">{{ icon('edit') }}</button>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete{{ unitgroup.id }}">{{ icon('trash') }}</button>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{% if building.id %}{{ building.id }}{% endif %}</td>
-                                    <td>{% if building.name %}{{ building.name }}{% endif %}</td>
-                                    <td>{% if building.createdAt %}{{ building.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
-                                    <td>{% if building.updatedAt %}{{ building.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if unitgroup.id %}{{ unitgroup.id }}{% endif %}</td>
+                                    <td>{% if unitgroup.name %}{{ unitgroup.name }}{% endif %}</td>
+                                    <td>{% if unitgroup.createdAt %}{{ unitgroup.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if unitgroup.updatedAt %}{{ unitgroup.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="panel-footer">
                         <div class="text-center">
-                            {{ knp_pagination_render(buildings) }}
+                            {{ knp_pagination_render(unitGroups) }}
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'building.new.title'|trans }}</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'unitgroup.new.title'|trans }}</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -89,7 +89,7 @@
                                     {{ form_start(newForm, { 'style': 'horizontal' }) }}
                                         {{ form_widget(newForm) }}
                                         <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'building.new.submit'|trans }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'unitgroup.new.submit'|trans }}</button>
                                         </div></div>
                                     {{ form_end(newForm) }}
                                 </div>
@@ -99,13 +99,13 @@
                 </div>
             </div>
 
-            {% for key, building in buildings %}
-            <div class="modal fade" id="modalEdit{{ building.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            {% for key, unitgroup in unitGroups %}
+            <div class="modal fade" id="modalEdit{{ unitgroup.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'building.edit.title'|trans }}</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'unitgroup.edit.title'|trans }}</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -114,7 +114,7 @@
                                     {{ form_start(editForm, { 'style': 'horizontal' }) }}
                                         {{ form_widget(editForm) }}
                                         <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'building.edit.submit'|trans }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'unitgroup.edit.submit'|trans }}</button>
                                         </div></div>
                                     {{ form_end(editForm) }}
                                 </div>
@@ -123,24 +123,24 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="modalDelete{{ building.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="modalDelete{{ unitgroup.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'building.delete.title'|trans }}</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'unitgroup.delete.title'|trans }}</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-2 text-center">{{ icon('exclamation-triangle fa-5x') }}</div>
-                                <div class="col-xs-10"><p>{{ 'building.delete.message'|trans }}</p></div>
+                                <div class="col-xs-10"><p>{{ 'unitgroup.delete.message'|trans }}</p></div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             {% set deleteForm = attribute(deleteForms, key) %}
                             {{ form_start(deleteForm) }}
                                 {{ form_widget(deleteForm) }}
-                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash') }}&nbsp;{{ 'building.delete.submit'|trans }}</button>
+                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash') }}&nbsp;{{ 'unitgroup.delete.submit'|trans }}</button>
                             {{ form_end(deleteForm) }}
                         </div>
                     </div>

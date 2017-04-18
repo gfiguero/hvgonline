@@ -9,7 +9,7 @@ HVG\SystemBundle\Entity\Role:
             generator:
                 strategy: AUTO
     oneToMany:
-        community_staffs:
+        communitystaffs:
             targetEntity: HVG\SystemBundle\Entity\CommunityStaff
             mappedBy: role
     fields:

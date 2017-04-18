@@ -10,10 +10,10 @@ HVG\SystemBundle\Entity\TicketAction:
     manyToOne:
         ticket:
             targetEntity: HVG\SystemBundle\Entity\Ticket
-            inversedBy: ticket_actions
+            inversedBy: ticketactions
         user:
             targetEntity: HVG\UserBundle\Entity\User
-            inversedBy: ticket_actions
+            inversedBy: ticketactions
     fields:
         description:
             type: string

@@ -1,4 +1,6 @@
 services:
-#    hvg_agent.example:
-#        class: HVG\AgentBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    hvg_agent.type.hidden_unit:
+        class: HVG\AgentBundle\Form\HiddenUnitType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type, alias: hidden_unit }

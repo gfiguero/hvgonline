@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BuildingType extends AbstractType
+class UnitGroupType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,12 +15,12 @@ class BuildingType extends AbstractType
     {
         $builder 
             ->add('name', null, array(
-                'label' => 'building.form.name',
+                'label' => 'unitgroup.form.name',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
             ->add('community', null, array(
-                'label' => 'building.form.community',
+                'label' => 'unitgroup.form.community',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))
@@ -33,7 +33,7 @@ class BuildingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'HVG\SystemBundle\Entity\Building'
+            'data_class' => 'HVG\SystemBundle\Entity\UnitGroup'
         ));
     }
 
@@ -42,7 +42,7 @@ class BuildingType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'hvg_systembundle_building';
+        return 'hvg_systembundle_unitgroup';
     }
 
 

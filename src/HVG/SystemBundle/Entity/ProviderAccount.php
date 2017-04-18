@@ -225,4 +225,10 @@ class ProviderAccount
     {
         return $this->provider;
     }
+    /**
+     * @var \HVG\SystemBundle\Entity\BankAccountKind
+     */
+    private $bankaccountkind;
+
+
 }

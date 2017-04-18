@@ -13,7 +13,7 @@ HVG\SystemBundle\Entity\ProviderStaff:
             targetEntity: HVG\SystemBundle\Entity\Person
         provider:
             targetEntity: HVG\SystemBundle\Entity\Provider
-            inversedBy: provider_staff
+            inversedBy: providerstaff
     fields:
         name:
             type: string

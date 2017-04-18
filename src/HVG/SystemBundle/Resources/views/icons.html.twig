@@ -2,7 +2,7 @@
     {% if app.request.attributes.get( '_route' ) starts with 'main' %}{{ icon('home fa-fw') }}
     {% elseif 'communitystaff' in app.request.attributes.get( '_route' ) %}{{ icon('id-badge fa-fw') }}
     {% elseif 'community' in app.request.attributes.get( '_route' ) %}{{ icon('users fa-fw') }}
-    {% elseif 'building' in app.request.attributes.get( '_route' ) %}{{ icon('building fa-fw') }}
+    {% elseif 'unitgroup' in app.request.attributes.get( '_route' ) %}{{ icon('building fa-fw') }}
     {% elseif 'unit' in app.request.attributes.get( '_route' ) %}{{ icon('home fa-fw') }}
     {% elseif 'person' in app.request.attributes.get( '_route' ) %}{{ icon('user fa-fw') }}
     {% elseif 'user' in app.request.attributes.get( '_route' ) %}{{ icon('id-card fa-fw') }}

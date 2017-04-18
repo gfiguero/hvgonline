@@ -11,11 +11,11 @@ HVG\SystemBundle\Entity\ProviderAccount:
     manyToOne:
         bank:
             targetEntity: HVG\SystemBundle\Entity\Bank
-        bank_account_kind:
+        bankaccountkind:
             targetEntity: HVG\SystemBundle\Entity\BankAccountKind
         provider:
             targetEntity: HVG\SystemBundle\Entity\Provider
-            inversedBy: provider_accounts
+            inversedBy: provideraccounts
     fields:
         ncuenta:
             type: string

@@ -225,33 +225,73 @@ class TicketAction
     {
         return $this->ticket;
     }
-    /**
-     * @var \HVG\SystemBundle\Entity\Agent
-     */
-    private $agent;
-
 
     /**
-     * Set agent
+     * Get community
      *
-     * @param \HVG\SystemBundle\Entity\Agent $agent
+     * @return \HVG\SystemBundle\Entity\Community
+     */
+    public function getCommunity()
+    {
+        $community = null;
+        $unitgroup = $this->getUnitGroup();
+        if($unitgroup) $community = $unitgroup->getCommunity();
+        return $community;
+    }
+
+    /**
+     * Get unitgroup
+     *
+     * @return \HVG\SystemBundle\Entity\UnitGroup
+     */
+    public function getUnitGroup()
+    {
+        $unitgroup = null;
+        $unit = $this->getUnit();
+        if($unit) $unitgroup = $unit->getUnitGroup();
+        return $unitgroup;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return \HVG\SystemBundle\Entity\Unit
+     */
+    public function getUnit()
+    {
+        $unit = null;
+        $ticket = $this->getTicket();
+        if($ticket) $unit = $ticket->getUnit();
+        return $unit;
+    }
+
+    /**
+     * @var \HVG\UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \HVG\UserBundle\Entity\User $user
      *
      * @return TicketAction
      */
-    public function setAgent(\HVG\SystemBundle\Entity\Agent $agent = null)
+    public function setUser(\HVG\UserBundle\Entity\User $user = null)
     {
-        $this->agent = $agent;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get agent
+     * Get user
      *
-     * @return \HVG\SystemBundle\Entity\Agent
+     * @return \HVG\UserBundle\Entity\User
      */
-    public function getAgent()
+    public function getUser()
     {
-        return $this->agent;
+        return $this->user;
     }
 }

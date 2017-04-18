@@ -19,8 +19,8 @@ class ProviderType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('provider_service', null, array(
-                'label' => 'provider.form.provider_service',
+            ->add('providerservice', null, array(
+                'label' => 'provider.form.providerservice',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))

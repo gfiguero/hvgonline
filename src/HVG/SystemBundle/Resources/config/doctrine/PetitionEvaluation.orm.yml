@@ -10,10 +10,10 @@ HVG\SystemBundle\Entity\PetitionEvaluation:
     manyToOne:
         petition:
             targetEntity: HVG\SystemBundle\Entity\Petition
-            inversedBy: petition_evaluations
+            inversedBy: petitionevaluations
         user:
             targetEntity: HVG\UserBundle\Entity\User
-            inversedBy: petition_evaluations
+            inversedBy: petitionevaluations
     fields:
         value:
             type: integer

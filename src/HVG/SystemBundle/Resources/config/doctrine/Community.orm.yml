@@ -15,11 +15,17 @@ HVG\SystemBundle\Entity\Community:
         petitions:
             targetEntity: HVG\SystemBundle\Entity\Petition
             mappedBy: community
-        buildings:
-            targetEntity: HVG\SystemBundle\Entity\Building
+        units:
+            targetEntity: HVG\SystemBundle\Entity\Unit
             mappedBy: community
-        community_staffs:
+        unitgroups:
+            targetEntity: HVG\SystemBundle\Entity\UnitGroup
+            mappedBy: community
+        communitystaffs:
             targetEntity: HVG\SystemBundle\Entity\CommunityStaff
+            mappedBy: community
+        projects:
+            targetEntity: HVG\SystemBundle\Entity\Project
             mappedBy: community
     fields:
         name:

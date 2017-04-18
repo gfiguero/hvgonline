@@ -47,6 +47,10 @@ class Testing
      */
     private $deletedAt;
 
+    public function __toString()
+    {
+        return (string) $this->id;
+    }
 
     /**
      * Get id

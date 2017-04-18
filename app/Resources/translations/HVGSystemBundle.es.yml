@@ -10,7 +10,7 @@ sidemenu:
         person: Personas
         agent: Agentes
         community: Comunidades
-        building: Edificios
+        unitgroup: Edificios
         unit: Unidades
         area: Áreas de Trabajo
         fund: Fondos
@@ -48,7 +48,7 @@ community:
         index: Comunidades
         properties: Datos de la comunidad
         communitystaff: Colaboradores
-        buildings: Torres
+        unitgroups: Torres
         list: Lista de Comunidades
     list:
         link: Explorar
@@ -78,7 +78,10 @@ community:
         deletedAt: Borrado
         actions: Acciones
         id: ID
-        name: Nombre
+        name: Nombre identificador
+        person:
+            name: Razón Social
+            rut: Rol único tributario
 
 communitystaff:
     title:

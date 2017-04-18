@@ -15,11 +15,6 @@ class Ticket
     /**
      * @var string
      */
-    private $issue;
-
-    /**
-     * @var string
-     */
     private $contact_name;
 
     /**
@@ -53,26 +48,16 @@ class Ticket
     private $deletedAt;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $actions;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\Community
-     */
-    private $community;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\TicketStatus
-     */
-    private $status;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
         $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->id;
     }
 
     /**
@@ -86,27 +71,13 @@ class Ticket
     }
 
     /**
-     * Set issue
+     * Get name
      *
-     * @param string $issue
-     *
-     * @return Ticket
+     * @return integer
      */
-    public function setIssue($issue)
+    public function getName()
     {
-        $this->issue = $issue;
-
-        return $this;
-    }
-
-    /**
-     * Get issue
-     *
-     * @return string
-     */
-    public function getIssue()
-    {
-        return $this->issue;
+        return (string) $this->id;
     }
 
     /**
@@ -278,86 +249,31 @@ class Ticket
     }
 
     /**
-     * Add action
-     *
-     * @param \HVG\SystemBundle\Entity\TicketAction $action
-     *
-     * @return Ticket
-     */
-    public function addAction(\HVG\SystemBundle\Entity\TicketAction $action)
-    {
-        $this->actions[] = $action;
-
-        return $this;
-    }
-
-    /**
-     * Remove action
-     *
-     * @param \HVG\SystemBundle\Entity\TicketAction $action
-     */
-    public function removeAction(\HVG\SystemBundle\Entity\TicketAction $action)
-    {
-        $this->actions->removeElement($action);
-    }
-
-    /**
-     * Get actions
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getActions()
-    {
-        return $this->actions;
-    }
-
-    /**
-     * Set community
-     *
-     * @param \HVG\SystemBundle\Entity\Community $community
-     *
-     * @return Ticket
-     */
-    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
-    {
-        $this->community = $community;
-
-        return $this;
-    }
-
-    /**
      * Get community
      *
      * @return \HVG\SystemBundle\Entity\Community
      */
     public function getCommunity()
     {
-        return $this->community;
+        $community = null;
+        $unitgroup = $this->getUnitGroup();
+        if($unitgroup) $community = $unitgroup->getCommunity();
+        return $community;
     }
 
     /**
-     * Set status
+     * Get unitgroup
      *
-     * @param \HVG\SystemBundle\Entity\TicketStatus $status
-     *
-     * @return Ticket
+     * @return \HVG\SystemBundle\Entity\UnitGroup
      */
-    public function setStatus(\HVG\SystemBundle\Entity\TicketStatus $status = null)
+    public function getUnitGroup()
     {
-        $this->status = $status;
-
-        return $this;
+        $unitgroup = null;
+        $unit = $this->getUnit();
+        if($unit) $unitgroup = $unit->getUnitGroup();
+        return $unitgroup;
     }
 
-    /**
-     * Get status
-     *
-     * @return \HVG\SystemBundle\Entity\TicketStatus
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
     /**
      * @var string
      */
@@ -455,11 +371,6 @@ class Ticket
      */
     private $ticket_status;
 
-    /**
-     * @var \HVG\SystemBundle\Entity\Agent
-     */
-    private $agent;
-
 
     /**
      * Add ticketAction
@@ -520,26 +431,32 @@ class Ticket
     }
 
     /**
-     * Set agent
+     * @var \HVG\UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
      *
-     * @param \HVG\SystemBundle\Entity\Agent $agent
+     * @param \HVG\UserBundle\Entity\User $user
      *
      * @return Ticket
      */
-    public function setAgent(\HVG\SystemBundle\Entity\Agent $agent = null)
+    public function setUser(\HVG\UserBundle\Entity\User $user = null)
     {
-        $this->agent = $agent;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get agent
+     * Get user
      *
-     * @return \HVG\SystemBundle\Entity\Agent
+     * @return \HVG\UserBundle\Entity\User
      */
-    public function getAgent()
+    public function getUser()
     {
-        return $this->agent;
+        return $this->user;
     }
 }

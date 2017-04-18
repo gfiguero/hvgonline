@@ -43,11 +43,6 @@ class Unit
     private $charges;
 
     /**
-     * @var \HVG\SystemBundle\Entity\Community
-     */
-    private $community;
-
-    /**
      * @var \HVG\SystemBundle\Entity\Person
      */
     private $owner;
@@ -63,7 +58,7 @@ class Unit
 
     public function __toString()
     {
-        return $this->building . ' - ' . $this->name;
+        return $this->unitgroup . ' - ' . $this->name;
     }
 
     /**
@@ -241,27 +236,16 @@ class Unit
     }
 
     /**
-     * Set community
-     *
-     * @param \HVG\SystemBundle\Entity\Community $community
-     *
-     * @return Unit
-     */
-    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
-    {
-        $this->community = $community;
-
-        return $this;
-    }
-
-    /**
      * Get community
      *
      * @return \HVG\SystemBundle\Entity\Community
      */
     public function getCommunity()
     {
-        return $this->community;
+        $community = null;
+        $unitgroup = $this->getUnitGroup();
+        if($unitgroup) $community = $unitgroup->getCommunity();
+        return $community;
     }
 
     /**
@@ -288,33 +272,33 @@ class Unit
         return $this->owner;
     }
     /**
-     * @var \HVG\SystemBundle\Entity\Building
+     * @var \HVG\SystemBundle\Entity\UnitGroup
      */
-    private $building;
+    private $unitgroup;
 
 
     /**
-     * Set building
+     * Set unitgroup
      *
-     * @param \HVG\SystemBundle\Entity\Building $building
+     * @param \HVG\SystemBundle\Entity\UnitGroup $unitgroup
      *
      * @return Unit
      */
-    public function setBuilding(\HVG\SystemBundle\Entity\Building $building = null)
+    public function setUnitGroup(\HVG\SystemBundle\Entity\UnitGroup $unitgroup = null)
     {
-        $this->building = $building;
+        $this->unitgroup = $unitgroup;
 
         return $this;
     }
 
     /**
-     * Get building
+     * Get unitgroup
      *
-     * @return \HVG\SystemBundle\Entity\Building
+     * @return \HVG\SystemBundle\Entity\UnitGroup
      */
-    public function getBuilding()
+    public function getUnitGroup()
     {
-        return $this->building;
+        return $this->unitgroup;
     }
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -354,5 +338,29 @@ class Unit
     public function getTickets()
     {
         return $this->tickets;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\UnitGroup
+     */
+    private $unit_group;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Community
+     */
+    private $community;
+
+
+    /**
+     * Set community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     *
+     * @return Unit
+     */
+    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
     }
 }

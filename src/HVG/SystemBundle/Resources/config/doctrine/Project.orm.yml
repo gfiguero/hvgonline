@@ -14,6 +14,7 @@ HVG\SystemBundle\Entity\Project:
             inversedBy: projects
         community:
             targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: projects
     oneToMany:
         observations:
             targetEntity: HVG\SystemBundle\Entity\ProjectObservation

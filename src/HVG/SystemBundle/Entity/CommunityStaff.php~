@@ -197,4 +197,3 @@ class CommunityStaff
         return $this->role;
     }
 }
-

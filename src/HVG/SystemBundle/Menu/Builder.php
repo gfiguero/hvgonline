@@ -36,7 +36,7 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.configuration.root']->setChildrenAttribute('class', 'nav nav-second-level collapse');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.person', array('route' => 'person_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.community', array('route' => 'community_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
-        $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.building', array('route' => 'building_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
+        $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.unitgroup', array('route' => 'unitgroup_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.unit', array('route' => 'unit_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.area', array('route' => 'area_index'))->setAttribute('translation_domain', 'HVGSystemBundle');
         $sidemenu['sidemenu.configuration.root']->addChild('sidemenu.configuration.fund', array('route' => 'fund_index'))->setAttribute('translation_domain', 'HVGSystemBundle');

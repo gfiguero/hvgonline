@@ -365,4 +365,20 @@ class Provider
     {
         return $this->provider_service;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $providerstaff;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $provideraccounts;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\ProviderService
+     */
+    private $providerservice;
+
+
 }

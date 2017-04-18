@@ -9,7 +9,7 @@ HVG\SystemBundle\Entity\Petition:
             generator:
                 strategy: AUTO
     manyToOne:
-        petition_status:
+        petitionstatus:
             targetEntity: HVG\SystemBundle\Entity\PetitionStatus
             inversedBy: petitions
         community:
@@ -22,10 +22,10 @@ HVG\SystemBundle\Entity\Petition:
             targetEntity: HVG\UserBundle\Entity\User
             inversedBy: petitions
     oneToMany:
-        petition_actions:
+        petitionactions:
             targetEntity: HVG\SystemBundle\Entity\PetitionAction
             mappedBy: petition
-        petition_evaluations:
+        petitionevaluations:
             targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
             mappedBy: petition
     fields:

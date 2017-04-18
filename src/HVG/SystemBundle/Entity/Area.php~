@@ -45,7 +45,7 @@ class Area
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $agents;
+    private $users;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -58,7 +58,7 @@ class Area
     public function __construct()
     {
         $this->petitions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->agents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -232,37 +232,37 @@ class Area
     }
 
     /**
-     * Add agent
+     * Add user
      *
-     * @param \HVG\SystemBundle\Entity\Agent $agent
+     * @param \HVG\UserBundle\Entity\User $user
      *
      * @return Area
      */
-    public function addAgent(\HVG\SystemBundle\Entity\Agent $agent)
+    public function addUser(\HVG\UserBundle\Entity\User $user)
     {
-        $this->agents[] = $agent;
+        $this->users[] = $user;
 
         return $this;
     }
 
     /**
-     * Remove agent
+     * Remove user
      *
-     * @param \HVG\SystemBundle\Entity\Agent $agent
+     * @param \HVG\UserBundle\Entity\User $user
      */
-    public function removeAgent(\HVG\SystemBundle\Entity\Agent $agent)
+    public function removeUser(\HVG\UserBundle\Entity\User $user)
     {
-        $this->agents->removeElement($agent);
+        $this->users->removeElement($user);
     }
 
     /**
-     * Get agents
+     * Get users
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAgents()
+    public function getUsers()
     {
-        return $this->agents;
+        return $this->users;
     }
 
     /**

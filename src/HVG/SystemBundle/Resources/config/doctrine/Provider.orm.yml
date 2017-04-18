@@ -12,14 +12,14 @@ HVG\SystemBundle\Entity\Provider:
         person:
             targetEntity: HVG\SystemBundle\Entity\Person
     manyToOne:
-        provider_service:
+        providerservice:
             targetEntity: HVG\SystemBundle\Entity\ProviderService
             inversedBy: providers
     oneToMany:
-        provider_staff:
+        providerstaff:
             targetEntity: HVG\SystemBundle\Entity\ProviderStaff
             mappedBy: provider
-        provider_accounts:
+        provideraccounts:
             targetEntity: HVG\SystemBundle\Entity\ProviderAccount
             mappedBy: provider
     fields:

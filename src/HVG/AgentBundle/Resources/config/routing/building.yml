@@ -1,9 +1,0 @@
-agent_building_index:
-    path:     /
-    defaults: { _controller: "HVGAgentBundle:Building:index" }
-    methods:  GET
-
-agent_building_show:
-    path:     /{id}/show
-    defaults: { _controller: "HVGAgentBundle:Building:show" }
-    methods:  GET

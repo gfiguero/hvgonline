@@ -151,5 +151,43 @@ class Role
         return $this->deletedAt;
     }
 
-}
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $community_staffs;
 
+
+    /**
+     * Add communityStaff
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityStaff $communityStaff
+     *
+     * @return Role
+     */
+    public function addCommunityStaff(\HVG\SystemBundle\Entity\CommunityStaff $communityStaff)
+    {
+        $this->community_staffs[] = $communityStaff;
+
+        return $this;
+    }
+
+    /**
+     * Remove communityStaff
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityStaff $communityStaff
+     */
+    public function removeCommunityStaff(\HVG\SystemBundle\Entity\CommunityStaff $communityStaff)
+    {
+        $this->community_staffs->removeElement($communityStaff);
+    }
+
+    /**
+     * Get communityStaffs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommunityStaffs()
+    {
+        return $this->community_staffs;
+    }
+}

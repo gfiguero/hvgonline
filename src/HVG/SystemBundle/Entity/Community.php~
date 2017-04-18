@@ -191,41 +191,41 @@ class Community
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $buildings;
+    private $unitgroups;
 
 
     /**
-     * Add building
+     * Add unitgroup
      *
-     * @param \HVG\SystemBundle\Entity\Building $building
+     * @param \HVG\SystemBundle\Entity\UnitGroup $unitgroup
      *
      * @return Community
      */
-    public function addBuilding(\HVG\SystemBundle\Entity\Building $building)
+    public function addUnitGroup(\HVG\SystemBundle\Entity\UnitGroup $unitgroup)
     {
-        $this->buildings[] = $building;
+        $this->unitgroups[] = $unitgroup;
 
         return $this;
     }
 
     /**
-     * Remove building
+     * Remove unitgroup
      *
-     * @param \HVG\SystemBundle\Entity\Building $building
+     * @param \HVG\SystemBundle\Entity\UnitGroup $unitgroup
      */
-    public function removeBuilding(\HVG\SystemBundle\Entity\Building $building)
+    public function removeUnitGroup(\HVG\SystemBundle\Entity\UnitGroup $unitgroup)
     {
-        $this->buildings->removeElement($building);
+        $this->unitgroups->removeElement($unitgroup);
     }
 
     /**
-     * Get buildings
+     * Get unitgroups
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBuildings()
+    public function getUnitGroups()
     {
-        return $this->buildings;
+        return $this->unitgroups;
     }
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -265,5 +265,122 @@ class Community
     public function getCommunityStaffs()
     {
         return $this->community_staffs;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\Person
+     */
+    private $person;
+
+
+    /**
+     * Set person
+     *
+     * @param \HVG\SystemBundle\Entity\Person $person
+     *
+     * @return Community
+     */
+    public function setPerson(\HVG\SystemBundle\Entity\Person $person = null)
+    {
+        $this->person = $person;
+
+        return $this;
+    }
+
+    /**
+     * Get person
+     *
+     * @return \HVG\SystemBundle\Entity\Person
+     */
+    public function getPerson()
+    {
+        return $this->person;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $units;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $unit_groups;
+
+
+    /**
+     * Add unit
+     *
+     * @param \HVG\SystemBundle\Entity\Unit $unit
+     *
+     * @return Community
+     */
+    public function addUnit(\HVG\SystemBundle\Entity\Unit $unit)
+    {
+        $this->units[] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Remove unit
+     *
+     * @param \HVG\SystemBundle\Entity\Unit $unit
+     */
+    public function removeUnit(\HVG\SystemBundle\Entity\Unit $unit)
+    {
+        $this->units->removeElement($unit);
+    }
+
+    /**
+     * Get units
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUnits()
+    {
+        return $this->units;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $communitystaffs;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $projects;
+
+
+    /**
+     * Add project
+     *
+     * @param \HVG\SystemBundle\Entity\Project $project
+     *
+     * @return Community
+     */
+    public function addProject(\HVG\SystemBundle\Entity\Project $project)
+    {
+        $this->projects[] = $project;
+
+        return $this;
+    }
+
+    /**
+     * Remove project
+     *
+     * @param \HVG\SystemBundle\Entity\Project $project
+     */
+    public function removeProject(\HVG\SystemBundle\Entity\Project $project)
+    {
+        $this->projects->removeElement($project);
+    }
+
+    /**
+     * Get projects
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProjects()
+    {
+        return $this->projects;
     }
 }

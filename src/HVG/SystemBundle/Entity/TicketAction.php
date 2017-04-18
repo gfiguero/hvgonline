@@ -225,35 +225,46 @@ class TicketAction
     {
         return $this->ticket;
     }
-    /**
-     * @var \HVG\SystemBundle\Entity\Agent
-     */
-    private $agent;
-
 
     /**
-     * Set agent
+     * Get community
      *
-     * @param \HVG\SystemBundle\Entity\Agent $agent
-     *
-     * @return TicketAction
+     * @return \HVG\SystemBundle\Entity\Community
      */
-    public function setAgent(\HVG\SystemBundle\Entity\Agent $agent = null)
+    public function getCommunity()
     {
-        $this->agent = $agent;
-
-        return $this;
+        $community = null;
+        $unitgroup = $this->getUnitGroup();
+        if($unitgroup) $community = $unitgroup->getCommunity();
+        return $community;
     }
 
     /**
-     * Get agent
+     * Get unitgroup
      *
-     * @return \HVG\SystemBundle\Entity\Agent
+     * @return \HVG\SystemBundle\Entity\UnitGroup
      */
-    public function getAgent()
+    public function getUnitGroup()
     {
-        return $this->agent;
+        $unitgroup = null;
+        $unit = $this->getUnit();
+        if($unit) $unitgroup = $unit->getUnitGroup();
+        return $unitgroup;
     }
+
+    /**
+     * Get unit
+     *
+     * @return \HVG\SystemBundle\Entity\Unit
+     */
+    public function getUnit()
+    {
+        $unit = null;
+        $ticket = $this->getTicket();
+        if($ticket) $unit = $ticket->getUnit();
+        return $unit;
+    }
+
     /**
      * @var \HVG\UserBundle\Entity\User
      */

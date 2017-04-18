@@ -11,7 +11,7 @@ HVG\SystemBundle\Entity\ProviderService:
     oneToMany:
         providers:
             targetEntity: HVG\SystemBundle\Entity\Provider
-            mappedBy: provider_service
+            mappedBy: providerservice
     fields:
         name:
             type: string

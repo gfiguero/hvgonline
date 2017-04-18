@@ -38,10 +38,10 @@
         "components/jquery": "^2.2",
         "components/jqueryui": "^1.11",
         "mrohnstock/bootstrap-multiselect": "^0.9.13",
-        "vich/uploader-bundle": "^0.14.0",
         "components/bootstrap": "^3.3",
         "kartik-v/bootstrap-fileinput": "dev-master",
-        "symfony/validator": "^2.8"
+        "symfony/validator": "^2.8",
+        "vich/uploader-bundle": "^0.14.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

@@ -78,9 +78,9 @@ hvg_system_unit:
     resource: "@HVGSystemBundle/Resources/config/routing/unit.yml"
     prefix:   /unit
 
-hvg_system_building:
-    resource: "@HVGSystemBundle/Resources/config/routing/building.yml"
-    prefix:   /building
+hvg_system_unitgroup:
+    resource: "@HVGSystemBundle/Resources/config/routing/unitgroup.yml"
+    prefix:   /unitgroup
 
 hvg_system_community:
     resource: "@HVGSystemBundle/Resources/config/routing/community.yml"

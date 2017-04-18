@@ -1,3 +1,8 @@
+agent_unit_ticket_new:
+    path:     /{id}/newticket
+    defaults: { _controller: "HVGAgentBundle:Unit:newTicket" }
+    methods:  [GET, POST]
+
 agent_unit_index:
     path:     /
     defaults: { _controller: "HVGAgentBundle:Unit:index" }

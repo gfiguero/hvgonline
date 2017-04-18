@@ -3,9 +3,9 @@
 namespace HVG\SystemBundle\Entity;
 
 /**
- * Building
+ * UnitGroup
  */
-class Building
+class UnitGroup
 {
     /**
      * @var integer
@@ -57,7 +57,7 @@ class Building
      *
      * @param string $name
      *
-     * @return Building
+     * @return UnitGroup
      */
     public function setName($name)
     {
@@ -81,7 +81,7 @@ class Building
      *
      * @param \DateTime $createdAt
      *
-     * @return Building
+     * @return UnitGroup
      */
     public function setCreatedAt($createdAt)
     {
@@ -105,7 +105,7 @@ class Building
      *
      * @param \DateTime $updatedAt
      *
-     * @return Building
+     * @return UnitGroup
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -129,7 +129,7 @@ class Building
      *
      * @param \DateTime $deletedAt
      *
-     * @return Building
+     * @return UnitGroup
      */
     public function setDeletedAt($deletedAt)
     {
@@ -153,7 +153,7 @@ class Building
      *
      * @param \HVG\SystemBundle\Entity\Community $community
      *
-     * @return Building
+     * @return UnitGroup
      */
     public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
     {
@@ -170,5 +170,51 @@ class Building
     public function getCommunity()
     {
         return $this->community;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $units;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->units = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add unit
+     *
+     * @param \HVG\SystemBundle\Entity\Unit $unit
+     *
+     * @return UnitGroup
+     */
+    public function addUnit(\HVG\SystemBundle\Entity\Unit $unit)
+    {
+        $this->units[] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Remove unit
+     *
+     * @param \HVG\SystemBundle\Entity\Unit $unit
+     */
+    public function removeUnit(\HVG\SystemBundle\Entity\Unit $unit)
+    {
+        $this->units->removeElement($unit);
+    }
+
+    /**
+     * Get units
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUnits()
+    {
+        return $this->units;
     }
 }

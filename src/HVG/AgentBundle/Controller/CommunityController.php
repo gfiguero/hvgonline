@@ -27,12 +27,12 @@ class CommunityController extends Controller
 
     public function showAction(Community $community)
     {
-        $buildings = $community->getBuildings();
+        $unitgroups = $community->getUnitGroups();
         $communityStaffs = $community->getCommunityStaffs();
 
         return $this->render('HVGAgentBundle:Community:show.html.twig', array(
             'community' => $community,
-            'buildings' => $buildings,
+            'unitgroups' => $unitgroups,
             'communityStaffs' => $communityStaffs,
         ));
     }

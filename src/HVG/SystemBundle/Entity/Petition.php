@@ -403,4 +403,20 @@ class Petition
     {
         return $this->user;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitionactions;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitionevaluations;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\PetitionStatus
+     */
+    private $petitionstatus;
+
+
 }

@@ -9,8 +9,12 @@ HVG\SystemBundle\Entity\Unit:
             generator:
                 strategy: AUTO
     manyToOne:
-        building:
-            targetEntity: HVG\SystemBundle\Entity\Building
+        unitgroup:
+            targetEntity: HVG\SystemBundle\Entity\UnitGroup
+            inversedBy: units
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: units
         owner:
             targetEntity: HVG\SystemBundle\Entity\Person
     oneToMany:

@@ -1,7 +1,7 @@
-HVG\SystemBundle\Entity\Building:
+HVG\SystemBundle\Entity\UnitGroup:
     type: entity
-    table: Building
-    repositoryClass: HVG\SystemBundle\Entity\BuildingRepository
+    table: UnitGroup
+    repositoryClass: HVG\SystemBundle\Entity\UnitGroupRepository
     id:
         id:
             type: integer
@@ -11,7 +11,11 @@ HVG\SystemBundle\Entity\Building:
     manyToOne:
         community:
             targetEntity: HVG\SystemBundle\Entity\Community
-            inversedBy: buildings
+            inversedBy: unitgroups
+    oneToMany:
+        units:
+            targetEntity: HVG\SystemBundle\Entity\Unit
+            mappedBy: unitgroup
     fields:
         name:
             type: string

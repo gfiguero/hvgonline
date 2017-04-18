@@ -13,10 +13,10 @@ HVG\SystemBundle\Entity\CommunityStaff:
             targetEntity: HVG\SystemBundle\Entity\Person
         community:
             targetEntity: HVG\SystemBundle\Entity\Community
-            inversedBy: community_staffs
+            inversedBy: communitystaffs
         role:
             targetEntity: HVG\SystemBundle\Entity\Role
-            inversedBy: community_staffs
+            inversedBy: communitystaffs
     fields:
         createdAt:
             type: datetime

@@ -2,9 +2,9 @@ hvg_agent_dashboard:
     path:     /
     defaults: { _controller: HVGAgentBundle:Dashboard:index }
 
-hvg_agent_building:
-    resource: "@HVGAgentBundle/Resources/config/routing/building.yml"
-    prefix:   /building
+hvg_agent_unitgroup:
+    resource: "@HVGAgentBundle/Resources/config/routing/unitgroup.yml"
+    prefix:   /unitgroup
 
 hvg_agent_community:
     resource: "@HVGAgentBundle/Resources/config/routing/community.yml"
@@ -29,3 +29,15 @@ hvg_agent_provider:
 hvg_agent_unit:
     resource: "@HVGAgentBundle/Resources/config/routing/unit.yml"
     prefix:   /unit
+
+hvg_agent_ticket:
+    resource: "@HVGAgentBundle/Resources/config/routing/ticket.yml"
+    prefix:   /ticket
+
+hvg_agent_ticketaction:
+    resource: "@HVGAgentBundle/Resources/config/routing/ticketaction.yml"
+    prefix:   /ticketaction
+
+hvg_agent_petition:
+    resource: "@HVGAgentBundle/Resources/config/routing/petition.yml"
+    prefix:   /petition

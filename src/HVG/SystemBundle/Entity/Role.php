@@ -190,4 +190,10 @@ class Role
     {
         return $this->community_staffs;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $communitystaffs;
+
+
 }

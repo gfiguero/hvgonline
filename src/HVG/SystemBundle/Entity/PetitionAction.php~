@@ -196,4 +196,33 @@ class PetitionAction
     {
         return $this->agent;
     }
+    /**
+     * @var \HVG\UserBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \HVG\UserBundle\Entity\User $user
+     *
+     * @return PetitionAction
+     */
+    public function setUser(\HVG\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \HVG\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

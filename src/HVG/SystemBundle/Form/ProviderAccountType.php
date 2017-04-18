@@ -24,8 +24,8 @@ class ProviderAccountType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('bank_account_kind', null, array(
-                'label' => 'provideraccount.form.bank_account_kind',
+            ->add('bankaccountkind', null, array(
+                'label' => 'provideraccount.form.bankaccountkind',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 

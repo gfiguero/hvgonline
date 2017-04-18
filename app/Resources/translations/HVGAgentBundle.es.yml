@@ -1,10 +1,93 @@
 sidemenu:
     datacenter: Centro de Datos
     community: Comunidades
-    building: Torres
-    unit: Unidades
+    unitgroup: Torres
+    unit: Departamentos
     person: Personas
     contact: Contactos
     provider: Proveedores
     resources: Recursos
     communitystaff: Colaboradores
+    ticket: Tickets
+
+community:
+    title:
+        index: Comunidades
+        properties: Datos de la Comunidad
+        tickets: Tickets
+        list: Lista de Comunidades
+        unitgroups: Torres de la Comunidad
+        communitystaffs: Colaboradores
+    list:
+        link: Explorar Comunidades
+        title: Lista de Comunidades
+    show:
+        link: Mostrar
+        title: Mostrar Comunidad
+    form:
+        actions: Acciones
+        id: ID
+        name: Nombre de la Comunidad
+        person:
+            name: Razón social
+            rut: Rol Único Tributario
+
+communitystaff:
+    title:
+        index: Colaboradores
+        properties: Datos del Colaborador
+    form:
+        actions: Acciones
+        id: ID
+        person:
+            name: Nombre del Colaborador
+            rut: Rol Único Tributario
+        role:
+            name: Cargo
+
+unit:
+    title:
+        index: Departamentos
+        properties: Datos del Departamento
+        tickets: Tickets
+    list:
+        link: Explorar Departamentos
+        title: Lista de Departamentos
+    show:
+        link: Mostrar
+        title: Mostrar Departamento
+    form:
+        actions: Acciones
+        id: ID
+        name: Departamento
+        community: Comunidad
+        unitgroup: Torre
+
+ticket:
+    title:
+        index: Tickets
+        properties: Datos de Ticket
+        tickets: Tickets
+    list:
+        link: Explorar Tickets
+        title: Lista de Tickets
+    show:
+        link: Mostrar
+        title: Mostrar Ticket
+    new:
+        link: Nuevo Ticket
+    form:
+        actions: Acciones
+        id: ID
+        name: Ticket
+        community: Comunidad
+        unitgroup: Torre
+        user: Usuario
+        status: Estado
+
+ticketaction:
+    title:
+        index: Seguimiento de Tickets
+    list:
+        link: Acciones de Tickets
+        list: Lista de Acciones

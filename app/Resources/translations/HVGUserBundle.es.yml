@@ -15,6 +15,7 @@ user:
         password_confirmation: 'Repita la contraseña'
         new_password: 'Nueva contraseña'
         new_password_confirmation: 'Repita la contraseña'
+        areas: 'Áreas del Usuario'
         createdAt: 'Registrado'
         updatedAt: 'Última Actualización'
     list:

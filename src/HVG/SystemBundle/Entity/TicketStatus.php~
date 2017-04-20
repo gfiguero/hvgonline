@@ -55,11 +55,6 @@ class TicketStatus
         $this->tickets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
-
     /**
      * Get id
      *
@@ -248,3 +243,4 @@ class TicketStatus
         return $this->result;
     }
 }
+

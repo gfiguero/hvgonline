@@ -19,27 +19,27 @@ class TicketType extends AbstractType
             ->add('area', null, array(
                 'label' => 'ticket.form.area',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
+                'translation_domain' => 'HVGAgentBundle',
             ))
             ->add('description', null, array(
                 'label' => 'ticket.form.description',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
+                'translation_domain' => 'HVGAgentBundle',
             ))
-            ->add('contact_name', null, array(
-                'label' => 'ticket.form.contact_name',
+            ->add('contactname', null, array(
+                'label' => 'ticket.form.contactname',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
+                'translation_domain' => 'HVGAgentBundle',
             ))
-            ->add('contact_phone', null, array(
-                'label' => 'ticket.form.contact_phone',
+            ->add('contactphone', null, array(
+                'label' => 'ticket.form.contactphone',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
+                'translation_domain' => 'HVGAgentBundle',
             ))
-            ->add('contact_email', null, array(
-                'label' => 'ticket.form.contact_email',
+            ->add('contactemail', null, array(
+                'label' => 'ticket.form.contactemail',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
+                'translation_domain' => 'HVGAgentBundle',
             ))
         ;
     }

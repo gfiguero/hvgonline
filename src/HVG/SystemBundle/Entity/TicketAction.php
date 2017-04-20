@@ -18,6 +18,11 @@ class TicketAction
     private $description;
 
     /**
+     * @var string
+     */
+    private $file;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -35,7 +40,12 @@ class TicketAction
     /**
      * @var \HVG\SystemBundle\Entity\Ticket
      */
-    private $project;
+    private $ticket;
+
+    /**
+     * @var \HVG\UserBundle\Entity\User
+     */
+    private $user;
 
 
     /**
@@ -70,6 +80,30 @@ class TicketAction
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     *
+     * @return TicketAction
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 
     /**
@@ -145,64 +179,6 @@ class TicketAction
     }
 
     /**
-     * Set project
-     *
-     * @param \HVG\SystemBundle\Entity\Ticket $project
-     *
-     * @return TicketAction
-     */
-    public function setProject(\HVG\SystemBundle\Entity\Ticket $project = null)
-    {
-        $this->project = $project;
-
-        return $this;
-    }
-
-    /**
-     * Get project
-     *
-     * @return \HVG\SystemBundle\Entity\Ticket
-     */
-    public function getProject()
-    {
-        return $this->project;
-    }
-    /**
-     * @var string
-     */
-    private $file;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\Ticket
-     */
-    private $ticket;
-
-
-    /**
-     * Set file
-     *
-     * @param string $file
-     *
-     * @return TicketAction
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return string
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
      * Set ticket
      *
      * @param \HVG\SystemBundle\Entity\Ticket $ticket
@@ -226,51 +202,26 @@ class TicketAction
         return $this->ticket;
     }
 
-    /**
-     * Get community
-     *
-     * @return \HVG\SystemBundle\Entity\Community
-     */
-    public function getCommunity()
-    {
-        $community = null;
-        $unitgroup = $this->getUnitGroup();
-        if($unitgroup) $community = $unitgroup->getCommunity();
-        return $community;
-    }
-
-    /**
-     * Get unitgroup
-     *
-     * @return \HVG\SystemBundle\Entity\UnitGroup
-     */
-    public function getUnitGroup()
-    {
-        $unitgroup = null;
-        $unit = $this->getUnit();
-        if($unit) $unitgroup = $unit->getUnitGroup();
-        return $unitgroup;
-    }
-
-    /**
-     * Get unit
-     *
-     * @return \HVG\SystemBundle\Entity\Unit
-     */
     public function getUnit()
     {
         $unit = null;
-        $ticket = $this->getTicket();
-        if($ticket) $unit = $ticket->getUnit();
+        if($ticket = $this->getTicket()) $unit = $ticket->getUnit();
         return $unit;
     }
 
-    /**
-     * @var \HVG\UserBundle\Entity\User
-     */
-    private $user;
+    public function getCommunity()
+    {
+        $community = null;
+        if($unit = $this->getUnit()) $community = $unit->getCommunity();
+        return $community;
+    }
 
-
+    public function getUnitGroup()
+    {
+        $unitGroup = null;
+        if($unit = $this->getUnit()) $unitGroup = $unit->getUnitGroup();
+        return $unitGroup;
+    }
     /**
      * Set user
      *

@@ -37,46 +37,15 @@ class UnitController extends Controller
 
         $ticket = new Ticket();
         $ticket->setUnit($unit);
-        $newTicketForm = $this->createNewTicketForm($ticket)->createView();
+        $newTicketForm = $this->container->get('form.factory')->create($this->get('hvg_agent.form.ticket'), $ticket, array(
+            'action' => $this->generateUrl('agent_ticket_new'),
+        ))->createView();
+//        ->setAction()->setData($ticket);
 
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        dump($user);
         return $this->render('HVGAgentBundle:Unit:show.html.twig', array(
             'unit' => $unit,
-            'unitgroup' => $unitgroup,
-            'community' => $community,
-            'tickets' => $tickets,
-            'allowances' => $allowances,
-            'charges' => $charges,
             'newTicketForm' => $newTicketForm,
-        ));
-    }
-
-    public function newTicketAction(Request $request, Unit $unit)
-    {
-        $ticket = new Ticket();
-        $ticket->setUnit($unit);
-        $newTicketForm = $this->createNewTicketForm($ticket);
-        $newTicketForm->handleRequest($request);
-
-        if ($newTicketForm->isSubmitted()) {
-            if($newTicketForm->isValid()) {
-                $ticket->setTicketStatus($this->getDoctrine()->getManager()->getReference('HVGSystemBundle:TicketStatus', 1));
-                $ticket->setUser($this->get('security.token_storage')->getToken()->getUser());
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($ticket);
-                $em->flush();
-                $request->getSession()->getFlashBag()->add( 'success', 'ticket.flash.created' );
-            }
-        }
-
-        return $this->redirect($request->headers->get('referer'));
-    }
-
-    private function createNewTicketForm(Ticket $ticket)
-    {
-        return $this->createForm('HVG\AgentBundle\Form\TicketType', $ticket, array(
-            'action' => $this->generateUrl('agent_unit_ticket_new', array( 'id' => $ticket->getUnit()->getId() )),
         ));
     }
 

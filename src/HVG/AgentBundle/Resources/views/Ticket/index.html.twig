@@ -30,12 +30,12 @@
                                 <tr>
                                     <th>{{ 'ticket.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(tickets, 'ticket.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.description'|trans, 'description') }}{% if sort == 'description' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ 'ticket.form.community'|trans }}</th>
                                     <th>{{ 'ticket.form.unitgroup'|trans }}</th>
-                                    <th>{{ 'ticket.form.unit'|trans }}</th>
-                                    <th>{{ 'ticket.form.area'|trans }}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.unit'|trans, 'unit') }}{% if sort == 'unit' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.area'|trans, 'area') }}{% if sort == 'area' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th class="col-md-5">{{ 'ticket.form.description'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,17 +44,17 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_ticket_show', { 'id': ticket.id }) }}" aria-label="{{ 'ticket.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_ticket_show', { 'id': ticket.id }) }}" aria-label="{{ 'ticket.show.link'|trans }}">{{ icon('search') }}</a>
                                             </div>
                                         </div>
                                     </td>
                                     <td>{% if ticket.id %}{{ ticket.id }}{% endif %}</td>
-                                    <td>{% if ticket.description %}{{ ticket.description }}{% endif %}</td>
-                                    <td>{% if ticket.createdAt %}{{ ticket.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if ticket.community %}{{ ticket.community.name }}{% endif %}</td>
                                     <td>{% if ticket.unitgroup %}{{ ticket.unitgroup.name }}{% endif %}</td>
                                     <td>{% if ticket.unit %}{{ ticket.unit.name }}{% endif %}</td>
                                     <td>{% if ticket.area %}{{ ticket.area.name }}{% endif %}</td>
+                                    <td>{% if ticket.createdAt %}{{ ticket.createdAt|ago }}{% endif %}</td>
+                                    <td>{% if ticket.description %}{{ ticket.description }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

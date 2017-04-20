@@ -1,0 +1,9 @@
+agent_petitionaction_index:
+    path:     /
+    defaults: { _controller: "HVGAgentBundle:PetitionAction:index" }
+    methods:  GET
+
+agent_petitionaction_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGAgentBundle:PetitionAction:show" }
+    methods:  GET

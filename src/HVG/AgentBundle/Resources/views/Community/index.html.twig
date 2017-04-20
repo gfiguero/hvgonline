@@ -29,8 +29,12 @@
                             <thead>
                                 <tr>
                                     <th>{{ 'community.form.actions'|trans }}</th>
-                                    <th>{{ knp_pagination_sortable(communities, 'community.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+{#}                                    <th>{{ knp_pagination_sortable(communities, 'community.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>{#}
                                     <th>{{ knp_pagination_sortable(communities, 'community.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ 'community.form.units'|trans }}</th>
+                                    <th>{{ 'community.form.unitgroups'|trans }}</th>
+                                    <th>{{ 'community.form.person.name'|trans }}</th>
+                                    <th>{{ 'community.form.person.rut'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,12 +43,16 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_community_show', { 'id': community.id }) }}" aria-label="{{ 'community.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_community_show', { 'id': community.id }) }}" aria-label="{{ 'community.show.link'|trans }}">{{ icon('search') }}</a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{% if community.id %}{{ community.id }}{% endif %}</td>
+{#}                                    <td>{% if community.id %}{{ community.id }}{% endif %}</td>{#}
                                     <td>{% if community.name %}{{ community.name }}{% endif %}</td>
+                                    <td>{% if community.units %}{{ community.units|length }}{% endif %}</td>
+                                    <td>{% if community.unitgroups %}{{ community.unitgroups|length }}{% endif %}</td>
+                                    <td>{% if community.person %}{{ community.person.name }}{% endif %}</td>
+                                    <td>{% if community.person %}{{ community.person.rut }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

@@ -18,11 +18,13 @@ class UserType extends AbstractType
                 'label' => 'user.form.person',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGUserBundle',
-            )) 
-            ->add('area', null, array(
-                'label' => 'user.form.area',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+            ))
+            ->add('areas', null, array(
+                'label' => 'user.form.areas',
+                'expanded' => true,
+                'multiple' => true,
                 'translation_domain' => 'HVGUserBundle',
+                'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
             ))
         ;
     }

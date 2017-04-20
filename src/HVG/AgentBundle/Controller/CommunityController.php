@@ -27,13 +27,8 @@ class CommunityController extends Controller
 
     public function showAction(Community $community)
     {
-        $unitgroups = $community->getUnitGroups();
-        $communityStaffs = $community->getCommunityStaffs();
-
         return $this->render('HVGAgentBundle:Community:show.html.twig', array(
             'community' => $community,
-            'unitgroups' => $unitgroups,
-            'communityStaffs' => $communityStaffs,
         ));
     }
 

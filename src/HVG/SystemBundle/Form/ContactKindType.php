@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ContactType extends AbstractType
+class ContactKindType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,18 +14,8 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-            ->add('content', null, array(
-                'label' => 'contact.form.content',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('person', null, array(
-                'label' => 'contact.form.person',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('contactkind', null, array(
-                'label' => 'contact.form.contactkind',
+            ->add('name', null, array(
+                'label' => 'contactkind.form.name',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))
@@ -38,7 +28,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'HVG\SystemBundle\Entity\Contact'
+            'data_class' => 'HVG\SystemBundle\Entity\ContactKind'
         ));
     }
 
@@ -47,7 +37,7 @@ class ContactType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'hvg_systembundle_contact';
+        return 'hvg_systembundle_contactkind';
     }
 
 

@@ -5365,6 +5365,12 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     margin-left: auto;
   }
 }
+.panel-accordion > .panel-heading > .pull-right > button[aria-expanded="false"] > .fa-angle-left:before {
+  content: "\f104";
+}
+.panel-accordion > .panel-heading > .pull-right > button[aria-expanded="true"] > .fa-angle-left:before {
+  content: "\f107";
+}
 .breadcrumb {
   padding: 8px 15px;
   margin-bottom: 20px;
@@ -7417,13 +7423,23 @@ button.close {
     display: none !important;
   }
 }
+body {
+  background-image: url("/img/bg.png");
+}
 #wrapper {
   width: 100%;
 }
 #page-wrapper {
   padding: 0 15px;
   background-color: #fff;
-  border: 0;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  border-left: 1px solid #e7e7e7;
+}
+.page-header {
+  padding-bottom: 9px;
+  margin: 20px 0 20px;
+  border-bottom: 1px solid #dfdfdf;
 }
 @media (min-width: 768px) {
   #page-wrapper {

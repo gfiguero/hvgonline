@@ -4,3 +4,19 @@ services:
         arguments: ['@doctrine.orm.entity_manager']
         tags:
             - { name: form.type, alias: hidden_unit }
+
+    hvg_agent.form.ticket:
+        class: HVG\AgentBundle\Form\TicketType
+        tags:
+        - { name: form.type }
+
+    hvg_agent.type.hidden_ticket:
+        class: HVG\AgentBundle\Form\HiddenTicketType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type, alias: hidden_ticket }
+
+    hvg_agent.form.ticketaction:
+        class: HVG\AgentBundle\Form\TicketActionType
+        tags:
+        - { name: form.type }

@@ -29,6 +29,12 @@
 
         <div class="row" id="page-show">
             <div class="col-xs-12 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="community-name">{% if community %}{{ community.name }}{% endif %}</div>
+                    </div>
+                </div>
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'community.title.properties'|trans }}</h1>
@@ -55,7 +61,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for key, communityStaff in communityStaffs %}
+                            {% for key, communityStaff in community.communityStaffs %}
                                 <tr>
                                     <td>
                                         <div class="btn-toolbar">
@@ -75,29 +81,69 @@
             </div>
 
             <div class="col-xs-12 col-lg-6">
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-accordion">
                     <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'community.title.unitgroups'|trans }}</h1>
+                        <div class="pull-left"><h1 class="panel-title">{{ 'community.title.unitgroups'|trans }}</h1></div>
+                        <div class="pull-right"><button type="button" class="btn btn-xs btn-default" data-toggle="collapse" data-target="#unitgrups">{{ icon('angle-left fa-fw') }}</button></div> 
+                        <div class="clearfix"></div>
                     </div>
-                    <div class="table-responsive">
+                    <div id="unitgrups" class="table-responsive panel-collapse collapse">
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ 'community.form.actions'|trans }}</th>
-                                    <th>{{ 'community.form.name'|trans }}</th>
+                                    <th>{{ 'unitgroup.form.actions'|trans }}</th>
+                                    <th>{{ 'unitgroup.form.name'|trans }}</th>
+                                    <th>{{ 'unitgroup.form.units'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for key, unitgroup in unitgroups %}
+                            {% for key, unitgroup in community.unitgroups %}
                                 <tr>
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_unitgroup_show', { 'id': unitgroup.id }) }}" aria-label="{{ 'unitgroup.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_unitgroup_show', { 'id': unitgroup.id }) }}" aria-label="{{ 'unitgroup.show.link'|trans }}">{{ icon('search') }}</a>
                                             </div>
                                         </div>
                                     </td>
                                     <td>{% if unitgroup.name %}{{ unitgroup.name }}{% endif %}</td>
+                                    <td>{% if unitgroup.units %}{{ unitgroup.units|length }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-lg-6">
+                <div class="panel panel-default panel-accordion">
+                    <div class="panel-heading" href="#units">
+                        <div class="pull-left"><h1 class="panel-title">{{ 'community.title.units'|trans }}</h1></div>
+                        <div class="pull-right"><button type="button" class="btn btn-xs btn-default" data-toggle="collapse" data-target="#units">{{ icon('angle-left fa-fw') }}</button></div> 
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="units" class="table-responsive panel-collapse collapse">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'unit.form.actions'|trans }}</th>
+                                    <th>{{ 'unit.form.name'|trans }}</th>
+                                    <th>{{ 'unit.form.unitgroup'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, unit in community.units %}
+                                <tr>
+                                    <td>
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group" role="group">
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_unit_show', { 'id': unit.id }) }}" aria-label="{{ 'unit.show.link'|trans }}">{{ icon('search') }}</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{% if unit.name %}{{ unit.name }}{% endif %}</td>
+                                    <td>{% if unit.unitgroup %}{{ unit.unitgroup.name }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -107,8 +153,14 @@
             </div>
 
         </div>
-        <!-- /#page-list -->
+        <!-- /#page-show -->
 
     </div>
     <!-- /#page-wrapper -->
+{% endblock %}
+
+{% block stylesheet %}
+<style type="text/css">
+.community-name { font-size: 3em; font-weight: bold; }
+</style>
 {% endblock %}

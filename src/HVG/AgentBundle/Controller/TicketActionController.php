@@ -33,4 +33,25 @@ class TicketActionController extends Controller
         ));
     }
 
+    public function newAction(Request $request)
+    {
+        $ticketAction = new TicketAction();
+        $newTicketActionForm = $this->container->get('form.factory')->create($this->get('hvg_agent.form.ticketaction'), $ticketAction, array(
+            'action' => $this->generateUrl('agent_ticketaction_new'),
+        ));
+        $newTicketActionForm->handleRequest($request);
+
+        if ($newTicketActionForm->isSubmitted()) {
+            if($newTicketActionForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $ticketAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+                $em->persist($ticketAction);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'ticketaction.flash.created' );
+            }
+        }
+
+        return $this->redirect($request->headers->get('referer'));
+    }
+
 }

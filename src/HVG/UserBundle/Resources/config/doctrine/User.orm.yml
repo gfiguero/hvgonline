@@ -11,10 +11,18 @@ HVG\UserBundle\Entity\User:
     oneToOne:
         person:
             targetEntity: HVG\SystemBundle\Entity\Person
-    manyToOne:
-        area:
+    manyToMany:
+        areas:
             targetEntity: HVG\SystemBundle\Entity\Area
             inversedBy: users
+            joinTable:
+                name: users_areas
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    area_id:
+                        referencedColumnName: id
     oneToMany:
         tickets:
             targetEntity: HVG\SystemBundle\Entity\Ticket

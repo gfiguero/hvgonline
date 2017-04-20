@@ -19,18 +19,18 @@ class TicketType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('contact_name', null, array(
-                'label' => 'ticket.form.contact_name',
+            ->add('contactname', null, array(
+                'label' => 'ticket.form.contactname',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('contact_phone', null, array(
-                'label' => 'ticket.form.contact_phone',
+            ->add('contactphone', null, array(
+                'label' => 'ticket.form.contactphone',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('contact_email', null, array(
-                'label' => 'ticket.form.contact_email',
+            ->add('contactemail', null, array(
+                'label' => 'ticket.form.contactemail',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 

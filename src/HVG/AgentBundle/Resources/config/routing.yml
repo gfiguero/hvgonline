@@ -41,3 +41,7 @@ hvg_agent_ticketaction:
 hvg_agent_petition:
     resource: "@HVGAgentBundle/Resources/config/routing/petition.yml"
     prefix:   /petition
+
+hvg_agent_petitionaction:
+    resource: "@HVGAgentBundle/Resources/config/routing/petitionaction.yml"
+    prefix:   /petitionaction

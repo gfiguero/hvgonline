@@ -7,3 +7,8 @@ agent_ticketaction_show:
     path:     /{id}/show
     defaults: { _controller: "HVGAgentBundle:TicketAction:show" }
     methods:  GET
+
+agent_ticketaction_new:
+    path:     /new
+    defaults: { _controller: "HVGAgentBundle:TicketAction:new" }
+    methods:  [GET, POST]

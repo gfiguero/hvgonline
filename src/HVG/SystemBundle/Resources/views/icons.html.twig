@@ -4,6 +4,7 @@
     {% elseif 'community' in app.request.attributes.get( '_route' ) %}{{ icon('users fa-fw') }}
     {% elseif 'unitgroup' in app.request.attributes.get( '_route' ) %}{{ icon('building fa-fw') }}
     {% elseif 'unit' in app.request.attributes.get( '_route' ) %}{{ icon('home fa-fw') }}
+    {% elseif 'ticket' in app.request.attributes.get( '_route' ) %}{{ icon('ticket fa-fw') }}
     {% elseif 'person' in app.request.attributes.get( '_route' ) %}{{ icon('user fa-fw') }}
     {% elseif 'user' in app.request.attributes.get( '_route' ) %}{{ icon('id-card fa-fw') }}
     {% elseif 'contact' in app.request.attributes.get( '_route' ) %}{{ icon('address-card fa-fw') }}

@@ -48,6 +48,7 @@ class RegistrationController extends BaseController
         if ($registrationForm->isValid()) {
             $event = new FormEvent($registrationForm, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
+            $user->setEnabled(true);
             $userManager->updateUser($user);
             if (null === $response = $event->getResponse()) {
                 $url = $this->generateUrl('user_registration_confirmed');

@@ -9,6 +9,7 @@ sidemenu:
     resources: Recursos
     communitystaff: Colaboradores
     ticket: Tickets
+    petition: Requerimientos
 
 community:
     title:
@@ -16,7 +17,8 @@ community:
         properties: Datos de la Comunidad
         tickets: Tickets
         list: Lista de Comunidades
-        unitgroups: Torres de la Comunidad
+        unitgroups: Grupos de la Comunidad
+        units: Departamentos
         communitystaffs: Colaboradores
     list:
         link: Explorar Comunidades
@@ -28,6 +30,8 @@ community:
         actions: Acciones
         id: ID
         name: Nombre de la Comunidad
+        unitgroups: Grupos
+        units: Departamentos
         person:
             name: Razón social
             rut: Rol Único Tributario
@@ -35,6 +39,7 @@ community:
 communitystaff:
     title:
         index: Colaboradores
+        list: Lista de Colaboradores
         properties: Datos del Colaborador
     form:
         actions: Acciones
@@ -44,6 +49,25 @@ communitystaff:
             rut: Rol Único Tributario
         role:
             name: Cargo
+
+unitgroup:
+    title:
+        index: Grupos
+        properties: Datos del Grupo
+        tickets: Tickets
+        list: Lista de Grupos
+    list:
+        link: Explorar Grupos
+        title: Lista de Grupos
+    show:
+        link: Mostrar
+        title: Mostrar Grupo
+    form:
+        actions: Acciones
+        id: ID
+        name: Grupo
+        community: Comunidad
+        units: Departamentos
 
 unit:
     title:
@@ -61,13 +85,16 @@ unit:
         id: ID
         name: Departamento
         community: Comunidad
-        unitgroup: Torre
+        unitgroup: Grupo
+        createdAt: Fecha
 
 ticket:
     title:
         index: Tickets
         properties: Datos de Ticket
         tickets: Tickets
+        name: Ticket
+        ticketactions: Acciones
     list:
         link: Explorar Tickets
         title: Lista de Tickets
@@ -76,18 +103,38 @@ ticket:
         title: Mostrar Ticket
     new:
         link: Nuevo Ticket
+    flash:
+        created: El ticket fué registrado exitosamente
     form:
         actions: Acciones
         id: ID
         name: Ticket
         community: Comunidad
         unitgroup: Torre
+        unit: Departamento
         user: Usuario
-        status: Estado
+        ticketstatus: Estado
+        area: Area
+        createdAt: Registrado
+        description: Descripción
+        contactname: Nombre de Contacto
+        contactphone: Número de Contacto
+        contactemail: Email de Contacto
 
 ticketaction:
     title:
         index: Seguimiento de Tickets
+        list: Lista de Acciones de Tickets
     list:
         link: Acciones de Tickets
         list: Lista de Acciones
+    form:
+        actions: Acciones
+        ticket: Ticket
+        id: ID
+        user: Usuario
+        description: Descripción
+        community: Comunidad
+        unitgroup: Grupo
+        unit: Departamento
+        createdAt: Registrada

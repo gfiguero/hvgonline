@@ -29,12 +29,13 @@
                             <thead>
                                 <tr>
                                     <th>{{ 'ticketaction.form.actions'|trans }}</th>
-                                    <th>{{ knp_pagination_sortable(ticketactions, 'ticketaction.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(ticketactions, 'ticketaction.form.description'|trans, 'description') }}{% if sort == 'description' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(ticketactions, 'ticketaction.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ 'ticketaction.form.community'|trans }}</th>
                                     <th>{{ 'ticketaction.form.unitgroup'|trans }}</th>
                                     <th>{{ 'ticketaction.form.unit'|trans }}</th>
+                                    <th>{{ 'ticketaction.form.user'|trans }}</th>
+                                    <th>{{ 'ticketaction.form.ticket'|trans }}</th>
+                                    <th class="col-md-5">{{ 'ticketaction.form.description'|trans }}</th>
+                                    <th>{{ knp_pagination_sortable(ticketactions, 'ticketaction.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,16 +44,17 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_ticket_show', { 'id': ticketaction.id }) }}" aria-label="{{ 'ticketaction.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_ticket_show', { 'id': ticketaction.id }) }}" aria-label="{{ 'ticketaction.show.link'|trans }}">{{ icon('search') }}</a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{% if ticketaction.id %}{{ ticketaction.id }}{% endif %}</td>
-                                    <td>{% if ticketaction.description %}{{ ticketaction.description }}{% endif %}</td>
-                                    <td>{% if ticketaction.createdAt %}{{ ticketaction.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if ticketaction.community %}{{ ticketaction.community.name }}{% endif %}</td>
                                     <td>{% if ticketaction.unitgroup %}{{ ticketaction.unitgroup.name }}{% endif %}</td>
                                     <td>{% if ticketaction.unit %}{{ ticketaction.unit.name }}{% endif %}</td>
+                                    <td>{% if ticketaction.user %}{{ ticketaction.user }}{% endif %}</td>
+                                    <td>{% if ticketaction.ticket %}{{ ticketaction.ticket.id }}{% endif %}</td>
+                                    <td>{% if ticketaction.description %}{{ ticketaction.description }}{% endif %}</td>
+                                    <td>{% if ticketaction.createdAt %}{{ ticketaction.createdAt|ago }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

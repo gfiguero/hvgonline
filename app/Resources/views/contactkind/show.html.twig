@@ -6,13 +6,13 @@
 {% set translation_domain = 'HVGSystemBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'contact.title.index'|trans }}{% endblock %}
+{% block title %}{{ 'contactkind.title.index'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'contact.title.index'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'contactkind.title.index'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
@@ -21,9 +21,9 @@
         <div class="row" id="page-toolbar">
             <div class="col-lg-12">
                 <div class="btn-toolbar">
-                    <a type="button" class="btn btn-default" href="{{ path('contact_index') }}">{{ icon('list') }}&nbsp;{{ 'contact.list.link'|trans }}</a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('pencil') }}&nbsp;{{ 'contact.edit.link'|trans }}</button>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">{{ icon('trash-o') }}&nbsp;{{ 'contact.delete.link'|trans }}</button>
+                    <a type="button" class="btn btn-default" href="{{ path('contactkind_index') }}">{{ icon('list') }}&nbsp;{{ 'contactkind.list.link'|trans }}</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('pencil') }}&nbsp;{{ 'contactkind.edit.link'|trans }}</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">{{ icon('trash-o') }}&nbsp;{{ 'contactkind.delete.link'|trans }}</button>
                 </div>
             </div>
         </div>
@@ -33,18 +33,14 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">{{ 'contact.show.properties'|trans }}</h2>
+                        <h2 class="panel-title">{{ 'contactkind.show.properties'|trans }}</h2>
                     </div>
                     <div class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
-                            <dt>{{ 'contact.form.id'|trans }}</dt>
-                                <dd>{% if contact.id %}{{ contact.id }}{% endif %}</dd>
-                            <dt>{{ 'contact.form.content'|trans }}</dt>
-                                <dd>{% if contact.content %}{{ contact.content }}{% endif %}</dd>
-                            <dt>{{ 'contact.form.createdAt'|trans }}</dt>
-                                <dd>{% if contact.createdAt %}{{ contact.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                            <dt>{{ 'contact.form.updatedAt'|trans }}</dt>
-                                <dd>{% if contact.updatedAt %}{{ contact.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'contactkind.form.id'|trans }}</dt>
+                                <dd>{% if contactKind.id %}{{ contactKind.id }}{% endif %}</dd>
+                            <dt>{{ 'contactkind.form.name'|trans }}</dt>
+                                <dd>{% if contactKind.name %}{{ contactKind.name }}{% endif %}</dd>
                         </dl>
                     </div>
                 </div>
@@ -58,7 +54,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'contact.edit.title'|trans }}</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'contactkind.edit.title'|trans }}</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -66,7 +62,7 @@
                                     {{ form_start(editForm, { 'style': 'horizontal' }) }}
                                         {{ form_widget(editForm) }}
                                         <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'contact.edit.submit'|trans }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'contactkind.edit.submit'|trans }}</button>
                                         </div></div>
                                     {{ form_end(editForm) }}
                                 </div>
@@ -81,17 +77,17 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'contact.delete.title'|trans }}</h4>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'contactkind.delete.title'|trans }}</h4>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-xs-2 text-center">{{ icon('exclamation-triangle fa-5x') }}</div>
-                                <div class="col-xs-10"><p>{{ 'contact.delete.message'|trans }}</p></div>
+                                <div class="col-xs-10"><p>{{ 'contactkind.delete.message'|trans }}</p></div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             {{ form_start(deleteForm) }}
-                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash-o') }}&nbsp;{{ 'contact.delete.submit'|trans }}</button>
+                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash-o') }}&nbsp;{{ 'contactkind.delete.submit'|trans }}</button>
                             {{ form_end(deleteForm) }}
                         </div>
                     </div>

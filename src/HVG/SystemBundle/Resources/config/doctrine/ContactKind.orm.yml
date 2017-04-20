@@ -1,0 +1,15 @@
+HVG\SystemBundle\Entity\ContactKind:
+    type: entity
+    table: ContactKind
+    repositoryClass: HVG\SystemBundle\Entity\ContactKindRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 20
+    lifecycleCallbacks: {  }

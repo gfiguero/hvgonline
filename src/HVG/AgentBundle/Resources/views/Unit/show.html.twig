@@ -29,125 +29,116 @@
         <!-- /#page-toolbar -->
 
         <div class="row" id="page-show">
-            <div class="col-xs-12 col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'unit.title.properties'|trans }}</h1>
-                    </div>
-                    <div class="panel-body">
-                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
-                            <dt>{{ 'unit.form.community'|trans }}</dt><dd>{% if unit.community %}<a href="{{ path('agent_community_show', { 'id' : unit.community.id }) }}">{{ unit.community.name }}</a>{% endif %}</dd>
-                            <dt>{{ 'unit.form.unitgroup'|trans }}</dt><dd>{% if unit.unitgroup %}<a href="{{ path('agent_unitgroup_show', { 'id' : unit.unitgroup.id }) }}">{{ unit.unitgroup.name }}</a>{% endif %}</dd>
-                            <dt>{{ 'unit.form.name'|trans }}</dt><dd>{% if unit.name %}{{ unit.name }}{% endif %}</dd>
-{#}
-                            <dt>{{ 'unit.form.id'|trans }}</dt><dd>{% if unit.id %}{{ unit.id }}{% endif %}</dd>
-                            <dt>{{ 'unit.form.createdAt'|trans }}</dt><dd>{% if unit.createdAt %}{{ unit.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                            <dt>{{ 'unit.form.updatedAt'|trans }}</dt><dd>{% if unit.updatedAt %}{{ unit.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-{#}
-                        </dl>
-                    </div>
-                </div>
+            <div class="col-xs-12">
 
-{#}
                 <div class="row">
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
+                    <div class="col-xs-12">
+                        <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h1 class="panel-title">{{ 'unit.title.charges'|trans }}</h1>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="records_list table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>{{ 'charge.form.actions'|trans }}</th>
-                                            <th>{{ 'charge.form.amount'|trans }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for key, charge in charges %}
-                                        <tr>
-                                            <td>
-                                                <div class="btn-toolbar">
-                                                    <div class="btn-group" role="group">
-                                                        <a type="button" class="btn btn-warning" href="{{ path('agent_charge_show', { 'id': charge.id }) }}" aria-label="{{ 'charge.show.link'|trans }}">{{ icon('search') }}</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>{% if charge.amount %}{{ charge.amount }}{% endif %}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h1 class="panel-title">{{ 'unit.title.allowances'|trans }}</h1>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="records_list table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>{{ 'allowance.form.actions'|trans }}</th>
-                                            <th>{{ 'allowance.form.amount'|trans }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for key, allowance in allowances %}
-                                        <tr>
-                                            <td>
-                                                <div class="btn-toolbar">
-                                                    <div class="btn-group" role="group">
-                                                        <a type="button" class="btn btn-warning" href="{{ path('agent_allowance_show', { 'id': allowance.id }) }}" aria-label="{{ 'allowance.show.link'|trans }}">{{ icon('search') }}</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>{% if allowance.amount %}{{ allowance.amount }}{% endif %}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="unit-name">{% if unit.name %}{{ unit.name }}{% endif %}</div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div class="community-name text-right">{% if unit.community %}{{ unit.community.name }}{% endif %}</div>
+                                        <div class="unitgroup-name text-right">{% if unit.unitgroup %}{{ unit.unitgroup.name }}{% endif %}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-{#}
-            </div>
 
-            <div class="col-xs-12 col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'unit.title.tickets'|trans }}</h1>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">{{ 'unit.title.properties'|trans }}</h1>
+                            </div>
+                            <div class="panel-body">
+                                <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                                    <dt>{{ 'unit.form.community'|trans }}</dt><dd>{% if unit.community %}<a href="{{ path('agent_community_show', { 'id' : unit.community.id }) }}">{{ unit.community.name }}</a>{% endif %}</dd>
+                                    <dt>{{ 'unit.form.unitgroup'|trans }}</dt><dd>{% if unit.unitgroup %}<a href="{{ path('agent_unitgroup_show', { 'id' : unit.unitgroup.id }) }}">{{ unit.unitgroup.name }}</a>{% endif %}</dd>
+                                    <dt>{{ 'unit.form.name'|trans }}</dt><dd>{% if unit.name %}{{ unit.name }}{% endif %}</dd>
+                                </dl>
+                            </div>
+                        </div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="records_list table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>{{ 'ticket.form.actions'|trans }}</th>
-                                    <th>{{ 'ticket.form.id'|trans }}</th>
-                                    <th>{{ 'ticket.form.status'|trans }}</th>
-                                    <th>{{ 'ticket.form.user'|trans }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for key, ticket in tickets %}
-                                <tr>
-                                    <td>
-                                        <div class="btn-toolbar">
-                                            <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_ticket_show', { 'id': ticket.id }) }}" aria-label="{{ 'ticket.show.link'|trans }}">{{ icon('search') }}</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{% if ticket.id %}{{ ticket.id }}{% endif %}</td>
-                                    <td>{% if ticket.ticketstatus %}{{ ticket.ticketstatus.name }}{% endif %}</td>
-                                    <td>{% if ticket.user %}{{ ticket.user.username }}{% endif %}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+{#}
+                    <div class="col-xs-12 col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">{{ 'unit.title.occupant'|trans }}</h1>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="records_list table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'occupant.person.action'|trans }}</th>
+                                            <th>{{ 'occupant.person.name'|trans }}</th>
+                                            <th>{{ 'occupant.person.contact.phone'|trans }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for ticket in [1,2,3,4,5,6,7,8] %}
+                                        <tr>
+                                            <td>
+                                                <div class="btn-toolbar">
+                                                    <div class="btn-group" role="group">
+                                                        <a type="button" class="btn btn-xs btn-warning" href="#">{{ icon('search') }}</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+{#}
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">{{ 'unit.title.tickets'|trans }}</h1>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="records_list table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'ticket.form.actions'|trans }}</th>
+                                            <th>{{ 'ticket.form.description'|trans }}</th>
+                                            <th>{{ 'ticket.form.ticketstatus'|trans }}</th>
+                                            <th>{{ 'ticket.form.user'|trans }}</th>
+                                            <th>{{ 'ticket.form.createdAt'|trans }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for key, ticket in unit.tickets %}
+                                        <tr>
+                                            <td>
+                                                <div class="btn-toolbar">
+                                                    <div class="btn-group" role="group">
+                                                        <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_ticket_show', { 'id': ticket.id }) }}" aria-label="{{ 'ticket.show.link'|trans }}">{{ icon('search') }}</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{% if ticket.description %}{{ ticket.description }}{% endif %}</td>
+                                            <td>{% if ticket.ticketstatus %}{{ ticket.ticketstatus.name }}{% endif %}</td>
+                                            <td>{% if ticket.user %}{{ ticket.user.username }}{% endif %}</td>
+                                            <td>{% if ticket.createdAt %}{{ ticket.createdAt|ago }}{% endif %}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -188,10 +179,8 @@
 
 {% block stylesheet %}
 <style type="text/css">
-#page-show1 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
+.community-name { font-size: 2em; }
+.unitgroup-name { font-size: 1em; }
+.unit-name { font-size: 3em; font-weight: bold; }
 </style>
 {% endblock %}

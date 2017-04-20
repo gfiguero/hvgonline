@@ -29,6 +29,20 @@
 
         <div class="row" id="page-show">
             <div class="col-xs-12 col-lg-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="unitgroup-name text-left">{% if unitgroup %}{{ unitgroup.name }}{% endif %}</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="community-name text-right">{% if unitgroup.community %}{{ unitgroup.community.name }}{% endif %}</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'unitgroup.title.properties'|trans }}</h1>
@@ -66,7 +80,7 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_unit_show', { 'id': unit.id }) }}" aria-label="{{ 'unit.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_unit_show', { 'id': unit.id }) }}" aria-label="{{ 'unit.show.link'|trans }}">{{ icon('search') }}</a>
                                             </div>
                                         </div>
                                     </td>
@@ -88,10 +102,7 @@
 
 {% block stylesheet %}
 <style type="text/css">
-#page-show1 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
+.community-name { font-size: 2em; }
+.unitgroup-name { font-size: 3em; font-weight: bold; }
 </style>
 {% endblock %}

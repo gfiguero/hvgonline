@@ -1,0 +1,24 @@
+contactkind_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:ContactKind:index" }
+    methods:  GET
+
+contactkind_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:ContactKind:show" }
+    methods:  GET
+
+contactkind_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:ContactKind:new" }
+    methods:  [GET, POST]
+
+contactkind_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:ContactKind:edit" }
+    methods:  [GET, POST]
+
+contactkind_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:ContactKind:delete" }
+    methods:  DELETE

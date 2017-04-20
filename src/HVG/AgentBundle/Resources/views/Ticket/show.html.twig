@@ -21,23 +21,49 @@
         <div class="row" id="page-toolbar">
             <div class="col-lg-12">
                 <div class="btn-toolbar">
-                    <a type="button" class="btn btn-default" href="{{ path('agent_unit_show', { 'id':ticket.unit.id }) }}">{{ icon('home fa-fw') }}&nbsp;{{ 'unit.show.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'ticket.list.link'|trans }}</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'ticket.edit.link'|trans }}</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewTicketAction">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticketaction.new.link'|trans }}</button>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalTicketStatus">{{ icon('refresh fa-fw') }}&nbsp;{{ 'ticket.editstatus.link'|trans }}</button>
                 </div>
             </div>
         </div>
         <!-- /#page-toolbar -->
 
         <div class="row" id="page-show">
-            <div class="col-xs-12 col-lg-6">
-                <div class="panel panel-default">
+            <div class="col-xs-12">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'ticket.title.properties'|trans }}</h1>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="ticket-id">{{ 'ticket.title.name'|trans }}&nbsp;{% if ticket.id %}{{ ticket.id }}{% endif %}</div>
+                                <div class="ticket-ticketstatus">{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="community-name text-right">{% if ticket.community %}{{ ticket.community.name }}{% endif %}</div>
+                                <div class="unitgroup-name text-right">{% if ticket.unitgroup %}{{ ticket.unitgroup.name }}{% endif %}</div>
+                                <div class="unit-name text-right">{% if ticket.unit %}{{ ticket.unit.name }}{% endif %}</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
+                        <div class="ticket-description">{% if ticket.description %}{{ ticket.description }}{% endif %}</div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default panel-accordion">
+                    <div class="panel-heading">
+                        <div class="pull-left"><h1 class="panel-title">{{ 'ticket.title.properties'|trans }}</h1></div>
+                        <div class="pull-right"><button type="button" class="btn btn-xs btn-default" data-toggle="collapse" data-target="#ticket-properties">{{ icon('angle-left fa-fw') }}</button></div> 
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="ticket-properties" class="panel-body panel-collapse collapse">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
                             <dt>{{ 'ticket.form.community'|trans }}</dt><dd>{% if ticket.community %}<a href="{{ path('agent_community_show', { 'id' : ticket.community.id }) }}">{{ ticket.community.name }}</a>{% endif %}</dd>
                             <dt>{{ 'ticket.form.unitgroup'|trans }}</dt><dd>{% if ticket.unitgroup %}<a href="{{ path('agent_unitgroup_show', { 'id' : ticket.unitgroup.id }) }}">{{ ticket.unitgroup.name }}</a>{% endif %}</dd>
                             <dt>{{ 'ticket.form.unit'|trans }}</dt><dd>{% if ticket.unit %}<a href="{{ path('agent_unit_show', { 'id' : ticket.unit.id }) }}">{{ ticket.unit.name }}</a>{% endif %}</dd>
+                            <dt>{{ 'ticket.form.id'|trans }}</dt><dd>{% if ticket.id %}{{ ticket.id }}{% endif %}</dd>
+                            <dt>{{ 'ticket.form.ticketstatus'|trans }}</dt><dd>{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</dd>
                             <dt>{{ 'ticket.form.contactname'|trans }}</dt><dd>{% if ticket.contactname %}{{ ticket.contactname }}{% endif %}</dd>
                             <dt>{{ 'ticket.form.contactphone'|trans }}</dt><dd>{% if ticket.contactphone %}{{ ticket.contactphone }}{% endif %}</dd>
                             <dt>{{ 'ticket.form.contactemail'|trans }}</dt><dd>{% if ticket.contactemail %}{{ ticket.contactemail }}{% endif %}</dd>
@@ -48,32 +74,26 @@
 
             </div>
 
-            <div class="col-xs-12 col-lg-6">
+            <div class="col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'ticket.title.actions'|trans }}</h1>
+                        <h1 class="panel-title">{{ 'ticket.title.ticketactions'|trans }}</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ 'ticketaction.form.actions'|trans }}</th>
-                                    <th>{{ 'ticketaction.form.id'|trans }}</th>
                                     <th>{{ 'ticketaction.form.user'|trans }}</th>
+                                    <th>{{ 'ticketaction.form.description'|trans }}</th>
+                                    <th>{{ 'ticketaction.form.createdAt'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for key, ticketaction in ticketactions %}
+                            {% for key, ticketaction in ticket.ticketactions %}
                                 <tr>
-                                    <td>
-                                        <div class="btn-toolbar">
-                                            <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_ticketaction_show', { 'id': ticketaction.id }) }}" aria-label="{{ 'ticketaction.show.link'|trans }}">{{ icon('search') }}</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{% if ticketaction.id %}{{ ticketaction.id }}{% endif %}</td>
                                     <td>{% if ticketaction.user %}{{ ticketaction.user.username }}{% endif %}</td>
+                                    <td>{% if ticketaction.description %}{{ ticketaction.description }}{% endif %}</td>
+                                    <td>{% if ticketaction.createdAt %}{{ ticketaction.createdAt|ago }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -84,6 +104,89 @@
         </div>
         <!-- /#page-list -->
 
+        <div id="page-modal">
+            <div class="modal fade" id="modalNewTicketAction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'ticketaction.new.title'|trans({'%ticketId%' : ticket.id}) }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(newTicketActionForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(newTicketActionForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticketaction.new.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(newTicketActionForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalTicketStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'ticket.editstatus.title'|trans({'%ticketId%' : ticket.id}) }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(ticketStatusForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(ticketStatusForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticket.editstatus.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(ticketStatusForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'ticket.edit.title'|trans({'%ticketId%' : ticket.id}) }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(editForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(editForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticket.edit.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(editForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-modal -->
+
     </div>
     <!-- /#page-wrapper -->
+{% endblock %}
+
+{% block stylesheet %}
+<style type="text/css">
+.community-name { font-size: 2em; }
+.unitgroup-name { font-size: 1em; }
+.unit-name { font-size: 1em; }
+.ticket-id { font-size: 3em; font-weight: bold; }
+.ticket-ticketstatus { font-size: 1.5em; }
+.ticket-description { font-size: 2em; }
+</style>
 {% endblock %}

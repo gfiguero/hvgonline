@@ -1,12 +1,10 @@
 ----------------------------Configuración
 php app/console doctrine:generate:entities HVGSystemBundle:Result --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:Agent --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Community --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:UnitGroup --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Unit --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Area --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Result --format=yml --with-write --overwrite --no-interaction --route-prefix=result
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:Agent --format=yml --with-write --overwrite --no-interaction --route-prefix=agent
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Community --format=yml --with-write --overwrite --no-interaction --route-prefix=community
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:UnitGroup --format=yml --with-write --overwrite --no-interaction --route-prefix=unitgroup
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Unit --format=yml --with-write --overwrite --no-interaction --route-prefix=unit
@@ -21,8 +19,10 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:CommunityStaff -
 --------------- Contactos
 php app/console doctrine:generate:entities HVGSystemBundle:Person --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Contact --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ContactKind --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Person --format=yml --with-write --overwrite --no-interaction --route-prefix=person
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Contact --format=yml --with-write --overwrite --no-interaction --route-prefix=contact
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:ContactKind --format=yml --with-write --overwrite --no-interaction --route-prefix=contactkind
 
 --------------- Cuentas Bancarias
 php app/console doctrine:generate:entities HVGSystemBundle:Bank --path=src

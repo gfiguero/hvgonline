@@ -15,17 +15,22 @@ class Ticket
     /**
      * @var string
      */
-    private $contact_name;
+    private $description;
 
     /**
      * @var string
      */
-    private $contact_phone;
+    private $contactname;
 
     /**
      * @var string
      */
-    private $contact_email;
+    private $contactphone;
+
+    /**
+     * @var string
+     */
+    private $contactemail;
 
     /**
      * @var \DateTime
@@ -48,16 +53,36 @@ class Ticket
     private $deletedAt;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ticketactions;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Unit
+     */
+    private $unit;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\TicketStatus
+     */
+    private $ticketstatus;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Area
+     */
+    private $area;
+
+    /**
+     * @var \HVG\UserBundle\Entity\User
+     */
+    private $user;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->actions = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return (string) $this->id;
+        $this->ticketactions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -71,13 +96,27 @@ class Ticket
     }
 
     /**
-     * Get name
+     * Set description
      *
-     * @return integer
+     * @param string $description
+     *
+     * @return Ticket
      */
-    public function getName()
+    public function setDescription($description)
     {
-        return (string) $this->id;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
@@ -89,7 +128,7 @@ class Ticket
      */
     public function setContactName($contactName)
     {
-        $this->contact_name = $contactName;
+        $this->contactname = $contactName;
 
         return $this;
     }
@@ -101,7 +140,7 @@ class Ticket
      */
     public function getContactName()
     {
-        return $this->contact_name;
+        return $this->contactname;
     }
 
     /**
@@ -113,7 +152,7 @@ class Ticket
      */
     public function setContactPhone($contactPhone)
     {
-        $this->contact_phone = $contactPhone;
+        $this->contactphone = $contactPhone;
 
         return $this;
     }
@@ -125,7 +164,7 @@ class Ticket
      */
     public function getContactPhone()
     {
-        return $this->contact_phone;
+        return $this->contactphone;
     }
 
     /**
@@ -137,7 +176,7 @@ class Ticket
      */
     public function setContactEmail($contactEmail)
     {
-        $this->contact_email = $contactEmail;
+        $this->contactemail = $contactEmail;
 
         return $this;
     }
@@ -149,7 +188,7 @@ class Ticket
      */
     public function getContactEmail()
     {
-        return $this->contact_email;
+        return $this->contactemail;
     }
 
     /**
@@ -249,69 +288,37 @@ class Ticket
     }
 
     /**
-     * Get community
+     * Add ticketaction
      *
-     * @return \HVG\SystemBundle\Entity\Community
-     */
-    public function getCommunity()
-    {
-        $community = null;
-        $unitgroup = $this->getUnitGroup();
-        if($unitgroup) $community = $unitgroup->getCommunity();
-        return $community;
-    }
-
-    /**
-     * Get unitgroup
-     *
-     * @return \HVG\SystemBundle\Entity\UnitGroup
-     */
-    public function getUnitGroup()
-    {
-        $unitgroup = null;
-        $unit = $this->getUnit();
-        if($unit) $unitgroup = $unit->getUnitGroup();
-        return $unitgroup;
-    }
-
-    /**
-     * @var string
-     */
-    private $description;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\Unit
-     */
-    private $unit;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\Area
-     */
-    private $area;
-
-
-    /**
-     * Set description
-     *
-     * @param string $description
+     * @param \HVG\SystemBundle\Entity\TicketAction $ticketaction
      *
      * @return Ticket
      */
-    public function setDescription($description)
+    public function addTicketaction(\HVG\SystemBundle\Entity\TicketAction $ticketaction)
     {
-        $this->description = $description;
+        $this->ticketactions[] = $ticketaction;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Remove ticketaction
      *
-     * @return string
+     * @param \HVG\SystemBundle\Entity\TicketAction $ticketaction
      */
-    public function getDescription()
+    public function removeTicketaction(\HVG\SystemBundle\Entity\TicketAction $ticketaction)
     {
-        return $this->description;
+        $this->ticketactions->removeElement($ticketaction);
+    }
+
+    /**
+     * Get ticketactions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTicketactions()
+    {
+        return $this->ticketactions;
     }
 
     /**
@@ -339,6 +346,56 @@ class Ticket
     }
 
     /**
+     * Get community
+     *
+     * @return \HVG\SystemBundle\Entity\Community
+     */
+    public function getCommunity()
+    {
+        $community = null;
+        $unit = $this->getUnit();
+        if($unit) $community = $this->unit->getCommunity();
+        return $community;
+    }
+
+    /**
+     * Get unitgroup
+     *
+     * @return \HVG\SystemBundle\Entity\UnitGroup
+     */
+    public function getUnitGroup()
+    {
+        $unitgroup = null;
+        $unit = $this->getUnit();
+        if($unit) $unitgroup = $this->unit->getUnitGroup();
+        return $unitgroup;
+    }
+
+    /**
+     * Set ticketstatus
+     *
+     * @param \HVG\SystemBundle\Entity\TicketStatus $ticketstatus
+     *
+     * @return Ticket
+     */
+    public function setTicketstatus(\HVG\SystemBundle\Entity\TicketStatus $ticketstatus = null)
+    {
+        $this->ticketstatus = $ticketstatus;
+
+        return $this;
+    }
+
+    /**
+     * Get ticketstatus
+     *
+     * @return \HVG\SystemBundle\Entity\TicketStatus
+     */
+    public function getTicketstatus()
+    {
+        return $this->ticketstatus;
+    }
+
+    /**
      * Set area
      *
      * @param \HVG\SystemBundle\Entity\Area $area
@@ -361,80 +418,6 @@ class Ticket
     {
         return $this->area;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $ticket_actions;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\TicketStatus
-     */
-    private $ticket_status;
-
-
-    /**
-     * Add ticketAction
-     *
-     * @param \HVG\SystemBundle\Entity\TicketAction $ticketAction
-     *
-     * @return Ticket
-     */
-    public function addTicketAction(\HVG\SystemBundle\Entity\TicketAction $ticketAction)
-    {
-        $this->ticket_actions[] = $ticketAction;
-
-        return $this;
-    }
-
-    /**
-     * Remove ticketAction
-     *
-     * @param \HVG\SystemBundle\Entity\TicketAction $ticketAction
-     */
-    public function removeTicketAction(\HVG\SystemBundle\Entity\TicketAction $ticketAction)
-    {
-        $this->ticket_actions->removeElement($ticketAction);
-    }
-
-    /**
-     * Get ticketActions
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTicketActions()
-    {
-        return $this->ticket_actions;
-    }
-
-    /**
-     * Set ticketStatus
-     *
-     * @param \HVG\SystemBundle\Entity\TicketStatus $ticketStatus
-     *
-     * @return Ticket
-     */
-    public function setTicketStatus(\HVG\SystemBundle\Entity\TicketStatus $ticketStatus = null)
-    {
-        $this->ticket_status = $ticketStatus;
-
-        return $this;
-    }
-
-    /**
-     * Get ticketStatus
-     *
-     * @return \HVG\SystemBundle\Entity\TicketStatus
-     */
-    public function getTicketStatus()
-    {
-        return $this->ticket_status;
-    }
-
-    /**
-     * @var \HVG\UserBundle\Entity\User
-     */
-    private $user;
-
 
     /**
      * Set user
@@ -459,15 +442,5 @@ class Ticket
     {
         return $this->user;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $ticketactions;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\TicketStatus
-     */
-    private $ticketstatus;
-
-
 }
+

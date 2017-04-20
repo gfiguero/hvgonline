@@ -11,4 +11,14 @@ agent_ticket_show:
 agent_ticket_new:
     path:     /new
     defaults: { _controller: "HVGAgentBundle:Ticket:new" }
-    methods:  GET
+    methods:  [GET, POST]
+
+agent_ticket_status:
+    path:     /{id}/status
+    defaults: { _controller: "HVGAgentBundle:Ticket:status" }
+    methods:  [GET, POST]
+
+agent_ticket_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:Ticket:edit" }
+    methods:  [GET, POST]

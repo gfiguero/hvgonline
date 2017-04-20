@@ -12,22 +12,12 @@ HVG\SystemBundle\Entity\Contact:
         person:
             targetEntity: HVG\SystemBundle\Entity\Person
             inversedBy: contacts
+        contactkind:
+            targetEntity: HVG\SystemBundle\Entity\ContactKind
     fields:
-        name:
+        content:
             type: string
             length: 300
-        phone:
-            type: string
-            length: 300
-            nullable: true
-        email:
-            type: string
-            length: 300
-            nullable: true
-        address:
-            type: string
-            length: 300
-            nullable: true
         createdAt:
             type: datetime
             gedmo:

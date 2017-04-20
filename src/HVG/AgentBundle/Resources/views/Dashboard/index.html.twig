@@ -12,19 +12,149 @@
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}Inicio</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{'dashboard.title.index'}}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
         <!-- /#page-header -->
 
         <div class="row">
-            <div class="col-lg-12">
-                <p>Hello World!</p>
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">{{ icon('comments fa-fw fa-4x') }}</div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">78</div>
+                                <div>{{ 'dashboard.counter.petition' }}</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <a href="{{ path('agent_ticket_index') }}">
+                        <div class="panel-footer">
+                            <div class="pull-left">{{ 'dashboard.link.petition'|trans }}</div>
+                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">{{ icon('tasks fa-fw fa-4x') }}</div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">25</div>
+                                <div>{{ 'dashboard.counter.petitionaction' }}</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <a href="{{ path('agent_petitionaction_index') }}">
+                        <div class="panel-footer">
+                            <div class="pull-left">{{ 'dashboard.link.petitionaction'|trans }}</div>
+                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">{{ icon('ticket fa-fw fa-4x') }}</div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">51</div>
+                                <div>{{ 'dashboard.counter.ticket' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ path('agent_ticket_index') }}">
+                        <div class="panel-footer">
+                            <div class="pull-left">{{ 'dashboard.link.ticket'|trans }}</div>
+                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">{{ icon('thumb-tack fa-fw fa-4x') }}</div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">78</div>
+                                <div>{{ 'dashboard.counter.ticketaction' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ path('agent_ticketaction_index') }}">
+                        <div class="panel-footer">
+                            <div class="pull-left">{{ 'dashboard.link.ticketaction'|trans }}</div>
+                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 
     </div>
     <!-- /#page-wrapper -->
 
+{% endblock %}
+
+{% block stylesheet %}
+    <style type="text/css">
+        .huge { font-size: 3em; }
+        .panel-green {
+            border-color: #5cb85c;
+        }
+        .panel-green > .panel-heading {
+            border-color: #5cb85c;
+            color: white;
+            background-color: #5cb85c;
+        }
+        .panel-green > a {
+            color: #5cb85c;
+        }
+        .panel-green > a:hover {
+            color: #3d8b3d;
+        }
+        .panel-red {
+            border-color: #d9534f;
+        }
+        .panel-red > .panel-heading {
+            border-color: #d9534f;
+            color: white;
+            background-color: #d9534f;
+        }
+        .panel-red > a {
+            color: #d9534f;
+        }
+        .panel-red > a:hover {
+            color: #b52b27;
+        }
+        .panel-yellow {
+            border-color: #f0ad4e;
+        }
+        .panel-yellow > .panel-heading {
+            border-color: #f0ad4e;
+            color: white;
+            background-color: #f0ad4e;
+        }
+        .panel-yellow > a {
+            color: #f0ad4e;
+        }
+        .panel-yellow > a:hover {
+            color: #df8a13;
+        }
+    </style>
 {% endblock %}

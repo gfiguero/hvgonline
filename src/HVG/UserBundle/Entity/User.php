@@ -173,7 +173,7 @@ class User extends BaseUser
     /**
      * @var \HVG\SystemBundle\Entity\Area
      */
-    private $area;
+    private $areas;
 
 
     /**
@@ -346,27 +346,39 @@ class User extends BaseUser
         return $this->petitions;
     }
 
+
+
     /**
-     * Set area
+     * Add area
      *
      * @param \HVG\SystemBundle\Entity\Area $area
      *
      * @return User
      */
-    public function setArea(\HVG\SystemBundle\Entity\Area $area = null)
+    public function addArea(\HVG\SystemBundle\Entity\Area $area)
     {
-        $this->area = $area;
+        $this->areas[] = $area;
 
         return $this;
     }
 
     /**
-     * Get area
+     * Remove area
      *
-     * @return \HVG\SystemBundle\Entity\Area
+     * @param \HVG\SystemBundle\Entity\Area $area
      */
-    public function getArea()
+    public function removeArea(\HVG\SystemBundle\Entity\Area $area)
     {
-        return $this->area;
+        $this->areas->removeElement($area);
+    }
+
+    /**
+     * Get areas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAreas()
+    {
+        return $this->areas;
     }
 }

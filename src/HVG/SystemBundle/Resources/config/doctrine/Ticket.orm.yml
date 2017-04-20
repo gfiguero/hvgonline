@@ -29,15 +29,15 @@ HVG\SystemBundle\Entity\Ticket:
         description:
             type: text
             nullable: true
-        contact_name:
+        contactname:
             type: string
             length: 300
             nullable: true
-        contact_phone:
+        contactphone:
             type: string
             length: 20
             nullable: true
-        contact_email:
+        contactemail:
             type: string
             length: 50
             nullable: true

@@ -254,4 +254,62 @@ class Contact
     {
         return $this->name;
     }
+    /**
+     * @var string
+     */
+    private $content;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\ContactKind
+     */
+    private $contactkind;
+
+
+    /**
+     * Set content
+     *
+     * @param string $content
+     *
+     * @return Contact
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Set contactkind
+     *
+     * @param \HVG\SystemBundle\Entity\ContactKind $contactkind
+     *
+     * @return Contact
+     */
+    public function setContactkind(\HVG\SystemBundle\Entity\ContactKind $contactkind = null)
+    {
+        $this->contactkind = $contactkind;
+
+        return $this;
+    }
+
+    /**
+     * Get contactkind
+     *
+     * @return \HVG\SystemBundle\Entity\ContactKind
+     */
+    public function getContactkind()
+    {
+        return $this->contactkind;
+    }
 }

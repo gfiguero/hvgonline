@@ -1,6 +1,6 @@
 hvg_agent_dashboard:
-    path:     /
-    defaults: { _controller: HVGAgentBundle:Dashboard:index }
+    resource: "@HVGAgentBundle/Resources/config/routing/dashboard.yml"
+    prefix:   /
 
 hvg_agent_unitgroup:
     resource: "@HVGAgentBundle/Resources/config/routing/unitgroup.yml"
@@ -45,3 +45,7 @@ hvg_agent_petition:
 hvg_agent_petitionaction:
     resource: "@HVGAgentBundle/Resources/config/routing/petitionaction.yml"
     prefix:   /petitionaction
+
+hvg_agent_error:
+    resource: "@HVGAgentBundle/Resources/config/routing/error.yml"
+    prefix:   /error

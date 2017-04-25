@@ -7,3 +7,24 @@ agent_petition_show:
     path:     /{id}/show
     defaults: { _controller: "HVGAgentBundle:Petition:show" }
     methods:  GET
+
+agent_petition_new:
+    path:     /new
+    defaults: { _controller: "HVGAgentBundle:Petition:new" }
+    methods:  [GET, POST]
+
+agent_petition_status:
+    path:     /{id}/status
+    defaults: { _controller: "HVGAgentBundle:Petition:status" }
+    methods:  [GET, POST]
+
+agent_petition_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:Petition:edit" }
+    methods:  [GET, POST]
+
+agent_petition_my:
+    path:     /my
+    defaults: { _controller: "HVGAgentBundle:Petition:my" }
+    methods:  GET
+

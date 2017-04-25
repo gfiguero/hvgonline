@@ -39,7 +39,7 @@ class UnitGroup
 
     public function __toString()
     {
-        return $this->community . ' - ' . $this->name;
+        return (string) $this->community . ' - ' . (string) $this->name;
     }
 
     /**

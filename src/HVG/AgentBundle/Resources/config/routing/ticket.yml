@@ -22,3 +22,19 @@ agent_ticket_edit:
     path:     /{id}/edit
     defaults: { _controller: "HVGAgentBundle:Ticket:edit" }
     methods:  [GET, POST]
+
+agent_ticket_filter:
+    path:     /filter
+    defaults: { _controller: "HVGAgentBundle:Ticket:filter" }
+    methods:  [GET, POST]
+
+agent_ticket_search:
+    path:     /search
+    defaults: { _controller: "HVGAgentBundle:Ticket:search" }
+    methods:  [GET, POST]
+
+agent_ticket_my:
+    path:     /my
+    defaults: { _controller: "HVGAgentBundle:Ticket:my" }
+    methods:  GET
+

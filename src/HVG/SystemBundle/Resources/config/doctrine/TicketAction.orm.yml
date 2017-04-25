@@ -16,8 +16,7 @@ HVG\SystemBundle\Entity\TicketAction:
             inversedBy: ticketactions
     fields:
         description:
-            type: string
-            length: 300
+            type: text
             nullable: true
         file:
             type: string

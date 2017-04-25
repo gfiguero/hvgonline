@@ -1,0 +1,9 @@
+agent_error_accessdenied:
+    path:     /403
+    defaults: { _controller: HVGAgentBundle:Error:accessdenied }
+    methods:  GET
+
+agent_error_accessdenied:
+    path:     /404
+    defaults: { _controller: HVGAgentBundle:Error:notfound }
+    methods:  GET

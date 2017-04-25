@@ -50,6 +50,16 @@ class User extends BaseUser
         return $this->id;
     }
 
+    public function getRoles()
+    {
+        return parent::getRoles();
+    }
+
+    public function setRoles(array $roles)
+    {
+        parent::setRoles($roles);
+    }
+
     /**
      * Set person
      *
@@ -347,4 +357,77 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * Add area
+     *
+     * @param \HVG\SystemBundle\Entity\Area $area
+     *
+     * @return User
+     */
+    public function addArea(\HVG\SystemBundle\Entity\Area $area)
+    {
+        $this->areas[] = $area;
+
+        return $this;
+    }
+
+    /**
+     * Remove area
+     *
+     * @param \HVG\SystemBundle\Entity\Area $area
+     */
+    public function removeArea(\HVG\SystemBundle\Entity\Area $area)
+    {
+        $this->areas->removeElement($area);
+    }
+
+    /**
+     * Get areas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAreas()
+    {
+        return $this->areas;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $communities;
+
+
+    /**
+     * Add community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     *
+     * @return User
+     */
+    public function addCommunity(\HVG\SystemBundle\Entity\Community $community)
+    {
+        $this->communities[] = $community;
+
+        return $this;
+    }
+
+    /**
+     * Remove community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     */
+    public function removeCommunity(\HVG\SystemBundle\Entity\Community $community)
+    {
+        $this->communities->removeElement($community);
+    }
+
+    /**
+     * Get communities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommunities()
+    {
+        return $this->communities;
+    }
 }

@@ -6,13 +6,13 @@
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'unitgroup.title.index'|trans }}{% endblock %}
+{% block title %}{{ 'unitgroup.index.title'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unitgroup.title.index'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unitgroup.index.title'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'unitgroup.title.list'|trans }}</h1>
+                        <h1 class="panel-title">{{ 'unitgroup.index.list'|trans }}</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
@@ -31,8 +31,6 @@
                                     <th>{{ 'unitgroup.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(unitgroups, 'unitgroup.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(unitgroups, 'unitgroup.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(unitgroups, 'unitgroup.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(unitgroups, 'unitgroup.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,8 +45,6 @@
                                     </td>
                                     <td>{% if unitgroup.id %}{{ unitgroup.id }}{% endif %}</td>
                                     <td>{% if unitgroup.name %}{{ unitgroup.name }}{% endif %}</td>
-                                    <td>{% if unitgroup.createdAt %}{{ unitgroup.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
-                                    <td>{% if unitgroup.updatedAt %}{{ unitgroup.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

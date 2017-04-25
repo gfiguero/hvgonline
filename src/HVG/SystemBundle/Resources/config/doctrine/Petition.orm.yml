@@ -21,20 +21,23 @@ HVG\SystemBundle\Entity\Petition:
         user:
             targetEntity: HVG\UserBundle\Entity\User
             inversedBy: petitions
+        liability:
+            targetEntity: HVG\UserBundle\Entity\User
+            inversedBy: petitionsassigned
     oneToMany:
         petitionactions:
             targetEntity: HVG\SystemBundle\Entity\PetitionAction
             mappedBy: petition
+            cascade: ["persist", "merge"]
         petitionevaluations:
             targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
             mappedBy: petition
     fields:
         description:
-            type: string
-            length: 300
+            type: text
             nullable: true
         expiry:
-            type: datetime
+            type: date
             nullable: true
         createdAt:
             type: datetime

@@ -1,0 +1,9 @@
+agent_dashboard_index:
+    path:     /
+    defaults: { _controller: HVGAgentBundle:Dashboard:index }
+    methods:  GET
+
+agent_dashboard_findunit:
+    path: /findunit
+    defaults: { _controller: HVGAgentBundle:Dashboard:findunit }
+    methods:  [GET, POST]

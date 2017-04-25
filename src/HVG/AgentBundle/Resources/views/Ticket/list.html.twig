@@ -1,0 +1,21 @@
+{% block ticketList %}
+    <tbody id="ticket_list">
+    {% for key, ticket in tickets %}
+        <tr>
+            <td>
+                <div class="btn-toolbar">
+                    <div class="btn-group" role="group">
+                        <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_ticket_show', { 'id': ticket.id }) }}" aria-label="{{ 'ticket.show.link'|trans }}">{{ icon('search') }}</a>
+                    </div>
+                </div>
+            </td>
+            <td>{% if ticket.id %}{{ ticket.id }}{% endif %}</td>
+            <td>{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</td>
+            <td>{% if ticket.unit %}{{ ticket.unit }}{% endif %}</td>
+            <td>{% if ticket.area %}{{ ticket.area.name }}{% endif %}</td>
+            <td>{% if ticket.createdAt %}{{ ticket.createdAt|ago }}{% endif %}</td>
+            <td>{% if ticket.description %}{{ ticket.description }}{% endif %}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+{% endblock %}

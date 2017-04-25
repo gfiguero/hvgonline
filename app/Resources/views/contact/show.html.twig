@@ -41,6 +41,8 @@
                                 <dd>{% if contact.id %}{{ contact.id }}{% endif %}</dd>
                             <dt>{{ 'contact.form.content'|trans }}</dt>
                                 <dd>{% if contact.content %}{{ contact.content }}{% endif %}</dd>
+                            <dt>{{ 'contact.form.enabled'|trans }}</dt>
+                                <dd>{% if contact.enabled %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
                             <dt>{{ 'contact.form.createdAt'|trans }}</dt>
                                 <dd>{% if contact.createdAt %}{{ contact.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'contact.form.updatedAt'|trans }}</dt>

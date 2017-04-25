@@ -1,6 +1,7 @@
 {% extends 'HVGSystemBundle::base.html.twig' %}
 {% use 'HVGSystemBundle::navbar.html.twig' %}
 {% use 'HVGAgentBundle::sidebar.html.twig' %}
+{% use 'HVGSystemBundle::icons.html.twig' %}
 
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
@@ -11,18 +12,26 @@
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% include 'HVGSystemBundle::icon.html.twig' %}{{ 'person.list.title'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'person.title.index'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
         <!-- /#page-header -->
 
+        <div class="row" id="page-toolbar">
+            <div class="col-lg-12">
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNew">{{ icon('plus') }}&nbsp;{{ 'person.new.link'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-toolbar -->
+
         <div class="row" id="page-list">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="btn-toolbar">
-                        </div>
+                        <h1 class="panel-title">{{ 'person.title.list'|trans }}</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
@@ -30,9 +39,8 @@
                                 <tr>
                                     <th>{{ 'person.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(people, 'person.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(people, 'person.form.rut'|trans, 'rut') }}{% if sort == 'rut' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(people, 'person.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(people, 'person.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(people, 'person.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,14 +49,15 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_person_show', { 'id': person.id }) }}" aria-label="{{ 'person.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_person_show', { 'id': person.id }) }}" aria-label="{{ 'person.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-primary" href="{{ path('agent_person_edit', { 'id': person.id }) }}" aria-label="{{ 'person.edit.link'|trans }}">{{ icon('edit') }}</a>
+{#}                                                <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#modalEdit{{person.id}}" aria-label="{{ 'person.edit.link'|trans }}">{{ icon('edit') }}</button>{#}
                                             </div>
                                         </div>
                                     </td>
                                     <td>{% if person.id %}{{ person.id }}{% endif %}</td>
+                                    <td>{% if person.rut %}{{ person.rut }}{% endif %}</td>
                                     <td>{% if person.name %}{{ person.name }}{% endif %}</td>
-                                    <td>{% if person.createdAt %}{{ person.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
-                                    <td>{% if person.updatedAt %}{{ person.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -63,6 +72,59 @@
             </div>
         </div>
         <!-- /#page-list -->
+
+        <div id="page-modal">
+            <div class="modal fade" id="modalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'person.new.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(newForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(newForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'person.new.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(newForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{#}
+            {% for key, person in people %}
+            <div class="modal fade" id="modalEdit{{ person.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'person.edit.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {% set editForm = attribute(editForms, key) %}
+                                    {{ form_start(editForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(editForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'person.edit.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(editForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+{#}
+        </div>
+        <!-- /#page-modal -->
 
     </div>
     <!-- /#page-wrapper -->

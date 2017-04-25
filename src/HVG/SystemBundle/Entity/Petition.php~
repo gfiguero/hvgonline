@@ -40,17 +40,17 @@ class Petition
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $petition_actions;
+    private $petitionactions;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $petition_evaluations;
+    private $petitionevaluations;
 
     /**
      * @var \HVG\SystemBundle\Entity\PetitionStatus
      */
-    private $petition_status;
+    private $petitionstatus;
 
     /**
      * @var \HVG\SystemBundle\Entity\Community
@@ -63,17 +63,12 @@ class Petition
     private $area;
 
     /**
-     * @var \HVG\SystemBundle\Entity\Agent
-     */
-    private $agent;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->petition_actions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->petition_evaluations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->petitionactions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->petitionevaluations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString()
@@ -220,7 +215,7 @@ class Petition
      */
     public function addPetitionAction(\HVG\SystemBundle\Entity\PetitionAction $petitionAction)
     {
-        $this->petition_actions[] = $petitionAction;
+        $this->petitionactions[] = $petitionAction;
 
         return $this;
     }
@@ -232,7 +227,7 @@ class Petition
      */
     public function removePetitionAction(\HVG\SystemBundle\Entity\PetitionAction $petitionAction)
     {
-        $this->petition_actions->removeElement($petitionAction);
+        $this->petitionactions->removeElement($petitionAction);
     }
 
     /**
@@ -242,7 +237,7 @@ class Petition
      */
     public function getPetitionActions()
     {
-        return $this->petition_actions;
+        return $this->petitionactions;
     }
 
     /**
@@ -254,7 +249,7 @@ class Petition
      */
     public function addPetitionEvaluation(\HVG\SystemBundle\Entity\PetitionEvaluation $petitionEvaluation)
     {
-        $this->petition_evaluations[] = $petitionEvaluation;
+        $this->petitionevaluations[] = $petitionEvaluation;
 
         return $this;
     }
@@ -266,7 +261,7 @@ class Petition
      */
     public function removePetitionEvaluation(\HVG\SystemBundle\Entity\PetitionEvaluation $petitionEvaluation)
     {
-        $this->petition_evaluations->removeElement($petitionEvaluation);
+        $this->petitionevaluations->removeElement($petitionEvaluation);
     }
 
     /**
@@ -276,7 +271,7 @@ class Petition
      */
     public function getPetitionEvaluations()
     {
-        return $this->petition_evaluations;
+        return $this->petitionevaluations;
     }
 
     /**
@@ -288,7 +283,7 @@ class Petition
      */
     public function setPetitionStatus(\HVG\SystemBundle\Entity\PetitionStatus $petitionStatus = null)
     {
-        $this->petition_status = $petitionStatus;
+        $this->petitionstatus = $petitionStatus;
 
         return $this;
     }
@@ -300,7 +295,7 @@ class Petition
      */
     public function getPetitionStatus()
     {
-        return $this->petition_status;
+        return $this->petitionstatus;
     }
 
     /**
@@ -352,29 +347,6 @@ class Petition
     }
 
     /**
-     * Set agent
-     *
-     * @param \HVG\SystemBundle\Entity\Agent $agent
-     *
-     * @return Petition
-     */
-    public function setAgent(\HVG\SystemBundle\Entity\Agent $agent = null)
-    {
-        $this->agent = $agent;
-
-        return $this;
-    }
-
-    /**
-     * Get agent
-     *
-     * @return \HVG\SystemBundle\Entity\Agent
-     */
-    public function getAgent()
-    {
-        return $this->agent;
-    }
-    /**
      * @var \HVG\UserBundle\Entity\User
      */
     private $user;
@@ -403,4 +375,5 @@ class Petition
     {
         return $this->user;
     }
+
 }

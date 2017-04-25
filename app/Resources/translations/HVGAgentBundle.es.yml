@@ -9,59 +9,45 @@ sidemenu:
     resources: Recursos
     communitystaff: Colaboradores
     ticket: Tickets
+    ticketaction: Acciones de Tickets
+    petitionaction: Acciones de Requerimientos
     petition: Requerimientos
+    directory: Directorio
+
+dashboard:
+    index:
+        title: Vista General
+    counter:
+        ticket: Tickets en mis áreas
+        petition: Requerimientos en mis áreas
 
 community:
-    title:
-        index: Comunidades
-        properties: Datos de la Comunidad
-        tickets: Tickets
-        list: Lista de Comunidades
-        unitgroups: Grupos de la Comunidad
-        units: Departamentos
-        communitystaffs: Colaboradores
-    list:
+    index:
+        title: Comunidades
         link: Explorar Comunidades
-        title: Lista de Comunidades
+        list: Lista de Comunidades
     show:
-        link: Mostrar
-        title: Mostrar Comunidad
+        title: Datos de la Comunidad
+        communitystaffs: Colaboradores
+        link: Detalles de la Comunidad
     form:
         actions: Acciones
         id: ID
-        name: Nombre de la Comunidad
+        name: Comunidad
         unitgroups: Grupos
-        units: Departamentos
+        units: Unidades
         person:
             name: Razón social
             rut: Rol Único Tributario
 
-communitystaff:
-    title:
-        index: Colaboradores
-        list: Lista de Colaboradores
-        properties: Datos del Colaborador
-    form:
-        actions: Acciones
-        id: ID
-        person:
-            name: Nombre del Colaborador
-            rut: Rol Único Tributario
-        role:
-            name: Cargo
-
 unitgroup:
-    title:
-        index: Grupos
-        properties: Datos del Grupo
-        tickets: Tickets
-        list: Lista de Grupos
-    list:
+    index:
+        title: Grupos
         link: Explorar Grupos
-        title: Lista de Grupos
+        list: Lista de Grupos
     show:
-        link: Mostrar
-        title: Mostrar Grupo
+        title: Datos del Grupo
+        link: Detalles del Grupo
     form:
         actions: Acciones
         id: ID
@@ -70,47 +56,71 @@ unitgroup:
         units: Departamentos
 
 unit:
-    title:
-        index: Departamentos
-        properties: Datos del Departamento
-        tickets: Tickets
-    list:
+    index:
+        title: Departamentos
         link: Explorar Departamentos
-        title: Lista de Departamentos
+        list: Lista de Departamentos
     show:
-        link: Mostrar
-        title: Mostrar Departamento
+        title: Datos del Departamento
+        link: Detalles del Departamento
+        tickets: Tickets
     form:
         actions: Acciones
         id: ID
         name: Departamento
         community: Comunidad
         unitgroup: Grupo
-        createdAt: Fecha
+
+communitystaff:
+    index:
+        title: Colaboradores
+        link: Explorar Colaboradores
+        list: Lista de Colaboradores
+    show:
+        title: Datos del Colaborador
+        link: Detalles del Colaborador
+    form:
+        actions: Acciones
+        id: ID
+        role: Cargo
+        community: Comunidad
+        createdAt: Creado
+        updatedAt: Actualizado
+        person:
+            name: Nombre del Colaborador
+            rut: Rol Único Tributario
 
 ticket:
-    title:
-        index: Tickets
-        properties: Datos de Ticket
-        tickets: Tickets
-        name: Ticket
-        ticketactions: Acciones
-    list:
-        link: Explorar Tickets
-        title: Lista de Tickets
+    index:
+        title: Tickets
+        link: Explorar Otros Tickets
+        list: Lista de Tickets
+    my: 
+        title: Tickets en mi Área
+        list: Lista de Tickets en mi Área
     show:
-        link: Mostrar
-        title: Mostrar Ticket
+        title: Datos de Ticket
+        link: Detalles del Ticket
+        ticketactions: Acciones Realizadas
     new:
+        title: 'Nuevo Ticket: %unit%'
         link: Nuevo Ticket
-    flash:
-        created: El ticket fué registrado exitosamente
+        submit: Registrar Ticket
+        flash: El ticket fué registrado exitosamente
+    edit:
+        title: Edición de Ticket
+        link: Editar Ticket
+        submit: Confirmar Cambios
+    editstatus:
+        title: Cambio de Estado
+        link: Cambiar Estado
+        submit: Confirmar Cambio de Estado
     form:
         actions: Acciones
         id: ID
         name: Ticket
         community: Comunidad
-        unitgroup: Torre
+        unitgroup: Grupo
         unit: Departamento
         user: Usuario
         ticketstatus: Estado
@@ -122,19 +132,127 @@ ticket:
         contactemail: Email de Contacto
 
 ticketaction:
-    title:
-        index: Seguimiento de Tickets
-        list: Lista de Acciones de Tickets
-    list:
-        link: Acciones de Tickets
-        list: Lista de Acciones
+    index:
+        title: Acciones de Tickets
+        link: Explorar Acciones de Ticket
+        list: Lista de Acciones de Ticket
+    show:
+        link: Detalle de Acción de Ticket
+        title: Datos de Acción de Ticket
+    new:
+        title: Nuevo Registro de Acción
+        link: Nueva Acción de Ticket
+        submit: Registrar Acción de Ticket
     form:
         actions: Acciones
         ticket: Ticket
         id: ID
+        area: Área
         user: Usuario
         description: Descripción
         community: Comunidad
         unitgroup: Grupo
         unit: Departamento
         createdAt: Registrada
+
+petition:
+    index:
+        title: Requerimientos
+        link: Explorar Otros Requerimientos
+        list: Lista de Requerimientos
+    my: 
+        title: Requerimientos de mi Área
+        list: Lista de Requerimientos de mi Área
+    show:
+        title: Datos de Requerimiento
+        link: Detalles del Requerimiento
+        petitionactions: Acciones Realizadas
+    new:
+        title: Nuevo Requerimiento
+        link: Nuevo Requerimiento
+        submit: Registrar Requerimiento
+        flash: El requerimiento fué registrado exitosamente
+    edit:
+        title: Edición de Requerimiento
+        link: Editar Requerimiento
+        submit: Confirmar Cambios
+        flash: El requerimiento fué modificado satisfactoriamente
+    editstatus:
+        title: Cambio de Estado
+        link: Cambiar Estado
+        submit: Confirmar Cambio de Estado
+        flash: El estado del requerimiento ha cambiado
+    form:
+        actions: Acciones
+        id: ID
+        name: Requerimiento
+        community: Comunidad
+        user: Emisor
+        petitionstatus: Estado
+        area: Area
+        liability: Responsable
+        expiry: Fecha Límite
+        createdAt: Registrado
+        updatedAt: Actualizado
+        description: Descripción
+
+petitionaction:
+    index:
+        title: Acciones de Requerimientos
+        link: Explorar Acciones de Requerimientos
+        list: Lista de Acciones de Requerimientos
+    show:
+        link: Detalle de Acción de Requerimiento
+        title: Datos de Acción de Requerimiento
+    new:
+        title: Nuevo Registro de Acción
+        link: Nueva Acción de Requerimiento
+        submit: Registrar Acción de Requerimiento
+    form:
+        actions: Acciones
+        petition: Requerimiento
+        id: ID
+        area: Área
+        user: Usuario
+        description: Descripción
+        community: Comunidad
+        createdAt: Registrada
+
+person:
+    title:
+        index: Personas
+        properties: Datos de la Persona
+        list: Lista de Personas
+    new:
+        title: Nueva Persona
+        link: Nueva Persona
+        submit: Registrar
+    show:
+        link: Mostrar
+    list:
+        link: Explorar Personas
+    edit:
+        link: Editar
+        title: Editar Persona
+        submit: Guardar Cambios
+    form:
+        actions: Acciones
+        id: ID
+        name: Nombre Completo
+        rut: Rol Único Tributario
+        addcontact: Agregar Contacto
+        contacts: Contactos
+        createdAt: Registrado
+        updatedAt: Actualizado
+
+contact:
+    title:
+        index: Contactos
+    form:
+        contactkind: Tipo de Contacto
+        content: Dato de Contacto
+
+error:
+    accessdenied:
+        title: Acceso Denegado
+        message: Lo Sentimos, usted no tiene acceso a esta ruta.

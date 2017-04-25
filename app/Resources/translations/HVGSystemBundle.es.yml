@@ -1,4 +1,7 @@
 topmenu:
+    my: Tareas de mi Área
+    mytickets: Tickets
+    mypetitions: Requerimientos
     user: Usuarios
     agentdashboard: Vista General
     systemdashboard: Configuración de Sistema
@@ -42,6 +45,8 @@ sidemenu:
         projectaction: Acciones de Proyectos
         projectobservation: Observaciones de Proyectos
         projectproposal: Cotizaciones de Proyectos
+    resource:
+        root: Recursos
 
 community:
     title:

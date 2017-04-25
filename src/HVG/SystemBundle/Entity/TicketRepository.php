@@ -10,4 +10,48 @@ namespace HVG\SystemBundle\Entity;
  */
 class TicketRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByFilter($unit, $unitgroup)
+    {
+        if($unit) {
+            return $this->getEntityManager()
+                ->createQueryBuilder('t')
+                ->select('t')
+                ->from('HVGSystemBundle:Ticket', 't')
+                ->where('t.unit = :unit')
+                ->setParameter('unit', $unit)
+                ->getQuery()
+                ->getResult();            
+        } elseif ($unitgroup) {
+            return $this->getEntityManager()
+                ->createQueryBuilder('t')
+                ->select('t')
+                ->from('HVGSystemBundle:Ticket', 't')
+                ->join('t.unit', 'tu')
+                ->where('tu.unitgroup = :unitgroup')
+                ->setParameter('unitgroup', $unitgroup)
+                ->getQuery()
+                ->getResult();            
+        } else {
+            return $this->getEntityManager()
+                ->createQueryBuilder('t')
+                ->select('t')
+                ->from('HVGSystemBundle:Ticket', 't')
+                ->getQuery()
+                ->getResult();            
+        }
+    }
+
+    public function findByAreaCommunity($areas, $communities)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('t')
+            ->select('t')
+            ->from('HVGSystemBundle:Ticket', 't')
+            ->join('t.unit', 'tu')
+            ->where('t.area IN (:areas)')
+            ->andWhere('tu.community IN (:communities)')
+            ->setParameters(array('areas' => $areas, 'communities' => $communities))
+            ->getQuery()
+            ->getResult();            
+    }
 }

@@ -5332,10 +5332,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   float: right;
 }
 .sidebar .fa.arrow:before {
-  content: "\f104";
+  content: "\f0d9";
 }
 .sidebar .active > a > .fa.arrow:before {
-  content: "\f107";
+  content: "\f0d7";
 }
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {
@@ -5370,6 +5370,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .panel-accordion > .panel-heading > .pull-right > button[aria-expanded="true"] > .fa-angle-left:before {
   content: "\f107";
+}
+#top-menu > li > a > .fa.arrow:before {
+  content: "\f0d7";
 }
 .breadcrumb {
   padding: 8px 15px;

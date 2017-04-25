@@ -20,56 +20,80 @@ class PersonController extends Controller
         $people = $paginator->paginate($people, $request->query->getInt('page', 1), 100);
         $person = new Person();
         $newForm = $this->createNewForm($person)->createView();
-
         $editForms = array();
-        $deleteForms = array();
         foreach($people as $key => $person) {
             $editForms[] = $this->createEditForm($person)->createView();
-            $deleteForms[] = $this->createDeleteForm($person)->createView();
         }
-
         return $this->render('HVGAgentBundle:Person:index.html.twig', array(
             'people' => $people,
             'direction' => $direction,
             'sort' => $sort,
             'newForm' => $newForm,
             'editForms' => $editForms,
-            'deleteForms' => $deleteForms,
         ));
+    }
 
+    public function newAction(Request $request)
+    {
+        $person = new Person();
+        $newForm = $this->createNewForm($person);
+        $newForm->handleRequest($request);
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($person);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'person.flash.created' );
+            } else {
+                return $this->render('HVGAgentBundle:Person:new.html.twig', array(
+                    'person' => $person,
+                    'newForm' => $newForm->createView(),
+                ));
+            }
+        }
+        return $this->redirect($this->generateUrl('agent_person_index'));
+    }
+
+    public function editAction(Request $request, Person $person)
+    {
+        $editForm = $this->createEditForm($person);
+        $editForm->handleRequest($request);
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($person);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'person.flash.updated' );
+                return $this->redirect($this->generateUrl('agent_person_index'));
+            }
+        }
+        return $this->render('HVGAgentBundle:Person:edit.html.twig', array(
+            'person' => $person,
+            'editForm' => $editForm->createView(),
+        ));
     }
 
     public function showAction(Person $person)
     {
         $editForm = $this->createEditForm($person);
-        $deleteForm = $this->createDeleteForm($person);
-
         return $this->render('HVGAgentBundle:Person:show.html.twig', array(
             'person' => $person,
             'editForm' => $editForm->createView(),
-            'deleteForm' => $deleteForm->createView(),
         ));
     }
 
     private function createNewForm(Person $person)
     {
-        return $this->createForm('HVG\SystemBundle\Form\PersonType', $person, array(
-            'action' => $this->generateUrl('person_new'),
+        return $this->createForm('HVG\AgentBundle\Form\PersonType', $person, array(
+            'action' => $this->generateUrl('agent_person_new'),
         ));
     }
+
     private function createEditForm(Person $person)
     {
-        return $this->createForm('HVG\SystemBundle\Form\PersonType', $person, array(
-            'action' => $this->generateUrl('person_edit', array('id' => $person->getId())),
+        return $this->createForm('HVG\AgentBundle\Form\PersonType', $person, array(
+            'action' => $this->generateUrl('agent_person_edit', array('id' => $person->getId())),
         ));
-    }
-    private function createDeleteForm(Person $person)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('person_delete', array('id' => $person->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
     }
 
 }

@@ -12,6 +12,7 @@ HVG\SystemBundle\Entity\Person:
         contacts:
             targetEntity: HVG\SystemBundle\Entity\Contact
             mappedBy: person
+            cascade: ["persist"]
     fields:
         name:
             type: string

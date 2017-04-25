@@ -22,4 +22,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: es
-
+    roles:
+        ROLE_AGENT: Agente
+        ROLE_ADMIN: Administrador
+        ROLE_SUPER_ADMIN: Administrador de Sistema

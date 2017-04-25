@@ -16,7 +16,20 @@ services:
         tags:
             - { name: form.type, alias: hidden_ticket }
 
+    hvg_agent.type.hidden_petition:
+        class: HVG\AgentBundle\Form\HiddenPetitionType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type, alias: hidden_petition }
+
     hvg_agent.form.ticketaction:
         class: HVG\AgentBundle\Form\TicketActionType
         tags:
         - { name: form.type }
+
+    hvg_agent.form.ticket_filter:
+        class: HVG\AgentBundle\Form\TicketFilterType
+        arguments:
+            - "@doctrine"
+        tags:
+            - { name: form.type, alias: ticket_filter }

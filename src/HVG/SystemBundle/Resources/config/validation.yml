@@ -2,6 +2,3 @@ HVG\SystemBundle\Entity\Person:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: [rut]
-    properties:
-        rut:
-            - NotBlank: ~

@@ -1,0 +1,168 @@
+{% extends 'HVGSystemBundle::base.html.twig' %}
+{% use 'HVGSystemBundle::navbar.html.twig' %}
+{% use 'HVGAgentBundle::sidebar.html.twig' %}
+{% use 'HVGSystemBundle::icons.html.twig' %}
+
+{% set translation_domain = 'HVGAgentBundle' %}
+{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'petition.index.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row" id="page-header">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'petition.index.title'|trans }}</h1>
+                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+            </div>
+        </div>
+        <!-- /#page-header -->
+
+        <div class="row" id="page-toolbar">
+            <div class="col-lg-12">
+                <div class="btn-toolbar">
+                    <a type="button" class="btn btn-default" href="{{ path('agent_petition_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'petition.index.link'|trans }}</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'petition.edit.link'|trans }}</button>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalPetitionStatus">{{ icon('refresh fa-fw') }}&nbsp;{{ 'petition.editstatus.link'|trans }}</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewPetitionAction">{{ icon('plus fa-fw') }}&nbsp;{{ 'petitionaction.new.link'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-toolbar -->
+
+        <div class="row" id="page-show">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ 'petition.show.title'|trans }}</h1>
+                    </div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                            <dt>{{ 'petition.form.id'|trans }}</dt><dd>{% if petition.id %}{{ petition.id }}{% endif %}</dd>
+                            <dt>{{ 'petition.form.petitionstatus'|trans }}</dt><dd>{% if petition.petitionStatus %}{{ petition.petitionStatus }}{% endif %}</dd>
+                            <dt>{{ 'petition.form.user'|trans }}</dt><dd>{% if petition.user %}{{ petition.user }}{% endif %}</dd>
+                            <dt>{{ 'petition.form.area'|trans }}</dt><dd>{% if petition.area %}{{ petition.area.name }}{% endif %}</dd>
+                            <dt>{{ 'petition.form.liability'|trans }}</dt><dd>{% if petition.liability %}{{ petition.liability.person }}{% endif %}</dd>
+                            <dt>{{ 'petition.form.community'|trans }}</dt><dd>{% if petition.community %}<a href="{{ path('agent_community_show', { id : petition.community.id }) }}">{{ petition.community }}</a>{% endif %}</dd>
+                            <dt>{{ 'petition.form.description'|trans }}</dt><dd>{% if petition.description %}{{ petition.description }}{% endif %}</dd>
+                            <dt>{{ 'petition.form.createdAt'|trans }}</dt><dd>{% if petition.createdAt %}{{ petition.createdAt|ago }}{% endif %}</dd>
+                            <dt>{{ 'petition.form.updatedAt'|trans }}</dt><dd>{% if petition.updatedAt %}{{ petition.updatedAt|ago }}{% endif %}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ 'petition.show.petitionactions'|trans }}</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'petitionaction.form.user'|trans }}</th>
+                                    <th>{{ 'petitionaction.form.description'|trans }}</th>
+                                    <th>{{ 'petitionaction.form.createdAt'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, petitionaction in petition.petitionactions %}
+                                <tr>
+                                    <td>{% if petitionaction.user %}{{ petitionaction.user.username }}{% endif %}</td>
+                                    <td>{% if petitionaction.description %}{{ petitionaction.description }}{% endif %}</td>
+                                    <td>{% if petitionaction.createdAt %}{{ petitionaction.createdAt|ago }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /#page-list -->
+
+        <div id="page-modal">
+            <div class="modal fade" id="modalNewPetitionAction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'petitionaction.new.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(newActionForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(newActionForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petitionaction.new.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(newActionForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalPetitionStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'petition.editstatus.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(statusForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(statusForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petition.editstatus.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(statusForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'petition.edit.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(editForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(editForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petition.edit.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(editForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-modal -->
+
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}
+
+{% block stylesheet %}
+<style type="text/css">
+#page-show1 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+</style>
+{% endblock %}

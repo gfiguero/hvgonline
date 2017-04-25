@@ -2,11 +2,15 @@
 
 namespace HVG\AgentBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 use HVG\SystemBundle\Entity\Ticket;
 use HVG\SystemBundle\Entity\TicketAction;
 use HVG\AgentBundle\Form\TicketType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use HVG\AgentBundle\Entity\TicketFilter;
+use HVG\AgentBundle\Form\TicketFilterType;
 
 class TicketController extends Controller
 {
@@ -20,7 +24,10 @@ class TicketController extends Controller
         $paginator = $this->get('knp_paginator');
         $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
 
+        $ticketFilter = new TicketFilter();
+        $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
         return $this->render('HVGAgentBundle:Ticket:index.html.twig', array(
+            'ticketFilterForm' => $ticketFilterForm->createView(),
             'tickets' => $tickets,
             'direction' => $direction,
             'sort' => $sort,
@@ -48,29 +55,95 @@ class TicketController extends Controller
     public function newAction(Request $request)
     {
         $ticket = new Ticket();
-        $newTicketForm = $this->container->get('form.factory')->create($this->get('hvg_agent.form.ticket'), $ticket, array(
+        $newForm = $this->container->get('form.factory')->create($this->get('hvg_agent.form.ticket'), $ticket, array(
             'action' => $this->generateUrl('agent_ticket_new'),
         ));
-        $newTicketForm->handleRequest($request);
+        $newForm->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
 
-        if ($newTicketForm->isSubmitted()) {
-            if($newTicketForm->isValid()) {
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
                 $ticketAction = new TicketAction();
                 $ticketAction->setTicket($ticket);
                 $ticketAction->setDescription('Ticket Abierto');
                 $ticketAction->setUser($this->get('security.token_storage')->getToken()->getUser());
 
-                $em = $this->getDoctrine()->getManager();
                 $ticket->setTicketStatus($em->getReference('HVGSystemBundle:TicketStatus', 1));
                 $ticket->setUser($this->get('security.token_storage')->getToken()->getUser());
                 $em->persist($ticket);
                 $em->persist($ticketAction);
                 $em->flush();
                 $request->getSession()->getFlashBag()->add( 'success', 'ticket.flash.created' );
+                return $this->redirect($request->headers->get('referer'));
             }
         }
 
-        return $this->redirect($request->headers->get('referer'));
+//        $session = $request->getSession();
+//        $ticketFilter = $session->get('ticketFilter', new TicketFilter());
+//        $ticketFilterForm = $this->createTicketFilterForm($em->merge($ticketFilter));
+        $ticketFilter = new TicketFilter();
+        $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
+
+        return $this->render('HVGAgentBundle:Ticket:new.html.twig', array(
+            'ticket' => $ticket,
+            'newForm' => $newForm->createView(),
+            'ticketFilterForm' => $ticketFilterForm->createView(),
+        ));
+    }
+
+    public function searchAction(Request $request)
+    {
+        if($request->isXmlHttpRequest()) {
+            $ticketFilter = new TicketFilter();
+            $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
+            $ticketFilterForm->handleRequest($request);
+            if ($ticketFilterForm->isSubmitted()) {
+                if($ticketFilterForm->isValid()) {
+                    $unit = $ticketFilter->getUnit();
+                    if ($unit) {
+                        $ticket = new Ticket();
+                        $ticket->setUnit($unit);
+                        $newForm = $this->container->get('form.factory')->create($this->get('hvg_agent.form.ticket'), $ticket, array(
+                            'action' => $this->generateUrl('agent_ticket_new'),
+                        ));
+                        return $this->render('HVGAgentBundle:Ticket:filter.html.twig', array(
+                            'ticketFilterForm' => $ticketFilterForm->createView(),
+                            'newForm' => $newForm->createView(),
+                            'unit' => $unit,
+                        ));
+                    }
+                    return $this->render('HVGAgentBundle:Ticket:filter.html.twig', array(
+                        'ticketFilterForm' => $ticketFilterForm->createView(),
+                    ));
+                }
+            }
+            $response = new Response();
+            $response->setStatusCode(500);
+            return $response;
+        }
+    }
+
+    public function filterAction(Request $request)
+    {
+        if($request->isXmlHttpRequest()) {
+            $ticketFilter = new TicketFilter();
+            $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
+            $ticketFilterForm->handleRequest($request);
+            if ($ticketFilterForm->isSubmitted()) {
+                if($ticketFilterForm->isValid()) {
+                    $unit = $ticketFilter->getUnit();
+                    $unitgroup = $ticketFilter->getUnitGroup();
+                    $em = $this->getDoctrine()->getManager();
+                    $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByFilter($unit, $unitgroup);
+                    return $this->render('HVGAgentBundle:Ticket:list.html.twig', array(
+                        'tickets' => $tickets,
+                    ));
+                }
+            }
+            $response = new Response();
+            $response->setStatusCode(500);
+            return $response;
+        }
     }
 
     public function statusAction(Request $request, Ticket $ticket)
@@ -128,6 +201,13 @@ class TicketController extends Controller
         ));
     }
 
+    private function createTicketFilterForm(TicketFilter $ticketFilter)
+    {
+        return $this->createForm('HVG\AgentBundle\Form\TicketFilterType', $ticketFilter, array(
+            'action' => $this->generateUrl('agent_ticket_search'),
+        ));
+    }
+
     private function createEditForm(Ticket $ticket)
     {
         return $this->createForm('HVG\AgentBundle\Form\TicketType', $ticket, array(
@@ -135,5 +215,16 @@ class TicketController extends Controller
         ));
     }
 
+    public function myAction(Request $request)
+    {
+        $user = $this->getUser();
+        $areas = $user->getAreas();
+        $communities = $user->getCommunities();
+        $em = $this->getDoctrine()->getManager();
+        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByAreaCommunity($areas, $communities);
+        return $this->render('HVGAgentBundle:Ticket:my.html.twig', array(
+            'tickets' => $tickets,
+        ));
+    }
 
 }

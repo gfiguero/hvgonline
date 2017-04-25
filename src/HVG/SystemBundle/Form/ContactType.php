@@ -18,7 +18,7 @@ class ContactType extends AbstractType
                 'label' => 'contact.form.content',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
-            )) 
+            ))
             ->add('person', null, array(
                 'label' => 'contact.form.person',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),

@@ -1,6 +1,7 @@
 {% extends 'HVGSystemBundle::base.html.twig' %}
 {% use 'HVGSystemBundle::navbar.html.twig' %}
 {% use 'HVGAgentBundle::sidebar.html.twig' %}
+{% use 'HVGSystemBundle::icons.html.twig' %}
 
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
@@ -11,7 +12,7 @@
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% include 'HVGSystemBundle::icon.html.twig' %}{{ 'contact.list.title'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'contact.list.title'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
@@ -21,8 +22,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class="btn-toolbar">
-                        </div>
+                        <h1 class="panel-title">{{ 'contact.title.list'|trans }}</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
@@ -46,7 +46,7 @@
                                         </div>
                                     </td>
                                     <td>{% if contact.id %}{{ contact.id }}{% endif %}</td>
-                                    <td>{% if contact.person.name %}{{ contact.person.name }}{% endif %}</td>
+                                    <td>{% if contact.person %}{{ contact.person.name }}{% endif %}</td>
                                     <td>{% if contact.createdAt %}{{ contact.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if contact.updatedAt %}{{ contact.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

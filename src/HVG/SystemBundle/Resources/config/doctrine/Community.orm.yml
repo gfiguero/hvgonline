@@ -27,6 +27,10 @@ HVG\SystemBundle\Entity\Community:
         projects:
             targetEntity: HVG\SystemBundle\Entity\Project
             mappedBy: community
+    manyToMany:
+        users:
+            targetEntity: HVG\UserBundle\Entity\User
+            mappedBy: communities
     fields:
         name:
             type: string

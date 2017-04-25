@@ -21,7 +21,7 @@
         <div class="row" id="page-toolbar">
             <div class="col-lg-12">
                 <div class="btn-toolbar">
-                    <a type="button" class="btn btn-default" href="{{ path('user_index') }}" >{{ icon('list fa-fw') }}&nbsp;{{ 'user.list.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('user_index') }}" >{{ icon('list fa-fw') }}&nbsp;{{ 'user.index.link'|trans }}</a>
                     <a type="button" class="btn btn-primary" href="{{ path('user_edit', { id: user.id}) }}" >{{ icon('edit fa-fw') }}&nbsp;{{ 'user.edit.link'|trans }}</a>
                 </div>
             </div>
@@ -32,22 +32,20 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">{{ 'user.show.properties'|trans }}</h2>
+                        <h2 class="panel-title">{{ 'user.show.title'|trans }}</h2>
                     </div>
                     <div class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
-                            <dt>{{ 'user.form.id'|trans }}</dt>
-                                <dd>{% if user.id %}{{ user.id }}{% endif %}</dd>
-                            <dt>{{ 'user.form.username'|trans }}</dt>
-                                <dd>{% if user.username %}{{ user.username }}{% endif %}</dd>
-                            <dt>{{ 'user.form.email'|trans }}</dt>
-                                <dd>{% if user.email %}{{ user.email }}{% endif %}</dd>
-                            <dt>{{ 'user.form.person'|trans }}</dt>
-                                <dd>{% if user.person %}{{ user.person }}{% endif %}</dd>
-                            <dt>{{ 'user.form.createdAt'|trans }}</dt>
-                                <dd>{% if user.createdAt %}{{ user.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
-                            <dt>{{ 'user.form.updatedAt'|trans }}</dt>
-                                <dd>{% if user.updatedAt %}{{ user.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'user.form.id'|trans }}</dt><dd>{% if user.id %}{{ user.id }}{% endif %}</dd>
+                            <dt>{{ 'user.form.username'|trans }}</dt><dd>{% if user.username %}{{ user.username }}{% endif %}</dd>
+                            <dt>{{ 'user.form.email'|trans }}</dt><dd>{% if user.email %}{{ user.email }}{% endif %}</dd>
+                            <dt>{{ 'user.form.person'|trans }}</dt><dd>{% if user.person %}{{ user.person }}{% endif %}</dd>
+                            <dt>{{ 'user.form.roles'|trans }}</dt><dd>{% if user.roles %}{% set roles = [] %}{% for role in user.roles %}{% set roles = roles|merge([('user.role.'~role)|trans]) %}{% endfor %}{{ roles|join(', ') }}{% endif %}</dd>
+                            <dt>{{ 'user.form.areas'|trans }}</dt><dd>{% if user.areas %}{{ user.areas|join(', ') }}{% endif %}</dd>
+                            <dt>{{ 'user.form.communities'|trans }}</dt><dd>{% if user.communities %}{{ user.communities|join(', ') }}{% endif %}</dd>
+
+                            <dt>{{ 'user.form.createdAt'|trans }}</dt><dd>{% if user.createdAt %}{{ user.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'user.form.updatedAt'|trans }}</dt><dd>{% if user.updatedAt %}{{ user.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                         </dl>
                     </div>
                 </div>

@@ -12,13 +12,37 @@ class Builder implements ContainerAwareInterface
 
     public function topMenu(FactoryInterface $factory, array $options)
     {
+        $roles = $this->container->get('security.token_storage')->getToken()->getUser()->getRoles();
 
         $menu = $factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav');
         $menu->setChildrenAttribute('id', 'top-menu');
-        $menu->addChild('topmenu.user', array('route' => 'user_index'))->setAttribute('icon', 'id-card fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
-        $menu->addChild('topmenu.agentdashboard', array('route' => 'hvg_agent_dashboard'))->setAttribute('icon', 'dashboard fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
-        $menu->addChild('topmenu.systemdashboard', array('route' => 'hvg_system_dashboard'))->setAttribute('icon', 'gears fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+
+        if(in_array('ROLE_AGENT', $roles)) {
+            $myLabelAttributes = array(
+                'class' => 'dropdown-toggle',
+                'data-toggle' => 'dropdown',
+                'role' => 'button',
+                'aria-haspopup' => 'true',
+                'aria-expanded' => 'false',
+            );
+            $myAttributes = array(
+                'icon' => 'puzzle-piece fa-fw',
+                'translation_domain' => 'HVGSystemBundle',
+            );
+
+            $menu->addChild('topmenu.my')->setLabelAttributes($myLabelAttributes)->setAttributes($myAttributes);
+            $menu['topmenu.my']->setChildrenAttribute('class', 'dropdown-menu');
+            $menu['topmenu.my']->addChild('topmenu.mytickets', array('route' => 'agent_ticket_my'))->setAttribute('translation_domain', 'HVGSystemBundle');
+            $menu['topmenu.my']->addChild('topmenu.mypetitions', array('route' => 'agent_petition_my'))->setAttribute('translation_domain', 'HVGSystemBundle');
+            $menu->addChild('topmenu.agentdashboard', array('route' => 'agent_dashboard_index'))->setAttribute('icon', 'dashboard fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+        }
+
+        if(in_array('ROLE_ADMIN', $roles)) {
+            $menu->addChild('topmenu.user', array('route' => 'user_index'))->setAttribute('icon', 'id-card fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+            $menu->addChild('topmenu.systemdashboard', array('route' => 'hvg_system_dashboard'))->setAttribute('icon', 'gears fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
+        }
+
         $menu->addChild('topmenu.logout', array('route' => 'fos_user_security_logout'))->setAttribute('icon', 'sign-out fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
 
         return $menu;

@@ -23,22 +23,36 @@ HVG\UserBundle\Entity\User:
                 inverseJoinColumns:
                     area_id:
                         referencedColumnName: id
+        communities:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: users
+            joinTable:
+                name: users_communities
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    community_id:
+                        referencedColumnName: id
     oneToMany:
         tickets:
             targetEntity: HVG\SystemBundle\Entity\Ticket
             mappedBy: user
-        ticket_actions:
+        ticketactions:
             targetEntity: HVG\SystemBundle\Entity\TicketAction
             mappedBy: user
-        petition_actions:
+        petitionactions:
             targetEntity: HVG\SystemBundle\Entity\PetitionAction
             mappedBy: user
-        petition_evaluations:
+        petitionevaluations:
             targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
             mappedBy: user
         petitions:
             targetEntity: HVG\SystemBundle\Entity\Petition
             mappedBy: user
+        petitionsassigned:
+            targetEntity: HVG\SystemBundle\Entity\Petition
+            mappedBy: liability
     fields:
         createdAt:
             type: datetime

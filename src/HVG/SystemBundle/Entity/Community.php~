@@ -230,7 +230,7 @@ class Community
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $community_staffs;
+    private $communitystaffs;
 
 
     /**
@@ -242,7 +242,7 @@ class Community
      */
     public function addCommunityStaff(\HVG\SystemBundle\Entity\CommunityStaff $communityStaff)
     {
-        $this->community_staffs[] = $communityStaff;
+        $this->communitystaffs[] = $communityStaff;
 
         return $this;
     }
@@ -254,7 +254,7 @@ class Community
      */
     public function removeCommunityStaff(\HVG\SystemBundle\Entity\CommunityStaff $communityStaff)
     {
-        $this->community_staffs->removeElement($communityStaff);
+        $this->communitystaffs->removeElement($communityStaff);
     }
 
     /**
@@ -264,7 +264,7 @@ class Community
      */
     public function getCommunityStaffs()
     {
-        return $this->community_staffs;
+        return $this->communitystaffs;
     }
     /**
      * @var \HVG\SystemBundle\Entity\Person
@@ -339,10 +339,6 @@ class Community
     {
         return $this->units;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $communitystaffs;
 
     /**
      * @var \Doctrine\Common\Collections\Collection

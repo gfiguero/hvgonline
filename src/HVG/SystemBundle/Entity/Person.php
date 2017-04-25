@@ -23,16 +23,6 @@ class Person
     private $rut;
 
     /**
-     * @var string
-     */
-    private $contact_phone;
-
-    /**
-     * @var string
-     */
-    private $contact_email;
-
-    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -111,54 +101,6 @@ class Person
     }
 
     /**
-     * Set contactPhone
-     *
-     * @param string $contactPhone
-     *
-     * @return Person
-     */
-    public function setContactPhone($contactPhone)
-    {
-        $this->contact_phone = $contactPhone;
-
-        return $this;
-    }
-
-    /**
-     * Get contactPhone
-     *
-     * @return string
-     */
-    public function getContactPhone()
-    {
-        return $this->contact_phone;
-    }
-
-    /**
-     * Set contactEmail
-     *
-     * @param string $contactEmail
-     *
-     * @return Person
-     */
-    public function setContactEmail($contactEmail)
-    {
-        $this->contact_email = $contactEmail;
-
-        return $this;
-    }
-
-    /**
-     * Get contactEmail
-     *
-     * @return string
-     */
-    public function getContactEmail()
-    {
-        return $this->contact_email;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -229,139 +171,19 @@ class Person
     {
         return $this->deletedAt;
     }
-    /**
-     * @var string
-     */
-    private $contact_address;
 
-
-    /**
-     * Set contactAddress
-     *
-     * @param string $contactAddress
-     *
-     * @return Person
-     */
-    public function setContactAddress($contactAddress)
-    {
-        $this->contact_address = $contactAddress;
-
-        return $this;
-    }
-
-    /**
-     * Get contactAddress
-     *
-     * @return string
-     */
-    public function getContactAddress()
-    {
-        return $this->contact_address;
-    }
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $contacts_person;
+    private $contacts;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->contacts_person = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    /**
-     * Add contactsPerson
-     *
-     * @param \HVG\SystemBundle\Entity\ContactPerson $contactsPerson
-     *
-     * @return Person
-     */
-    public function addContactsPerson(\HVG\SystemBundle\Entity\ContactPerson $contactsPerson)
-    {
-        $this->contacts_person[] = $contactsPerson;
-
-        return $this;
-    }
-
-    /**
-     * Remove contactsPerson
-     *
-     * @param \HVG\SystemBundle\Entity\ContactPerson $contactsPerson
-     */
-    public function removeContactsPerson(\HVG\SystemBundle\Entity\ContactPerson $contactsPerson)
-    {
-        $this->contacts_person->removeElement($contactsPerson);
-    }
-
-    /**
-     * Get contactsPerson
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getContactsPerson()
-    {
-        return $this->contacts_person;
-    }
-    /**
-     * @var \HVG\SystemBundle\Entity\PersonProvider
-     */
-    private $person_provider;
-
-
-    /**
-     * Set personProvider
-     *
-     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
-     *
-     * @return Person
-     */
-    public function setPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider = null)
-    {
-        $this->person_provider = $personProvider;
-
-        return $this;
-    }
-
-    /**
-     * Get personProvider
-     *
-     * @return \HVG\SystemBundle\Entity\PersonProvider
-     */
-    public function getPersonProvider()
-    {
-        return $this->person_provider;
-    }
-
-    /**
-     * Add personProvider
-     *
-     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
-     *
-     * @return Person
-     */
-    public function addPersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
-    {
-        $this->person_provider[] = $personProvider;
-
-        return $this;
-    }
-
-    /**
-     * Remove personProvider
-     *
-     * @param \HVG\SystemBundle\Entity\PersonProvider $personProvider
-     */
-    public function removePersonProvider(\HVG\SystemBundle\Entity\PersonProvider $personProvider)
-    {
-        $this->person_provider->removeElement($personProvider);
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $contacts;
-
 
     /**
      * Add contact
@@ -372,6 +194,8 @@ class Person
      */
     public function addContact(\HVG\SystemBundle\Entity\Contact $contact)
     {
+        $contact->setPerson($this);
+
         $this->contacts[] = $contact;
 
         return $this;

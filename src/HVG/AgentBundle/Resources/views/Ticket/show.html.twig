@@ -6,14 +6,21 @@
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'ticket.title.index'|trans }}{% endblock %}
+{% block title %}{{ 'ticket.index.title'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'ticket.title.index'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'ticket.index.title'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('agent_dashboard_index') }}">{{ 'dashboard.index.title'|trans }}</a></li>
+                    <li><a href="{{ path('agent_community_show', { 'id' : ticket.unit.community.id }) }}">{{ ticket.unit.community.name }}</a></li>
+                    <li><a href="{{ path('agent_unitgroup_show', { 'id' : ticket.unit.unitgroup.id }) }}">{{ ticket.unit.unitgroup.name }}</a></li>
+                    <li><a href="{{ path('agent_unit_show', { 'id' : ticket.unit.id }) }}">{{ ticket.unit.name }}</a></li>
+                    <li class="active">{{ ticket.id }}</li>
+                </ol>
             </div>
         </div>
         <!-- /#page-header -->
@@ -21,10 +28,10 @@
         <div class="row" id="page-toolbar">
             <div class="col-lg-12">
                 <div class="btn-toolbar">
-                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'ticket.list.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'ticket.index.link'|trans }}</a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'ticket.edit.link'|trans }}</button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewTicketAction">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticketaction.new.link'|trans }}</button>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalTicketStatus">{{ icon('refresh fa-fw') }}&nbsp;{{ 'ticket.editstatus.link'|trans }}</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewTicketAction">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticketaction.new.link'|trans }}</button>
                 </div>
             </div>
         </div>
@@ -36,7 +43,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-6">
-                                <div class="ticket-id">{{ 'ticket.title.name'|trans }}&nbsp;{% if ticket.id %}{{ ticket.id }}{% endif %}</div>
+                                <div class="ticket-id">{{ 'ticket.form.name'|trans }}&nbsp;{% if ticket.id %}{{ ticket.id }}{% endif %}</div>
                                 <div class="ticket-ticketstatus">{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</div>
                             </div>
                             <div class="col-xs-6">
@@ -53,11 +60,9 @@
 
                 <div class="panel panel-default panel-accordion">
                     <div class="panel-heading">
-                        <div class="pull-left"><h1 class="panel-title">{{ 'ticket.title.properties'|trans }}</h1></div>
-                        <div class="pull-right"><button type="button" class="btn btn-xs btn-default" data-toggle="collapse" data-target="#ticket-properties">{{ icon('angle-left fa-fw') }}</button></div> 
-                        <div class="clearfix"></div>
+                        <h1 class="panel-title">{{ 'ticket.show.title'|trans }}</h1>
                     </div>
-                    <div id="ticket-properties" class="panel-body panel-collapse collapse">
+                    <div id="ticket-properties" class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
                             <dt>{{ 'ticket.form.community'|trans }}</dt><dd>{% if ticket.community %}<a href="{{ path('agent_community_show', { 'id' : ticket.community.id }) }}">{{ ticket.community.name }}</a>{% endif %}</dd>
                             <dt>{{ 'ticket.form.unitgroup'|trans }}</dt><dd>{% if ticket.unitgroup %}<a href="{{ path('agent_unitgroup_show', { 'id' : ticket.unitgroup.id }) }}">{{ ticket.unitgroup.name }}</a>{% endif %}</dd>
@@ -71,13 +76,12 @@
                         </dl>
                     </div>
                 </div>
-
             </div>
 
             <div class="col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'ticket.title.ticketactions'|trans }}</h1>
+                        <h1 class="panel-title">{{ 'ticket.show.ticketactions'|trans }}</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
@@ -102,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <!-- /#page-list -->
+        <!-- /#page-show -->
 
         <div id="page-modal">
             <div class="modal fade" id="modalNewTicketAction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -187,6 +191,6 @@
 .unit-name { font-size: 1em; }
 .ticket-id { font-size: 3em; font-weight: bold; }
 .ticket-ticketstatus { font-size: 1.5em; }
-.ticket-description { font-size: 2em; }
+.ticket-description { font-size: 1.2em; }
 </style>
 {% endblock %}

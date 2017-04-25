@@ -31,17 +31,18 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h2 class="panel-title">{{ 'user.list.title'|trans }}</h2>
+                        <h2 class="panel-title">{{ 'user.index.list'|trans }}</h2>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ 'user.form.actions'|trans }}</th>
+                                    <th class="col-xs-1">{{ 'user.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(users, 'user.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(users, 'user.form.person'|trans, 'person') }}{% if sort == 'person' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(users, 'user.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(users, 'user.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ 'user.form.roles'|trans }}</th>
+                                    <th class="col-md-3">{{ 'user.form.areas'|trans }}</th>
+                                    <th class="col-md-3">{{ 'user.form.communities'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,14 +51,16 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('user_show', { 'id': user.id }) }}" aria-label="{{ 'user.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('user_show', { id: user.id }) }}" aria-label="{{ 'user.show.link'|trans }}">{{ icon('search fa-fw') }}</a>
+                                                <a type="button" class="btn btn-xs btn-primary" href="{{ path('user_edit', { id: user.id }) }}" aria-label="{{ 'user.show.link'|trans }}">{{ icon('edit fa-fw') }}</a>
                                             </div>
                                         </div>
                                     </td>
                                     <td>{% if user.id %}{{ user.id }}{% endif %}</td>
                                     <td>{% if user.person %}{{ user.person }}{% endif %}</td>
-                                    <td>{% if user.createdAt %}{{ user.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
-                                    <td>{% if user.updatedAt %}{{ user.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if user.roles %}{% set roles = [] %}{% for role in user.roles %}{% set roles = roles|merge([('user.role.'~role)|trans]) %}{% endfor %}{{ roles|join(', ') }}{% endif %}</td>
+                                    <td>{% if user.areas %}{{ user.areas|join(', ') }}{% endif %}</td>
+                                    <td>{% if user.communities %}{{ user.communities|join(', ') }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

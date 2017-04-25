@@ -41,7 +41,7 @@ hvg_system_role:
     resource: "@HVGSystemBundle/Resources/config/routing/role.yml"
     prefix:   /role
 
-#Configuration
+#Contacts
 hvg_system_person:
     resource: "@HVGSystemBundle/Resources/config/routing/person.yml"
     prefix:   /person
@@ -50,6 +50,11 @@ hvg_system_contact:
     resource: "@HVGSystemBundle/Resources/config/routing/contact.yml"
     prefix:   /contact
 
+hvg_system_contactkind:
+    resource: "@HVGSystemBundle/Resources/config/routing/contactkind.yml"
+    prefix:   /contactkind
+
+#Configuration
 hvg_system_personprovider: 
     resource: "@HVGSystemBundle/Resources/config/routing/personprovider.yml"
     prefix:   /personprovider  

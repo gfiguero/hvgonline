@@ -6,14 +6,18 @@
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'community.title.index'|trans }}{% endblock %}
+{% block title %}{{ 'community.index.title'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'community.title.index'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'community.index.title'|trans }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('agent_dashboard_index') }}">{{ 'dashboard.index.title'|trans }}</a></li>
+                    <li class="active">{{ community.name }}</li>
+                </ol>
             </div>
         </div>
         <!-- /#page-header -->
@@ -21,14 +25,14 @@
         <div class="row" id="page-toolbar">
             <div class="col-lg-12">
                 <div class="btn-toolbar">
-                    <a type="button" class="btn btn-default" href="{{ path('agent_community_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'community.list.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_community_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'community.index.link'|trans }}</a>
                 </div>
             </div>
         </div>
         <!-- /#page-toolbar -->
 
         <div class="row" id="page-show">
-            <div class="col-xs-12 col-lg-6">
+            <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <div class="community-name">{% if community %}{{ community.name }}{% endif %}</div>
@@ -37,11 +41,12 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'community.title.properties'|trans }}</h1>
+                        <h1 class="panel-title">{{ 'community.show.title'|trans }}</h1>
                     </div>
                     <div class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
                             <dt>{{ 'community.form.name'|trans }}</dt><dd>{% if community.name %}{{ community.name }}{% endif %}</dd>
+                            <dt>{{ 'community.form.unitgroups'|trans }}</dt><dd>{% if community.unitgroups %}{% for unitgroup in community.unitgroups %}<a href="{{ path('agent_unitgroup_show', { id: unitgroup.id }) }}">{{ unitgroup.name }}</a>{{' '}}{% endfor %}{% endif %}</dd>
                             <dt>{{ 'community.form.person.name'|trans }}</dt><dd>{% if community.person %}{{ community.person }}{% endif %}</dd>
                             <dt>{{ 'community.form.person.rut'|trans }}</dt><dd>{% if community.person %}{{ community.person.rut }}{% endif %}</dd>
                         </dl>
@@ -49,7 +54,7 @@
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'community.title.communitystaffs'|trans }}</h1>
+                        <h1 class="panel-title">{{ 'community.show.communitystaffs'|trans }}</h1>
                     </div>
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
@@ -66,7 +71,7 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-warning" href="{{ path('agent_communitystaff_show', { 'id': communityStaff.id }) }}" aria-label="{{ 'communityStaff.show.link'|trans }}">{{ icon('search') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_communitystaff_show', { 'id': communityStaff.id }) }}" aria-label="{{ 'communityStaff.show.link'|trans }}">{{ icon('search') }}</a>
                                             </div>
                                         </div>
                                     </td>
@@ -79,11 +84,11 @@
                     </div>
                 </div>
             </div>
-
+{#}
             <div class="col-xs-12 col-lg-6">
                 <div class="panel panel-default panel-accordion">
                     <div class="panel-heading">
-                        <div class="pull-left"><h1 class="panel-title">{{ 'community.title.unitgroups'|trans }}</h1></div>
+                        <div class="pull-left"><h1 class="panel-title">{{ 'community.show.unitgroups'|trans }}</h1></div>
                         <div class="pull-right"><button type="button" class="btn btn-xs btn-default" data-toggle="collapse" data-target="#unitgrups">{{ icon('angle-left fa-fw') }}</button></div> 
                         <div class="clearfix"></div>
                     </div>
@@ -151,7 +156,7 @@
                     </div>
                 </div>
             </div>
-
+{#}
         </div>
         <!-- /#page-show -->
 

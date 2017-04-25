@@ -58,7 +58,7 @@ class Unit
 
     public function __toString()
     {
-        return $this->unitgroup . ' - ' . $this->name;
+        return (string) $this->unitgroup . ' - ' . (string) $this->name;
     }
 
     /**

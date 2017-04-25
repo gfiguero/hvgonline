@@ -39,6 +39,7 @@
                                 <tr>
                                     <th>{{ 'contact.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(contacts, 'contact.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(contacts, 'contact.form.enabled'|trans, 'enabled') }}{% if sort == 'enabled' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(contacts, 'contact.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(contacts, 'contact.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
@@ -56,6 +57,7 @@
                                         </div>
                                     </td>
                                     <td>{% if contact.id %}{{ contact.id }}{% endif %}</td>
+                                    <td>{% if contact.enabled %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</td>
                                     <td>{% if contact.createdAt %}{{ contact.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if contact.updatedAt %}{{ contact.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

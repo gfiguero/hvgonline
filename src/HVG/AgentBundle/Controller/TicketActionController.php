@@ -15,7 +15,7 @@ class TicketActionController extends Controller
         $direction = $request->query->get('direction');
         $em = $this->getDoctrine()->getManager();
         if($sort) $ticketactions = $em->getRepository('HVGSystemBundle:TicketAction')->findBy(array(), array($sort => $direction));
-        else $ticketactions = $em->getRepository('HVGSystemBundle:TicketAction')->findAll();
+        else $ticketactions = $em->getRepository('HVGSystemBundle:TicketAction')->findBy(array(), array('createdAt' => 'DESC'));
         $paginator = $this->get('knp_paginator');
         $ticketactions = $paginator->paginate($ticketactions, $request->query->getInt('page', 1), 100);
 

@@ -9,33 +9,41 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
+{#}
             <img class="img-responsive" src="{{ asset('/img/HVGLOGO.jpg') | imagine_filter('logo_login') }}" />
+{#}
             <div class="panel panel-default">
-                <div class="panel-heading text-center">{{ 'security.login.title'|trans }}</div>
+                <div class="panel-heading text-center">
+                    <div class="panel-title">
+                        {{ 'security.login.title'|trans }}
+                    </div>
+                </div>
                 <div class="panel-body">
                     <form action="{{ path("fos_user_security_check") }}" method="post">
                         <div class="form-group">
                             {% if error %}
                                 <div class="alert alert-danger alert-dismissible" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">{{ icon('times') }}</span></button>
                                     {{ error.messageKey|trans(error.messageData, 'security') }}
                                 </div>
                             {% endif %}
-                            <input class="form-control text-center" type="text" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="{{ 'security.login.username'|trans({}, 'HVGUserBundle') }}" />
+                            <input class="form-control text-center" type="text" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="{{ 'security.form.username'|trans }}" />
                         </div>
                         <div class="form-group">
-                            <input class="form-control text-center" type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans({}, 'HVGUserBundle') }}" />
+                            <input class="form-control text-center" type="password" id="password" name="_password" required="required" placeholder="{{ 'security.form.password'|trans }}" />
                         </div>
 {#}
                         <div class="checkbox">
-                            <label><input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans({}, 'HVGUserBundle') }}</label> 
+                            <label><input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.form.remember_me'|trans }}</label> 
                         </div>
 {#}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                        <button type="submit"  id="_submit" name="_submit" class="btn btn-primary btn-block">{{ icon('sign-in') }}&nbsp;{{ 'security.login.submit'|trans({}, 'HVGUserBundle') }}</button>
+                        <button type="submit"  id="_submit" name="_submit" class="btn btn-primary btn-block">{{ icon('sign-in') }}&nbsp;{{ 'security.form.submit'|trans }}</button>
                     </form>
                 </div>
-                <div class="panel-footer text-center"><a href="{{ path("fos_user_resetting_request") }}">{{ 'resetting.reset.request'|trans({}, 'HVGUserBundle') }}</a></div>
+{#}
+                <div class="panel-footer text-center"><a href="{{ path("fos_user_resetting_request") }}">{{ 'resetting.reset.request'|trans }}</a></div>
+{#}
             </div>
         </div>
     </div>

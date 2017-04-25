@@ -1,0 +1,70 @@
+{% extends 'HVGSystemBundle::base.html.twig' %}
+{% use 'HVGSystemBundle::navbar.html.twig' %}
+{% use 'HVGAgentBundle::sidebar.html.twig' %}
+{% use 'HVGSystemBundle::icons.html.twig' %}
+
+{% set translation_domain = 'HVGAgentBundle' %}
+{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'petitionaction.index.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row" id="page-header">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'petitionaction.index.title'|trans }}</h1>
+                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+            </div>
+        </div>
+        <!-- /#page-header -->
+
+        <div class="row" id="page-list">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ 'petitionaction.index.list'|trans }}</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'petitionaction.form.petition'|trans }}</th>
+                                    <th>{{ 'petitionaction.form.area'|trans }}</th>
+                                    <th>{{ 'petitionaction.form.user'|trans }}</th>
+                                    <th class="col-md-5">{{ 'petitionaction.form.description'|trans }}</th>
+                                    <th>{{ knp_pagination_sortable(petitionactions, 'petitionaction.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, petitionaction in petitionactions %}
+                                <tr>
+                                    <td>
+                                        <div class="btn-toolbar">
+                                            <div class="btn-group" role="group">
+                                                <a type="button" class="btn btn-xs btn-default" href="{{ path('agent_petition_show', { 'id': petitionaction.petition.id }) }}" aria-label="{{ 'petition.show.link'|trans }}">{{ icon('hand-o-up') }}</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{% if petitionaction.petition.area %}{{ petitionaction.petition.area }}{% endif %}</td>
+                                    <td>{% if petitionaction.user %}{{ petitionaction.user }}{% endif %}</td>
+                                    <td>{% if petitionaction.description %}{{ petitionaction.description }}{% endif %}</td>
+                                    <td>{% if petitionaction.createdAt %}{{ petitionaction.createdAt|ago }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ knp_pagination_render(petitionactions) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-list -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}

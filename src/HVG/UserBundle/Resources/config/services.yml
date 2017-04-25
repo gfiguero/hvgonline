@@ -2,3 +2,9 @@ services:
 #    hvg_user.example:
 #        class: HVG\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+    user.form.type.roles:
+        class: HVG\UserBundle\Form\Type\RoleType
+        arguments:
+            - '%roles%'
+        tags:
+            - { name: form.type }

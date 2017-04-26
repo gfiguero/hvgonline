@@ -6,6 +6,7 @@ use HVG\SystemBundle\Entity\Petition;
 use HVG\AgentBundle\Form\PetitionType;
 
 use HVG\SystemBundle\Entity\PetitionAction;
+use HVG\SystemBundle\Entity\PetitionObjective;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -168,4 +169,12 @@ class PetitionController extends Controller
         ));
     }
 
+    public function completeObjectiveAction(Request $request, PetitionObjective $petitionObjective)
+    {
+        $petitionObjective->setCompleted(true);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($petitionObjective);
+        $em->flush();
+        return $this->redirect($request->headers->get('referer'));
+    }
 }

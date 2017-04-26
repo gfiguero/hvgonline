@@ -8,7 +8,7 @@ HVG\UserBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
-    oneToOne:
+    manyToOne:
         person:
             targetEntity: HVG\SystemBundle\Entity\Person
     manyToMany:

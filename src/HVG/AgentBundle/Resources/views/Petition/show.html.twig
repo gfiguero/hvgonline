@@ -31,7 +31,7 @@
         <!-- /#page-toolbar -->
 
         <div class="row" id="page-show">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'petition.show.title'|trans }}</h1>
@@ -50,7 +50,37 @@
                         </dl>
                     </div>
                 </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ 'petition.show.petitionobjectives'|trans }}</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'petitionobjective.form.description'|trans }}</th>
+                                    <th>{{ 'petitionobjective.form.completed'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, petitionobjective in petition.petitionobjectives %}
+                                <tr>
+                                    <td>{% if petitionobjective.description %}{{ petitionobjective.description }}{% endif %}</td>
+                                    <td>{% if not petitionobjective.completed %}<a type="button" class="btn btn-xs btn-default" href="{{ path('agent_petition_completeobjective', {id:petitionobjective.id}) }}">{{ icon('check fa-fw') }}&nbsp;{{ 'petition.show.completeobjective'|trans }}</a>{% else %}{{ icon('check fa-fw') }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-toolbar -->
 
+        <div class="row" id="page-show">
+            <div class="col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'petition.show.petitionactions'|trans }}</h1>

@@ -405,4 +405,45 @@ class Petition
     {
         return $this->liability;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitionobjectives;
+
+
+    /**
+     * Add petitionobjective
+     *
+     * @param \HVG\SystemBundle\Entity\PetitionObjective $petitionobjective
+     *
+     * @return Petition
+     */
+    public function addPetitionobjective(\HVG\SystemBundle\Entity\PetitionObjective $petitionobjective)
+    {
+        $petitionobjective->setPetition($this);
+
+        $this->petitionobjectives[] = $petitionobjective;
+
+        return $this;
+    }
+
+    /**
+     * Remove petitionobjective
+     *
+     * @param \HVG\SystemBundle\Entity\PetitionObjective $petitionobjective
+     */
+    public function removePetitionobjective(\HVG\SystemBundle\Entity\PetitionObjective $petitionobjective)
+    {
+        $this->petitionobjectives->removeElement($petitionobjective);
+    }
+
+    /**
+     * Get petitionobjectives
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPetitionobjectives()
+    {
+        return $this->petitionobjectives;
+    }
 }

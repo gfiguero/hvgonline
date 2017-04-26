@@ -29,6 +29,10 @@ HVG\SystemBundle\Entity\Petition:
             targetEntity: HVG\SystemBundle\Entity\PetitionAction
             mappedBy: petition
             cascade: ["persist", "merge"]
+        petitionobjectives:
+            targetEntity: HVG\SystemBundle\Entity\PetitionObjective
+            mappedBy: petition
+            cascade: ["persist", "merge"]
         petitionevaluations:
             targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
             mappedBy: petition

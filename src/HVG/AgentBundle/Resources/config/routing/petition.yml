@@ -28,3 +28,7 @@ agent_petition_my:
     defaults: { _controller: "HVGAgentBundle:Petition:my" }
     methods:  GET
 
+agent_petition_completeobjective:
+    path:     /{id}/completeobjective
+    defaults: { _controller: "HVGAgentBundle:Petition:completeObjective" }
+    methods:  GET

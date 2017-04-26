@@ -169,6 +169,8 @@ petition:
         title: Datos de Requerimiento
         link: Detalles del Requerimiento
         petitionactions: Acciones Realizadas
+        petitionobjectives: Objetivos
+        completeobjective: Completar
     new:
         title: Nuevo Requerimiento
         link: Nuevo Requerimiento
@@ -194,6 +196,8 @@ petition:
         area: Area
         liability: Responsable
         expiry: Fecha Límite
+        petitionobjectives: Objetivos
+        addobjective: Agregar Objetivo
         createdAt: Registrado
         updatedAt: Actualizado
         description: Descripción
@@ -208,7 +212,7 @@ petitionaction:
         title: Datos de Acción de Requerimiento
     new:
         title: Nuevo Registro de Acción
-        link: Nueva Acción de Requerimiento
+        link: Agregar Acción
         submit: Registrar Acción de Requerimiento
     form:
         actions: Acciones
@@ -219,6 +223,11 @@ petitionaction:
         description: Descripción
         community: Comunidad
         createdAt: Registrada
+
+petitionobjective:
+    form:
+        description: Descripción
+        completed: Completado
 
 person:
     title:

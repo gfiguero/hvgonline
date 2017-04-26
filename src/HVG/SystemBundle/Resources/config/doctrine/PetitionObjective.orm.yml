@@ -1,0 +1,21 @@
+HVG\SystemBundle\Entity\PetitionObjective:
+    type: entity
+    table: PetitionObjective
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        petition:
+            targetEntity: HVG\SystemBundle\Entity\Petition
+            inversedBy: petitionobjectives
+    fields:
+        description:
+            type: string
+            length: 300
+            nullable: true
+        completed:
+            type: boolean
+            nullable: true

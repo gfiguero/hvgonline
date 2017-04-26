@@ -1,0 +1,24 @@
+petitionobjective_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:PetitionObjective:index" }
+    methods:  GET
+
+petitionobjective_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:PetitionObjective:show" }
+    methods:  GET
+
+petitionobjective_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:PetitionObjective:new" }
+    methods:  [GET, POST]
+
+petitionobjective_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:PetitionObjective:edit" }
+    methods:  [GET, POST]
+
+petitionobjective_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:PetitionObjective:delete" }
+    methods:  DELETE

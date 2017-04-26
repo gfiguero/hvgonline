@@ -39,6 +39,7 @@
                                 <tr>
                                     <th class="col-xs-1">{{ 'user.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(users, 'user.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(users, 'user.form.username'|trans, 'username') }}{% if sort == 'username' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(users, 'user.form.person'|trans, 'person') }}{% if sort == 'person' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ 'user.form.roles'|trans }}</th>
                                     <th class="col-md-3">{{ 'user.form.areas'|trans }}</th>
@@ -58,6 +59,7 @@
                                         </div>
                                     </td>
                                     <td>{% if user.id %}{{ user.id }}{% endif %}</td>
+                                    <td>{% if user.username %}{{ user.username }}{% endif %}</td>
                                     <td>{% if user.person %}{{ user.person }}{% endif %}</td>
                                     <td>{% if user.roles %}{% set roles = [] %}{% for role in user.roles %}{% set roles = roles|merge([('user.role.'~role)|trans]) %}{% endfor %}{{ roles|join(', ') }}{% endif %}</td>
                                     <td>{% if user.areas %}{{ user.areas|join(', ') }}{% endif %}</td>

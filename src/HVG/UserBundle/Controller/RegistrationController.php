@@ -54,7 +54,7 @@ class RegistrationController extends BaseController
                 $url = $this->generateUrl('user_registration_confirmed');
                 $response = new RedirectResponse($url);
             }
-            $dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
+            //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_COMPLETED, new FilterUserResponseEvent($user, $request, $response));
 
             return $this->redirect($this->generateUrl('user_index'));
         }

@@ -4,7 +4,7 @@ hvg_agent:
 
 hvg_customer:
     resource: "@HVGCustomerBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /customer
 
 hvg_resource_planner:
     resource: "@HVGResourcePlannerBundle/Resources/config/routing.yml"
@@ -27,3 +27,10 @@ hvg_admin:
 hvg_system:
     resource: "@HVGSystemBundle/Resources/config/routing.yml"
     prefix:   /system
+
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /login
+        permanent: true

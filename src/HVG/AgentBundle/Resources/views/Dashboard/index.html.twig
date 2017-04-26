@@ -71,12 +71,12 @@
                         <div class="row">
                             <div class="col-xs-3">{{ icon('ticket fa-fw fa-5x') }}</div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">51</div>
-                                <div>{{ 'dashboard.counter.ticket' }}</div>
+                                <div class="huge">{{ tickets|length }}</div>
+                                <div>{{ 'dashboard.counter.ticket'|trans }}</div>
                             </div>
                         </div>
                     </div>
-                    <a href="{{ path('agent_ticket_index') }}">
+                    <a href="{{ path('agent_ticket_my') }}">
                         <div class="panel-footer">
                             <div class="pull-left">{{ 'ticket.my.link'|trans }}</div>
                             <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
@@ -92,12 +92,12 @@
                         <div class="row">
                             <div class="col-xs-3">{{ icon('hand-o-up fa-fw fa-5x') }}</div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge">78</div>
-                                <div>{{ 'dashboard.counter.petition' }}</div>
+                                <div class="huge">{{ petitions|length }}</div>
+                                <div>{{ 'dashboard.counter.petition'|trans }}</div>
                             </div>
                         </div>
                     </div>
-                    <a href="{{ path('agent_ticketaction_index') }}">
+                    <a href="{{ path('agent_petition_my') }}">
                         <div class="panel-footer">
                             <div class="pull-left">{{ 'petition.my.link'|trans }}</div>
                             <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>

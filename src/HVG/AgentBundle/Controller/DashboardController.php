@@ -17,7 +17,16 @@ class DashboardController extends Controller
         $ticket = new Ticket();
         $newTicketForm = $this->createNewTicketForm($ticket);
 
+        $user = $this->getUser();
+        $areas = $user->getAreas();
+        $communities = $user->getCommunities();
+        $em = $this->getDoctrine()->getManager();
+        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByAreaCommunity($areas, $communities);
+        $petitions = $em->getRepository('HVGSystemBundle:Petition')->findByAreaCommunity($areas, $communities);
+
         return $this->render('HVGAgentBundle:Dashboard:index.html.twig', array(
+            'tickets' => $tickets,
+            'petitions' => $petitions,
             'newTicketForm' => $newTicketForm->createView(),
         ));
     }

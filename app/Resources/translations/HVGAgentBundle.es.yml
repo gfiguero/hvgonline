@@ -18,8 +18,8 @@ dashboard:
     index:
         title: Vista General
     counter:
-        ticket: Tickets en mis áreas
-        petition: Requerimientos en mis áreas
+        ticket: Tickets
+        petition: Requerimientos
 
 community:
     index:
@@ -96,8 +96,9 @@ ticket:
         link: Explorar Otros Tickets
         list: Lista de Tickets
     my: 
-        title: Tickets en mi Área
-        list: Lista de Tickets en mi Área
+        link: Ir a mi bandeja de Tickets
+        title: Bandeja de Tickets
+        list: Lista de Tickets
     show:
         title: Datos de Ticket
         link: Detalles del Ticket
@@ -161,8 +162,9 @@ petition:
         link: Explorar Otros Requerimientos
         list: Lista de Requerimientos
     my: 
-        title: Requerimientos de mi Área
-        list: Lista de Requerimientos de mi Área
+        link: Ir a bandeja de Requerimientos
+        title: Bandeja de Requerimientos
+        list: Lista de Requerimientos
     show:
         title: Datos de Requerimiento
         link: Detalles del Requerimiento

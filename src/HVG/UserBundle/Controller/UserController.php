@@ -124,4 +124,29 @@ class UserController extends Controller
             ->getForm()
         ;
     }
+
+    public function forcePasswordAction(Request $request, User $user)
+    {
+        $forcePasswordForm = $this->createForcePasswordForm($user);
+        $forcePasswordForm->setData($user);
+        $forcePasswordForm->handleRequest($request);
+
+        if ($forcePasswordForm->isValid()) {
+            $userManager = $this->get('fos_user.user_manager');
+            $userManager->updateUser($user);
+            return $this->redirect($this->generateUrl('user_index'));
+        }
+
+        return $this->render('HVGUserBundle:ChangePassword:forcePassword.html.twig', array(
+            'forcePasswordForm' => $forcePasswordForm->createView()
+        ));
+    }
+
+    private function createForcePasswordForm(User $user)
+    {
+        return $this->createForm('HVG\UserBundle\Form\ForcePasswordType', $user, array(
+            'action' => $this->generateUrl('user_force_password', array('id' => $user->getId())),
+        ));
+    }
+
 }

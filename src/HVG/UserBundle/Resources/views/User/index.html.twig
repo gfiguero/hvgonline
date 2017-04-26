@@ -51,8 +51,9 @@
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('user_show', { id: user.id }) }}" aria-label="{{ 'user.show.link'|trans }}">{{ icon('search fa-fw') }}</a>
-                                                <a type="button" class="btn btn-xs btn-primary" href="{{ path('user_edit', { id: user.id }) }}" aria-label="{{ 'user.show.link'|trans }}">{{ icon('edit fa-fw') }}</a>
+                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('user_show', { id: user.id }) }}">{{ icon('search fa-fw') }}</a>
+                                                <a type="button" class="btn btn-xs btn-primary" href="{{ path('user_edit', { id: user.id }) }}">{{ icon('edit fa-fw') }}</a>
+                                                <a type="button" class="btn btn-xs btn-info" href="{{ path('user_force_password', { id: user.id }) }}">{{ icon('lock fa-fw') }}</a>
                                             </div>
                                         </div>
                                     </td>

@@ -46,6 +46,13 @@ class RegistrationType extends AbstractType
                 'translation_domain' => 'HVGUserBundle',
                 'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
             ))
+            ->add('communities', null, array(
+                'label' => 'user.form.communities',
+                'expanded' => true,
+                'multiple' => true,
+                'translation_domain' => 'HVGUserBundle',
+                'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
+            ))
         ;
     }
 

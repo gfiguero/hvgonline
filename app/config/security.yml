@@ -14,12 +14,13 @@ security:
     providers:
         chain_provider:
             chain:
-                providers: [in_memory, hvg_userbundle]
-        in_memory:
-            memory:
-                users:
-                    root: { password: Au0ZedG4Ewn5aOK, roles: 'ROLE_ADMIN' }
-                    admin: { password: admin, roles: 'ROLE_ADMIN' }
+                providers: [hvg_userbundle]
+#                providers: [in_memory, hvg_userbundle]
+#        in_memory: 
+#            memory:
+#                users:
+#                    root: { password: Au0ZedG4Ewn5aOK, roles: 'ROLE_ADMIN' }
+#                    admin: { password: admin, roles: 'ROLE_ADMIN' }
         hvg_userbundle:
             id: fos_user.user_provider.username_email
 

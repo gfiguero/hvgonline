@@ -10,7 +10,7 @@ namespace HVG\SystemBundle\Entity;
  */
 class PetitionRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findByAreaCommunity($areas, $communities)
+    public function findMy($areas, $communities)
     {
         return $this->getEntityManager()
             ->createQueryBuilder('p')

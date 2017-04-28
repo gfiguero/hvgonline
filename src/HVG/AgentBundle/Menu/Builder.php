@@ -39,6 +39,7 @@ class Builder implements ContainerAwareInterface
         $sidemenu->addChild('sidemenu.petition')->setAttribute('icon', 'hand-o-up fa-fw')->setAttribute('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.petition']->setChildrenAttribute('class', 'nav nav-second-level collapse');
         $sidemenu['sidemenu.petition']->addChild('sidemenu.petition', array('route' => 'agent_petition_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
+        $sidemenu['sidemenu.petition']->addChild('sidemenu.mypetition', array('route' => 'agent_petition_my'))->setAttribute('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.petition']->addChild('sidemenu.petitionaction', array('route' => 'agent_petitionaction_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
 
         $sidemenu->addChild('sidemenu.resources')->setAttribute('icon', 'paperclip fa-fw')->setAttribute('translation_domain', 'HVGAgentBundle');

@@ -65,10 +65,9 @@ class TicketController extends Controller
             if($newForm->isValid()) {
                 $ticketAction = new TicketAction();
                 $ticketAction->setTicket($ticket);
-                $ticketAction->setDescription('Ticket Abierto');
+                $ticketAction->setDescription('Ticket Creado. Estado: '.$ticket->getStatus());
                 $ticketAction->setUser($this->get('security.token_storage')->getToken()->getUser());
 
-                $ticket->setTicketStatus($em->getReference('HVGSystemBundle:TicketStatus', 1));
                 $ticket->setUser($this->get('security.token_storage')->getToken()->getUser());
                 $em->persist($ticket);
                 $em->persist($ticketAction);
@@ -220,10 +219,21 @@ class TicketController extends Controller
         $user = $this->getUser();
         $areas = $user->getAreas();
         $communities = $user->getCommunities();
+        $sort = $request->query->get('sort');
+        $direction = $request->query->get('direction');
         $em = $this->getDoctrine()->getManager();
-        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByAreaCommunity($areas, $communities);
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
+        $statuses = $em->getRepository('HVGSystemBundle:TicketStatus')->findBy(array('result' => array(1,2,3)));
+        if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('area' => $areas->toArray(), 'unit' => $units, 'ticketstatus' => $statuses), array($sort => $direction));
+        else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('area' => $areas->toArray(), 'unit' => $units, 'ticketstatus' => $statuses));
+        $paginator = $this->get('knp_paginator');
+        $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
+
+//        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByAreaCommunity($areas, $communities);
         return $this->render('HVGAgentBundle:Ticket:my.html.twig', array(
             'tickets' => $tickets,
+            'direction' => $direction,
+            'sort' => $sort,
         ));
     }
 

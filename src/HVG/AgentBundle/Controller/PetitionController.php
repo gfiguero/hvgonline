@@ -44,12 +44,10 @@ class PetitionController extends Controller
             if($newForm->isValid()) {
                 $petitionAction = new PetitionAction();
                 $petitionAction->setPetition($petition);
-                $petitionAction->setDescription('Requerimiento Abierto');
+                $petitionAction->setDescription('Requerimiento Creado. Estado: '.$petition->getPetitionStatus());
                 $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
 
                 $em = $this->getDoctrine()->getManager();
-
-                $petition->setPetitionStatus($em->getReference('HVGSystemBundle:PetitionStatus', 1));
                 $petition->setUser($this->get('security.token_storage')->getToken()->getUser());
 
                 $em->persist($petition);
@@ -162,10 +160,26 @@ class PetitionController extends Controller
         $user = $this->getUser();
         $areas = $user->getAreas();
         $communities = $user->getCommunities();
+        $sort = $request->query->get('sort');
+        $direction = $request->query->get('direction');
         $em = $this->getDoctrine()->getManager();
-        $petitions = $em->getRepository('HVGSystemBundle:Petition')->findByAreaCommunity($areas, $communities);
+        $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,3)));
+        if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
+        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
+        $paginator = $this->get('knp_paginator');
+
+        $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
+//        $petitions = $em->getRepository('HVGSystemBundle:Petition')->findMy($areas, $communities);
+
+        $petition = new Petition();
+        $newForm = $this->createNewForm($petition);
+        $newForm->handleRequest($request);
+
         return $this->render('HVGAgentBundle:Petition:my.html.twig', array(
             'petitions' => $petitions,
+            'newForm' => $newForm->createView(),
+            'direction' => $direction,
+            'sort' => $sort,
         ));
     }
 

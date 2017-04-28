@@ -23,11 +23,6 @@ agent_petition_edit:
     defaults: { _controller: "HVGAgentBundle:Petition:edit" }
     methods:  [GET, POST]
 
-agent_petition_my:
-    path:     /my
-    defaults: { _controller: "HVGAgentBundle:Petition:my" }
-    methods:  GET
-
 agent_petition_completeobjective:
     path:     /{id}/completeobjective
     defaults: { _controller: "HVGAgentBundle:Petition:completeObjective" }

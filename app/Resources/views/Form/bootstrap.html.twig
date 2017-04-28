@@ -113,7 +113,7 @@
                 {% endfor %}
             </ul>
             {% if form.vars.allow_add %}
-                <a href="#" class="btn btn-primary btn-sm" data-addfield="collection" data-collection="{{ form.vars.id }}" data-prototype-name="{{ prototype_name }}">{{ form.vars.add_button_text|trans({}, translation_domain)|parse_icons|raw }}</a>
+                <a href="#" class="btn btn-success" data-addfield="collection" data-collection="{{ form.vars.id }}" data-prototype-name="{{ prototype_name }}">{{ icon('plus fa-fw') }}&nbsp;{{ form.vars.add_button_text|trans({}, translation_domain)|parse_icons|raw }}</a>
             {% endif %}
         </div>
     {% endspaceless %}

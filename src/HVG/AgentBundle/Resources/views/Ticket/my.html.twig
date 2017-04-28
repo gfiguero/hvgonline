@@ -29,13 +29,14 @@
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ 'ticket.form.actions'|trans }}</th>
-                                    <th>{{ 'ticket.form.id'|trans }}</th>
-                                    <th>{{ 'ticket.form.ticketstatus'|trans }}</th>
-                                    <th>{{ 'ticket.form.unit'|trans }}</th>
-                                    <th>{{ 'ticket.form.area'|trans }}</th>
-                                    <th>{{ 'ticket.form.createdAt'|trans }}</th>
+                                    <th>{{ icon('search fa-fw') }}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.ticketstatus'|trans, 'ticketstatus') }}{% if sort == 'ticketstatus' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.unit'|trans, 'unit') }}{% if sort == 'unit' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.area'|trans, 'area') }}{% if sort == 'area' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(tickets, 'ticket.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th class="col-md-5">{{ 'ticket.form.description'|trans }}</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,6 +59,11 @@
                             {% endfor %}
                             </tbody>
                         </table>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ knp_pagination_render(tickets) }}
+                        </div>
                     </div>
                 </div>
             </div>

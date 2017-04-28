@@ -11,7 +11,7 @@ HVG\SystemBundle\Entity\Allowance:
     manyToOne:
         unit:
             targetEntity: HVG\SystemBundle\Entity\Unit
-            inversedBy: allowance
+            inversedBy: allowances
     oneToMany:
         allowancecharge:
             targetEntity: HVG\SystemBundle\Entity\AllowanceCharge

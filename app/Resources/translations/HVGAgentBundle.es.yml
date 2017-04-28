@@ -11,7 +11,8 @@ sidemenu:
     ticket: Tickets
     ticketaction: Acciones de Tickets
     petitionaction: Acciones de Requerimientos
-    petition: Requerimientos
+    petition: Todos los Requerimientos
+    mypetition: Bandeja de Requerimientos
     directory: Directorio
 
 dashboard:

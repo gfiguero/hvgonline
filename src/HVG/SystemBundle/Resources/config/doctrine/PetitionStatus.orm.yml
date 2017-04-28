@@ -1,6 +1,7 @@
 HVG\SystemBundle\Entity\PetitionStatus:
     type: entity
     table: PetitionStatus
+    repositoryClass: HVG\SystemBundle\Entity\PetitionStatusRepository
     id:
         id:
             type: integer

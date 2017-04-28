@@ -19,6 +19,15 @@
         </div>
         <!-- /#page-header -->
 
+        <div class="row" id="page-toolbar">
+            <div class="col-lg-12">
+                <div class="btn-toolbar">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNew">{{ icon('plus') }}&nbsp;{{ 'petition.new.link'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-toolbar -->
+
         <div class="row" id="page-list">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -29,14 +38,14 @@
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ 'petition.form.actions'|trans }}</th>
-                                    <th>{{ 'petition.form.id'|trans }}</th>
-                                    <th>{{ 'petition.form.petitionstatus'|trans }}</th>
-                                    <th>{{ 'petition.form.user'|trans }}</th>
-                                    <th>{{ 'petition.form.liability'|trans }}</th>
-                                    <th>{{ 'petition.form.area'|trans }}</th>
-                                    <th>{{ 'petition.form.community'|trans }}</th>
-                                    <th>{{ 'petition.form.createdAt'|trans }}</th>
+                                    <th>{{ icon('search fa-fw') }}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.petitionstatus'|trans, 'petitionstatus') }}{% if sort == 'petitionstatus' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.liability'|trans, 'liability') }}{% if sort == 'liability' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.area'|trans, 'area') }}{% if sort == 'area' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.community'|trans, 'community') }}{% if sort == 'community' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.expiry'|trans, 'expiry') }}{% if sort == 'expiry' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th class="col-md-5">{{ 'petition.form.description'|trans }}</th>
                                 </tr>
                             </thead>
@@ -52,10 +61,10 @@
                                     </td>
                                     <td>{% if petition.id %}{{ petition.id }}{% endif %}</td>
                                     <td>{% if petition.petitionstatus %}{{ petition.petitionstatus }}{% endif %}</td>
-                                    <td>{% if petition.user %}{{ petition.user.username }}{% endif %}</td>
                                     <td>{% if petition.liability %}{{ petition.liability.username }}{% endif %}</td>
                                     <td>{% if petition.area %}{{ petition.area.name }}{% endif %}</td>
                                     <td>{% if petition.community %}{{ petition.community.name }}{% endif %}</td>
+                                    <td>{% if petition.expiry %}{{ petition.expiry|ago }}{% endif %}</td>
                                     <td>{% if petition.createdAt %}{{ petition.createdAt|ago }}{% endif %}</td>
                                     <td>{% if petition.description %}{{ petition.description }}{% endif %}</td>
                                 </tr>
@@ -63,10 +72,41 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="panel-footer">
+                        <div class="text-center">
+                            {{ knp_pagination_render(petitions) }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- /#page-list -->
+
+        <div id="page-modal">
+            <div class="modal fade" id="modalNew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'petition.new.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(newForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(newForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petition.new.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(newForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-modal -->
 
     </div>
     <!-- /#page-wrapper -->

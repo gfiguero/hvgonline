@@ -19,8 +19,8 @@ dashboard:
     index:
         title: Vista General
     counter:
-        ticket: Tickets
-        petition: Requerimientos
+        ticket: Tickets Activos
+        petition: Requerimientos Activos
 
 community:
     index:

@@ -45,6 +45,7 @@ class PetitionActionController extends Controller
             if($newPetitionActionForm->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+                $petitionAction->getPetition()->setUpdated();
                 $em->persist($petitionAction);
                 $em->flush();
                 $request->getSession()->getFlashBag()->add( 'success', 'petitionaction.new.flash' );

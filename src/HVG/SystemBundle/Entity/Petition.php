@@ -76,6 +76,13 @@ class Petition
         return (string) $this->id;
     }
 
+    public function setUpdated()
+    {
+        $this->updatedAt = new \DateTime();
+
+        return $this;
+    }
+
     /**
      * Get id
      *
@@ -445,5 +452,44 @@ class Petition
     public function getPetitionobjectives()
     {
         return $this->petitionobjectives;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitionreference;
+
+
+    /**
+     * Add petitionreference
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petitionreference
+     *
+     * @return Petition
+     */
+    public function addPetitionreference(\HVG\SystemBundle\Entity\Petition $petitionreference)
+    {
+        $this->petitionreference[] = $petitionreference;
+
+        return $this;
+    }
+
+    /**
+     * Remove petitionreference
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petitionreference
+     */
+    public function removePetitionreference(\HVG\SystemBundle\Entity\Petition $petitionreference)
+    {
+        $this->petitionreference->removeElement($petitionreference);
+    }
+
+    /**
+     * Get petitionreference
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPetitionreference()
+    {
+        return $this->petitionreference;
     }
 }

@@ -36,6 +36,17 @@ HVG\SystemBundle\Entity\Petition:
         petitionevaluations:
             targetEntity: HVG\SystemBundle\Entity\PetitionEvaluation
             mappedBy: petition
+    manyToMany:
+        petitionreference:
+            targetEntity: HVG\SystemBundle\Entity\Petition
+            joinTable:
+                name: petitionreference
+                joinColumns:
+                    petitionreference_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    petition_id:
+                        referencedColumnName: id
     fields:
         description:
             type: text

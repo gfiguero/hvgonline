@@ -41,6 +41,8 @@
                                     <th>{{ knp_pagination_sortable(petitionObjectives, 'petitionobjective.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(petitionObjectives, 'petitionobjective.form.description'|trans, 'description') }}{% if sort == 'description' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(petitionObjectives, 'petitionobjective.form.completed'|trans, 'completed') }}{% if sort == 'completed' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitionObjectives, 'petitionobjective.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitionObjectives, 'petitionobjective.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,6 +60,8 @@
                                     <td>{% if petitionobjective.id %}{{ petitionobjective.id }}{% endif %}</td>
                                     <td>{% if petitionobjective.description %}{{ petitionobjective.description }}{% endif %}</td>
                                     <td>{% if petitionobjective.completed %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</td>
+                                    <td>{% if petitionobjective.createdAt %}{{ petitionobjective.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
+                                    <td>{% if petitionobjective.updatedAt %}{{ petitionobjective.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

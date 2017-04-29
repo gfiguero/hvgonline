@@ -3,12 +3,6 @@ agent_dashboard_index:
     defaults: { _controller: HVGAgentBundle:Dashboard:index }
     methods:  GET
 
-agent_petition_my:
-    path:     /mypetition
-    defaults: { _controller: "HVGAgentBundle:Petition:my" }
-    methods:  GET
-
-
 agent_dashboard_findunit:
     path: /findunit
     defaults: { _controller: HVGAgentBundle:Dashboard:findunit }

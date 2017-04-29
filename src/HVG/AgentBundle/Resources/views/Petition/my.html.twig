@@ -51,7 +51,8 @@
                             </thead>
                             <tbody>
                             {% for key, petition in petitions %}
-                                <tr>
+                                {% set difference = date(petition.expiry|date()).diff(date('now'|date())) %}
+                                <tr {% if difference.invert %}{% if difference.days < 3 %}{{ 'class="warning"' }}{% endif %}{% else %}{{ 'class="danger"' }}{% endif %}>
                                     <td>
                                         <div class="btn-toolbar">
                                             <div class="btn-group" role="group">

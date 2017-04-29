@@ -11,8 +11,9 @@ sidemenu:
     ticket: Tickets
     ticketaction: Acciones de Tickets
     petitionaction: Acciones de Requerimientos
-    petition: Todos los Requerimientos
+    petition: Requerimientos
     mypetition: Bandeja de Requerimientos
+    myticket: Bandeja de Tickets
     directory: Directorio
 
 dashboard:
@@ -172,6 +173,7 @@ petition:
         petitionactions: Acciones Realizadas
         petitionobjectives: Objetivos
         completeobjective: Completar
+        referencelist: Requerimientos Referenciados
     new:
         title: Nuevo Requerimiento
         link: Nuevo Requerimiento
@@ -182,11 +184,19 @@ petition:
         link: Editar Requerimiento
         submit: Confirmar Cambios
         flash: El requerimiento fué modificado satisfactoriamente
+        addreferencelink: Agregar Referencia
     editstatus:
         title: Cambio de Estado
         link: Cambiar Estado
         submit: Confirmar Cambio de Estado
         flash: El estado del requerimiento ha cambiado
+    addreference:
+        title: Nueva Referencia
+        link: Agregar Referencia
+        id: Id de Referencia
+        submit: Confirmar Referencia
+        flash: Se ha agregado una referencia
+        flasherror: El Requerimiento referenciado no existe
     form:
         actions: Acciones
         id: ID
@@ -199,6 +209,7 @@ petition:
         expiry: Fecha Límite
         petitionobjectives: Objetivos
         addobjective: Agregar Objetivo
+        deleteobjective: Remover
         createdAt: Registrado
         updatedAt: Actualizado
         description: Descripción

@@ -1,5 +1,5 @@
 agent_ticket_index:
-    path:     /
+    path:     /index
     defaults: { _controller: "HVGAgentBundle:Ticket:index" }
     methods:  GET
 

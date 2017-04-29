@@ -43,6 +43,10 @@
                                 <dd>{% if petitionObjective.description %}{{ petitionObjective.description }}{% endif %}</dd>
                             <dt>{{ 'petitionobjective.form.completed'|trans }}</dt>
                                 <dd>{% if petitionObjective.completed %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
+                            <dt>{{ 'petitionobjective.form.createdAt'|trans }}</dt>
+                                <dd>{% if petitionObjective.createdAt %}{{ petitionObjective.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'petitionobjective.form.updatedAt'|trans }}</dt>
+                                <dd>{% if petitionObjective.updatedAt %}{{ petitionObjective.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                         </dl>
                     </div>
                 </div>

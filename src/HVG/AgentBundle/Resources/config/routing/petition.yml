@@ -1,5 +1,5 @@
 agent_petition_index:
-    path:     /
+    path:     /index
     defaults: { _controller: "HVGAgentBundle:Petition:index" }
     methods:  GET
 
@@ -18,6 +18,11 @@ agent_petition_status:
     defaults: { _controller: "HVGAgentBundle:Petition:status" }
     methods:  [GET, POST]
 
+agent_petition_addreference:
+    path:     /{id}/addreference
+    defaults: { _controller: "HVGAgentBundle:Petition:addreference" }
+    methods:  [GET, POST]
+
 agent_petition_edit:
     path:     /{id}/edit
     defaults: { _controller: "HVGAgentBundle:Petition:edit" }
@@ -27,3 +32,9 @@ agent_petition_completeobjective:
     path:     /{id}/completeobjective
     defaults: { _controller: "HVGAgentBundle:Petition:completeObjective" }
     methods:  GET
+
+agent_petition_my:
+    path:     /my
+    defaults: { _controller: "HVGAgentBundle:Petition:my" }
+    methods:  GET
+

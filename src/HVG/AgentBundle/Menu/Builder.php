@@ -12,6 +12,7 @@ class Builder implements ContainerAwareInterface
 
     public function sideMenu(FactoryInterface $factory, array $options)
     {
+        $roles = $this->container->get('security.token_storage')->getToken()->getUser()->getRoles();
 
         $sidemenu = $factory->createItem('root');
         $sidemenu->setChildrenAttribute('class', 'nav');
@@ -34,11 +35,12 @@ class Builder implements ContainerAwareInterface
         $sidemenu->addChild('sidemenu.ticket')->setAttribute('icon', 'ticket fa-fw')->setAttribute('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.ticket']->setChildrenAttribute('class', 'nav nav-second-level collapse');
         $sidemenu['sidemenu.ticket']->addChild('sidemenu.ticket', array('route' => 'agent_ticket_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
+        $sidemenu['sidemenu.ticket']->addChild('sidemenu.myticket', array('route' => 'agent_ticket_my'))->setAttribute('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.ticket']->addChild('sidemenu.ticketaction', array('route' => 'agent_ticketaction_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
 
         $sidemenu->addChild('sidemenu.petition')->setAttribute('icon', 'hand-o-up fa-fw')->setAttribute('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.petition']->setChildrenAttribute('class', 'nav nav-second-level collapse');
-        $sidemenu['sidemenu.petition']->addChild('sidemenu.petition', array('route' => 'agent_petition_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
+        if(in_array('ROLE_ADMIN', $roles)) $sidemenu['sidemenu.petition']->addChild('sidemenu.petition', array('route' => 'agent_petition_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.petition']->addChild('sidemenu.mypetition', array('route' => 'agent_petition_my'))->setAttribute('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.petition']->addChild('sidemenu.petitionaction', array('route' => 'agent_petitionaction_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
 

@@ -117,6 +117,10 @@ hvg_system_ticket:
     prefix:   /ticket
 
 #Request
+hvg_system_petitionobjective:
+    resource: "@HVGSystemBundle/Resources/config/routing/petitionobjective.yml"
+    prefix:   /petitionobjective
+
 hvg_system_petitionevaluation:
     resource: "@HVGSystemBundle/Resources/config/routing/petitionevaluation.yml"
     prefix:   /petitionevaluation

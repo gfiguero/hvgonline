@@ -111,19 +111,51 @@ class PetitionController extends Controller
         return $this->redirect($request->headers->get('referer'));
     }
 
+    public function addreferenceAction(Request $request, Petition $petition)
+    {
+        $referenceForm = $this->createReferenceForm($petition);
+        $referenceForm->handleRequest($request);
+        if ($referenceForm->isSubmitted()) {
+            if($referenceForm->isValid()) {
+                $petitionReferenceId = $referenceForm->getData('id');
+                $em = $this->getDoctrine()->getManager();
+                $petitionReference = $em->getRepository('HVGSystemBundle:Petition')->findOneById($petitionReferenceId);
+                if($petitionReference) {
+                    $petitionAction = new PetitionAction();
+                    $petitionAction->setPetition($petition);
+                    $petitionAction->setDescription('El el requerimiento ' . $petitionReference->getId() . ' ha sido referenciado.');
+                    $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+                    $petition->addPetitionReference($petitionReference);
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($petitionAction);
+                    $em->persist($petition);
+                    $em->flush();
+                    $request->getSession()->getFlashBag()->add( 'success', 'petition.addreference.flash' );
+                }
+                else { 
+                    $request->getSession()->getFlashBag()->add( 'danger', 'petition.addreference.flasherror' );
+                }
+            }
+        }
+
+        return $this->redirect($request->headers->get('referer'));
+    }
+
     public function showAction(Petition $petition)
     {
         $petitionAction = new petitionAction();
         $petitionAction->setPetition($petition);
         $newActionForm = $this->createNewActionForm($petitionAction);
-        $editForm = $this->createEditForm($petition);
+        $editForm = $this->createEditForm($petition)->remove('petitionstatus')->remove('petitionobjectives');
         $statusForm = $this->createStatusForm($petition);
+        $referenceForm = $this->createReferenceForm($petition);
 
         return $this->render('HVGAgentBundle:Petition:show.html.twig', array(
             'petition' => $petition,
             'newActionForm' => $newActionForm->createView(),
             'editForm' => $editForm->createView(),
             'statusForm' => $statusForm->createView(),
+            'referenceForm' => $referenceForm->createView(),
         ));
     }
 
@@ -131,6 +163,13 @@ class PetitionController extends Controller
     {
         return $this->createForm('HVG\AgentBundle\Form\PetitionStatusType', $petition, array(
             'action' => $this->generateUrl('agent_petition_status', array('id' => $petition->getId())),
+        ));
+    }
+
+    private function createReferenceForm(Petition $petition)
+    {
+        return $this->createForm('HVG\AgentBundle\Form\PetitionReferenceType', null, array(
+            'action' => $this->generateUrl('agent_petition_addreference', array('id' => $petition->getId())),
         ));
     }
 
@@ -186,7 +225,15 @@ class PetitionController extends Controller
     public function completeObjectiveAction(Request $request, PetitionObjective $petitionObjective)
     {
         $petitionObjective->setCompleted(true);
+        $petition = $petitionObjective->getPetition();
+        $petitionAction = new PetitionAction();
+        $petitionAction->setPetition($petition);
+        $petitionAction->setDescription("El objetivo '" . $petitionObjective->getDescription() . "' ha sido completado.");
+        $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+        $petition->setUpdated();
+
         $em = $this->getDoctrine()->getManager();
+        $em->persist($petitionAction);
         $em->persist($petitionObjective);
         $em->flush();
         return $this->redirect($request->headers->get('referer'));

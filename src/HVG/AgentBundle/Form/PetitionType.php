@@ -32,6 +32,7 @@ class PetitionType extends AbstractType
                 'translation_domain' => 'HVGAgentBundle',
             ))
             ->add('petitionstatus', null, array(
+                'required' => true,
                 'label' => 'petition.form.petitionstatus',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
@@ -42,7 +43,7 @@ class PetitionType extends AbstractType
                 'translation_domain' => 'HVGAgentBundle',
             ))
             ->add('expiry', null, array(
-                'empty_data' => new \DateTime('+2 days'),
+//                'empty_value' => new \DateTime('+2 days'),
                 'label' => 'petition.form.expiry',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',

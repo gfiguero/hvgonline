@@ -174,6 +174,8 @@ petition:
         petitionobjectives: Objetivos
         completeobjective: Completar
         referencelist: Requerimientos Referenciados
+        noreference: No hay referencias
+        noobjectives: No hay objetivos
     new:
         title: Nuevo Requerimiento
         link: Nuevo Requerimiento
@@ -197,6 +199,9 @@ petition:
         submit: Confirmar Referencia
         flash: Se ha agregado una referencia
         flasherror: El Requerimiento referenciado no existe
+    removereference:
+        link: Eliminar Referencia
+        flash: Se ha eliminado una referencia
     form:
         actions: Acciones
         id: ID
@@ -213,6 +218,8 @@ petition:
         createdAt: Registrado
         updatedAt: Actualizado
         description: Descripción
+        abbreviation:
+            liability: Resp.
 
 petitionaction:
     index:

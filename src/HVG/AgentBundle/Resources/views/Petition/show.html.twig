@@ -64,6 +64,7 @@
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'petition.show.petitionobjectives'|trans }}</h1>
                     </div>
+                    {% if petition.petitionobjectives is not empty %}
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
                             <thead>
@@ -84,6 +85,11 @@
                             </tbody>
                         </table>
                     </div>
+                    {% else %}
+                    <div class="panel-body">
+                        <div class="text-center"><em>{{ 'petition.show.noobjectives'|trans }}</em></div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-xs-12">
@@ -118,20 +124,24 @@
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'petition.show.referencelist'|trans }}</h1>
                     </div>
+                    {% if petition.petitionreference is not empty %}
                     <div class="table-responsive">
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ icon('search fa-fw') }}</th>
+                                    <th>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('search') }}</a></div>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('chain-broken') }}</a></div>
+                                    </th>
                                     <th>{{ 'petition.form.id'|trans }}</th>
                                     <th>{{ 'petition.form.petitionstatus'|trans }}</th>
 {#}                                    <th>{{ 'petition.form.user'|trans, 'user') }}{% if sort == 'user' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>{#}
-                                    <th>{{ 'petition.form.liability'|trans }}</th>
+                                    <th>{{ 'petition.form.abbreviation.liability'|trans }}</th>
                                     <th>{{ 'petition.form.area'|trans }}</th>
                                     <th>{{ 'petition.form.community'|trans }}</th>
                                     <th>{{ 'petition.form.expiry'|trans }}</th>
                                     <th>{{ 'petition.form.createdAt'|trans }}</th>
-                                    <th class="col-md-5">{{ 'petition.form.description'|trans }}</th>
+                                    <th class="col-md-4">{{ 'petition.form.description'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -139,11 +149,8 @@
                                 {% set difference = date(petitionreference.expiry|date()).diff(date('now'|date())) %}
                                 <tr {% if difference.invert %}{% if difference.days < 3 %}{{ 'class="warning"' }}{% endif %}{% else %}{{ 'class="danger"' }}{% endif %}>
                                     <td>
-                                        <div class="btn-toolbar">
-                                            <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_petition_show', { 'id': petition.id }) }}" aria-label="{{ 'staff.show.link'|trans }}">{{ icon('search') }}</a>
-                                            </div>
-                                        </div>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_petition_show', { 'id': petition.id }) }}" aria-label="{{ 'staff.show.link'|trans }}">{{ icon('search') }}</a></div>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-danger" href="{{ path('agent_petition_removereference', { 'id': petition.id , 'referenceId': petitionreference.id }) }}" aria-label="{{ 'staff.removereference.link'|trans }}">{{ icon('chain-broken') }}</a></div>
                                     </td>
                                     <td>{% if petitionreference.id %}{{ petitionreference.id }}{% endif %}</td>
                                     <td>{% if petitionreference.petitionstatus %}{{ petitionreference.petitionstatus }}{% endif %}</td>
@@ -159,6 +166,11 @@
                             </tbody>
                         </table>
                     </div>
+                    {% else %}
+                    <div class="panel-body">
+                        <div class="text-center"><em>{{ 'petition.show.noreference'|trans }}</em></div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -261,14 +273,4 @@
 
     </div>
     <!-- /#page-wrapper -->
-{% endblock %}
-
-{% block stylesheet %}
-<style type="text/css">
-#page-show1 {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-</style>
 {% endblock %}

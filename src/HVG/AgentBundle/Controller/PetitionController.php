@@ -24,6 +24,7 @@ class PetitionController extends Controller
         $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
 
         $petition = new Petition();
+        $petition->setExpiry(new \DateTime('+2 days'));
         $newForm = $this->createNewForm($petition);
 
         return $this->render('HVGAgentBundle:Petition:index.html.twig', array(
@@ -65,11 +66,13 @@ class PetitionController extends Controller
 
     public function editAction(Request $request, Petition $petition)
     {
+        $petitionStatus = $petition->getPetitionStatus();
         $editForm = $this->createEditForm($petition);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted()) {
             if($editForm->isValid()) {
+                $petition->setPetitionStatus($petitionStatus);
                 $petitionAction = new PetitionAction();
                 $petitionAction->setPetition($petition);
                 $petitionAction->setDescription('El requerimiento ha sido editado.');
@@ -138,6 +141,23 @@ class PetitionController extends Controller
             }
         }
 
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    public function removereferenceAction(Request $request, Petition $petition)
+    {
+        $petitionReferenceId = $request->query->get('referenceId');
+        $em = $this->getDoctrine()->getManager();
+        $petitionReference = $em->getReference('HVGSystemBundle:Petition', $petitionReferenceId);
+        $petition->removePetitionreference($petitionReference);
+        $petitionAction = new PetitionAction();
+        $petitionAction->setPetition($petition);
+        $petitionAction->setDescription('El el requerimiento ' . $petitionReference->getId() . ' ha sido desreferenciado.');
+        $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+        $em->persist($petitionAction);
+        $em->persist($petition);
+        $em->flush();
+        $request->getSession()->getFlashBag()->add( 'success', 'petition.removereference.flash' );
         return $this->redirect($request->headers->get('referer'));
     }
 
@@ -211,8 +231,8 @@ class PetitionController extends Controller
 //        $petitions = $em->getRepository('HVGSystemBundle:Petition')->findMy($areas, $communities);
 
         $petition = new Petition();
+        $petition->setExpiry(new \DateTime('+2 days'));
         $newForm = $this->createNewForm($petition);
-        $newForm->handleRequest($request);
 
         return $this->render('HVGAgentBundle:Petition:my.html.twig', array(
             'petitions' => $petitions,

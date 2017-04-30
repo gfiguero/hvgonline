@@ -23,6 +23,11 @@ agent_petition_addreference:
     defaults: { _controller: "HVGAgentBundle:Petition:addreference" }
     methods:  [GET, POST]
 
+agent_petition_removereference:
+    path:     /{id}/removereference
+    defaults: { _controller: "HVGAgentBundle:Petition:removereference" }
+    methods:  [GET]
+
 agent_petition_edit:
     path:     /{id}/edit
     defaults: { _controller: "HVGAgentBundle:Petition:edit" }

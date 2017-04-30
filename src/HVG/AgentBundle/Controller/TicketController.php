@@ -65,7 +65,7 @@ class TicketController extends Controller
             if($newForm->isValid()) {
                 $ticketAction = new TicketAction();
                 $ticketAction->setTicket($ticket);
-                $ticketAction->setDescription('Ticket Creado. Estado: '.$ticket->getStatus());
+                $ticketAction->setDescription('Ticket Creado. Estado: '.$ticket->getTicketStatus());
                 $ticketAction->setUser($this->get('security.token_storage')->getToken()->getUser());
 
                 $ticket->setUser($this->get('security.token_storage')->getToken()->getUser());

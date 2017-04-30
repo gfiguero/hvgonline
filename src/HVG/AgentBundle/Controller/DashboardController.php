@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $communities = $user->getCommunities();
         $em = $this->getDoctrine()->getManager();
         $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
-        $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,3)));
+        $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2)));
 //        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByAreaCommunity($areas, $communities);
         $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('area' => $areas->toArray(), 'unit' => $units, 'ticketstatus' => $statuses));
         $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses));

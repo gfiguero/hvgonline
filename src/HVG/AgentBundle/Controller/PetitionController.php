@@ -202,7 +202,7 @@ class PetitionController extends Controller
         $sort = $request->query->get('sort');
         $direction = $request->query->get('direction');
         $em = $this->getDoctrine()->getManager();
-        $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,3)));
+        $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,4)));
         if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
         else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
         $paginator = $this->get('knp_paginator');

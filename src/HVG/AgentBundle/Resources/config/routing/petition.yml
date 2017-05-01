@@ -38,6 +38,11 @@ agent_petition_completeobjective:
     defaults: { _controller: "HVGAgentBundle:Petition:completeObjective" }
     methods:  GET
 
+agent_petition_restartobjective:
+    path:     /{id}/restartobjective
+    defaults: { _controller: "HVGAgentBundle:Petition:restartObjective" }
+    methods:  GET
+
 agent_petition_my:
     path:     /my
     defaults: { _controller: "HVGAgentBundle:Petition:my" }

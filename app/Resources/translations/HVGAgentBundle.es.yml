@@ -209,6 +209,7 @@ petition:
         community: Comunidad
         user: Emisor
         petitionstatus: Estado
+        petitionstatusdescription: Comentario
         area: Area
         liability: Responsable
         expiry: Fecha Límite
@@ -247,6 +248,7 @@ petitionobjective:
     form:
         description: Descripción
         completed: Completado
+        updatedAt: Actualizado
 
 person:
     title:

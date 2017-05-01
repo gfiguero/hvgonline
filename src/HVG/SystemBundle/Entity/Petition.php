@@ -63,12 +63,18 @@ class Petition
     private $area;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitionobjectives;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->petitionactions = new \Doctrine\Common\Collections\ArrayCollection();
         $this->petitionevaluations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->petitionobjectives = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString()
@@ -412,11 +418,6 @@ class Petition
     {
         return $this->liability;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $petitionobjectives;
-
 
     /**
      * Add petitionobjective

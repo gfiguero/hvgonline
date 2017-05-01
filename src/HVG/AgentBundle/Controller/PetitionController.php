@@ -10,6 +10,7 @@ use HVG\SystemBundle\Entity\PetitionObjective;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class PetitionController extends Controller
 {
@@ -55,7 +56,7 @@ class PetitionController extends Controller
                 $em->persist($petitionAction);
                 $em->flush();
                 $request->getSession()->getFlashBag()->add( 'success', 'petition.new.flash' );
-                return $this->redirect($request->headers->get('referer'));
+                return $this->redirect($this->generateUrl('agent_petition_show', array('id' => $petition->getId())));
             }
         }
 
@@ -67,20 +68,34 @@ class PetitionController extends Controller
     public function editAction(Request $request, Petition $petition)
     {
         $petitionStatus = $petition->getPetitionStatus();
+        $originalPetitionObjectives = new ArrayCollection();
+        foreach ($petition->getPetitionObjectives() as $originalPetitionObjective) {
+            $originalPetitionObjectives->add($originalPetitionObjective);
+        }
+
         $editForm = $this->createEditForm($petition);
         $editForm->handleRequest($request);
+        $petitionObjectives = $petition->getPetitionObjectives();
 
         if ($editForm->isSubmitted()) {
             if($editForm->isValid()) {
-                $petition->setPetitionStatus($petitionStatus);
+                $em = $this->getDoctrine()->getManager();
+                foreach ($originalPetitionObjectives as $originalPetitionObjective) {
+                    if (false == $petitionObjectives->contains($originalPetitionObjective)) {
+                        $petition->removePetitionobjective($originalPetitionObjective);
+                        $em->remove($originalPetitionObjective);
+                    }
+                }
+
                 $petitionAction = new PetitionAction();
                 $petitionAction->setPetition($petition);
                 $petitionAction->setDescription('El requerimiento ha sido editado.');
                 $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($petition);
                 $em->persist($petitionAction);
+
+                $petition->setPetitionStatus($petitionStatus);
+                $em->persist($petition);
+
                 $em->flush();
                 $request->getSession()->getFlashBag()->add( 'success', 'petition.edit.flash' );
             }
@@ -100,7 +115,7 @@ class PetitionController extends Controller
             if($petitionStatusForm->isValid()) {
                 $petitionAction = new PetitionAction();
                 $petitionAction->setPetition($petition);
-                $petitionAction->setDescription('El estado ha cambiado de ' . $prevStatus->getName() . ' a ' . $postStatus->getName() . '.');
+                $petitionAction->setDescription('El estado ha cambiado de ' . $prevStatus->getName() . ' a ' . $postStatus->getName() . ': ' . $petitionStatusForm['petitionstatusdescription']->getData());
                 $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
 
                 $em = $this->getDoctrine()->getManager();
@@ -126,7 +141,7 @@ class PetitionController extends Controller
                 if($petitionReference) {
                     $petitionAction = new PetitionAction();
                     $petitionAction->setPetition($petition);
-                    $petitionAction->setDescription('El el requerimiento ' . $petitionReference->getId() . ' ha sido referenciado.');
+                    $petitionAction->setDescription('El requerimiento ' . $petitionReference->getId() . ' ha sido referenciado.');
                     $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
                     $petition->addPetitionReference($petitionReference);
                     $em = $this->getDoctrine()->getManager();
@@ -152,7 +167,7 @@ class PetitionController extends Controller
         $petition->removePetitionreference($petitionReference);
         $petitionAction = new PetitionAction();
         $petitionAction->setPetition($petition);
-        $petitionAction->setDescription('El el requerimiento ' . $petitionReference->getId() . ' ha sido desreferenciado.');
+        $petitionAction->setDescription('El requerimiento ' . $petitionReference->getId() . ' ha sido desreferenciado.');
         $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
         $em->persist($petitionAction);
         $em->persist($petition);
@@ -163,15 +178,18 @@ class PetitionController extends Controller
 
     public function showAction(Petition $petition)
     {
+        $em = $this->getDoctrine()->getManager();
+        $petitionActions = $em->getRepository('HVGSystemBundle:PetitionAction')->findByPetition(array('id' => $petition->getId()), array('createdAt' => 'DESC'));
         $petitionAction = new petitionAction();
         $petitionAction->setPetition($petition);
         $newActionForm = $this->createNewActionForm($petitionAction);
-        $editForm = $this->createEditForm($petition)->remove('petitionstatus')->remove('petitionobjectives');
+        $editForm = $this->createEditForm($petition)->remove('petitionstatus');
         $statusForm = $this->createStatusForm($petition);
         $referenceForm = $this->createReferenceForm($petition);
 
         return $this->render('HVGAgentBundle:Petition:show.html.twig', array(
             'petition' => $petition,
+            'petitionActions' => $petitionActions,
             'newActionForm' => $newActionForm->createView(),
             'editForm' => $editForm->createView(),
             'statusForm' => $statusForm->createView(),
@@ -214,6 +232,13 @@ class PetitionController extends Controller
         ));
     }
 
+    private function createPetitionObjectiveForm(PetitionPetitionObjective $petitionObjective)
+    {
+        return $this->createForm('HVG\AgentBundle\Form\PetitionObjectiveType', $petitionObjective, array(
+            'action' => $this->generateUrl('agent_petitionobjective_new'),
+        ));
+    }
+
     public function myAction(Request $request)
     {
         $user = $this->getUser();
@@ -249,6 +274,23 @@ class PetitionController extends Controller
         $petitionAction = new PetitionAction();
         $petitionAction->setPetition($petition);
         $petitionAction->setDescription("El objetivo '" . $petitionObjective->getDescription() . "' ha sido completado.");
+        $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+        $petition->setUpdated();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($petitionAction);
+        $em->persist($petitionObjective);
+        $em->flush();
+        return $this->redirect($request->headers->get('referer'));
+    }
+
+    public function restartObjectiveAction(Request $request, PetitionObjective $petitionObjective)
+    {
+        $petitionObjective->setCompleted(false);
+        $petition = $petitionObjective->getPetition();
+        $petitionAction = new PetitionAction();
+        $petitionAction->setPetition($petition);
+        $petitionAction->setDescription("El objetivo '" . $petitionObjective->getDescription() . "' ha sido reiniciado.");
         $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
         $petition->setUpdated();
 

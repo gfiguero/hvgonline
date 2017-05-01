@@ -19,6 +19,12 @@ class PetitionStatusType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
             ))
+            ->add('petitionstatusdescription', null, array(
+                'mapped' => false,
+                'label' => 'petition.form.petitionstatusdescription',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGAgentBundle',
+            ))
         ;
     }
     

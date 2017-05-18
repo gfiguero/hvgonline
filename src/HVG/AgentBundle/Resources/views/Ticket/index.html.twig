@@ -81,7 +81,7 @@
             $('#newButton').addClass('disabled');
             var $form = $('#ticket_filter_form');
             $.ajax({
-                url: "{{ path('agent_ticket_filter') }}",
+                url: "{{ path('agent_ticket_search') }}",
                 type: $form.attr('method'),
                 data: $form.serializeArray(),
                 success: function(html) {
@@ -112,7 +112,7 @@
         onChange: function() {
             var $form = $('#ticket_filter_form');
             $.ajax({
-                url: "{{ path('agent_ticket_filter') }}",
+                url: "{{ path('agent_ticket_search') }}",
                 type: $form.attr('method'),
                 data: $form.serializeArray(),
                 success: function(html) {

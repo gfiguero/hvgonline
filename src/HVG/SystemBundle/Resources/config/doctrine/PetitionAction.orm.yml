@@ -19,6 +19,10 @@ HVG\SystemBundle\Entity\PetitionAction:
             type: string
             length: 300
             nullable: true
+        filename:
+            type: string
+            length: 300
+            nullable: true
         createdAt:
             type: datetime
             gedmo:

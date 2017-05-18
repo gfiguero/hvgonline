@@ -10,6 +10,13 @@ use Doctrine\ORM\EntityRepository;
 
 class AddUnitFieldSubscriber implements EventSubscriberInterface
 {
+    private $unitgroups;
+
+    public function __construct($unitgroups = null)
+    {
+        $this->unitgroups = $unitgroups;
+    }
+
     public static function getSubscribedEvents()
     {
         return array(
@@ -18,20 +25,26 @@ class AddUnitFieldSubscriber implements EventSubscriberInterface
         );
     }
 
-    private function addUnitsForm($form, $unitgroup = null, $community = null)
+    private function addUnitsForm($form, $unitgroup = null)
     {
+        $unitgroups = $this->unitgroups;
         $form
             ->add('unit', 'entity', array(
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'placeholder' => 'Seleccione Unidad',
                 'translation_domain' => 'HVGAgentBundle',
                 'class'              => 'HVGSystemBundle:Unit',
-                'query_builder'      => function (EntityRepository $er) use ($unitgroup) {
+                'query_builder'      => function (EntityRepository $er) use ($unitgroup, $unitgroups) {
                     if($unitgroup) {
                         return $er->createQueryBuilder('u')
                             ->where('u.unitgroup = :unitgroup')
                             ->setParameter('unitgroup', $unitgroup)
-                        ;                        
+                        ;
+                    } elseif($unitgroups) {
+                        return $er->createQueryBuilder('u')
+                            ->where('u.unitgroup IN (:unitgroups)')
+                            ->setParameter('unitgroups', $unitgroups)
+                        ;
                     } else {
                         return $er->createQueryBuilder('u')
                         ;                        

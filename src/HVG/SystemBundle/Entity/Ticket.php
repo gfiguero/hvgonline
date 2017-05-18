@@ -442,5 +442,36 @@ class Ticket
     {
         return $this->user;
     }
+
+    /**
+     * @var \HVG\UserBundle\Entity\User
+     */
+    private $liability;
+
+
+    /**
+     * Set liability
+     *
+     * @param \HVG\UserBundle\Entity\User $liability
+     *
+     * @return Ticket
+     */
+    public function setLiability(\HVG\UserBundle\Entity\User $liability = null)
+    {
+        $this->liability = $liability;
+
+        return $this;
+    }
+
+    /**
+     * Get liability
+     *
+     * @return \HVG\UserBundle\Entity\User
+     */
+    public function getLiability()
+    {
+        return $this->liability;
+    }
+
 }
 

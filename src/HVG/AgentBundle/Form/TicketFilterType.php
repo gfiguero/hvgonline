@@ -4,6 +4,7 @@ namespace HVG\AgentBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use HVG\AgentBundle\Form\EventListener\AddCommunityFieldSubscriber;
 use HVG\AgentBundle\Form\EventListener\AddUnitGroupFieldSubscriber;
@@ -23,8 +24,18 @@ class TicketFilterType extends AbstractType
     {
         $builder
 //            ->addEventSubscriber(new AddCommunityFieldSubscriber())
-            ->addEventSubscriber(new AddUnitGroupFieldSubscriber())
-            ->addEventSubscriber(new AddUnitFieldSubscriber())
+            ->addEventSubscriber(new AddUnitGroupFieldSubscriber($options['communities']))
+            ->addEventSubscriber(new AddUnitFieldSubscriber($options['unitgroups']))
         ;
     }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'communities' => null,
+            'unitgroups' => null,
+            'units' => null,
+        ));
+    }
+
 }

@@ -16,14 +16,17 @@ class TicketController extends Controller
 {
     public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $communities = $user->getCommunities();
+        $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findBy(array('community' => $communities->toArray()));
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
         $sort = $request->query->get('sort');
         $direction = $request->query->get('direction');
-        $em = $this->getDoctrine()->getManager();
-        if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array(), array($sort => $direction));
-        else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findAll();
+        if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('unit' => $units), array($sort => $direction));
+        else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('unit' => $units));
         $paginator = $this->get('knp_paginator');
         $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
-
         $ticketFilter = new TicketFilter();
         $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
         return $this->render('HVGAgentBundle:Ticket:index.html.twig', array(
@@ -90,7 +93,7 @@ class TicketController extends Controller
         ));
     }
 
-    public function searchAction(Request $request)
+    public function filterAction(Request $request)
     {
         if($request->isXmlHttpRequest()) {
             $ticketFilter = new TicketFilter();
@@ -122,7 +125,7 @@ class TicketController extends Controller
         }
     }
 
-    public function filterAction(Request $request)
+    public function searchAction(Request $request)
     {
         if($request->isXmlHttpRequest()) {
             $ticketFilter = new TicketFilter();
@@ -202,8 +205,16 @@ class TicketController extends Controller
 
     private function createTicketFilterForm(TicketFilter $ticketFilter)
     {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $communities = $user->getCommunities();
+        $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findBy(array('community' => $communities->toArray()));
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
         return $this->createForm('HVG\AgentBundle\Form\TicketFilterType', $ticketFilter, array(
-            'action' => $this->generateUrl('agent_ticket_search'),
+            'action' => $this->generateUrl('agent_ticket_filter'),
+            'communities' => $communities,
+            'unitgroups' => $unitgroups,
+            'units' => $units,
         ));
     }
 
@@ -214,7 +225,7 @@ class TicketController extends Controller
         ));
     }
 
-    public function myAction(Request $request)
+    public function areaAction(Request $request)
     {
         $user = $this->getUser();
         $areas = $user->getAreas();
@@ -228,9 +239,49 @@ class TicketController extends Controller
         else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('area' => $areas->toArray(), 'unit' => $units, 'ticketstatus' => $statuses));
         $paginator = $this->get('knp_paginator');
         $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
+        return $this->render('HVGAgentBundle:Ticket:area.html.twig', array(
+            'tickets' => $tickets,
+            'direction' => $direction,
+            'sort' => $sort,
+        ));
+    }
 
-//        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByAreaCommunity($areas, $communities);
-        return $this->render('HVGAgentBundle:Ticket:my.html.twig', array(
+    public function sentAction(Request $request)
+    {
+        $user = $this->getUser();
+        $areas = $user->getAreas();
+        $communities = $user->getCommunities();
+        $sort = $request->query->get('sort');
+        $direction = $request->query->get('direction');
+        $em = $this->getDoctrine()->getManager();
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
+        $statuses = $em->getRepository('HVGSystemBundle:TicketStatus')->findBy(array('result' => array(1,2,3)));
+        if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('user' => $user, 'unit' => $units, 'ticketstatus' => $statuses), array($sort => $direction));
+        else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('user' => $user, 'unit' => $units, 'ticketstatus' => $statuses));
+        $paginator = $this->get('knp_paginator');
+        $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
+        return $this->render('HVGAgentBundle:Ticket:sent.html.twig', array(
+            'tickets' => $tickets,
+            'direction' => $direction,
+            'sort' => $sort,
+        ));
+    }
+
+    public function receivedAction(Request $request)
+    {
+        $user = $this->getUser();
+        $areas = $user->getAreas();
+        $communities = $user->getCommunities();
+        $sort = $request->query->get('sort');
+        $direction = $request->query->get('direction');
+        $em = $this->getDoctrine()->getManager();
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
+        $statuses = $em->getRepository('HVGSystemBundle:TicketStatus')->findBy(array('result' => array(1,2,3)));
+        if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('liability' => $user, 'unit' => $units, 'ticketstatus' => $statuses), array($sort => $direction));
+        else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('liability' => $user, 'unit' => $units, 'ticketstatus' => $statuses));
+        $paginator = $this->get('knp_paginator');
+        $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
+        return $this->render('HVGAgentBundle:Ticket:received.html.twig', array(
             'tickets' => $tickets,
             'direction' => $direction,
             'sort' => $sort,

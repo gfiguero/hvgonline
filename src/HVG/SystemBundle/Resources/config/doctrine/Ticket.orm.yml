@@ -21,6 +21,9 @@ HVG\SystemBundle\Entity\Ticket:
         user:
             targetEntity: HVG\UserBundle\Entity\User
             inversedBy: tickets
+        liability:
+            targetEntity: HVG\UserBundle\Entity\User
+            inversedBy: ticketsassigned
     oneToMany:
         ticketactions:
             targetEntity: HVG\SystemBundle\Entity\TicketAction

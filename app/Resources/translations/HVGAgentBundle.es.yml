@@ -8,13 +8,23 @@ sidemenu:
     provider: Proveedores
     resources: Recursos
     communitystaff: Colaboradores
-    ticket: Tickets
     ticketaction: Acciones de Tickets
-    petitionaction: Acciones de Requerimientos
-    petition: Requerimientos
     mypetition: Bandeja de Requerimientos
+    petitionaction: Acciones de Requerimientos
     myticket: Bandeja de Tickets
     directory: Directorio
+    ticket:
+        root: Tickets
+        index: Todos los Tickets
+        sent: Tickets Enviados
+        received: Tickets Recibidos
+        area: Tickets del mi Área
+    petition:
+        root: Requerimientos
+        index: Todos los Requerimientos
+        sent: Requerimientos Enviados
+        received: Requerimientos Recibidos
+        area: Requerimientos de mi Área
 
 dashboard:
     index:
@@ -97,10 +107,18 @@ ticket:
         title: Tickets
         link: Explorar Otros Tickets
         list: Lista de Tickets
-    my: 
-        link: Ir a mi bandeja de Tickets
-        title: Bandeja de Tickets
-        list: Lista de Tickets
+    area: 
+        link: Tickets del Área
+        title: Tickets del Área
+        list: Lista de Tickets del Área
+    sent: 
+        link: Tickets Enviados
+        title: Tickets Enviados
+        list: Lista de Tickets Enviados
+    received: 
+        link: Tickets Recibidos
+        title: Tickets Recibidos
+        list: Lista de Tickets Recibidos
     show:
         title: Datos de Ticket
         link: Detalles del Ticket
@@ -163,10 +181,18 @@ petition:
         title: Requerimientos
         link: Explorar Otros Requerimientos
         list: Lista de Requerimientos
-    my: 
-        link: Ir a bandeja de Requerimientos
-        title: Bandeja de Requerimientos
-        list: Lista de Requerimientos
+    area: 
+        link: Requerimientos del Área
+        title: Requerimientos del Área
+        list: Lista de Requerimientos del Área
+    sent: 
+        link: Requerimientos Enviados
+        title: Requerimientos Enviados
+        list: Lista de Requerimientos Enviados
+    received: 
+        link: Requerimientos Recibidos
+        title: Requerimientos Recibidos
+        list: Lista de Requerimientos Recibidos
     show:
         title: Datos de Requerimiento
         link: Detalles del Requerimiento

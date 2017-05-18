@@ -1,7 +1,16 @@
 topmenu:
-    my: Bandeja de Tareas
-    mytickets: Tickets
-    mypetitions: Requerimientos
+    sent:
+        menu: Enviados
+        tickets: Tickes Enviados
+        petitions: Requerimientos Enviados
+    received:
+        menu: Recibidos
+        tickets: Tickes Recibidos
+        petitions: Requerimientos Recibidos
+    area:
+        menu: Área
+        tickets: Tickes de mi Área
+        petitions: Requerimientos de mi Área
     user: Usuarios
     agentdashboard: Vista General
     systemdashboard: Configuración de Sistema

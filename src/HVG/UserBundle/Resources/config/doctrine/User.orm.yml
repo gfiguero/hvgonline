@@ -41,6 +41,9 @@ HVG\UserBundle\Entity\User:
         ticketactions:
             targetEntity: HVG\SystemBundle\Entity\TicketAction
             mappedBy: user
+        ticketsassigned:
+            targetEntity: HVG\SystemBundle\Entity\Ticket
+            mappedBy: liability
         petitionactions:
             targetEntity: HVG\SystemBundle\Entity\PetitionAction
             mappedBy: user

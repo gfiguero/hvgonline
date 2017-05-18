@@ -19,22 +19,28 @@ class Builder implements ContainerAwareInterface
         $menu->setChildrenAttribute('id', 'top-menu');
 
         if(in_array('ROLE_AGENT', $roles)) {
-            $myLabelAttributes = array(
-                'class' => 'dropdown-toggle',
-                'data-toggle' => 'dropdown',
-                'role' => 'button',
-                'aria-haspopup' => 'true',
-                'aria-expanded' => 'false',
-            );
-            $myAttributes = array(
-                'icon' => 'puzzle-piece fa-fw',
-                'translation_domain' => 'HVGSystemBundle',
-            );
 
-            $menu->addChild('topmenu.my')->setLabelAttributes($myLabelAttributes)->setAttributes($myAttributes);
-            $menu['topmenu.my']->setChildrenAttribute('class', 'dropdown-menu');
-            $menu['topmenu.my']->addChild('topmenu.mytickets', array('route' => 'agent_ticket_my'))->setAttribute('translation_domain', 'HVGSystemBundle');
-            $menu['topmenu.my']->addChild('topmenu.mypetitions', array('route' => 'agent_petition_my'))->setAttribute('translation_domain', 'HVGSystemBundle');
+            $sentLabelAttributes = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false');
+            $sentAttributes = array( 'icon' => 'arrow-up fa-fw', 'translation_domain' => 'HVGSystemBundle' );
+            $menu->addChild('topmenu.sent.menu')->setLabelAttributes($sentLabelAttributes)->setAttributes($sentAttributes);
+            $menu['topmenu.sent.menu']->setChildrenAttribute('class', 'dropdown-menu');
+            $menu['topmenu.sent.menu']->addChild('topmenu.sent.tickets', array('route' => 'agent_ticket_sent'))->setAttribute('translation_domain', 'HVGSystemBundle')->setAttribute('icon', 'ticket fa-fw');
+            $menu['topmenu.sent.menu']->addChild('topmenu.sent.petitions', array('route' => 'agent_petition_sent'))->setAttribute('translation_domain', 'HVGSystemBundle')->setAttribute('icon', 'hand-o-up fa-fw');
+
+            $receivedLabelAttributes = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false');
+            $receivedAttributes = array( 'icon' => 'arrow-down fa-fw', 'translation_domain' => 'HVGSystemBundle' );
+            $menu->addChild('topmenu.received.menu')->setLabelAttributes($receivedLabelAttributes)->setAttributes($receivedAttributes);
+            $menu['topmenu.received.menu']->setChildrenAttribute('class', 'dropdown-menu');
+            $menu['topmenu.received.menu']->addChild('topmenu.received.tickets', array('route' => 'agent_ticket_received'))->setAttribute('translation_domain', 'HVGSystemBundle')->setAttribute('icon', 'ticket fa-fw');
+            $menu['topmenu.received.menu']->addChild('topmenu.received.petitions', array('route' => 'agent_petition_received'))->setAttribute('translation_domain', 'HVGSystemBundle')->setAttribute('icon', 'hand-o-up fa-fw');
+
+            $areaLabelAttributes = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false');
+            $areaAttributes = array( 'icon' => 'puzzle-piece fa-fw', 'translation_domain' => 'HVGSystemBundle' );
+            $menu->addChild('topmenu.area.menu')->setLabelAttributes($areaLabelAttributes)->setAttributes($areaAttributes);
+            $menu['topmenu.area.menu']->setChildrenAttribute('class', 'dropdown-menu');
+            $menu['topmenu.area.menu']->addChild('topmenu.area.tickets', array('route' => 'agent_ticket_area'))->setAttribute('translation_domain', 'HVGSystemBundle')->setAttribute('icon', 'ticket fa-fw');
+            $menu['topmenu.area.menu']->addChild('topmenu.area.petitions', array('route' => 'agent_petition_area'))->setAttribute('translation_domain', 'HVGSystemBundle')->setAttribute('icon', 'hand-o-up fa-fw');
+
             $menu->addChild('topmenu.agentdashboard', array('route' => 'agent_dashboard_index'))->setAttribute('icon', 'dashboard fa-fw')->setAttribute('translation_domain', 'HVGSystemBundle');
         }
 

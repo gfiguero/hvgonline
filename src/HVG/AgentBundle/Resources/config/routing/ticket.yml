@@ -38,3 +38,18 @@ agent_ticket_my:
     defaults: { _controller: "HVGAgentBundle:Ticket:my" }
     methods:  GET
 
+agent_ticket_area:
+    path:     /area
+    defaults: { _controller: "HVGAgentBundle:Ticket:area" }
+    methods:  GET
+
+agent_ticket_sent:
+    path:     /sent
+    defaults: { _controller: "HVGAgentBundle:Ticket:sent" }
+    methods:  GET
+
+agent_ticket_received:
+    path:     /received
+    defaults: { _controller: "HVGAgentBundle:Ticket:received" }
+    methods:  GET
+

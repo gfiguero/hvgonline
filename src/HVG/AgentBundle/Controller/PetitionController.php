@@ -239,7 +239,7 @@ class PetitionController extends Controller
         ));
     }
 
-    public function myAction(Request $request)
+    public function areaAction(Request $request)
     {
         $user = $this->getUser();
         $areas = $user->getAreas();
@@ -251,15 +251,62 @@ class PetitionController extends Controller
         if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
         else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
         $paginator = $this->get('knp_paginator');
-
         $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
-//        $petitions = $em->getRepository('HVGSystemBundle:Petition')->findMy($areas, $communities);
-
         $petition = new Petition();
         $petition->setExpiry(new \DateTime('+2 days'));
         $newForm = $this->createNewForm($petition);
 
-        return $this->render('HVGAgentBundle:Petition:my.html.twig', array(
+        return $this->render('HVGAgentBundle:Petition:area.html.twig', array(
+            'petitions' => $petitions,
+            'newForm' => $newForm->createView(),
+            'direction' => $direction,
+            'sort' => $sort,
+        ));
+    }
+
+    public function sentAction(Request $request)
+    {
+        $user = $this->getUser();
+        $areas = $user->getAreas();
+        $communities = $user->getCommunities();
+        $sort = $request->query->get('sort');
+        $direction = $request->query->get('direction');
+        $em = $this->getDoctrine()->getManager();
+        $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,4)));
+        if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('user' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
+        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('user' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
+        $paginator = $this->get('knp_paginator');
+        $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
+        $petition = new Petition();
+        $petition->setExpiry(new \DateTime('+2 days'));
+        $newForm = $this->createNewForm($petition);
+
+        return $this->render('HVGAgentBundle:Petition:sent.html.twig', array(
+            'petitions' => $petitions,
+            'newForm' => $newForm->createView(),
+            'direction' => $direction,
+            'sort' => $sort,
+        ));
+    }
+
+    public function receivedAction(Request $request)
+    {
+        $user = $this->getUser();
+        $areas = $user->getAreas();
+        $communities = $user->getCommunities();
+        $sort = $request->query->get('sort');
+        $direction = $request->query->get('direction');
+        $em = $this->getDoctrine()->getManager();
+        $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,4)));
+        if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('liability' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
+        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('liability' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
+        $paginator = $this->get('knp_paginator');
+        $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
+        $petition = new Petition();
+        $petition->setExpiry(new \DateTime('+2 days'));
+        $newForm = $this->createNewForm($petition);
+
+        return $this->render('HVGAgentBundle:Petition:received.html.twig', array(
             'petitions' => $petitions,
             'newForm' => $newForm->createView(),
             'direction' => $direction,

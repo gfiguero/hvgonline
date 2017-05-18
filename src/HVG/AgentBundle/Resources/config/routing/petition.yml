@@ -48,3 +48,18 @@ agent_petition_my:
     defaults: { _controller: "HVGAgentBundle:Petition:my" }
     methods:  GET
 
+agent_petition_area:
+    path:     /area
+    defaults: { _controller: "HVGAgentBundle:Petition:area" }
+    methods:  GET
+
+agent_petition_sent:
+    path:     /sent
+    defaults: { _controller: "HVGAgentBundle:Petition:sent" }
+    methods:  GET
+
+agent_petition_received:
+    path:     /received
+    defaults: { _controller: "HVGAgentBundle:Petition:received" }
+    methods:  GET
+

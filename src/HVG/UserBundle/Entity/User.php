@@ -470,4 +470,45 @@ class User extends BaseUser
     {
         return $this->petitionsassigned;
     }
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ticketsassigned;
+
+
+    /**
+     * Add ticketsassigned
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticketsassigned
+     *
+     * @return User
+     */
+    public function addTicketsassigned(\HVG\SystemBundle\Entity\Ticket $ticketsassigned)
+    {
+        $this->ticketsassigned[] = $ticketsassigned;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticketsassigned
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticketsassigned
+     */
+    public function removeTicketsassigned(\HVG\SystemBundle\Entity\Ticket $ticketsassigned)
+    {
+        $this->ticketsassigned->removeElement($ticketsassigned);
+    }
+
+    /**
+     * Get ticketsassigned
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTicketsassigned()
+    {
+        return $this->ticketsassigned;
+    }
 }

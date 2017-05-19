@@ -9,9 +9,10 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4">
-{#}
-            <img class="img-responsive" src="{{ asset('/img/HVGLOGO.jpg') | imagine_filter('logo_login') }}" />
-{#}
+            <div class="logo text-center">
+                <img class="img-responsive" src="{{ asset('/img/HVG.png') | imagine_filter('logo_login') }}" />
+                <h1>HVG</h1>
+            </div>
             <div class="panel panel-default">
                 <div class="panel-heading text-center">
                     <div class="panel-title">
@@ -50,3 +51,16 @@
 </div>
 
 {% endblock body %}
+
+{% block stylesheet %}
+    <style type="text/css">
+        .logo {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .logo h1 {
+            font-size: 3em;
+            font-weight: 800;
+        }
+    </style>
+{% endblock %}

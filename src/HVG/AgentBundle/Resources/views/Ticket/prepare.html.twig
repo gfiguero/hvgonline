@@ -29,7 +29,7 @@
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'ticket.prepare.list'|trans }}</h1>
                     </div>
-                    {% block ticketList %}{{ parent() }}{% endblock %}
+                    {% block ticketList %}{{ parent() }}<div id="overlay">{{ icon('cog fa-5x fa-spin') }}</div>{% endblock %}
                 </div>
             </div>
         </div>
@@ -45,8 +45,24 @@
 
 {% block stylesheet %}
     <style type="text/css">
-    #page-filter{
-        margin-bottom: 20px;
+    .panel {position: relative; height: 100%;}
+    #overlay
+    {
+        border-radius: 4px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 200;
+        color: white;
+        display: none;
+        text-align: center;
+    }
+    #overlay > .fa {
+        position: relative;
+        top: 10px;
     }
     </style>
 {% endblock %}
@@ -62,6 +78,7 @@
         nonSelectedText: 'Ningún Grupo Seleccionado',
         filterPlaceholder: 'Buscar',
         onChange: function() {
+            $('#overlay').show();
             $('#ticket_filter_unit').prop('selectedIndex',0);
             $('#newButton').addClass('disabled');
             var $form = $('#ticket_filter_form');
@@ -72,6 +89,7 @@
                 success: function(html) {
                     console.log(html);
                     $('#ticket_list').replaceWith(html);
+                    $('#overlay').hide();
                 }
             });
             $.ajax({
@@ -95,6 +113,7 @@
         nonSelectedText: 'Ningún Departamento Seleccionado',
         filterPlaceholder: 'Buscar',
         onChange: function() {
+            $('#overlay').show();
             var $form = $('#ticket_filter_form');
             $.ajax({
                 url: "{{ path('agent_ticket_search') }}",
@@ -102,6 +121,7 @@
                 data: $form.serializeArray(),
                 success: function(html) {
                     $('#ticket_list').replaceWith(html);
+                    $('#overlay').hide();
                 }
             });
             $.ajax({

@@ -76,9 +76,9 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ path('agent_ticket_my') }}">
+                    <a href="{{ path('agent_ticket_area') }}">
                         <div class="panel-footer">
-                            <div class="pull-left">{{ 'ticket.my.link'|trans }}</div>
+                            <div class="pull-left">{{ 'ticket.area.link'|trans }}</div>
                             <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
                             <div class="clearfix"></div>
                         </div>
@@ -97,9 +97,9 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ path('agent_petition_my') }}">
+                    <a href="{{ path('agent_petition_received') }}">
                         <div class="panel-footer">
-                            <div class="pull-left">{{ 'petition.my.link'|trans }}</div>
+                            <div class="pull-left">{{ 'petition.received.link'|trans }}</div>
                             <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
                             <div class="clearfix"></div>
                         </div>
@@ -112,70 +112,22 @@
             <div class="col-md-6">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h1 class="panel-title">Anuncios de desarrollo del sistema: V1.0.3</h1>
+                        <h1 class="panel-title">Anuncios de desarrollo del sistema: V1.0.4</h1>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item">Formulario de edición de requerimiento permite agregar y eliminar objetivos</li>
-                        <li class="list-group-item">Las referencias de requerimientos pueden eliminarse</li>
-                        <li class="list-group-item">Los objetivos pueden reiniciarse (volver a dejar incompleto)</li>
-                        <li class="list-group-item">Reparación de errores en íconos y links</li>
-                        <li class="list-group-item">Estandarización y rediseño de algunas secciones de la vista de requerimientos</li>
-                        <li class="list-group-item">Las acciones en requerimientos se muestran ordenadas desde la última a la primera</li>
-                    </ul>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Anuncios de desarrollo del sistema: V1.0.2</h1>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Formulario de edición de requerimiento no permite cambio de estado ni de objetivos</li>
-                        <li class="list-group-item">Nueva opción para hacer referencias entre requerimientos</li>
-                        <li class="list-group-item">La referencia desde un requerimiento a otro servirá para hacer seguimiento de un requerimiento precedente</li>
-                        <li class="list-group-item">Nuevo estado agregado (eliminado). Servirá para próxima mejora de canalización de información</li>
-                        <li class="list-group-item">Otros cambios menores y correcciondes de código</li>
-                    </ul>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Anuncios de desarrollo del sistema: V1.0.1</h1>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Nuevo botón para ingresar nuevos requerimientos en la bandeja de requerimientos</li>
-                        <li class="list-group-item">La bandeja de Requerimientos oculta los requerimientos archivados</li>
-                        <li class="list-group-item">La bandeja de Tickets oculta los tickets archivados</li>
-                        <li class="list-group-item">Los contadores de la vista general reflejan los tickets Activos (no archivados)</li>
-                        <li class="list-group-item">En las bandejas de tickets y requerimientos se puede hacer ordenamiento y paginación</li>
-                        <li class="list-group-item">Otros cambios menores</li>
+                        <li class="list-group-item">Las acciones de requerimientos y tickets ahora pueden llevar un archivo adjunto</li>
+                        <li class="list-group-item">Las acciones de requerimientos y tickets llevan un botón para descargar el adjunto</li>
+                        <li class="list-group-item">Modificada la barra de navegación superior</li>
+                        <li class="list-group-item">Rediseño en la búsqueda de tickets y requerimientos. Ahora existen 3 grupos: Enviados, Recibidos, y Área</li>
+                        <li class="list-group-item">Agregada zona especial para la creación de Tickets. La lista inicial estará vacía.</li>
+                        <li class="list-group-item">En el filtro de cración de tickets ya no aparecen los ticket de comunidades que no corresponden a los permisos de cada usuario.</li>
+                        <li class="list-group-item">Prontamente los Tickets tendrán responsabilidad asignada. El sistema ya está preparado para la asignación pero falta contruir algunas secciones.</li>
+                        <li class="list-group-item">Estandarización y rediseño de algunas secciones de la vista de requerimientos y tickets</li>
+                        <li class="list-group-item">Las acciones en ticket ahora también se muestran ordenadas desde la última a la primera</li>
                     </ul>
                 </div>
             </div>
         </div>
-
-        <div id="page-modal">
-            <div class="modal fade" id="modalNewTicket" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'ticket.new.title'|trans }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    {{ form_start(newTicketForm, { 'style': 'horizontal' }) }}
-                                        {{ form_widget(newTicketForm) }}
-                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticket.new.submit'|trans }}</button>
-                                        </div></div>
-                                    {{ form_end(newTicketForm) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-modal -->
 
     </div>
     <!-- /#page-wrapper -->

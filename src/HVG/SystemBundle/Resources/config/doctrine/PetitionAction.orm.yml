@@ -16,8 +16,7 @@ HVG\SystemBundle\Entity\PetitionAction:
             inversedBy: petitionactions
     fields:
         description:
-            type: string
-            length: 300
+            type: text
             nullable: true
         filename:
             type: string

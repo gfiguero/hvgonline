@@ -12,7 +12,7 @@
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'ticket.index.title'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'ticket.show.pagetitle'|trans({'%id%' : ticket.id, '%status%' : ticket.ticketstatus}) }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
                 <ol class="breadcrumb">
                     <li><a href="{{ path('agent_dashboard_index') }}">{{ 'dashboard.index.title'|trans }}</a></li>
@@ -26,7 +26,14 @@
         <!-- /#page-header -->
 
         <div class="row" id="page-toolbar">
-            <div class="col-lg-12">
+            <div class="col-lg-12 block">
+                <div class="btn-toolbar">
+                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_sent') }}">{{ icon('arrow-up fa-fw') }}&nbsp;{{ 'ticket.sent.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_received') }}">{{ icon('arrow-down fa-fw') }}&nbsp;{{ 'ticket.received.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_area') }}">{{ icon('puzzle-piece fa-fw') }}&nbsp;{{ 'ticket.area.link'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-lg-12 block">
                 <div class="btn-toolbar">
 {#}                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'ticket.index.link'|trans }}</a>{#}
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'ticket.edit.link'|trans }}</button>
@@ -39,25 +46,9 @@
 
         <div class="row" id="page-show">
             <div class="col-xs-12">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="ticket-id">{{ 'ticket.form.name'|trans }}&nbsp;{% if ticket.id %}{{ ticket.id }}{% endif %}</div>
-                                <div class="ticket-ticketstatus">{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="community-name text-right">{% if ticket.community %}{{ ticket.community.name }}{% endif %}</div>
-                                <div class="unitgroup-name text-right">{% if ticket.unitgroup %}{{ ticket.unitgroup.name }}{% endif %}</div>
-                                <div class="unit-name text-right">{% if ticket.unit %}{{ ticket.unit.name }}{% endif %}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="ticket-description">{% if ticket.description %}{{ ticket.description }}{% endif %}</div>
-                    </div>
+                <div class="alert alert-info ticket-description">
+                    {{ 'ticket.form.name'|trans }}: <strong>{% if ticket.description %}{{ ticket.description }}{% endif %}</strong>
                 </div>
-
                 <div class="panel panel-default panel-accordion">
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'ticket.show.title'|trans }}</h1>
@@ -87,17 +78,19 @@
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
+                                    <th><div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('cloud-download fa-fw') }}</a></div></th>
                                     <th>{{ 'ticketaction.form.user'|trans }}</th>
                                     <th>{{ 'ticketaction.form.description'|trans }}</th>
                                     <th>{{ 'ticketaction.form.createdAt'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            {% for key, ticketaction in ticket.ticketactions %}
+                            {% for key, ticketAction in ticketActions %}
                                 <tr>
-                                    <td>{% if ticketaction.user %}{{ ticketaction.user.username }}{% endif %}</td>
-                                    <td>{% if ticketaction.description %}{{ ticketaction.description }}{% endif %}</td>
-                                    <td>{% if ticketaction.createdAt %}{{ ticketaction.createdAt|ago }}{% endif %}</td>
+                                    <td>{% if ticketAction.filename %}<a type="button" class="btn btn-xs btn-primary" href="{{ path('agent_ticketaction_getfile', { id : ticketAction.id }) }}">{{ icon('cloud-download fa-fw') }}</a>{% endif %}</td>
+                                    <td>{% if ticketAction.user %}{{ ticketAction.user.username }}{% endif %}</td>
+                                    <td>{% if ticketAction.description %}{{ ticketAction.description }}{% endif %}</td>
+                                    <td>{% if ticketAction.createdAt %}{{ ticketAction.createdAt|ago }}{% endif %}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -186,11 +179,11 @@
 
 {% block stylesheet %}
 <style type="text/css">
+.ticket-description { font-size: 1.3em; }
 .community-name { font-size: 2em; }
 .unitgroup-name { font-size: 1em; }
 .unit-name { font-size: 1em; }
 .ticket-id { font-size: 3em; font-weight: bold; }
 .ticket-ticketstatus { font-size: 1.5em; }
-.ticket-description { font-size: 1.2em; }
 </style>
 {% endblock %}

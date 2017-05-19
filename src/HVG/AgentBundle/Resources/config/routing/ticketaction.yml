@@ -12,3 +12,8 @@ agent_ticketaction_new:
     path:     /new
     defaults: { _controller: "HVGAgentBundle:TicketAction:new" }
     methods:  [GET, POST]
+
+agent_ticketaction_getfile:
+    path:     /{id}/getfile
+    defaults: { _controller: "HVGAgentBundle:TicketAction:getfile" }
+    methods:  GET

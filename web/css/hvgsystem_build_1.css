@@ -7449,8 +7449,8 @@ body {
     position: inherit;
   }
 }
-#page-toolbar {
-  margin-bottom: 15px;
+.block {
+  margin-bottom: 20px;
 }
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,

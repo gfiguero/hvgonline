@@ -17,7 +17,14 @@ class PetitionActionType extends AbstractType
         $builder
             ->add('petition', 'hidden_petition')
             ->add('description', null, array(
+                'required' => true,
                 'label' => 'petitionaction.form.description',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGAgentBundle',
+            ))
+            ->add('file', 'fileinput', array(
+                'required' => false,
+                'label' => 'petitionaction.form.file',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
             ))

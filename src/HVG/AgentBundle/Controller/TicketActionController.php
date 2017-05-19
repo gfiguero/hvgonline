@@ -6,6 +6,9 @@ use HVG\SystemBundle\Entity\TicketAction;
 use HVG\AgentBundle\Form\TicketActionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class TicketActionController extends Controller
 {
@@ -52,6 +55,17 @@ class TicketActionController extends Controller
         }
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    public function getfileAction(Request $request, TicketAction $ticketaction)
+    {
+        $fieldName = 'file';
+        $storage = $this->get('vich_uploader.storage');
+        $path = $storage->resolvePath($ticketaction, $fieldName);
+        $filename = $ticketaction->getFilename();
+        $response = new BinaryFileResponse($path);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $filename);
+        return $response;
     }
 
 }

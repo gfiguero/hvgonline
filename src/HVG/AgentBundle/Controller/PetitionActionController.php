@@ -6,6 +6,9 @@ use HVG\SystemBundle\Entity\PetitionAction;
 use HVG\AgentBundle\Form\PetitionActionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class PetitionActionController extends Controller
 {
@@ -53,6 +56,21 @@ class PetitionActionController extends Controller
         }
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    public function getfileAction(Request $request, PetitionAction $petitionaction)
+    {
+        $fieldName = 'file';
+        $storage = $this->get('vich_uploader.storage');
+        $path = $storage->resolvePath($petitionaction, $fieldName);
+        $filename = $petitionaction->getFilename();
+        $response = new BinaryFileResponse($path);
+        $response->setContentDisposition(
+            ResponseHeaderBag::DISPOSITION_INLINE,
+            $filename
+        );
+
+        return $response;
     }
 
 }

@@ -12,3 +12,8 @@ agent_petitionaction_new:
     path:     /new
     defaults: { _controller: "HVGAgentBundle:PetitionAction:new" }
     methods:  [GET, POST]
+
+agent_petitionaction_getfile:
+    path:     /{id}/getfile
+    defaults: { _controller: "HVGAgentBundle:PetitionAction:getfile" }
+    methods:  GET

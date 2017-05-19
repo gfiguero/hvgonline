@@ -12,16 +12,22 @@
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'petition.index.title'|trans }}</h1>
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'petition.show.pagetitle'|trans({'%id%' : petition.id}) }}</h1>
                 {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
             </div>
         </div>
         <!-- /#page-header -->
 
         <div class="row" id="page-toolbar">
-            <div class="col-lg-12">
+            <div class="col-lg-12 block">
                 <div class="btn-toolbar">
-                    <a type="button" class="btn btn-default" href="{{ path('agent_petition_my') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'petition.my.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_petition_sent') }}">{{ icon('arrow-up fa-fw') }}&nbsp;{{ 'petition.sent.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_petition_received') }}">{{ icon('arrow-down fa-fw') }}&nbsp;{{ 'petition.received.link'|trans }}</a>
+                    <a type="button" class="btn btn-default" href="{{ path('agent_petition_area') }}">{{ icon('puzzle-piece fa-fw') }}&nbsp;{{ 'petition.area.link'|trans }}</a>
+                </div>
+            </div>
+            <div class="col-lg-12 block">
+                <div class="btn-toolbar">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'petition.edit.link'|trans }}</button>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalPetitionStatus">{{ icon('refresh fa-fw') }}&nbsp;{{ 'petition.editstatus.link'|trans }}</button>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalPetitionReference">{{ icon('plus fa-fw') }}&nbsp;{{ 'petition.addreference.link'|trans }}</button>
@@ -32,14 +38,10 @@
         <!-- /#page-toolbar -->
 
         <div class="row" id="page-show">
-            <div class="col-xs-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h1 class="panel-title"><strong>{% if petition.description %}{{ petition.description }}{% endif %}</strong></h1>
-                    </div>
-                </div>
-            </div>
             <div class="col-xs-12 col-md-6">
+                <div class="alert alert-info petition-description">
+                    {{ 'petition.form.name'|trans }}: <strong>{% if petition.description %}{{ petition.description }}{% endif %}</strong>
+                </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'petition.show.title'|trans }}</h1>
@@ -127,6 +129,7 @@
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
+                                    <th><div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('cloud-download fa-fw') }}</a></div></th>
                                     <th>{{ 'petitionaction.form.user'|trans }}</th>
                                     <th>{{ 'petitionaction.form.description'|trans }}</th>
                                     <th>{{ 'petitionaction.form.createdAt'|trans }}</th>
@@ -135,6 +138,7 @@
                             <tbody>
                             {% for key, petitionAction in petitionActions %}
                                 <tr>
+                                    <td>{% if petitionAction.filename %}<a type="button" class="btn btn-xs btn-primary" href="{{ path('agent_petitionaction_getfile', { id : petitionAction.id }) }}">{{ icon('cloud-download fa-fw') }}</a>{% endif %}</td>
                                     <td>{% if petitionAction.user %}{{ petitionAction.user.username }}{% endif %}</td>
                                     <td>{% if petitionAction.description %}{{ petitionAction.description }}{% endif %}</td>
                                     <td>{% if petitionAction.createdAt %}{{ petitionAction.createdAt|ago }}{% endif %}</td>
@@ -309,4 +313,10 @@
 
     </div>
     <!-- /#page-wrapper -->
+{% endblock %}
+
+{% block stylesheet %}
+<style type="text/css">
+.petition-description { font-size: 1.3em; }
+</style>
 {% endblock %}

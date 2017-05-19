@@ -3,6 +3,11 @@ agent_ticket_index:
     defaults: { _controller: "HVGAgentBundle:Ticket:index" }
     methods:  GET
 
+agent_ticket_prepare:
+    path:     /prepare
+    defaults: { _controller: "HVGAgentBundle:Ticket:prepare" }
+    methods:  GET
+
 agent_ticket_show:
     path:     /{id}/show
     defaults: { _controller: "HVGAgentBundle:Ticket:show" }

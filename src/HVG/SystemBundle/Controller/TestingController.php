@@ -30,6 +30,10 @@ class TestingController extends Controller
         $testing = new Testing();
         $newForm = $this->createNewForm($testing)->createView();
 
+        $editForms = array();
+        $deleteForms = array();
+
+
         foreach($testings as $key => $testing) {
             $editForms[] = $this->createEditForm($testing)->createView();
             $deleteForms[] = $this->createDeleteForm($testing)->createView();

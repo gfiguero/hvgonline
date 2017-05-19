@@ -107,6 +107,11 @@ ticket:
         title: Tickets
         link: Explorar Otros Tickets
         list: Lista de Tickets
+    prepare:
+        title: Crear nuevo Ticket
+        link: Crear nuevo Ticket
+        list: Lista de Tickets
+        notickets: No hay Tickets. Seleccione un grupo o una unidad en el filtro
     area: 
         link: Tickets del Área
         title: Tickets del Área
@@ -120,6 +125,7 @@ ticket:
         title: Tickets Recibidos
         list: Lista de Tickets Recibidos
     show:
+        pagetitle: Ticket N° %id% - %status%
         title: Datos de Ticket
         link: Detalles del Ticket
         ticketactions: Acciones Realizadas
@@ -194,6 +200,7 @@ petition:
         title: Requerimientos Recibidos
         list: Lista de Requerimientos Recibidos
     show:
+        pagetitle: 'Requerimiento N° %id%'
         title: Datos de Requerimiento
         link: Detalles del Requerimiento
         petitionactions: Acciones Realizadas
@@ -256,10 +263,12 @@ petitionaction:
     show:
         link: Detalle de Acción de Requerimiento
         title: Datos de Acción de Requerimiento
+        download: Descargar
     new:
         title: Nuevo Registro de Acción
         link: Agregar Acción
         submit: Registrar Acción de Requerimiento
+        flash: Se ha agregado una acción de Requerimiento
     form:
         actions: Acciones
         petition: Requerimiento
@@ -268,6 +277,7 @@ petitionaction:
         user: Usuario
         description: Descripción
         community: Comunidad
+        file: Adjunto
         createdAt: Registrada
 
 petitionobjective:

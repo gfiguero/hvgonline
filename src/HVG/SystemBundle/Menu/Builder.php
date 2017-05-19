@@ -20,6 +20,12 @@ class Builder implements ContainerAwareInterface
 
         if(in_array('ROLE_AGENT', $roles)) {
 
+            $prepareLabelAttributes = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false');
+            $prepareAttributes = array( 'icon' => 'plus fa-fw', 'translation_domain' => 'HVGSystemBundle' );
+            $menu->addChild('topmenu.prepare.menu')->setLabelAttributes($prepareLabelAttributes)->setAttributes($prepareAttributes);
+            $menu['topmenu.prepare.menu']->setChildrenAttribute('class', 'dropdown-menu');
+            $menu['topmenu.prepare.menu']->addChild('topmenu.prepare.ticket', array('route' => 'agent_ticket_prepare'))->setAttribute('translation_domain', 'HVGSystemBundle')->setAttribute('icon', 'ticket fa-fw');
+
             $sentLabelAttributes = array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false');
             $sentAttributes = array( 'icon' => 'arrow-up fa-fw', 'translation_domain' => 'HVGSystemBundle' );
             $menu->addChild('topmenu.sent.menu')->setLabelAttributes($sentLabelAttributes)->setAttributes($sentAttributes);

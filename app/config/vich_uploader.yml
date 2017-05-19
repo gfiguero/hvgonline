@@ -21,3 +21,7 @@ vich_uploader:
             uri_prefix: uploads/petition_action_file
             upload_destination: %kernel.root_dir%/../web/uploads/petition_action_file
             namer: vich_uploader.namer_origname
+        ticket_action_file:
+            uri_prefix: uploads/ticket_action_file
+            upload_destination: %kernel.root_dir%/../web/uploads/ticket_action_file
+            namer: vich_uploader.namer_origname

@@ -37,18 +37,38 @@ class TicketController extends Controller
         ));
     }
 
+    public function prepareAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $communities = $user->getCommunities();
+        $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findBy(array('community' => $communities->toArray()));
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
+        $tickets = array();
+        $ticketFilter = new TicketFilter();
+        $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
+        return $this->render('HVGAgentBundle:Ticket:prepare.html.twig', array(
+            'ticketFilterForm' => $ticketFilterForm->createView(),
+            'tickets' => $tickets,
+        ));
+    }
+
     public function showAction(Ticket $ticket)
     {
+        $em = $this->getDoctrine()->getManager();
+        $ticketActions = $em->getRepository('HVGSystemBundle:TicketAction')->findByTicket(array('id' => $ticket->getId()), array('createdAt' => 'DESC'));
         $ticketAction = new TicketAction();
         $ticketAction->setTicket($ticket);
-        $newTicketActionForm = $this->container->get('form.factory')->create($this->get('hvg_agent.form.ticketaction'), $ticketAction, array(
+        $newTicketActionForm = $this->createNewActionForm($ticketAction)->createView();
+/*        $newTicketActionForm = $this->container->get('form.factory')->create($this->get('hvg_agent.form.ticketaction'), $ticketAction, array(
             'action' => $this->generateUrl('agent_ticketaction_new'),
-        ))->createView();
+        ))->createView();*/
         $ticketStatusForm = $this->createTicketStatusForm($ticket)->createView();
         $editForm = $this->createEditForm($ticket)->createView();
 
         return $this->render('HVGAgentBundle:Ticket:show.html.twig', array(
             'ticket' => $ticket,
+            'ticketActions' => $ticketActions,
             'newTicketActionForm' => $newTicketActionForm,
             'ticketStatusForm' => $ticketStatusForm,
             'editForm' => $editForm,
@@ -76,7 +96,7 @@ class TicketController extends Controller
                 $em->persist($ticketAction);
                 $em->flush();
                 $request->getSession()->getFlashBag()->add( 'success', 'ticket.flash.created' );
-                return $this->redirect($request->headers->get('referer'));
+                return $this->redirect($this->generateUrl('agent_ticket_show', array('id' => $ticket->getId())));
             }
         }
 
@@ -194,6 +214,13 @@ class TicketController extends Controller
         }
 
         return $this->redirect($request->headers->get('referer'));
+    }
+
+    private function createNewActionForm(TicketAction $ticketAction)
+    {
+        return $this->createForm('HVG\AgentBundle\Form\TicketActionType', $ticketAction, array(
+            'action' => $this->generateUrl('agent_ticketaction_new'),
+        ));
     }
 
     private function createTicketStatusForm(Ticket $ticket)

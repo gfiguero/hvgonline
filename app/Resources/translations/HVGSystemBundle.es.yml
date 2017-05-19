@@ -1,4 +1,7 @@
 topmenu:
+    prepare:
+        menu: Preparar
+        ticket: Preparar nuevo Ticket
     sent:
         menu: Enviados
         tickets: Tickes Enviados

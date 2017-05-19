@@ -33,3 +33,9 @@ services:
             - "@doctrine"
         tags:
             - { name: form.type, alias: ticket_filter }
+
+    hvg_agent.form.type.fileinput:
+        class: HVG\AgentBundle\Form\UploadType
+        arguments: ['@vich_uploader.storage', '@vich_uploader.upload_handler', '@translator']
+        tags:
+            - { name: form.type, alias: fileinput }

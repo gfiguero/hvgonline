@@ -1,4 +1,0 @@
-HVG\SystemBundle\Entity\PetitionAction:
-    file:
-        mapping:           petition_action_file
-        filename_property: filename

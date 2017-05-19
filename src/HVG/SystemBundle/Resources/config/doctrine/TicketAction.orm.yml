@@ -18,7 +18,7 @@ HVG\SystemBundle\Entity\TicketAction:
         description:
             type: text
             nullable: true
-        file:
+        filename:
             type: string
             length: 300
             nullable: true

@@ -15,6 +15,7 @@ class PetitionObjectiveType extends AbstractType
     {
         $builder
             ->add('description', null, array(
+                'required' => true,
                 'label' => 'petitionobjective.form.description',
                 'attr'  => array( 'label_col' => 3, 'widget_col' => 9 ),
                 'translation_domain' => 'HVGAgentBundle',

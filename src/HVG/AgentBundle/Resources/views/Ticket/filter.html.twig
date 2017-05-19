@@ -4,7 +4,7 @@
 
 <div>
     <div class="row" id="page-toolbar">
-        <div class="col-lg-12">
+        <div class="col-lg-12 block">
             {{ form_start(ticketFilterForm, { 'style': 'inline', 'attr': {'id': 'ticket_filter_form'}}) }}
             {{ form_rest(ticketFilterForm) }}
                 <div class="form-group"><button id="newButton" data-toggle="modal" data-target="#modalNew" type="button" class="btn btn-success disabled">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticket.new.link'|trans }}</button></div>

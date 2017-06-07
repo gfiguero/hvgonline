@@ -76,9 +76,9 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ path('agent_ticket_area') }}">
+                    <a href="{{ path('agent_ticket_received') }}">
                         <div class="panel-footer">
-                            <div class="pull-left">{{ 'ticket.area.link'|trans }}</div>
+                            <div class="pull-left">{{ 'ticket.received.link'|trans }}</div>
                             <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
                             <div class="clearfix"></div>
                         </div>
@@ -104,6 +104,27 @@
                             <div class="clearfix"></div>
                         </div>
                     </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">Anuncios de desarrollo del sistema: V1.0.5</h1>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Tanto los tickets como los requerimientos desde ahora tienen responsables.</li>
+                        <li class="list-group-item">El menú "recibidos" ahora muestra los elementos donde el usuario es responsable.</li>
+                        <li class="list-group-item">El menú "área" muestra los elementos dentro del área de trabajo del usuario, aunque éste no sea responsable.</li>
+                        <li class="list-group-item">El menú "enviados" muestra los elementos que el usuario ingresó al sistema, para hacer seguimiento.</li>
+                        <li class="list-group-item">El menú "nuevo" ahora también permite crear un nuevo requerimiento.</li>
+                        <li class="list-group-item">Desde la vista de ticket, ahora se puede generar un nuevo requerimiento que quedará vinculado a ése ticket. Aparecerá referenciado en la parte inferior de la vista de ticket.</li>
+                        <li class="list-group-item">Al seleccionar un responsable en cualquiera de los formularios, aparecerá el nombre del responsable y entre paréntesis el nombre de usuario. Esto permitirá diferenciar usuarios con el mismo nombre.</li>
+                        <li class="list-group-item">La vista general ahora muestra sólo los elementos donde el usuario es responsable.</li>
+                        <li class="list-group-item">Varios cambios en diseño estructural del sistema (no visibles) que permitirán mayor flexibilidad y rápida mantención en el futuro.</li>
+                    </ul>
                 </div>
             </div>
         </div>

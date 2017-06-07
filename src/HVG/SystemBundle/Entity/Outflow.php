@@ -196,4 +196,50 @@ class Outflow
     {
         return $this->expenditure;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $expenditures;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->expenditures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add expenditure
+     *
+     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
+     *
+     * @return Outflow
+     */
+    public function addExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
+    {
+        $this->expenditures[] = $expenditure;
+
+        return $this;
+    }
+
+    /**
+     * Remove expenditure
+     *
+     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
+     */
+    public function removeExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
+    {
+        $this->expenditures->removeElement($expenditure);
+    }
+
+    /**
+     * Get expenditures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExpenditures()
+    {
+        return $this->expenditures;
+    }
 }

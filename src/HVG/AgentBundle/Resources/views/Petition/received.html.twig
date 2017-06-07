@@ -2,7 +2,6 @@
 {% use 'HVGSystemBundle::navbar.html.twig' %}
 {% use 'HVGAgentBundle::sidebar.html.twig' %}
 {% use 'HVGSystemBundle::icons.html.twig' %}
-{% use 'HVGAgentBundle:Ticket:list.html.twig' %}
 
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
@@ -45,7 +44,7 @@
                                     <th>{{ knp_pagination_sortable(petitions, 'petition.form.area'|trans, 'area') }}{% if sort == 'area' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(petitions, 'petition.form.community'|trans, 'community') }}{% if sort == 'community' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(petitions, 'petition.form.expiry'|trans, 'expiry') }}{% if sort == 'expiry' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(petitions, 'petition.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th class="col-md-5">{{ 'petition.form.description'|trans }}</th>
                                 </tr>
                             </thead>
@@ -66,7 +65,7 @@
                                     <td>{% if petition.area %}{{ petition.area.name }}{% endif %}</td>
                                     <td>{% if petition.community %}{{ petition.community.name }}{% endif %}</td>
                                     <td>{% if petition.expiry %}{{ petition.expiry|ago }}{% endif %}</td>
-                                    <td>{% if petition.createdAt %}{{ petition.createdAt|ago }}{% endif %}</td>
+                                    <td>{% if petition.updatedAt %}{{ petition.updatedAt|ago }}{% endif %}</td>
                                     <td>{% if petition.description %}{{ petition.description }}{% endif %}</td>
                                 </tr>
                             {% endfor %}

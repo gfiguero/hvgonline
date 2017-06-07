@@ -418,4 +418,121 @@ class Community
     {
         return $this->users;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $expenditures;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $funds;
+
+
+    /**
+     * Add expenditure
+     *
+     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
+     *
+     * @return Community
+     */
+    public function addExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
+    {
+        $this->expenditures[] = $expenditure;
+
+        return $this;
+    }
+
+    /**
+     * Remove expenditure
+     *
+     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
+     */
+    public function removeExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
+    {
+        $this->expenditures->removeElement($expenditure);
+    }
+
+    /**
+     * Get expenditures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getExpenditures()
+    {
+        return $this->expenditures;
+    }
+
+    /**
+     * Add fund
+     *
+     * @param \HVG\SystemBundle\Entity\Fund $fund
+     *
+     * @return Community
+     */
+    public function addFund(\HVG\SystemBundle\Entity\Fund $fund)
+    {
+        $this->funds[] = $fund;
+
+        return $this;
+    }
+
+    /**
+     * Remove fund
+     *
+     * @param \HVG\SystemBundle\Entity\Fund $fund
+     */
+    public function removeFund(\HVG\SystemBundle\Entity\Fund $fund)
+    {
+        $this->funds->removeElement($fund);
+    }
+
+    /**
+     * Get funds
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFunds()
+    {
+        return $this->funds;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $payments;
+
+
+    /**
+     * Add payment
+     *
+     * @param \HVG\SystemBundle\Entity\Payment $payment
+     *
+     * @return Community
+     */
+    public function addPayment(\HVG\SystemBundle\Entity\Payment $payment)
+    {
+        $this->payments[] = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Remove payment
+     *
+     * @param \HVG\SystemBundle\Entity\Payment $payment
+     */
+    public function removePayment(\HVG\SystemBundle\Entity\Payment $payment)
+    {
+        $this->payments->removeElement($payment);
+    }
+
+    /**
+     * Get payments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPayments()
+    {
+        return $this->payments;
+    }
 }

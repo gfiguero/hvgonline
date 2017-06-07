@@ -20,7 +20,7 @@ class PetitionController extends Controller
         $direction = $request->query->get('direction');
         $em = $this->getDoctrine()->getManager();
         if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array(), array($sort => $direction));
-        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findAll();
+        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array(), array('updatedAt' => 'DESC'));
         $paginator = $this->get('knp_paginator');
         $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
 
@@ -39,6 +39,7 @@ class PetitionController extends Controller
     public function newAction(Request $request)
     {
         $petition = new Petition();
+        $petition->setExpiry(new \DateTime('+2 days'));
         $newForm = $this->createNewForm($petition);
         $newForm->handleRequest($request);
 
@@ -249,7 +250,7 @@ class PetitionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,4)));
         if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
-        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
+        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('area' => $areas->toArray(), 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array('updatedAt' => 'DESC'));
         $paginator = $this->get('knp_paginator');
         $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
         $petition = new Petition();
@@ -274,7 +275,7 @@ class PetitionController extends Controller
         $em = $this->getDoctrine()->getManager();
         $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,4)));
         if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('user' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
-        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('user' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
+        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('user' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array('updatedAt' => 'DESC'));
         $paginator = $this->get('knp_paginator');
         $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
         $petition = new Petition();
@@ -293,13 +294,12 @@ class PetitionController extends Controller
     {
         $user = $this->getUser();
         $areas = $user->getAreas();
-        $communities = $user->getCommunities();
         $sort = $request->query->get('sort');
         $direction = $request->query->get('direction');
         $em = $this->getDoctrine()->getManager();
         $statuses = $em->getRepository('HVGSystemBundle:PetitionStatus')->findBy(array('result' => array(1,2,4)));
-        if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('liability' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses), array($sort => $direction));
-        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('liability' => $user, 'community' => $communities->toArray(), 'petitionstatus' => $statuses));
+        if($sort) $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('liability' => $user, 'petitionstatus' => $statuses), array($sort => $direction));
+        else $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('liability' => $user, 'petitionstatus' => $statuses), array('updatedAt' => 'DESC'));
         $paginator = $this->get('knp_paginator');
         $petitions = $paginator->paginate($petitions, $request->query->getInt('page', 1), 100);
         $petition = new Petition();

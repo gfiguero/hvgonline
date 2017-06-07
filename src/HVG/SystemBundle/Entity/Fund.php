@@ -258,4 +258,43 @@ class Fund
     {
         return $this->community;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $items;
+
+
+    /**
+     * Add item
+     *
+     * @param \HVG\SystemBundle\Entity\Item $item
+     *
+     * @return Fund
+     */
+    public function addItem(\HVG\SystemBundle\Entity\Item $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \HVG\SystemBundle\Entity\Item $item
+     */
+    public function removeItem(\HVG\SystemBundle\Entity\Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
 }

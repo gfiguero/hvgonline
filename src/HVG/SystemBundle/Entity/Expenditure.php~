@@ -225,4 +225,91 @@ class Expenditure
     {
         return $this->community;
     }
+    /**
+     * @var \HVG\SystemBundle\Entity\Payment
+     */
+    private $payment;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Outflow
+     */
+    private $outflow;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Item
+     */
+    private $item;
+
+
+    /**
+     * Set payment
+     *
+     * @param \HVG\SystemBundle\Entity\Payment $payment
+     *
+     * @return Expenditure
+     */
+    public function setPayment(\HVG\SystemBundle\Entity\Payment $payment = null)
+    {
+        $this->payment = $payment;
+
+        return $this;
+    }
+
+    /**
+     * Get payment
+     *
+     * @return \HVG\SystemBundle\Entity\Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * Set outflow
+     *
+     * @param \HVG\SystemBundle\Entity\Outflow $outflow
+     *
+     * @return Expenditure
+     */
+    public function setOutflow(\HVG\SystemBundle\Entity\Outflow $outflow = null)
+    {
+        $this->outflow = $outflow;
+
+        return $this;
+    }
+
+    /**
+     * Get outflow
+     *
+     * @return \HVG\SystemBundle\Entity\Outflow
+     */
+    public function getOutflow()
+    {
+        return $this->outflow;
+    }
+
+    /**
+     * Set item
+     *
+     * @param \HVG\SystemBundle\Entity\Item $item
+     *
+     * @return Expenditure
+     */
+    public function setItem(\HVG\SystemBundle\Entity\Item $item = null)
+    {
+        $this->item = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get item
+     *
+     * @return \HVG\SystemBundle\Entity\Item
+     */
+    public function getItem()
+    {
+        return $this->item;
+    }
 }

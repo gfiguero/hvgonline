@@ -20,8 +20,19 @@ class TicketType extends AbstractType
                 'label' => 'ticket.form.area',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
+                'placeholder' => 'ticket.form.placeholder.area',
+            ))
+            ->add('liability', null, array(
+                'label' => 'ticket.form.liability',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGAgentBundle',
+                'placeholder' => 'ticket.form.placeholder.liability',
+                'choice_label' => function ($user) {
+                    return $user->getPersonUsername();
+                }
             ))
             ->add('ticketstatus', null, array(
+                'required' => true,
                 'label' => 'ticket.form.ticketstatus',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',

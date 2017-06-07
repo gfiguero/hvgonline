@@ -19,17 +19,22 @@ class PetitionType extends AbstractType
                 'label' => 'petition.form.community',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
+                'placeholder' => 'petition.form.placeholder.community',
             ))
             ->add('area', null, array(
                 'label' => 'petition.form.area',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
+                'placeholder' => 'petition.form.placeholder.area',
             ))
             ->add('liability', null, array(
-                'choice_label' => 'person',
                 'label' => 'petition.form.liability',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
+                'placeholder' => 'petition.form.placeholder.liability',
+                'choice_label' => function ($user) {
+                    return $user->getPersonUsername();
+                }
             ))
             ->add('petitionstatus', null, array(
                 'required' => true,
@@ -43,7 +48,6 @@ class PetitionType extends AbstractType
                 'translation_domain' => 'HVGAgentBundle',
             ))
             ->add('expiry', null, array(
-//                'empty_value' => new \DateTime('+2 days'),
                 'label' => 'petition.form.expiry',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',

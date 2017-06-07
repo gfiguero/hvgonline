@@ -3,9 +3,9 @@
 namespace HVG\SystemBundle\Entity;
 
 /**
- * Person
+ * Item
  */
-class Person
+class Item
 {
     /**
      * @var integer
@@ -16,11 +16,6 @@ class Person
      * @var string
      */
     private $name;
-
-    /**
-     * @var string
-     */
-    private $rut;
 
     /**
      * @var \DateTime
@@ -38,16 +33,21 @@ class Person
     private $deletedAt;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $expenditures;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Fund
+     */
+    private $fund;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return (string) $this->name;
+        $this->expenditures = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -65,7 +65,7 @@ class Person
      *
      * @param string $name
      *
-     * @return Person
+     * @return Item
      */
     public function setName($name)
     {
@@ -85,35 +85,11 @@ class Person
     }
 
     /**
-     * Set rut
-     *
-     * @param string $rut
-     *
-     * @return Person
-     */
-    public function setRut($rut)
-    {
-        $this->rut = $rut;
-
-        return $this;
-    }
-
-    /**
-     * Get rut
-     *
-     * @return string
-     */
-    public function getRut()
-    {
-        return $this->rut;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
-     * @return Person
+     * @return Item
      */
     public function setCreatedAt($createdAt)
     {
@@ -137,7 +113,7 @@ class Person
      *
      * @param \DateTime $updatedAt
      *
-     * @return Person
+     * @return Item
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -161,7 +137,7 @@ class Person
      *
      * @param \DateTime $deletedAt
      *
-     * @return Person
+     * @return Item
      */
     public function setDeletedAt($deletedAt)
     {
@@ -181,43 +157,61 @@ class Person
     }
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $contacts;
-
-    /**
-     * Add contact
+     * Add expenditure
      *
-     * @param \HVG\SystemBundle\Entity\Contact $contact
+     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
      *
-     * @return Person
+     * @return Item
      */
-    public function addContact(\HVG\SystemBundle\Entity\Contact $contact)
+    public function addExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
     {
-        $contact->setPerson($this);
-
-        $this->contacts[] = $contact;
+        $this->expenditures[] = $expenditure;
 
         return $this;
     }
 
     /**
-     * Remove contact
+     * Remove expenditure
      *
-     * @param \HVG\SystemBundle\Entity\Contact $contact
+     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
      */
-    public function removeContact(\HVG\SystemBundle\Entity\Contact $contact)
+    public function removeExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
     {
-        $this->contacts->removeElement($contact);
+        $this->expenditures->removeElement($expenditure);
     }
 
     /**
-     * Get contacts
+     * Get expenditures
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getContacts()
+    public function getExpenditures()
     {
-        return $this->contacts;
+        return $this->expenditures;
+    }
+
+    /**
+     * Set fund
+     *
+     * @param \HVG\SystemBundle\Entity\Fund $fund
+     *
+     * @return Item
+     */
+    public function setFund(\HVG\SystemBundle\Entity\Fund $fund = null)
+    {
+        $this->fund = $fund;
+
+        return $this;
+    }
+
+    /**
+     * Get fund
+     *
+     * @return \HVG\SystemBundle\Entity\Fund
+     */
+    public function getFund()
+    {
+        return $this->fund;
     }
 }
+

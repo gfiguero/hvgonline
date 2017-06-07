@@ -19,18 +19,23 @@ class ExpenditureType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('amount', null, array(
-                'label' => 'expenditure.form.amount',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('description', null, array(
-                'label' => 'expenditure.form.description',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
             ->add('community', null, array(
                 'label' => 'expenditure.form.community',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('payment', null, array(
+                'label' => 'expenditure.form.payment',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('outflow', null, array(
+                'label' => 'expenditure.form.outflow',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('item', null, array(
+                'label' => 'expenditure.form.item',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))

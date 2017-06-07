@@ -28,6 +28,17 @@ HVG\SystemBundle\Entity\Ticket:
         ticketactions:
             targetEntity: HVG\SystemBundle\Entity\TicketAction
             mappedBy: ticket
+    manyToMany:
+        ticketpetitions:
+            targetEntity: HVG\SystemBundle\Entity\Petition
+            joinTable:
+                name: ticketpetitions
+                joinColumns:
+                    petition_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    ticket_id:
+                        referencedColumnName: id
     fields:
         description:
             type: text

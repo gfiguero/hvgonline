@@ -85,6 +85,16 @@ class User extends BaseUser
     }
 
     /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getPersonUsername()
+    {
+        return $this->person . ' (' . $this->username . ')';
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt

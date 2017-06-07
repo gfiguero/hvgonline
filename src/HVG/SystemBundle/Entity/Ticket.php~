@@ -83,7 +83,6 @@ class Ticket
     public function __construct()
     {
         $this->ticketactions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ticketpetitions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -477,40 +476,40 @@ class Ticket
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $ticketpetitions;
+    private $petitionreference;
 
 
     /**
-     * Add ticketpetition
+     * Add petitionreference
      *
-     * @param \HVG\SystemBundle\Entity\Petition $ticketpetition
+     * @param \HVG\SystemBundle\Entity\Petition $petitionreference
      *
      * @return Ticket
      */
-    public function addTicketpetition(\HVG\SystemBundle\Entity\Petition $ticketpetition)
+    public function addPetitionreference(\HVG\SystemBundle\Entity\Petition $petitionreference)
     {
-        $this->ticketpetitions[] = $ticketpetition;
+        $this->petitionreference[] = $petitionreference;
 
         return $this;
     }
 
     /**
-     * Remove ticketpetition
+     * Remove petitionreference
      *
-     * @param \HVG\SystemBundle\Entity\Petition $ticketpetition
+     * @param \HVG\SystemBundle\Entity\Petition $petitionreference
      */
-    public function removeTicketpetition(\HVG\SystemBundle\Entity\Petition $ticketpetition)
+    public function removePetitionreference(\HVG\SystemBundle\Entity\Petition $petitionreference)
     {
-        $this->ticketpetitions->removeElement($ticketpetition);
+        $this->petitionreference->removeElement($petitionreference);
     }
 
     /**
-     * Get ticketpetitions
+     * Get petitionreference
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTicketpetitions()
+    public function getPetitionreference()
     {
-        return $this->ticketpetitions;
+        return $this->petitionreference;
     }
 }

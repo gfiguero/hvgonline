@@ -8,23 +8,21 @@ HVG\SystemBundle\Entity\Payment:
             id: true
             generator:
                 strategy: AUTO
-    manyToMany:
-        expenditure:
+    oneToMany:
+        expenditures:
             targetEntity: HVG\SystemBundle\Entity\Expenditure
-            joinTable:
-                name: PaymentExpenditure
-                joinColumns:
-                    expenditure_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    payment_id:
-                        referencedColumnName: id
-                        unique: true
+            mappedBy: payment
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: payments
     fields:
         name:
             type: string
             length: 100
             nullable: true
+        amount:
+            type: integer
         createdAt:
             type: datetime
             gedmo:

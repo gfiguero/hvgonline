@@ -18,6 +18,11 @@ class Payment
     private $name;
 
     /**
+     * @var integer
+     */
+    private $amount;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -35,14 +40,19 @@ class Payment
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $expenditure;
+    private $expenditures;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->expenditure = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->expenditures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->amount . ' ' . $this->name;
     }
 
     /**
@@ -160,7 +170,7 @@ class Payment
      */
     public function addExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
     {
-        $this->expenditure[] = $expenditure;
+        $this->expenditures[] = $expenditure;
 
         return $this;
     }
@@ -172,16 +182,69 @@ class Payment
      */
     public function removeExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
     {
-        $this->expenditure->removeElement($expenditure);
+        $this->expenditures->removeElement($expenditure);
     }
 
     /**
-     * Get expenditure
+     * Get expenditures
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getExpenditure()
+    public function getExpenditures()
     {
-        return $this->expenditure;
+        return $this->expenditures;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     *
+     * @return Payment
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\Community
+     */
+    private $community;
+
+
+    /**
+     * Set community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     *
+     * @return Payment
+     */
+    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \HVG\SystemBundle\Entity\Community
+     */
+    public function getCommunity()
+    {
+        return $this->community;
     }
 }

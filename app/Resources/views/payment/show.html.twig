@@ -41,6 +41,8 @@
                                 <dd>{% if payment.id %}{{ payment.id }}{% endif %}</dd>
                             <dt>{{ 'payment.form.name'|trans }}</dt>
                                 <dd>{% if payment.name %}{{ payment.name }}{% endif %}</dd>
+                            <dt>{{ 'payment.form.amount'|trans }}</dt>
+                                <dd>{% if payment.amount %}{{ payment.amount }}{% endif %}</dd>
                             <dt>{{ 'payment.form.createdAt'|trans }}</dt>
                                 <dd>{% if payment.createdAt %}{{ payment.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'payment.form.updatedAt'|trans }}</dt>

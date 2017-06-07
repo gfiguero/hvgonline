@@ -16,6 +16,14 @@ hvg_system_outflow:
     resource: "@HVGSystemBundle/Resources/config/routing/outflow.yml"
     prefix:   /outflow
 
+hvg_system_item:
+    resource: "@HVGSystemBundle/Resources/config/routing/item.yml"
+    prefix:   /item
+
+hvg_system_fund:
+    resource: "@HVGSystemBundle/Resources/config/routing/fund.yml"
+    prefix:   /fund
+
 hvg_system_inflow:
     resource: "@HVGSystemBundle/Resources/config/routing/inflow.yml"
     prefix:   /inflow
@@ -94,10 +102,6 @@ hvg_system_community:
 hvg_system_service:
     resource: "@HVGSystemBundle/Resources/config/routing/service.yml"
     prefix:   /service
-
-hvg_system_fund:
-    resource: "@HVGSystemBundle/Resources/config/routing/fund.yml"
-    prefix:   /fund
 
 hvg_system_provider:
     resource: "@HVGSystemBundle/Resources/config/routing/provider.yml"

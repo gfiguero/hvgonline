@@ -15,7 +15,7 @@ class PetitionReferenceType extends AbstractType
     {
         $builder
             ->add('id', 'text', array(
-                'label' => 'petition.form.id',
+                'label' => 'petition.form.referenceid',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
             ))

@@ -12,8 +12,10 @@ HVG\SystemBundle\Entity\Outflow:
         fund:
             targetEntity: HVG\SystemBundle\Entity\Fund
             inversedBy: outflows
-        expenditure:
+    oneToMany:
+        expenditures:
             targetEntity: HVG\SystemBundle\Entity\Expenditure
+            mappedBy: outflow
     fields:
         name:
             type: string

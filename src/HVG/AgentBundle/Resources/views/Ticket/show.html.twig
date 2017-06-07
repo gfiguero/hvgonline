@@ -39,6 +39,7 @@
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'ticket.edit.link'|trans }}</button>
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalTicketStatus">{{ icon('refresh fa-fw') }}&nbsp;{{ 'ticket.editstatus.link'|trans }}</button>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewTicketAction">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticketaction.new.link'|trans }}</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewPetition">{{ icon('plus fa-fw') }}&nbsp;{{ 'petition.new.link'|trans }}</button>
                 </div>
             </div>
         </div>
@@ -59,6 +60,7 @@
                             <dt>{{ 'ticket.form.unitgroup'|trans }}</dt><dd>{% if ticket.unitgroup %}<a href="{{ path('agent_unitgroup_show', { 'id' : ticket.unitgroup.id }) }}">{{ ticket.unitgroup.name }}</a>{% endif %}</dd>
                             <dt>{{ 'ticket.form.unit'|trans }}</dt><dd>{% if ticket.unit %}<a href="{{ path('agent_unit_show', { 'id' : ticket.unit.id }) }}">{{ ticket.unit.name }}</a>{% endif %}</dd>
                             <dt>{{ 'ticket.form.id'|trans }}</dt><dd>{% if ticket.id %}{{ ticket.id }}{% endif %}</dd>
+                            <dt>{{ 'ticket.form.liability'|trans }}</dt><dd>{% if ticket.liability %}{{ ticket.liability.person }}{% endif %}</dd>
                             <dt>{{ 'ticket.form.ticketstatus'|trans }}</dt><dd>{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</dd>
                             <dt>{{ 'ticket.form.contactname'|trans }}</dt><dd>{% if ticket.contactname %}{{ ticket.contactname }}{% endif %}</dd>
                             <dt>{{ 'ticket.form.contactphone'|trans }}</dt><dd>{% if ticket.contactphone %}{{ ticket.contactphone }}{% endif %}</dd>
@@ -96,6 +98,56 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ 'ticket.show.ticketpetitions'|trans }}</h1>
+                    </div>
+                    {% if ticket.ticketpetitions is not empty %}
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('search fa-fw') }}</a></div>
+                                    </th>
+                                    <th>{{ 'petition.form.id'|trans }}</th>
+                                    <th>{{ 'petition.form.petitionstatus'|trans }}</th>
+                                    <th>{{ 'petition.form.abbreviation.liability'|trans }}</th>
+                                    <th>{{ 'petition.form.area'|trans }}</th>
+                                    <th>{{ 'petition.form.community'|trans }}</th>
+                                    <th>{{ 'petition.form.expiry'|trans }}</th>
+                                    <th>{{ 'petition.form.createdAt'|trans }}</th>
+                                    <th class="col-md-4">{{ 'petition.form.description'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for key, ticketpetition in ticket.ticketpetitions %}
+                                {% set difference = date(ticketpetition.expiry|date()).diff(date('now'|date())) %}
+                                <tr {% if difference.invert %}{% if difference.days < 3 %}{{ 'class="warning"' }}{% endif %}{% else %}{{ 'class="danger"' }}{% endif %}>
+                                    <td>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_petition_show', { 'id': ticketpetition.id }) }}" >{{ icon('search fa-fw') }}</a></div>
+                                    </td>
+                                    <td>{% if ticketpetition.id %}{{ ticketpetition.id }}{% endif %}</td>
+                                    <td>{% if ticketpetition.petitionstatus %}{{ ticketpetition.petitionstatus }}{% endif %}</td>
+                                    <td>{% if ticketpetition.liability %}{{ ticketpetition.liability.username }}{% endif %}</td>
+                                    <td>{% if ticketpetition.area %}{{ ticketpetition.area.name }}{% endif %}</td>
+                                    <td>{% if ticketpetition.community %}{{ ticketpetition.community.name }}{% endif %}</td>
+                                    <td>{% if ticketpetition.expiry %}{{ ticketpetition.expiry|ago }}{% endif %}</td>
+                                    <td>{% if ticketpetition.createdAt %}{{ ticketpetition.createdAt|ago }}{% endif %}</td>
+                                    <td>{% if ticketpetition.description %}{{ ticketpetition.description }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="panel-body">
+                        <div class="text-center"><em>{{ 'petition.show.noreference'|trans }}</em></div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -164,6 +216,29 @@
                                             <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticket.edit.submit'|trans }}</button>
                                         </div></div>
                                     {{ form_end(editForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalNewPetition" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'petition.new.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(petitionForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(petitionForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petition.new.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(petitionForm) }}
                                 </div>
                             </div>
                         </div>

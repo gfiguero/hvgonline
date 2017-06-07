@@ -1,3 +1,25 @@
+topmenu:
+    create:
+        menu: Nuevo
+        ticket: Crear Nuevo Ticket
+        petition: Crear Nuevo Requerimiento
+    sent:
+        menu: Enviados
+        tickets: Tickes Enviados
+        petitions: Requerimientos Enviados
+    received:
+        menu: Recibidos
+        tickets: Tickes Recibidos
+        petitions: Requerimientos Recibidos
+    area:
+        menu: Área
+        tickets: Tickes de mi Área
+        petitions: Requerimientos de mi Área
+    user: Usuarios
+    agentdashboard: Vista General
+    systemdashboard: Configuración de Sistema
+    logout: Desconectar
+
 sidemenu:
     datacenter: Centro de Datos
     community: Comunidades
@@ -16,12 +38,15 @@ sidemenu:
     ticket:
         root: Tickets
         index: Todos los Tickets
+        prepare: Crear Nuevo Ticket
+        new: Crear Nuevo Ticket
         sent: Tickets Enviados
         received: Tickets Recibidos
         area: Tickets del mi Área
     petition:
         root: Requerimientos
         index: Todos los Requerimientos
+        new: Crear Nuevo Requerimiento
         sent: Requerimientos Enviados
         received: Requerimientos Recibidos
         area: Requerimientos de mi Área
@@ -129,6 +154,7 @@ ticket:
         title: Datos de Ticket
         link: Detalles del Ticket
         ticketactions: Acciones Realizadas
+        ticketpetitions: Requerimientos Referenciados
     new:
         title: 'Nuevo Ticket: %unit%'
         link: Nuevo Ticket
@@ -138,10 +164,12 @@ ticket:
         title: Edición de Ticket
         link: Editar Ticket
         submit: Confirmar Cambios
+        flash: El ticket fué modificado satisfactoriamente
     editstatus:
         title: Cambio de Estado
         link: Cambiar Estado
         submit: Confirmar Cambio de Estado
+        flash: El estado del ticket se ha actualizado
     form:
         actions: Acciones
         id: ID
@@ -150,6 +178,7 @@ ticket:
         unitgroup: Grupo
         unit: Departamento
         user: Usuario
+        liability: Responsable
         ticketstatus: Estado
         area: Area
         createdAt: Registrado
@@ -157,6 +186,9 @@ ticket:
         contactname: Nombre de Contacto
         contactphone: Número de Contacto
         contactemail: Email de Contacto
+        placeholder:
+            area: No Asignada
+            liability: No Asignado
 
 ticketaction:
     index:
@@ -226,11 +258,11 @@ petition:
         submit: Confirmar Cambio de Estado
         flash: El estado del requerimiento ha cambiado
     addreference:
-        title: Nueva Referencia
+        title: Nueva Referencia de Requerimiento
         link: Agregar Referencia
         id: Id de Referencia
         submit: Confirmar Referencia
-        flash: Se ha agregado una referencia
+        flash: Se ha agregado una referencia de requerimiento
         flasherror: El Requerimiento referenciado no existe
     removereference:
         link: Eliminar Referencia
@@ -252,8 +284,13 @@ petition:
         createdAt: Registrado
         updatedAt: Actualizado
         description: Descripción
+        referenceid: ID de referencia
         abbreviation:
             liability: Resp.
+        placeholder:
+            area: No Asignada
+            community: Ninguna
+            liability: No Asignado
 
 petitionaction:
     index:

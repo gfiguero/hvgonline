@@ -8,9 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 use HVG\SystemBundle\Entity\Ticket;
 use HVG\SystemBundle\Entity\TicketAction;
+use HVG\SystemBundle\Entity\Petition;
+use HVG\SystemBundle\Entity\PetitionAction;
+
 use HVG\AgentBundle\Form\TicketType;
-use HVG\AgentBundle\Entity\TicketFilter;
 use HVG\AgentBundle\Form\TicketFilterType;
+use HVG\AgentBundle\Form\PetitionType;
+use HVG\AgentBundle\Entity\TicketFilter;
 
 class TicketController extends Controller
 {
@@ -66,12 +70,19 @@ class TicketController extends Controller
         $ticketStatusForm = $this->createTicketStatusForm($ticket)->createView();
         $editForm = $this->createEditForm($ticket)->createView();
 
+        $petition = new Petition();
+        $petition->setExpiry(new \DateTime('+2 days'));
+        $petition->setArea($ticket->getArea());
+        $petition->setCommunity($ticket->getCommunity());
+        $petitionForm = $this->createNewPetitionForm($ticket, $petition);
+
         return $this->render('HVGAgentBundle:Ticket:show.html.twig', array(
             'ticket' => $ticket,
             'ticketActions' => $ticketActions,
             'newTicketActionForm' => $newTicketActionForm,
             'ticketStatusForm' => $ticketStatusForm,
             'editForm' => $editForm,
+            'petitionForm' => $petitionForm->createView(),
         ));
     }
 
@@ -95,22 +106,52 @@ class TicketController extends Controller
                 $em->persist($ticket);
                 $em->persist($ticketAction);
                 $em->flush();
-                $request->getSession()->getFlashBag()->add( 'success', 'ticket.flash.created' );
+                $request->getSession()->getFlashBag()->add( 'success', 'ticket.new.flash' );
                 return $this->redirect($this->generateUrl('agent_ticket_show', array('id' => $ticket->getId())));
             }
         }
 
-//        $session = $request->getSession();
-//        $ticketFilter = $session->get('ticketFilter', new TicketFilter());
-//        $ticketFilterForm = $this->createTicketFilterForm($em->merge($ticketFilter));
+        $tickets = array();
         $ticketFilter = new TicketFilter();
         $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
 
         return $this->render('HVGAgentBundle:Ticket:new.html.twig', array(
-            'ticket' => $ticket,
-            'newForm' => $newForm->createView(),
             'ticketFilterForm' => $ticketFilterForm->createView(),
+            'tickets' => $tickets,
         ));
+    }
+
+    public function newPetitionAction(Request $request, Ticket $ticket)
+    {
+        $petition = new Petition();
+        $petitionForm = $this->createNewPetitionForm($ticket, $petition);
+        $petitionForm->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+        if ($petitionForm->isSubmitted()) {
+            if($petitionForm->isValid()) {
+                $ticketAction = new TicketAction();
+                $ticketAction->setTicket($ticket);
+                $ticketAction->setDescription('Requerimiento Creado');
+                $ticketAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+                $petition->setUser($this->get('security.token_storage')->getToken()->getUser());
+                $ticket->addTicketpetition($petition);
+
+                $em->persist($ticket);
+                $em->persist($ticketAction);
+                $em->persist($petition);
+
+                $petitionAction = new PetitionAction();
+                $petitionAction->setPetition($petition);
+                $petitionAction->setDescription('Requerimiento Creado. Estado: '.$petition->getPetitionStatus());
+                $petitionAction->setUser($this->get('security.token_storage')->getToken()->getUser());
+                $em->persist($petitionAction);
+
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'petition.new.flash' );
+                return $this->redirect($this->generateUrl('agent_petition_show', array('id' => $petition->getId())));
+            }
+        }
     }
 
     public function filterAction(Request $request)
@@ -186,7 +227,7 @@ class TicketController extends Controller
                 $em->persist($ticket);
                 $em->persist($ticketAction);
                 $em->flush();
-                $request->getSession()->getFlashBag()->add( 'success', 'ticket.flash.editstatus' );
+                $request->getSession()->getFlashBag()->add( 'success', 'ticket.editstatus.flash' );
             }
         }
 
@@ -209,7 +250,7 @@ class TicketController extends Controller
                 $em->persist($ticket);
                 $em->persist($ticketAction);
                 $em->flush();
-                $request->getSession()->getFlashBag()->add( 'success', 'ticket.flash.edit' );
+                $request->getSession()->getFlashBag()->add( 'success', 'ticket.edit.flash' );
             }
         }
 
@@ -227,6 +268,13 @@ class TicketController extends Controller
     {
         return $this->createForm('HVG\AgentBundle\Form\TicketStatusType', $ticket, array(
             'action' => $this->generateUrl('agent_ticket_status', array('id' => $ticket->getId())),
+        ));
+    }
+
+    private function createNewPetitionForm(Ticket $ticket, Petition $petition)
+    {
+        return $this->createForm('HVG\AgentBundle\Form\PetitionType', $petition, array(
+            'action' => $this->generateUrl('agent_ticket_newpetition', array('id' => $ticket->getId())),
         ));
     }
 
@@ -297,15 +345,12 @@ class TicketController extends Controller
     public function receivedAction(Request $request)
     {
         $user = $this->getUser();
-        $areas = $user->getAreas();
-        $communities = $user->getCommunities();
         $sort = $request->query->get('sort');
         $direction = $request->query->get('direction');
         $em = $this->getDoctrine()->getManager();
-        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
         $statuses = $em->getRepository('HVGSystemBundle:TicketStatus')->findBy(array('result' => array(1,2,3)));
-        if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('liability' => $user, 'unit' => $units, 'ticketstatus' => $statuses), array($sort => $direction));
-        else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('liability' => $user, 'unit' => $units, 'ticketstatus' => $statuses));
+        if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('liability' => $user, 'ticketstatus' => $statuses), array($sort => $direction));
+        else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('liability' => $user, 'ticketstatus' => $statuses));
         $paginator = $this->get('knp_paginator');
         $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
         return $this->render('HVGAgentBundle:Ticket:received.html.twig', array(

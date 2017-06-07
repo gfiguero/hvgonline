@@ -2,6 +2,10 @@ topmenu:
     prepare:
         menu: Preparar
         ticket: Preparar nuevo Ticket
+    create:
+        menu: Nuevo
+        ticket: Crear Nuevo Ticket
+        petition: Crear Nuevo Requerimiento
     sent:
         menu: Enviados
         tickets: Tickes Enviados

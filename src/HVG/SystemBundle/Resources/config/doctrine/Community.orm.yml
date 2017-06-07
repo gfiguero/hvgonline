@@ -27,6 +27,12 @@ HVG\SystemBundle\Entity\Community:
         projects:
             targetEntity: HVG\SystemBundle\Entity\Project
             mappedBy: community
+        payments:
+            targetEntity: HVG\SystemBundle\Entity\Payment
+            mappedBy: community
+        funds:
+            targetEntity: HVG\SystemBundle\Entity\Fund
+            mappedBy: community
     manyToMany:
         users:
             targetEntity: HVG\UserBundle\Entity\User

@@ -1,7 +1,7 @@
-HVG\SystemBundle\Entity\Expenditure:
+HVG\SystemBundle\Entity\Item:
     type: entity
-    table: Expenditure
-    repositoryClass: HVG\SystemBundle\Entity\ExpenditureRepository
+    table: Item
+    repositoryClass: HVG\SystemBundle\Entity\ItemRepository
     id:
         id:
             type: integer
@@ -9,15 +9,13 @@ HVG\SystemBundle\Entity\Expenditure:
             generator:
                 strategy: AUTO
     manyToOne:
-        payment:
-            targetEntity: HVG\SystemBundle\Entity\Payment
-            inversedBy: expenditures
-        outflow:
-            targetEntity: HVG\SystemBundle\Entity\Outflow
-            inversedBy: expenditures
-        item:
-            targetEntity: HVG\SystemBundle\Entity\Item
-            inversedBy: expenditures
+        fund:
+            targetEntity: HVG\SystemBundle\Entity\Fund
+            inversedBy: items
+    oneToMany:
+        expenditures:
+            targetEntity: HVG\SystemBundle\Entity\Expenditure
+            mappedBy: item
     fields:
         name:
             type: string

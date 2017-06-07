@@ -19,8 +19,13 @@ class PaymentType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('expenditure', null, array(
-                'label' => 'payment.form.expenditure',
+            ->add('amount', null, array(
+                'label' => 'payment.form.amount',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('community', null, array(
+                'label' => 'payment.form.community',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))

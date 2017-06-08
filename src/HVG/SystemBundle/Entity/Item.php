@@ -33,22 +33,15 @@ class Item
     private $deletedAt;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $expenditures;
-
-    /**
      * @var \HVG\SystemBundle\Entity\Fund
      */
     private $fund;
 
     /**
-     * Constructor
+     * @var \HVG\SystemBundle\Entity\Expenditure
      */
-    public function __construct()
-    {
-        $this->expenditures = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    private $expenditure;
+
 
     /**
      * Get id
@@ -157,40 +150,6 @@ class Item
     }
 
     /**
-     * Add expenditure
-     *
-     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
-     *
-     * @return Item
-     */
-    public function addExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
-    {
-        $this->expenditures[] = $expenditure;
-
-        return $this;
-    }
-
-    /**
-     * Remove expenditure
-     *
-     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
-     */
-    public function removeExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
-    {
-        $this->expenditures->removeElement($expenditure);
-    }
-
-    /**
-     * Get expenditures
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getExpenditures()
-    {
-        return $this->expenditures;
-    }
-
-    /**
      * Set fund
      *
      * @param \HVG\SystemBundle\Entity\Fund $fund
@@ -212,6 +171,30 @@ class Item
     public function getFund()
     {
         return $this->fund;
+    }
+
+    /**
+     * Set expenditure
+     *
+     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
+     *
+     * @return Item
+     */
+    public function setExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure = null)
+    {
+        $this->expenditure = $expenditure;
+
+        return $this;
+    }
+
+    /**
+     * Get expenditure
+     *
+     * @return \HVG\SystemBundle\Entity\Expenditure
+     */
+    public function getExpenditure()
+    {
+        return $this->expenditure;
     }
 }
 

@@ -18,16 +18,6 @@ class Expenditure
     private $name;
 
     /**
-     * @var integer
-     */
-    private $amount;
-
-    /**
-     * @var string
-     */
-    private $description;
-
-    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -43,10 +33,32 @@ class Expenditure
     private $deletedAt;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $items;
+
+    /**
      * @var \HVG\SystemBundle\Entity\Community
      */
     private $community;
 
+    /**
+     * @var \HVG\SystemBundle\Entity\Outflow
+     */
+    private $outflow;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 
     /**
      * Get id
@@ -80,54 +92,6 @@ class Expenditure
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set amount
-     *
-     * @param integer $amount
-     *
-     * @return Expenditure
-     */
-    public function setAmount($amount)
-    {
-        $this->amount = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Get amount
-     *
-     * @return integer
-     */
-    public function getAmount()
-    {
-        return $this->amount;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Expenditure
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**
@@ -203,6 +167,40 @@ class Expenditure
     }
 
     /**
+     * Add item
+     *
+     * @param \HVG\SystemBundle\Entity\Item $item
+     *
+     * @return Expenditure
+     */
+    public function addItem(\HVG\SystemBundle\Entity\Item $item)
+    {
+        $this->items[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Remove item
+     *
+     * @param \HVG\SystemBundle\Entity\Item $item
+     */
+    public function removeItem(\HVG\SystemBundle\Entity\Item $item)
+    {
+        $this->items->removeElement($item);
+    }
+
+    /**
+     * Get items
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
      * Set community
      *
      * @param \HVG\SystemBundle\Entity\Community $community
@@ -224,45 +222,6 @@ class Expenditure
     public function getCommunity()
     {
         return $this->community;
-    }
-    /**
-     * @var \HVG\SystemBundle\Entity\Payment
-     */
-    private $payment;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\Outflow
-     */
-    private $outflow;
-
-    /**
-     * @var \HVG\SystemBundle\Entity\Item
-     */
-    private $item;
-
-
-    /**
-     * Set payment
-     *
-     * @param \HVG\SystemBundle\Entity\Payment $payment
-     *
-     * @return Expenditure
-     */
-    public function setPayment(\HVG\SystemBundle\Entity\Payment $payment = null)
-    {
-        $this->payment = $payment;
-
-        return $this;
-    }
-
-    /**
-     * Get payment
-     *
-     * @return \HVG\SystemBundle\Entity\Payment
-     */
-    public function getPayment()
-    {
-        return $this->payment;
     }
 
     /**
@@ -288,28 +247,5 @@ class Expenditure
     {
         return $this->outflow;
     }
-
-    /**
-     * Set item
-     *
-     * @param \HVG\SystemBundle\Entity\Item $item
-     *
-     * @return Expenditure
-     */
-    public function setItem(\HVG\SystemBundle\Entity\Item $item = null)
-    {
-        $this->item = $item;
-
-        return $this;
-    }
-
-    /**
-     * Get item
-     *
-     * @return \HVG\SystemBundle\Entity\Item
-     */
-    public function getItem()
-    {
-        return $this->item;
-    }
 }
+

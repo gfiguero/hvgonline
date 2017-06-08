@@ -35,12 +35,7 @@ class Fund
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $inflows;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $outflows;
+    private $items;
 
     /**
      * @var \HVG\SystemBundle\Entity\Community
@@ -52,13 +47,7 @@ class Fund
      */
     public function __construct()
     {
-        $this->inflows = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->outflows = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return $this->name;
+        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -168,103 +157,6 @@ class Fund
     }
 
     /**
-     * Add inflow
-     *
-     * @param \HVG\SystemBundle\Entity\Inflow $inflow
-     *
-     * @return Fund
-     */
-    public function addInflow(\HVG\SystemBundle\Entity\Inflow $inflow)
-    {
-        $this->inflows[] = $inflow;
-
-        return $this;
-    }
-
-    /**
-     * Remove inflow
-     *
-     * @param \HVG\SystemBundle\Entity\Inflow $inflow
-     */
-    public function removeInflow(\HVG\SystemBundle\Entity\Inflow $inflow)
-    {
-        $this->inflows->removeElement($inflow);
-    }
-
-    /**
-     * Get inflows
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getInflows()
-    {
-        return $this->inflows;
-    }
-
-    /**
-     * Add outflow
-     *
-     * @param \HVG\SystemBundle\Entity\Outflow $outflow
-     *
-     * @return Fund
-     */
-    public function addOutflow(\HVG\SystemBundle\Entity\Outflow $outflow)
-    {
-        $this->outflows[] = $outflow;
-
-        return $this;
-    }
-
-    /**
-     * Remove outflow
-     *
-     * @param \HVG\SystemBundle\Entity\Outflow $outflow
-     */
-    public function removeOutflow(\HVG\SystemBundle\Entity\Outflow $outflow)
-    {
-        $this->outflows->removeElement($outflow);
-    }
-
-    /**
-     * Get outflows
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getOutflows()
-    {
-        return $this->outflows;
-    }
-
-    /**
-     * Set community
-     *
-     * @param \HVG\SystemBundle\Entity\Community $community
-     *
-     * @return Fund
-     */
-    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
-    {
-        $this->community = $community;
-
-        return $this;
-    }
-
-    /**
-     * Get community
-     *
-     * @return \HVG\SystemBundle\Entity\Community
-     */
-    public function getCommunity()
-    {
-        return $this->community;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $items;
-
-
-    /**
      * Add item
      *
      * @param \HVG\SystemBundle\Entity\Item $item
@@ -297,4 +189,29 @@ class Fund
     {
         return $this->items;
     }
+
+    /**
+     * Set community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     *
+     * @return Fund
+     */
+    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \HVG\SystemBundle\Entity\Community
+     */
+    public function getCommunity()
+    {
+        return $this->community;
+    }
 }
+

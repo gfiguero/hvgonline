@@ -33,15 +33,22 @@ class Outflow
     private $deletedAt;
 
     /**
-     * @var \HVG\SystemBundle\Entity\Fund
+     * @var \Doctrine\Common\Collections\Collection
      */
-    private $fund;
+    private $expenditures;
 
     /**
-     * @var \HVG\SystemBundle\Entity\Expenditure
+     * Constructor
      */
-    private $expenditure;
+    public function __construct()
+    {
+        $this->expenditures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    public function __toString()
+    {
+        return (string) $this->name;
+    }
 
     /**
      * Get id
@@ -150,66 +157,6 @@ class Outflow
     }
 
     /**
-     * Set fund
-     *
-     * @param \HVG\SystemBundle\Entity\Fund $fund
-     *
-     * @return Outflow
-     */
-    public function setFund(\HVG\SystemBundle\Entity\Fund $fund = null)
-    {
-        $this->fund = $fund;
-
-        return $this;
-    }
-
-    /**
-     * Get fund
-     *
-     * @return \HVG\SystemBundle\Entity\Fund
-     */
-    public function getFund()
-    {
-        return $this->fund;
-    }
-
-    /**
-     * Set expenditure
-     *
-     * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
-     *
-     * @return Outflow
-     */
-    public function setExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure = null)
-    {
-        $this->expenditure = $expenditure;
-
-        return $this;
-    }
-
-    /**
-     * Get expenditure
-     *
-     * @return \HVG\SystemBundle\Entity\Expenditure
-     */
-    public function getExpenditure()
-    {
-        return $this->expenditure;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $expenditures;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->expenditures = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Add expenditure
      *
      * @param \HVG\SystemBundle\Entity\Expenditure $expenditure
@@ -243,3 +190,4 @@ class Outflow
         return $this->expenditures;
     }
 }
+

@@ -12,10 +12,9 @@ HVG\SystemBundle\Entity\Item:
         fund:
             targetEntity: HVG\SystemBundle\Entity\Fund
             inversedBy: items
-    oneToMany:
-        expenditures:
+        expenditure:
             targetEntity: HVG\SystemBundle\Entity\Expenditure
-            mappedBy: item
+            inversedBy: items
     fields:
         name:
             type: string

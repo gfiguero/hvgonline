@@ -74,19 +74,19 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:PetitionObjectiv
 
 ------------- Contabilidad
 php app/console doctrine:generate:entities HVGSystemBundle:Expenditure --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:Payment --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Outflow --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Item --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Fund --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Payment --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Inflow --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Charge --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Allowance --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:AllowanceCharge --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Expenditure --format=yml --with-write --overwrite --no-interaction --route-prefix=expenditure
-php app/console generate:doctrine:crud --entity=HVGSystemBundle:Payment --format=yml --with-write --overwrite --no-interaction --route-prefix=payment
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Outflow --format=yml --with-write --overwrite --no-interaction --route-prefix=outflow
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Item --format=yml --with-write --overwrite --no-interaction --route-prefix=item
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Fund --format=yml --with-write --overwrite --no-interaction --route-prefix=fund
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:Payment --format=yml --with-write --overwrite --no-interaction --route-prefix=payment
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Inflow --format=yml --with-write --overwrite --no-interaction --route-prefix=inflow
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Charge --format=yml --with-write --overwrite --no-interaction --route-prefix=charge
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Allowance --format=yml --with-write --overwrite --no-interaction --route-prefix=allowance

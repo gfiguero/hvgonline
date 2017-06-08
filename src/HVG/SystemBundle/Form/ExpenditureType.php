@@ -24,18 +24,8 @@ class ExpenditureType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('payment', null, array(
-                'label' => 'expenditure.form.payment',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
             ->add('outflow', null, array(
                 'label' => 'expenditure.form.outflow',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('item', null, array(
-                'label' => 'expenditure.form.item',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             ))

@@ -232,7 +232,6 @@
     {% spaceless %}
         {% set style = style|default(bootstrap_get_style()) %}
         {% set col_size = col_size|default(bootstrap_get_col_size()) %}
-        {% set align_with_widget = true %} {# parche #}
 
         {% if attr.label_col is defined and attr.label_col is not empty %}
             {% set label_col = attr.label_col %}
@@ -258,7 +257,7 @@
             <div class="form-group{% if form.vars.errors|length > 0 %} has-error{% endif %}">
         {% endif %}
 
-        {%set checkboxdata %}
+        {% set checkboxdata %}
         {% if label is not same as (false) %}
             {% if not compound %}
                 {% set label_attr = label_attr|merge({'for': id}) %}
@@ -284,7 +283,7 @@
 
         {% if inline is defined and inline %}
             {{ checkboxdata|raw }}
-        {% else%}
+        {% else %}
             <div class="checkbox">{{ checkboxdata|raw }}</div>
         {% endif %}
 
@@ -370,7 +369,7 @@
 
 {% block checkbox_widget %}
     {% spaceless %}
-        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} data-toggle="toggle" data-on="Si" data-off="No" />
+        <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
     {% endspaceless %}
 {% endblock checkbox_widget %}
 
@@ -895,7 +894,10 @@
 {% block widget_attributes %}
     {% spaceless %}
         id="{{ id }}" name="{{ full_name }}" {% if disabled %} disabled="disabled"{% endif %}{% if required %} required="required"{% endif %}
-        {% for attrname, attrvalue in attr %}{% if attrname in ['placeholder', 'title'] %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% elseif attrname in ['input_group'] %}{% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}{% endfor %}
+        {% for attrname, attrvalue in attr %}
+            {% if attrname in ['placeholder', 'title'] %}{{ attrname }}="{{ attrvalue|trans({}, translation_domain) }}" {% elseif attrname in ['input_group'] %}{% else %}{{ attrname }}="{{ attrvalue }}" {% endif %}
+            {% if attrname in ['switch'] %}{% if attrvalue %} data-toggle="toggle" data-on="Si" data-off="No"{% endif %}{% endif %}
+        {% endfor %}
     {% endspaceless %}
 {% endblock widget_attributes %}
 

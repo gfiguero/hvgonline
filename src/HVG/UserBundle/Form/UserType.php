@@ -22,7 +22,7 @@ class UserType extends AbstractType
             ))
             ->add('roles', 'HVG\UserBundle\Form\Type\RoleType', array(
                 'label' => 'user.form.roles',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'align_with_widget' => true ),
                 'translation_domain' => 'HVGUserBundle',
                 'expanded' => true,
                 'multiple' => true,

@@ -197,3 +197,4 @@ class Inflow
         return $this->fund;
     }
 }
+

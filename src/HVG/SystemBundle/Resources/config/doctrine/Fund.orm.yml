@@ -13,12 +13,6 @@ HVG\SystemBundle\Entity\Fund:
             targetEntity: HVG\SystemBundle\Entity\Community
             inversedBy: funds
     oneToMany:
-        inflows:
-            targetEntity: HVG\SystemBundle\Entity\Inflow
-            mappedBy: fund
-        outflows:
-            targetEntity: HVG\SystemBundle\Entity\Outflow
-            mappedBy: fund
         items:
             targetEntity: HVG\SystemBundle\Entity\Item
             mappedBy: fund

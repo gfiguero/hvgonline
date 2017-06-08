@@ -418,6 +418,7 @@ class Community
     {
         return $this->users;
     }
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
@@ -495,44 +496,5 @@ class Community
     public function getFunds()
     {
         return $this->funds;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $payments;
-
-
-    /**
-     * Add payment
-     *
-     * @param \HVG\SystemBundle\Entity\Payment $payment
-     *
-     * @return Community
-     */
-    public function addPayment(\HVG\SystemBundle\Entity\Payment $payment)
-    {
-        $this->payments[] = $payment;
-
-        return $this;
-    }
-
-    /**
-     * Remove payment
-     *
-     * @param \HVG\SystemBundle\Entity\Payment $payment
-     */
-    public function removePayment(\HVG\SystemBundle\Entity\Payment $payment)
-    {
-        $this->payments->removeElement($payment);
-    }
-
-    /**
-     * Get payments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPayments()
-    {
-        return $this->payments;
     }
 }

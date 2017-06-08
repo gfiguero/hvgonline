@@ -8,10 +8,6 @@ HVG\SystemBundle\Entity\Outflow:
             id: true
             generator:
                 strategy: AUTO
-    manyToOne:
-        fund:
-            targetEntity: HVG\SystemBundle\Entity\Fund
-            inversedBy: outflows
     oneToMany:
         expenditures:
             targetEntity: HVG\SystemBundle\Entity\Expenditure

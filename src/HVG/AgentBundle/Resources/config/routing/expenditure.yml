@@ -1,0 +1,15 @@
+agent_expenditure_index:
+    path:     /index
+    defaults: { _controller: "HVGAgentBundle:Expenditure:index" }
+    methods:  GET
+
+agent_expenditure_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGAgentBundle:Expenditure:show" }
+    methods:  GET
+
+agent_expenditure_new:
+    path:     /new
+    defaults: { _controller: "HVGAgentBundle:Expenditure:new" }
+    methods:  [GET, POST]
+

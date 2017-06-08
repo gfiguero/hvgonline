@@ -8,14 +8,6 @@ HVG\SystemBundle\Entity\Payment:
             id: true
             generator:
                 strategy: AUTO
-    oneToMany:
-        expenditures:
-            targetEntity: HVG\SystemBundle\Entity\Expenditure
-            mappedBy: payment
-    manyToOne:
-        community:
-            targetEntity: HVG\SystemBundle\Entity\Community
-            inversedBy: payments
     fields:
         name:
             type: string

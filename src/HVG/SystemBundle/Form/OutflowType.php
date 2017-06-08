@@ -18,11 +18,6 @@ class OutflowType extends AbstractType
                 'label' => 'outflow.form.name',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
-            )) 
-            ->add('fund', null, array(
-                'label' => 'outflow.form.fund',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGSystemBundle',
             ))
         ;
     }

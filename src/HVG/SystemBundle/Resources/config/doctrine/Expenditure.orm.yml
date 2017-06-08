@@ -9,15 +9,17 @@ HVG\SystemBundle\Entity\Expenditure:
             generator:
                 strategy: AUTO
     manyToOne:
-        payment:
-            targetEntity: HVG\SystemBundle\Entity\Payment
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
             inversedBy: expenditures
         outflow:
             targetEntity: HVG\SystemBundle\Entity\Outflow
             inversedBy: expenditures
-        item:
+    oneToMany:
+        items:
             targetEntity: HVG\SystemBundle\Entity\Item
-            inversedBy: expenditures
+            mappedBy: expenditure
+            cascade: ["persist", "merge"]
     fields:
         name:
             type: string

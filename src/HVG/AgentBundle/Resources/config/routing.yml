@@ -46,6 +46,14 @@ hvg_agent_petitionaction:
     resource: "@HVGAgentBundle/Resources/config/routing/petitionaction.yml"
     prefix:   /petitionaction
 
+hvg_agent_expenditure:
+    resource: "@HVGAgentBundle/Resources/config/routing/expenditure.yml"
+    prefix:   /expenditure
+
+hvg_agent_outflow:
+    resource: "@HVGAgentBundle/Resources/config/routing/outflow.yml"
+    prefix:   /outflow
+
 hvg_agent_error:
     resource: "@HVGAgentBundle/Resources/config/routing/error.yml"
     prefix:   /error

@@ -107,6 +107,11 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.resources']->setChildrenAttribute('class', 'nav nav-second-level collapse');
         $sidemenu['sidemenu.resources']->addChild('sidemenu.communitystaff', array('route' => 'agent_communitystaff_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
 
+        $sidemenu->addChild('sidemenu.contability')->setAttribute('icon', 'usd fa-fw')->setAttribute('translation_domain', 'HVGAgentBundle');
+        $sidemenu['sidemenu.contability']->setChildrenAttribute('class', 'nav nav-second-level collapse');
+        $sidemenu['sidemenu.contability']->addChild('sidemenu.expenditure.index', array('route' => 'agent_expenditure_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
+        $sidemenu['sidemenu.contability']->addChild('sidemenu.outflow.index', array('route' => 'agent_outflow_index'))->setAttribute('translation_domain', 'HVGAgentBundle');
+
         return $sidemenu;
     }
 

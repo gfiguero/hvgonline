@@ -1,0 +1,4 @@
+hvg_public_unitinsurancepolicy:
+    resource: "@HVGPublicBundle/Resources/config/routing/unitinsurancepolicy.yml"
+    prefix:   /unitinsurancepolicy
+

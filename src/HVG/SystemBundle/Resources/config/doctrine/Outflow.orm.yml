@@ -8,10 +8,15 @@ HVG\SystemBundle\Entity\Outflow:
             id: true
             generator:
                 strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: outflows
     oneToMany:
         expenditures:
             targetEntity: HVG\SystemBundle\Entity\Expenditure
             mappedBy: outflow
+            cascade: ["persist", "merge"]
     fields:
         name:
             type: string

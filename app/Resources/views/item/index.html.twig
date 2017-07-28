@@ -40,6 +40,7 @@
                                     <th>{{ 'item.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(items, 'item.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(items, 'item.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(items, 'item.form.amount'|trans, 'amount') }}{% if sort == 'amount' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(items, 'item.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(items, 'item.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
@@ -58,6 +59,7 @@
                                     </td>
                                     <td>{% if item.id %}{{ item.id }}{% endif %}</td>
                                     <td>{% if item.name %}{{ item.name }}{% endif %}</td>
+                                    <td>{% if item.amount %}{{ item.amount }}{% endif %}</td>
                                     <td>{% if item.createdAt %}{{ item.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if item.updatedAt %}{{ item.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

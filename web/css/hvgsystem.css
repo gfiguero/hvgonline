@@ -7492,3 +7492,7 @@ table.dataTable thead .sorting:after {
     text-align: right;
   }
 }
+.entitytable .checkbox {
+  min-height: 0;
+  padding: 0;
+}

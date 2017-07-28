@@ -30,6 +30,9 @@ HVG\SystemBundle\Entity\Community:
         expenditures:
             targetEntity: HVG\SystemBundle\Entity\Expenditure
             mappedBy: community
+        outflows:
+            targetEntity: HVG\SystemBundle\Entity\Outflow
+            mappedBy: community
         funds:
             targetEntity: HVG\SystemBundle\Entity\Fund
             mappedBy: community

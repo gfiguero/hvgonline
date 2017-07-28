@@ -1,3 +1,11 @@
+hvg_public:
+    resource: "@HVGPublicBundle/Resources/config/routing.yml"
+    prefix:   /public
+
+hvg_contability:
+    resource: "@HVGContabilityBundle/Resources/config/routing.yml"
+    prefix:   /
+
 hvg_agent:
     resource: "@HVGAgentBundle/Resources/config/routing.yml"
     prefix:   /agent

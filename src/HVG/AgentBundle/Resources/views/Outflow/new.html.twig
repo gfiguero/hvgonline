@@ -25,7 +25,7 @@
                         <h1 class="panel-title">{{ 'outflow.new.title'|trans }}</h1>
                     </div>
                     <div class="panel-body">
-                        {{ form_start(newForm, { 'style': 'horizontal' }) }}
+                        {{ form_start(newForm, { 'style': 'horizontal', 'attr': {'id': 'outflow_form'}}) }}
                             {{ form_widget(newForm) }}
                             <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
                                 <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'outflow.new.submit'|trans }}</button>
@@ -39,4 +39,32 @@
 
     </div>
     <!-- /#page-wrapper -->
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+    var optionsCommunity = {
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true,
+        disableIfEmpty: true,
+        maxHeight: 500,
+        buttonWidth: '100%',
+        nonSelectedText: 'Ninguna Comunidad Seleccionada',
+        filterPlaceholder: 'Buscar',
+        onChange: function() {
+            var $form = $('#outflow_form');
+            $.ajax({
+                url: "{{ path('agent_outflow_search') }}",
+                type: $form.attr('method'),
+                data: $form.serializeArray(),
+                success: function(html) {
+                    $('#hvg_agentbundle_outflow_community').multiselect('destroy');
+                    $('#hvg_agentbundle_outflow_expenditures').replaceWith($(html).find('#hvg_agentbundle_outflow_expenditures'));
+                    $('#hvg_agentbundle_outflow_community').multiselect(optionsCommunity);
+                }
+            });
+        }
+    };
+    $('#hvg_agentbundle_outflow_community').multiselect(optionsCommunity);
+</script>
 {% endblock %}

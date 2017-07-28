@@ -56,6 +56,27 @@ class ExpenditureController extends Controller
         ));
     }
 
+    public function editAction(Request $request, Expenditure $expenditure)
+    {
+        $editForm = $this->createEditForm($expenditure);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($expenditure);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'expenditure.edit.flash' );
+                return $this->redirect($this->generateUrl('agent_expenditure_index'));
+            }
+        }
+
+        return $this->render('HVGAgentBundle:Expenditure:edit.html.twig', array(
+            'expenditure' => $expenditure,
+            'editForm' => $editForm->createView(),
+        ));
+    }
+
     /**
      * Finds and displays a Expenditure entity.
      *
@@ -71,6 +92,13 @@ class ExpenditureController extends Controller
     {
         return $this->createForm('HVG\AgentBundle\Form\ExpenditureType', $expenditure, array(
             'action' => $this->generateUrl('agent_expenditure_new'),
+        ));
+    }
+
+    private function createEditForm(Expenditure $expenditure)
+    {
+        return $this->createForm('HVG\AgentBundle\Form\ExpenditureType', $expenditure, array(
+            'action' => $this->generateUrl('agent_expenditure_edit', array('id' => $expenditure->getId())),
         ));
     }
 

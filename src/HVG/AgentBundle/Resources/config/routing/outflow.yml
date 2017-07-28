@@ -13,3 +13,13 @@ agent_outflow_new:
     defaults: { _controller: "HVGAgentBundle:Outflow:new" }
     methods:  [GET, POST]
 
+agent_outflow_search:
+    path:     /search
+    defaults: { _controller: "HVGAgentBundle:Outflow:search" }
+    methods:  [GET, POST]
+
+agent_outflow_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:Outflow:edit" }
+    methods:  [GET, POST]
+

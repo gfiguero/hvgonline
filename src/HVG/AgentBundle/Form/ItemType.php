@@ -20,6 +20,12 @@ class ItemType extends AbstractType
                 'attr'  => array( 'label_col' => 3, 'widget_col' => 9 ),
                 'translation_domain' => 'HVGAgentBundle',
             ))
+            ->add('amount', null, array(
+                'required' => true,
+                'label' => 'item.form.amount',
+                'attr'  => array( 'label_col' => 3, 'widget_col' => 9 ),
+                'translation_domain' => 'HVGAgentBundle',
+            ))
         ;
     }
 

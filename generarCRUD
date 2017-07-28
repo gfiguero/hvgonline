@@ -96,7 +96,9 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:AllowanceCharge 
 php app/console doctrine:generate:entities HVGUserBundle:User --path=src
 php app/console generate:doctrine:crud --entity=HVGUserBundle:User --format=yml --with-write --overwrite --no-interaction --route-prefix=user
 
-
+---------------- Aplicaciones Públicas
+php app/console doctrine:generate:entities HVGSystemBundle:UnitInsurancePolicy --path=src
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:UnitInsurancePolicy --format=yml --with-write --overwrite --no-interaction --route-prefix=unitinsurancepolicy
 
 
 php app/console doctrine:schema:update --force

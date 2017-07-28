@@ -15,15 +15,16 @@ HVG\SystemBundle\Entity\Expenditure:
         outflow:
             targetEntity: HVG\SystemBundle\Entity\Outflow
             inversedBy: expenditures
+            joinColumn:
+                onDelete: 'SET NULL'
     oneToMany:
         items:
             targetEntity: HVG\SystemBundle\Entity\Item
             mappedBy: expenditure
             cascade: ["persist", "merge"]
     fields:
-        name:
-            type: string
-            length: 300
+        description:
+            type: text
             nullable: true
         createdAt:
             type: datetime

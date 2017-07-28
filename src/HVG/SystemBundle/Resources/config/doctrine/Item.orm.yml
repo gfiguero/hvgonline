@@ -19,7 +19,8 @@ HVG\SystemBundle\Entity\Item:
         name:
             type: string
             length: 300
-            nullable: true
+        amount:
+            type: integer
         createdAt:
             type: datetime
             gedmo:

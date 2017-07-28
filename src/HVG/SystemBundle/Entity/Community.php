@@ -497,4 +497,43 @@ class Community
     {
         return $this->funds;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $outflows;
+
+
+    /**
+     * Add outflow
+     *
+     * @param \HVG\SystemBundle\Entity\Outflow $outflow
+     *
+     * @return Community
+     */
+    public function addOutflow(\HVG\SystemBundle\Entity\Outflow $outflow)
+    {
+        $this->outflows[] = $outflow;
+
+        return $this;
+    }
+
+    /**
+     * Remove outflow
+     *
+     * @param \HVG\SystemBundle\Entity\Outflow $outflow
+     */
+    public function removeOutflow(\HVG\SystemBundle\Entity\Outflow $outflow)
+    {
+        $this->outflows->removeElement($outflow);
+    }
+
+    /**
+     * Get outflows
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOutflows()
+    {
+        return $this->outflows;
+    }
 }

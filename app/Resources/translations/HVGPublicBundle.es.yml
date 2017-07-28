@@ -1,0 +1,26 @@
+unitinsurancepolicy:
+    index:
+        title: Actualización de Pólizas de Seguros
+    new:
+        submit: Enviar
+        flash: La póliza de seguro del ha sido enviada correctamente.
+        message: |
+            <p>Te recordamos que la Ley 19.537 en su artículo 36 dispone que:</p>
+            <blockquote><p>"todas las unidades de un condominio deberán ser aseguradas contra riesgo de incendio, cada propietario deberá contratar este seguro, y en caso de no hacerlo, lo contratará el administrador por cuenta y cargo de aquél, formulándose el cobro de la prima correspondiente conjuntamente con el de los gastos comunes."</p></blockquote>
+            <p>Dado lo anterior, para iniciar nuevamente el proceso anual de recolección de pólizas de seguros, solicitamos a todos los copropietarios enviar antes del 10 de Agosto de 2017 sus respectivas pólizas de seguro.</p>
+            <p>También puede hacer entrega de su póliza en la oficina de administración, pero de ser posible agradecemos subir su poliza por este medio.</p>
+            <p>Si usted está pagando un crédito hipotecario, su departamento necesariamente ya se encuentra cubierto por una póliza de seguros, en tal caso usted puede solicitar una copia de su póliza a su ejecutivo de cuentas o compañía aseguradora.</p>
+            <p>Muchas gracias por su colaboración.</p>
+    finish:
+        message: |
+          <p>Hemos recibido tu información. Muchas Gracias!!!.</p>
+          <p>Si tiene dudas o consultas, por favor, diríjase a la administración del condominio vía email.</p>
+    form:
+        filename: Archivo
+        expiredAt: Fecha de Expiración
+        unit: Departamento
+        year: Año
+        month: Mes
+        day: Día
+        contactname: Nombre de contacto
+        contactemail: Email de contacto

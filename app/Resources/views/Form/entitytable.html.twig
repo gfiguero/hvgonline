@@ -1,0 +1,9 @@
+{% block entitytable_widget %}
+    {% spaceless %}
+        <div {{ block('widget_container_attributes') }}>
+            {% for child in form %}
+                {{ checkbox_row(child, { 'no_form_group': true }) }}
+            {% endfor %}
+        </div>
+    {% endspaceless %}
+{% endblock entitytable_widget %}

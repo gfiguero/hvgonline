@@ -39,8 +39,8 @@
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
                             <dt>{{ 'expenditure.form.id'|trans }}</dt>
                                 <dd>{% if expenditure.id %}{{ expenditure.id }}{% endif %}</dd>
-                            <dt>{{ 'expenditure.form.name'|trans }}</dt>
-                                <dd>{% if expenditure.name %}{{ expenditure.name }}{% endif %}</dd>
+                            <dt>{{ 'expenditure.form.description'|trans }}</dt>
+                                <dd>{% if expenditure.description %}{{ expenditure.description }}{% endif %}</dd>
                             <dt>{{ 'expenditure.form.createdAt'|trans }}</dt>
                                 <dd>{% if expenditure.createdAt %}{{ expenditure.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'expenditure.form.updatedAt'|trans }}</dt>

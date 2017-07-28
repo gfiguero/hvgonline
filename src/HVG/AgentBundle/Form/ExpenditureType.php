@@ -20,6 +20,11 @@ class ExpenditureType extends AbstractType
                 'translation_domain' => 'HVGAgentBundle',
                 'placeholder' => 'expenditure.form.placeholder.community',
             ))
+            ->add('description', null, array(
+                'label' => 'expenditure.form.description',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGAgentBundle',
+            ))
             ->add('items', 'bootstrap_collection', array(
                 'entry_type' => 'HVG\AgentBundle\Form\ItemType',
                 'label' => 'expenditure.form.items',

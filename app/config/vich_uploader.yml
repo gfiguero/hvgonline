@@ -25,3 +25,7 @@ vich_uploader:
             uri_prefix: uploads/ticket_action_file
             upload_destination: %kernel.root_dir%/../web/uploads/ticket_action_file
             namer: vich_uploader.namer_origname
+        unit_insurancepolicy_file:
+            uri_prefix: uploads/unit_insurancepolicy_file
+            upload_destination: %kernel.root_dir%/../web/uploads/unit_insurancepolicy_file
+            namer: vich_uploader.namer_origname

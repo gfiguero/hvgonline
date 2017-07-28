@@ -175,6 +175,8 @@ class Expenditure
      */
     public function addItem(\HVG\SystemBundle\Entity\Item $item)
     {
+        $item->setExpenditure($this);
+
         $this->items[] = $item;
 
         return $this;
@@ -247,5 +249,49 @@ class Expenditure
     {
         return $this->outflow;
     }
-}
+    /**
+     * @var string
+     */
+    private $description;
 
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Expenditure
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getAmount()
+    {
+        $amount = 0;
+
+        foreach ($this->items as $item) {
+            $amount += $item->getAmount();
+        }
+
+        return $amount;
+    }
+
+    public function getInfo()
+    {
+        return (string) '(' . $this->getAmount() . ') ' . $this->community->getPerson()->getName() . ': ' . $this->description;
+    }
+}

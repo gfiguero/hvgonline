@@ -34,6 +34,8 @@ class AppKernel extends Kernel
             new HVG\ResourcePlannerBundle\HVGResourcePlannerBundle(),
             new HVG\CustomerBundle\HVGCustomerBundle(),
             new HVG\AgentBundle\HVGAgentBundle(),
+            new HVG\ContabilityBundle\HVGContabilityBundle(),
+            new HVG\PublicBundle\HVGPublicBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -56,6 +56,45 @@ class OutflowController extends Controller
         ));
     }
 
+    public function searchAction(Request $request)
+    {
+        if($request->isXmlHttpRequest()) {
+            $outflow = new Outflow();
+            $newForm = $this->createNewForm($outflow);
+            $newForm->handleRequest($request);
+            if ($newForm->isSubmitted()) {
+                if($newForm->isValid()) {
+                    return $this->render('HVGAgentBundle:Outflow:new.html.twig', array(
+                        'newForm' => $newForm->createView(),
+                    ));
+                }
+            }
+            $response = new Response();
+            $response->setStatusCode(500);
+            return $response;
+        }            
+    }
+
+    public function editAction(Request $request, Outflow $outflow)
+    {
+        $editForm = $this->createNewForm($outflow);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted()) {
+            if($editForm->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($outflow);
+                $em->flush();
+                $request->getSession()->getFlashBag()->add( 'success', 'outflow.edit.flash' );
+                return $this->redirect($this->generateUrl('agent_outflow_show', array('id' => $outflow->getId())));
+            }
+        }
+
+        return $this->render('HVGAgentBundle:Outflow:edit.html.twig', array(
+            'editForm' => $editForm->createView(),
+        ));
+    }
+
     /**
      * Finds and displays a Outflow entity.
      *

@@ -1,0 +1,44 @@
+HVG\SystemBundle\Entity\UnitInsurancePolicy:
+    type: entity
+    table: UnitInsurancePolicy
+    repositoryClass: HVG\SystemBundle\Entity\UnitInsurancePolicyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        unit:
+            targetEntity: HVG\SystemBundle\Entity\Unit
+            inversedBy: insurancepolicies
+    fields:
+        filename:
+            type: string
+            length: 200
+        contactname:
+            type: string
+            length: 200
+        contactemail:
+            type: string
+            length: 200
+        expiredAt:
+            type: date
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

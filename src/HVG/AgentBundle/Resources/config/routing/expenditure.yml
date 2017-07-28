@@ -13,3 +13,7 @@ agent_expenditure_new:
     defaults: { _controller: "HVGAgentBundle:Expenditure:new" }
     methods:  [GET, POST]
 
+agent_expenditure_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:Expenditure:edit" }
+    methods:  [GET, POST]

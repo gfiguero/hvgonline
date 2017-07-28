@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChoicetableType extends AbstractType
+class EntityTableType extends AbstractType
 {
 
     /**
@@ -14,7 +14,7 @@ class ChoicetableType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'choicetable';
+        return 'entitytable';
     }
 
     public function getParent()

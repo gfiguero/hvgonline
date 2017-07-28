@@ -1,0 +1,9 @@
+public_unitinsurancepolicy_index:
+    path:     /
+    defaults: { _controller: "HVGPublicBundle:UnitInsurancePolicy:index" }
+    methods:  GET
+
+public_unitinsurancepolicy_new:
+    path:     /{community}/new
+    defaults: { _controller: "HVGPublicBundle:UnitInsurancePolicy:new" }
+    methods:  [GET, POST]

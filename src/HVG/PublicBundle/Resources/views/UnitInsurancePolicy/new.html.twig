@@ -1,0 +1,56 @@
+{% extends 'HVGPublicBundle:Base:base.html.twig' %}
+
+{% trans_default_domain 'HVGPublicBundle' %}
+
+{% block title %}{{ 'unitinsurancepolicy.index.title'|trans }}{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row" id="page-header">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h1 class="page-header">{{ 'unitinsurancepolicy.index.title'|trans }}</h1>
+                    {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
+                    {% autoescape false %}{{ 'unitinsurancepolicy.new.message'|trans }}{% endautoescape %}
+                    {{ form_start(newForm, {'style':'horizontal'}) }}
+                    {{ form_widget(newForm) }}
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">{{ icon('send fa-fw') }}&nbsp;{{ 'unitinsurancepolicy.new.submit'|trans }}</button>
+                        </div>
+                    </div>
+                    {{ form_end(newForm) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var optionsFileinput = {
+        showPreview: false,
+        showRemove: false,
+        showUpload: false,
+        showCancel: false,
+        showClose: false,
+        showZoom: false,
+        browseClass: 'btn btn-primary btn-block',
+        browseLabel: 'Seleccionar Archivo'
+    }
+    $(".fileinput").find('input').fileinput(optionsFileinput);
+
+    var optionsUnit = {
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true,
+        disableIfEmpty: true,
+        maxHeight: 600,
+        buttonWidth: '100%',
+        nonSelectedText: 'Ningún Departamento Seleccionado',
+        filterPlaceholder: 'Buscar',
+    };
+    $('#hvg_publicbundle_unitinsurancepolicy_unit').multiselect(optionsUnit);
+});
+</script>
+{% endblock %}

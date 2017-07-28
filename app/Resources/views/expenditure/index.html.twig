@@ -39,7 +39,7 @@
                                 <tr>
                                     <th>{{ 'expenditure.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(expenditures, 'expenditure.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                    <th>{{ knp_pagination_sortable(expenditures, 'expenditure.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(expenditures, 'expenditure.form.description'|trans, 'description') }}{% if sort == 'description' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(expenditures, 'expenditure.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(expenditures, 'expenditure.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
@@ -57,7 +57,7 @@
                                         </div>
                                     </td>
                                     <td>{% if expenditure.id %}{{ expenditure.id }}{% endif %}</td>
-                                    <td>{% if expenditure.name %}{{ expenditure.name }}{% endif %}</td>
+                                    <td>{% if expenditure.description %}{{ expenditure.description }}{% endif %}</td>
                                     <td>{% if expenditure.createdAt %}{{ expenditure.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if expenditure.updatedAt %}{{ expenditure.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

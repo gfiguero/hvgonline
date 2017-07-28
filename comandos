@@ -12,6 +12,8 @@ php app/console generate:bundle --namespace HVG/AdminBundle --dir src --bundle-n
 php app/console generate:bundle --namespace HVG/ResourcePlannerBundle --dir src --bundle-name HVGResourcePlannerBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/CustomerBundle --dir src --bundle-name HVGCustomerBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/AgentBundle --dir src --bundle-name HVGAgentBundle --format yml --shared --no-interaction
+php app/console generate:bundle --namespace HVG/ContabilityBundle --dir src --bundle-name HVGContabilityBundle --format yml --shared --no-interaction
+php app/console generate:bundle --namespace HVG/PublicBundle --dir src --bundle-name HVGPublicBundle --format yml --shared --no-interaction
 
 php app/console assetic:dump --env=dev
 

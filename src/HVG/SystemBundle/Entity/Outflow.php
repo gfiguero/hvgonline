@@ -43,6 +43,7 @@ class Outflow
     public function __construct()
     {
         $this->expenditures = new \Doctrine\Common\Collections\ArrayCollection();
+        dump($this);
     }
 
     public function __toString()
@@ -165,6 +166,8 @@ class Outflow
      */
     public function addExpenditure(\HVG\SystemBundle\Entity\Expenditure $expenditure)
     {
+        $expenditure->setOutflow($this);
+
         $this->expenditures[] = $expenditure;
 
         return $this;
@@ -189,5 +192,45 @@ class Outflow
     {
         return $this->expenditures;
     }
-}
+    /**
+     * @var \HVG\SystemBundle\Entity\Community
+     */
+    private $community;
 
+
+    /**
+     * Set community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     *
+     * @return Outflow
+     */
+    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \HVG\SystemBundle\Entity\Community
+     */
+    public function getCommunity()
+    {
+        return $this->community;
+    }
+
+    public function getAmount()
+    {
+        $amount = 0;
+
+        foreach ($this->expenditures as $expenditure) {
+            $amount += $expenditure->getAmount();
+        }
+
+        return $amount;
+    }
+
+}

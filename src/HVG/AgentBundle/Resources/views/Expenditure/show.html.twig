@@ -6,7 +6,7 @@
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
 
-{% block title %}{{ 'expenditure.index.title'|trans }}{% endblock %}
+{% block title %}{{ 'expenditure.show.title'|trans }}{% endblock %}
 
 {% block body %}
     <div id="page-wrapper">
@@ -21,14 +21,14 @@
         <div class="row" id="page-toolbar">
             <div class="col-lg-12 block">
                 <div class="btn-toolbar">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'expenditure.edit.link'|trans }}</button>
+                    <a type="button" class="btn btn-primary" href="{{ path('agent_expenditure_edit', {'id': expenditure.id}) }}">{{ icon('edit fa-fw') }}&nbsp;{{ 'expenditure.edit.link'|trans }}</a>
                 </div>
             </div>
         </div>
         <!-- /#page-toolbar -->
 
         <div class="row" id="page-show">
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h1 class="panel-title">{{ 'expenditure.show.title'|trans }}</h1>
@@ -36,8 +36,38 @@
                     <div class="panel-body">
                         <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
                             <dt>{{ 'expenditure.form.id'|trans }}</dt><dd>{% if expenditure.id %}{{ expenditure.id }}{% endif %}</dd>
+                            <dt>{{ 'expenditure.form.description'|trans }}</dt><dd>{{ expenditure.description }}</dd>
+                            <dt>{{ 'expenditure.form.amount'|trans }}</dt><dd>{{ expenditure.amount }}</dd>
                             <dt>{{ 'expenditure.form.updatedAt'|trans }}</dt><dd>{% if expenditure.updatedAt %}{{ expenditure.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "EEEE, d 'de' LLL, Y") ~ ' (' ~ expenditure.updatedAt|ago ~ ')' }}{% endif %}</dd>
                         </dl>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ 'expenditure.show.items'|trans }}</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'item.form.id'|trans }}</th>
+                                    <th>{{ 'item.form.name'|trans }}</th>
+                                    <th>{{ 'item.form.amount'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for item in expenditure.items %}
+                                <tr>
+                                    <td>{% if item.id %}{{ item.id }}{% endif %}</td>
+                                    <td>{% if item.name %}{{ item.name }}{% endif %}</td>
+                                    <td>{% if item.amount %}{{ item.amount }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

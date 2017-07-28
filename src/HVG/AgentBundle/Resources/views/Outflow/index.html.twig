@@ -37,24 +37,27 @@
                         <table class="records_list table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    <th>{{ icon('search fa-fw') }}</th>
+                                    <th><div class="btn-toolbar">
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" >{{ icon('search fa-fw') }}</a></div>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" >{{ icon('edit fa-fw') }}</a></div>
+                                    </div></th>
                                     <th>{{ knp_pagination_sortable(outflows, 'outflow.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(outflows, 'outflow.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(outflows, 'outflow.form.community'|trans, 'community') }}{% if sort == 'community' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th class="text-right">{{ 'outflow.form.amount'|trans }}</th>
                                 </tr>
                             </thead>
                             <tbody>
                             {% for key, outflow in outflows %}
-                                {% set difference = date(outflow.expiry|date()).diff(date('now'|date())) %}
                                 <tr>
-                                    <td>
-                                        <div class="btn-toolbar">
-                                            <div class="btn-group" role="group">
-                                                <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_outflow_show', { 'id': outflow.id }) }}">{{ icon('search') }}</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <td><div class="btn-toolbar">
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_outflow_show', { 'id': outflow.id }) }}">{{ icon('search fa-fw') }}</a></div>
+                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-primary" href="{{ path('agent_outflow_edit', { 'id': outflow.id }) }}">{{ icon('edit fa-fw') }}</a></div>
+                                    </div></td>
                                     <td>{% if outflow.id %}{{ outflow.id }}{% endif %}</td>
+                                    <td>{% if outflow.community %}{{ outflow.community }}{% endif %}</td>
                                     <td>{% if outflow.updatedAt %}{{ outflow.updatedAt|ago }}{% endif %}</td>
+                                    <td class="text-right">{{ outflow.amount|number_format(0,',','.') }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

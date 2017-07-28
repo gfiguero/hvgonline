@@ -19,6 +19,11 @@ class ItemType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
+            ->add('amount', null, array(
+                'label' => 'item.form.amount',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
             ->add('fund', null, array(
                 'label' => 'item.form.fund',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),

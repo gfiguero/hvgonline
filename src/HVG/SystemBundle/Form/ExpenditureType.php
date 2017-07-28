@@ -14,8 +14,8 @@ class ExpenditureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-            ->add('name', null, array(
-                'label' => 'expenditure.form.name',
+            ->add('description', null, array(
+                'label' => 'expenditure.form.description',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 

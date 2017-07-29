@@ -12,7 +12,7 @@
                     <h1 class="page-header">{{ 'unitinsurancepolicy.index.title'|trans }}</h1>
                     {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
                     {% for community in communities %}
-                        <a href="{{ path('public_unitinsurancepolicy_new', {'community' : community.id }) }}" class="btn btn-primary btn-lg btn-block">{{ community }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
+                        <a href="{{ path('public_unitinsurancepolicy_new', {'hash' : community.hash }) }}" class="btn btn-primary btn-lg btn-block">{{ community }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
                     {% endfor %}
                 </div>
             </div>

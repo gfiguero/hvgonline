@@ -19,8 +19,10 @@ class UnitInsurancePolicyController extends Controller
         ));
     }
 
-    public function newAction(Request $request, Community $community)
+    public function newAction(Request $request, $hash)
     {
+        $em = $this->getDoctrine()->getManager();
+        $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
         $unitInsurancePolicy = new UnitInsurancePolicy();
         $newForm = $this->createForm(new UnitInsurancePolicyType(), $unitInsurancePolicy, array('community' => $community));
         $newForm->handleRequest($request);

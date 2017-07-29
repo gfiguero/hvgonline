@@ -7,7 +7,17 @@
 {% block body %}
     <section>
         <div class="container">
-            <div class="row" id="page-header">
+            <div class="row images">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <img class="img-responsive img-thumbnail" src="{{ asset('/img/LOGOHORIZONTAL.png') | imagine_filter('logo_small') }}" />
+                </div>
+                <div class="col-sm-4">
+                    {% if community.logo %}
+                    <img class="img-responsive img-thumbnail pull-right" src="{{ vich_uploader_asset(community, 'file', 'HVG\\SystemBundle\\Entity\\Community') | imagine_filter('logo_small') }}" />
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-8 col-sm-offset-2">
                     <h1 class="page-header">{{ 'unitinsurancepolicy.index.title'|trans }}</h1>
                     {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
@@ -24,6 +34,14 @@
             </div>
         </div>
     </section>
+{% endblock %}
+
+{% block stylesheet %}
+<style type="text/css">
+.images {
+    margin-top: 20px;
+}
+</style>
 {% endblock %}
 
 {% block javascript %}

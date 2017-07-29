@@ -41,6 +41,10 @@
                                 <dd>{% if community.id %}{{ community.id }}{% endif %}</dd>
                             <dt>{{ 'community.form.name'|trans }}</dt>
                                 <dd>{% if community.name %}{{ community.name }}{% endif %}</dd>
+                            <dt>{{ 'community.form.hash'|trans }}</dt>
+                                <dd>{% if community.hash %}{{ community.hash }}{% endif %}</dd>
+                            <dt>{{ 'community.form.logo'|trans }}</dt>
+                                <dd>{% if community.logo %}{{ community.logo }}{% endif %}</dd>
                             <dt>{{ 'community.form.createdAt'|trans }}</dt>
                                 <dd>{% if community.createdAt %}{{ community.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'community.form.updatedAt'|trans }}</dt>

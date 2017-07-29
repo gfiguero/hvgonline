@@ -2,8 +2,13 @@
 
 namespace HVG\SystemBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * Community
+ * @Vich\Uploadable
  */
 class Community
 {
@@ -536,4 +541,93 @@ class Community
     {
         return $this->outflows;
     }
+    /**
+     * @var string
+     */
+    private $hash;
+
+
+    /**
+     * Set hash
+     *
+     * @param string $hash
+     *
+     * @return Community
+     */
+    public function setHash($hash)
+    {
+        $this->hash = $hash;
+
+        return $this;
+    }
+
+    /**
+     * Get hash
+     *
+     * @return string
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+    /**
+     * @var string
+     */
+    private $logo;
+
+
+    /**
+     * Set logo
+     *
+     * @param string $logo
+     *
+     * @return Community
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @Vich\UploadableField(mapping="community_logo", fileNameProperty="logo")
+     * @var File $file
+     */
+    private $file;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @return Community
+     */
+    
+    public function setFile(File $file = null)
+    {
+        $this->file = $file;
+
+        if ($file) {
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
 }

@@ -45,6 +45,14 @@ HVG\SystemBundle\Entity\Community:
             type: string
             length: 300
             nullable: true
+        hash:
+            type: string
+            length: 100
+            nullable: true
+        logo:
+            type: string
+            length: 100
+            nullable: true
         createdAt:
             type: datetime
             gedmo:

@@ -9,3 +9,8 @@ liip_imagine:
             filters:
                 upscale: { min: [800, 900] }
                 thumbnail: { size: [800, 900], mode: outbound }
+        logo_small:
+            quality: 75
+            filters:
+                upscale: { min: [300, 80] }
+                thumbnail: { size: [300, 80], mode: inset }

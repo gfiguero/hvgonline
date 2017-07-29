@@ -40,6 +40,8 @@
                                     <th>{{ 'community.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(communities, 'community.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(communities, 'community.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(communities, 'community.form.hash'|trans, 'hash') }}{% if sort == 'hash' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(communities, 'community.form.logo'|trans, 'logo') }}{% if sort == 'logo' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(communities, 'community.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(communities, 'community.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
@@ -58,6 +60,8 @@
                                     </td>
                                     <td>{% if community.id %}{{ community.id }}{% endif %}</td>
                                     <td>{% if community.name %}{{ community.name }}{% endif %}</td>
+                                    <td>{% if community.hash %}{{ community.hash }}{% endif %}</td>
+                                    <td>{% if community.logo %}{{ community.logo }}{% endif %}</td>
                                     <td>{% if community.createdAt %}{{ community.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if community.updatedAt %}{{ community.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

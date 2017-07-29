@@ -14,9 +14,9 @@ unitinsurancepolicy:
     finish:
         message: |
           <p>Hemos recibido tu información. Muchas Gracias!!!.</p>
-          <p>Si tiene dudas o consultas, por favor, diríjase a la administración del condominio vía email.</p>
+          <p>Si tiene dudas o consultas, por favor, contáctese con la administración del condominio.</p>
     form:
-        filename: Archivo
+        filename: Adjuntar póliza
         expiredAt: Fecha de Vencimiento
         unit: Departamento
         year: Año

@@ -1,5 +1,5 @@
 public_unitinsurancepolicy_index:
-    path:     /
+    path:     /links
     defaults: { _controller: "HVGPublicBundle:UnitInsurancePolicy:index" }
     methods:  GET
 

@@ -30,6 +30,10 @@ hvg_agent_unit:
     resource: "@HVGAgentBundle/Resources/config/routing/unit.yml"
     prefix:   /unit
 
+hvg_agent_unitinsurancepolicy:
+    resource: "@HVGAgentBundle/Resources/config/routing/unitinsurancepolicy.yml"
+    prefix:   /unitinsurancepolicy
+
 hvg_agent_ticket:
     resource: "@HVGAgentBundle/Resources/config/routing/ticket.yml"
     prefix:   /ticket

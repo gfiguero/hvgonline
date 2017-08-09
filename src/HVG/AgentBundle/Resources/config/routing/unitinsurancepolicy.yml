@@ -1,0 +1,9 @@
+agent_unitinsurancepolicy_index:
+    path:     /
+    defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:index" }
+    methods:  GET
+
+agent_unitinsurancepolicy_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:show" }
+    methods:  GET

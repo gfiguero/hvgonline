@@ -25,6 +25,7 @@ sidemenu:
     community: Comunidades
     unitgroup: Torres
     unit: Departamentos
+    unitinsurancepolicy: Pólizas
     person: Personas
     contact: Contactos
     provider: Proveedores
@@ -107,6 +108,25 @@ unit:
         name: Departamento
         community: Comunidad
         unitgroup: Grupo
+
+unitinsurancepolicy:
+    index:
+        title: Pólizas de Seguros
+        link: Explorar Pólizas
+        list: Lista de Pólizas
+    show:
+        title: Datos de la Pólizas
+        link: Detalles de la Pólizas
+    form:
+        actions: Acciones
+        id: ID
+        unit: Departamento
+        community: Comunidad
+        unitgroup: Grupo
+        createdAt: Registro
+        expiredAt: Vencimiento
+        contactname: Contacto
+        contactemail: Email
 
 communitystaff:
     index:

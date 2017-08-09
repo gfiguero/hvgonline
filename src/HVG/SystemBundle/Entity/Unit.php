@@ -363,4 +363,43 @@ class Unit
 
         return $this;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $insurancepolicies;
+
+
+    /**
+     * Add insurancepolicy
+     *
+     * @param \HVG\SystemBundle\Entity\UnitInsurancePolicy $insurancepolicy
+     *
+     * @return Unit
+     */
+    public function addInsurancepolicy(\HVG\SystemBundle\Entity\UnitInsurancePolicy $insurancepolicy)
+    {
+        $this->insurancepolicies[] = $insurancepolicy;
+
+        return $this;
+    }
+
+    /**
+     * Remove insurancepolicy
+     *
+     * @param \HVG\SystemBundle\Entity\UnitInsurancePolicy $insurancepolicy
+     */
+    public function removeInsurancepolicy(\HVG\SystemBundle\Entity\UnitInsurancePolicy $insurancepolicy)
+    {
+        $this->insurancepolicies->removeElement($insurancepolicy);
+    }
+
+    /**
+     * Get insurancepolicies
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInsurancepolicies()
+    {
+        return $this->insurancepolicies;
+    }
 }

@@ -231,4 +231,62 @@ class UnitInsurancePolicy
     {
         return $this->unit;
     }
+    /**
+     * @var string
+     */
+    private $contactname;
+
+    /**
+     * @var string
+     */
+    private $contactemail;
+
+
+    /**
+     * Set contactname
+     *
+     * @param string $contactname
+     *
+     * @return UnitInsurancePolicy
+     */
+    public function setContactname($contactname)
+    {
+        $this->contactname = $contactname;
+
+        return $this;
+    }
+
+    /**
+     * Get contactname
+     *
+     * @return string
+     */
+    public function getContactname()
+    {
+        return $this->contactname;
+    }
+
+    /**
+     * Set contactemail
+     *
+     * @param string $contactemail
+     *
+     * @return UnitInsurancePolicy
+     */
+    public function setContactemail($contactemail)
+    {
+        $this->contactemail = $contactemail;
+
+        return $this;
+    }
+
+    /**
+     * Get contactemail
+     *
+     * @return string
+     */
+    public function getContactemail()
+    {
+        return $this->contactemail;
+    }
 }

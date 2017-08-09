@@ -27,6 +27,9 @@ HVG\SystemBundle\Entity\Unit:
         charges:
             targetEntity: HVG\SystemBundle\Entity\Charge
             mappedBy: unit
+        insurancepolicies:
+            targetEntity: HVG\SystemBundle\Entity\UnitInsurancePolicy
+            mappedBy: unit
     fields:
         name:
             type: string

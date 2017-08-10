@@ -51,7 +51,7 @@
                                     <td>{% if unitinsurancepolicy.unit %}{{ unitinsurancepolicy.unit }}{% endif %}</td>
                                     <td>{% if unitinsurancepolicy.contactname %}{{ unitinsurancepolicy.contactname|truncate(40, true) }}{% endif %}</td>
                                     <td>{% if unitinsurancepolicy.contactemail %}{{ unitinsurancepolicy.contactemail }}{% endif %}</td>
-                                    <td>{% if unitinsurancepolicy.expiredat %}<span class="fa fa-calendar-o" data-toggle="tooltip" data-placement="left" title="{{ unitinsurancepolicy.expiredat|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL Y") }}"></span>&nbsp;{{ unitinsurancepolicy.expiredat|ago }}{% endif %}</td>
+                                    <td>{% if unitinsurancepolicy.expiredat %}<span class="fa fa-calendar-o" data-toggle="tooltip" data-placement="left" title="{{ unitinsurancepolicy.expiredat|localizeddate('medium', 'none', 'es_ES', 'America/Santiago', "dd LLLL Y") }}"></span>&nbsp;{{ unitinsurancepolicy.expiredat|ago }}{% endif %}</td>
                                     <td>{% if unitinsurancepolicy.createdat %}<span class="fa fa-calendar-o" data-toggle="tooltip" data-placement="left" title="{{ unitinsurancepolicy.createdat|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL Y HH:mm") }}"></span>&nbsp;{{ unitinsurancepolicy.createdat|ago }}{% endif %}</td>
                                 </tr>
                             {% endfor %}

@@ -1,3 +1,7 @@
 hvg_accesscontrol_guest:
     resource: "@HVGAccessControlBundle/Resources/config/routing/guest.yml"
     prefix:   /guest
+
+hvg_accesscontrol_unitresident:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/unitresident.yml"
+    prefix:   /unitresident

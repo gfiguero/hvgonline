@@ -254,33 +254,5 @@ class UnitResident
     {
         return $this->unit;
     }
-    /**
-     * @var boolean
-     */
-    private $assistance;
-
-
-    /**
-     * Set assistance
-     *
-     * @param boolean $assistance
-     *
-     * @return UnitResident
-     */
-    public function setAssistance($assistance)
-    {
-        $this->assistance = $assistance;
-
-        return $this;
-    }
-
-    /**
-     * Get assistance
-     *
-     * @return boolean
-     */
-    public function getAssistance()
-    {
-        return $this->assistance;
-    }
 }
+

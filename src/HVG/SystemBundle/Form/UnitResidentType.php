@@ -34,6 +34,11 @@ class UnitResidentType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
+            ->add('assistance', null, array(
+                'label' => 'unitresident.form.assistance',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
+            )) 
             ->add('unit', null, array(
                 'label' => 'unitresident.form.unit',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),

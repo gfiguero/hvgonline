@@ -10,4 +10,16 @@ namespace HVG\SystemBundle\Entity;
  */
 class UnitResidentRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findNameByUnit($unit)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('r')
+            ->select('r.name')
+            ->from('HVGSystemBundle:UnitResident', 'r')
+            ->where('r.unit = :unit')
+            ->setParameters(array('unit' => $unit))
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
 }

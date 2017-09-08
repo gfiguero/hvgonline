@@ -43,6 +43,7 @@
                                     <th>{{ knp_pagination_sortable(unitResidents, 'unitresident.form.email'|trans, 'email') }}{% if sort == 'email' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(unitResidents, 'unitresident.form.phone'|trans, 'phone') }}{% if sort == 'phone' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(unitResidents, 'unitresident.form.age'|trans, 'age') }}{% if sort == 'age' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(unitResidents, 'unitresident.form.assistance'|trans, 'assistance') }}{% if sort == 'assistance' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(unitResidents, 'unitresident.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(unitResidents, 'unitresident.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 </tr>
@@ -64,6 +65,7 @@
                                     <td>{% if unitresident.email %}{{ unitresident.email }}{% endif %}</td>
                                     <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
                                     <td>{% if unitresident.age %}{{ unitresident.age }}{% endif %}</td>
+                                    <td>{% if unitresident.assistance %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</td>
                                     <td>{% if unitresident.createdAt %}{{ unitresident.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if unitresident.updatedAt %}{{ unitresident.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                 </tr>

@@ -47,6 +47,8 @@
                                 <dd>{% if unitResident.phone %}{{ unitResident.phone }}{% endif %}</dd>
                             <dt>{{ 'unitresident.form.age'|trans }}</dt>
                                 <dd>{% if unitResident.age %}{{ unitResident.age }}{% endif %}</dd>
+                            <dt>{{ 'unitresident.form.assistance'|trans }}</dt>
+                                <dd>{% if unitResident.assistance %}{{ 'Si' }}{% else %}{{ 'No' }}{% endif %}</dd>
                             <dt>{{ 'unitresident.form.createdAt'|trans }}</dt>
                                 <dd>{% if unitResident.createdAt %}{{ unitResident.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'unitresident.form.updatedAt'|trans }}</dt>

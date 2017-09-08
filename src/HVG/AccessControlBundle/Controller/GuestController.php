@@ -78,9 +78,9 @@ class GuestController extends Controller
         return new JsonResponse($people);
 
     }
-    public function searchResidentsAction(Request $request)
+
+    public function searchResidentsAction(Request $request, Unit $unit)
     {
-        $unit = $request->query->get('unit');
         $em = $this->getDoctrine()->getManager();
         $residents = $em->getRepository('HVGSystemBundle:Resident')->findByUnit($unit);
         return new JsonResponse($residents);

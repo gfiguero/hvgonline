@@ -27,6 +27,8 @@ HVG\SystemBundle\Entity\UnitResident:
         age:
             type: integer
             nullable: true
+        assistance:
+            type: boolean
         createdAt:
             type: datetime
             gedmo:

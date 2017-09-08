@@ -53,6 +53,10 @@ $(document).ready(function() {
             filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-lg multiselect-clear-filter" type="button"><i class="glyphicon glyphicon-remove-circle"></i></button></span>',
         },
         onChange: function(option, checked, select) {
+            $.get("{{ path('accesscontrol_unitresident_searchbyunit', { 'unit' : $(option).val() }) }}", function(data, status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+
             alert('Changed option ' + $(option).val() + '.');
         }
     };
@@ -70,9 +74,6 @@ $(document).ready(function() {
             filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span><input class="form-control multiselect-search input-lg" type="text"></div></li>',
             filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-lg multiselect-clear-filter" type="button"><i class="glyphicon glyphicon-remove-circle"></i></button></span>',
         },
-        onChange: function(option, checked, select) {
-            alert('Changed option ' + $(option).val() + '.');
-        }
     };
     $('#hvg_accesscontrolbundle_guest_carpark').multiselect(optionsCarpark);
 });

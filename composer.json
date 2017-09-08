@@ -40,7 +40,8 @@
         "kartik-v/bootstrap-fileinput": "dev-master",
         "symfony/validator": "^2.8",
         "vich/uploader-bundle": "^0.14.0",
-        "knplabs/knp-time-bundle": "^1.6"
+        "knplabs/knp-time-bundle": "^1.6",
+        "friendsofsymfony/jsrouting-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

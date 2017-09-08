@@ -37,6 +37,14 @@ class Person
      */
     private $deletedAt;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function __toString()
     {
         return (string) $this->name;
@@ -172,4 +180,73 @@ class Person
         return $this->deletedAt;
     }
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contacts;
+
+    /**
+     * Add contact
+     *
+     * @param \HVG\SystemBundle\Entity\Contact $contact
+     *
+     * @return Person
+     */
+    public function addContact(\HVG\SystemBundle\Entity\Contact $contact)
+    {
+        $contact->setPerson($this);
+
+        $this->contacts[] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Remove contact
+     *
+     * @param \HVG\SystemBundle\Entity\Contact $contact
+     */
+    public function removeContact(\HVG\SystemBundle\Entity\Contact $contact)
+    {
+        $this->contacts->removeElement($contact);
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\Guest
+     */
+    private $guest;
+
+
+    /**
+     * Set guest
+     *
+     * @param \HVG\SystemBundle\Entity\Guest $guest
+     *
+     * @return Person
+     */
+    public function setGuest(\HVG\SystemBundle\Entity\Guest $guest = null)
+    {
+        $this->guest = $guest;
+
+        return $this;
+    }
+
+    /**
+     * Get guest
+     *
+     * @return \HVG\SystemBundle\Entity\Guest
+     */
+    public function getGuest()
+    {
+        return $this->guest;
+    }
 }

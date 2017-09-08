@@ -1,0 +1,39 @@
+HVG\SystemBundle\Entity\Vehicle:
+    type: entity
+    table: Vehicle
+    repositoryClass: HVG\SystemBundle\Entity\VehicleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        guests:
+            targetEntity: HVG\SystemBundle\Entity\Guest
+            mappedBy: vehicle
+    fields:
+        licence:
+            type: string
+            length: 6
+        note:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

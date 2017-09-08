@@ -120,14 +120,15 @@ class CommunityController extends Controller
                 $em->persist($community);
                 $em->flush();
                 $request->getSession()->getFlashBag()->add( 'success', 'community.flash.updated' );
+            } else {
+                return $this->render('community/edit.html.twig', array(
+                    'community' => $community,
+                    'editForm' => $editForm->createView(),
+                    'deleteForm' => $deleteForm->createView(),
+                ));
             }
         }
 
-        return $this->render('community/edit.html.twig', array(
-            'community' => $community,
-            'editForm' => $editForm->createView(),
-            'deleteForm' => $deleteForm->createView(),
-        ));
         return $this->redirect($this->generateUrl('community_index'));
     }
 

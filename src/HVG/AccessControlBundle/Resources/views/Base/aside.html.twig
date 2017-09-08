@@ -1,0 +1,12 @@
+{% block aside %}
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav sidebar-collapse">
+        {% if community.logo %}
+            <h3>
+                <img class="img-responsive img-thumbnail center-block" src="{{ vich_uploader_asset(community, 'file', 'HVG\\SystemBundle\\Entity\\Community') | imagine_filter('logo_medium') }}" />
+            </h3>
+        {% endif %}
+        {{ knp_menu_render('HVGAccessControlBundle:Builder:sideMenu') }}
+    </div>
+</div>
+{% endblock %}

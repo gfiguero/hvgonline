@@ -13,6 +13,10 @@ HVG\SystemBundle\Entity\Person:
             targetEntity: HVG\SystemBundle\Entity\Contact
             mappedBy: person
             cascade: ["persist"]
+    manyToMany:
+        guests:
+            targetEntity: HVG\SystemBundle\Entity\Guest
+            mappedBy: people
     fields:
         name:
             type: string

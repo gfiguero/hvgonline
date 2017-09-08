@@ -1,0 +1,24 @@
+carpark_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Carpark:index" }
+    methods:  GET
+
+carpark_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Carpark:show" }
+    methods:  GET
+
+carpark_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Carpark:new" }
+    methods:  [GET, POST]
+
+carpark_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Carpark:edit" }
+    methods:  [GET, POST]
+
+carpark_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Carpark:delete" }
+    methods:  DELETE

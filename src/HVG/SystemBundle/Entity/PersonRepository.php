@@ -10,4 +10,13 @@ namespace HVG\SystemBundle\Entity;
  */
 class PersonRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function searchByRut($rut)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('p');
+        $qb->select('p.rut, p.name')
+            ->from('HVGSystemBundle:Person', 'p')
+            ->where('p.rut LIKE :rut')
+            ->setParameter('rut', '%'.$rut.'%');
+        return $qb->getQuery()->getArrayResult();
+    }
 }

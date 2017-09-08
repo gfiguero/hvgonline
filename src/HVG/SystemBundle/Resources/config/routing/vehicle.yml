@@ -1,0 +1,24 @@
+vehicle_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:Vehicle:index" }
+    methods:  GET
+
+vehicle_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:Vehicle:show" }
+    methods:  GET
+
+vehicle_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:Vehicle:new" }
+    methods:  [GET, POST]
+
+vehicle_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:Vehicle:edit" }
+    methods:  [GET, POST]
+
+vehicle_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:Vehicle:delete" }
+    methods:  DELETE

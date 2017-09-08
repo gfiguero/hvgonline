@@ -9,10 +9,6 @@ var components = {
             "main": "jquery-built.js"
         },
         {
-            "name": "jquery-ui",
-            "main": "jquery-ui-built.js"
-        },
-        {
             "name": "bootstrap-multiselect",
             "main": "bootstrap-multiselect-built.js"
         }
@@ -22,12 +18,6 @@ var components = {
             "deps": [
                 "jquery"
             ]
-        },
-        "jquery-ui": {
-            "deps": [
-                "jquery"
-            ],
-            "exports": "jQuery"
         },
         "bootstrap-multiselect": {
             "deps": [

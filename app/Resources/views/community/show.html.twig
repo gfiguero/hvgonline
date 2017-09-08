@@ -43,6 +43,8 @@
                                 <dd>{% if community.name %}{{ community.name }}{% endif %}</dd>
                             <dt>{{ 'community.form.hash'|trans }}</dt>
                                 <dd>{% if community.hash %}{{ community.hash }}{% endif %}</dd>
+                            <dt>{{ 'community.form.insurancePolicyExpiration'|trans }}</dt>
+                                <dd>{% if community.insurancePolicyExpiration %}{{ community.insurancePolicyExpiration|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
                             <dt>{{ 'community.form.logo'|trans }}</dt>
                                 <dd>{% if community.logo %}{{ community.logo }}{% endif %}</dd>
                             <dt>{{ 'community.form.createdAt'|trans }}</dt>

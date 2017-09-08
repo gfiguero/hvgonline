@@ -23,6 +23,11 @@ class PersonType extends AbstractType
                 'label' => 'person.form.rut',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
+            )) 
+            ->add('guests', null, array(
+                'label' => 'person.form.guests',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGSystemBundle',
             ))
         ;
     }

@@ -7,3 +7,4 @@ twig:
             - :Form:bootstrap.html.twig
             - :Form:fileinput.html.twig
             - :Form:entitytable.html.twig
+            - :Form:prototype.html.twig

@@ -43,7 +43,6 @@
                 {% set attr = attr|merge({ 'placeholder': label}) %}
             {% endif %}
         {% endif %}
-
         {% if static_control is defined and static_control == true %}
             {% set attr = attr|merge({ 'class': (attr.class|default('') ~ ' form-control-static')|trim }) %}
             <p id="{{ id }}" {%- for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ value }}</p>

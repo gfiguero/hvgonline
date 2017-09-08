@@ -1,0 +1,21 @@
+{% extends 'HVGPublicBundle:Base:base.html.twig' %}
+
+{% trans_default_domain 'HVGPublicBundle' %}
+
+{% block title %}{{ 'guest.index.title'|trans }}{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row" id="page-header">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h1 class="page-header">{{ 'guest.index.title'|trans }}</h1>
+                    {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
+                    {% for community in communities %}
+                        <a href="{{ path('public_guest_new', {'hash' : community.hash }) }}" class="btn btn-primary btn-lg btn-block">{{ community }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

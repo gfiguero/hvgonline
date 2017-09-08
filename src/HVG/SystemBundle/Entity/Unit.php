@@ -402,4 +402,160 @@ class Unit
     {
         return $this->insurancepolicies;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $guests;
+
+
+    /**
+     * Add guest
+     *
+     * @param \HVG\SystemBundle\Entity\Guest $guest
+     *
+     * @return Unit
+     */
+    public function addGuest(\HVG\SystemBundle\Entity\Guest $guest)
+    {
+        $this->guests[] = $guest;
+
+        return $this;
+    }
+
+    /**
+     * Remove guest
+     *
+     * @param \HVG\SystemBundle\Entity\Guest $guest
+     */
+    public function removeGuest(\HVG\SystemBundle\Entity\Guest $guest)
+    {
+        $this->guests->removeElement($guest);
+    }
+
+    /**
+     * Get guests
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGuests()
+    {
+        return $this->guests;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $warehouses;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $carparks;
+
+
+    /**
+     * Add warehouse
+     *
+     * @param \HVG\SystemBundle\Entity\Warehouse $warehouse
+     *
+     * @return Unit
+     */
+    public function addWarehouse(\HVG\SystemBundle\Entity\Warehouse $warehouse)
+    {
+        $this->warehouses[] = $warehouse;
+
+        return $this;
+    }
+
+    /**
+     * Remove warehouse
+     *
+     * @param \HVG\SystemBundle\Entity\Warehouse $warehouse
+     */
+    public function removeWarehouse(\HVG\SystemBundle\Entity\Warehouse $warehouse)
+    {
+        $this->warehouses->removeElement($warehouse);
+    }
+
+    /**
+     * Get warehouses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWarehouses()
+    {
+        return $this->warehouses;
+    }
+
+    /**
+     * Add carpark
+     *
+     * @param \HVG\SystemBundle\Entity\Carpark $carpark
+     *
+     * @return Unit
+     */
+    public function addCarpark(\HVG\SystemBundle\Entity\Carpark $carpark)
+    {
+        $this->carparks[] = $carpark;
+
+        return $this;
+    }
+
+    /**
+     * Remove carpark
+     *
+     * @param \HVG\SystemBundle\Entity\Carpark $carpark
+     */
+    public function removeCarpark(\HVG\SystemBundle\Entity\Carpark $carpark)
+    {
+        $this->carparks->removeElement($carpark);
+    }
+
+    /**
+     * Get carparks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarparks()
+    {
+        return $this->carparks;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $residents;
+
+
+    /**
+     * Add resident
+     *
+     * @param \HVG\SystemBundle\Entity\UnitResident $resident
+     *
+     * @return Unit
+     */
+    public function addResident(\HVG\SystemBundle\Entity\UnitResident $resident)
+    {
+        $this->residents[] = $resident;
+
+        return $this;
+    }
+
+    /**
+     * Remove resident
+     *
+     * @param \HVG\SystemBundle\Entity\UnitResident $resident
+     */
+    public function removeResident(\HVG\SystemBundle\Entity\UnitResident $resident)
+    {
+        $this->residents->removeElement($resident);
+    }
+
+    /**
+     * Get residents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getResidents()
+    {
+        return $this->residents;
+    }
 }

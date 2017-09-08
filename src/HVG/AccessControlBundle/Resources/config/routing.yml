@@ -1,0 +1,3 @@
+hvg_accesscontrol_guest:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/guest.yml"
+    prefix:   /guest

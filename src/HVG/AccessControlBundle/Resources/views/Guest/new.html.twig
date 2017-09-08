@@ -1,0 +1,88 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGPublicBundle' %}
+
+{% block title %}{{ 'guest.index.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="page-header">{{ 'guest.index.title'|trans }}</h1>
+            {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
+            {{ form_start(newForm, {'style':'horizontal'}) }}
+            {{ form_row(newForm.unit) }}
+            <div class="form-group">
+                <label class="control-label col-lg-2 required">{{'guest.form.residents'|trans}}</label>
+                <div class="col-lg-10">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ form_row(newForm.people) }}
+            {{ form_row(newForm.carpark) }}
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="submit" class="btn btn-primary btn-lg">{{ icon('send fa-fw') }}&nbsp;{{ 'guest.new.submit'|trans }}</button>
+                </div>
+            </div>
+            {{ form_end(newForm) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ asset('js/braincrafted/bc-bootstrap-collection.js') }}"></script>
+<script src="{{ asset('js/jquery.rut.js') }}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var optionsUnit = {
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true,
+        disableIfEmpty: true,
+        maxHeight: 600,
+        buttonWidth: '100%',
+        nonSelectedText: 'Ningún Departamento Seleccionado',
+        filterPlaceholder: 'Buscar',
+        templates: {
+            button: '<button type="button" class="multiselect dropdown-toggle btn-lg" data-toggle="dropdown"><span class="multiselect-selected-text"></span> <b class="caret"></b></button>',
+            ul: '<ul class="multiselect-container dropdown-menu" style="font-size:large;"></ul>',
+            filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span><input class="form-control multiselect-search input-lg" type="text"></div></li>',
+            filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-lg multiselect-clear-filter" type="button"><i class="glyphicon glyphicon-remove-circle"></i></button></span>',
+        },
+        onChange: function(option, checked, select) {
+            alert('Changed option ' + $(option).val() + '.');
+        }
+    };
+    $('#hvg_accesscontrolbundle_guest_unit').multiselect(optionsUnit);
+    var optionsCarpark = {
+        enableFiltering: true,
+        enableCaseInsensitiveFiltering: true,
+        disableIfEmpty: true,
+        maxHeight: 600,
+        buttonWidth: '100%',
+        filterPlaceholder: 'Buscar',
+        templates: {
+            button: '<button type="button" class="multiselect dropdown-toggle btn-lg" data-toggle="dropdown"><span class="multiselect-selected-text"></span> <b class="caret"></b></button>',
+            ul: '<ul class="multiselect-container dropdown-menu" style="font-size:large;"></ul>',
+            filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span><input class="form-control multiselect-search input-lg" type="text"></div></li>',
+            filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-lg multiselect-clear-filter" type="button"><i class="glyphicon glyphicon-remove-circle"></i></button></span>',
+        },
+        onChange: function(option, checked, select) {
+            alert('Changed option ' + $(option).val() + '.');
+        }
+    };
+    $('#hvg_accesscontrolbundle_guest_carpark').multiselect(optionsCarpark);
+});
+</script>
+{% endblock %}
+
+{% block stylesheet %}
+<style type="text/css">
+.guest-person {
+    margin-bottom: 5px;
+}
+</style>
+{% endblock %}

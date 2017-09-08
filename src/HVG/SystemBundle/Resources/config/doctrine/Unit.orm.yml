@@ -30,6 +30,18 @@ HVG\SystemBundle\Entity\Unit:
         insurancepolicies:
             targetEntity: HVG\SystemBundle\Entity\UnitInsurancePolicy
             mappedBy: unit
+        residents:
+            targetEntity: HVG\SystemBundle\Entity\UnitResident
+            mappedBy: unit
+        guests:
+            targetEntity: HVG\SystemBundle\Entity\Guest
+            mappedBy: unit
+        warehouses:
+            targetEntity: HVG\SystemBundle\Entity\Warehouse
+            mappedBy: unit
+        carparks:
+            targetEntity: HVG\SystemBundle\Entity\Carpark
+            mappedBy: unit
     fields:
         name:
             type: string

@@ -34,27 +34,26 @@
         </div>
         <!-- /#page-toolbar -->
 
-        <div class="row" id="page-show">
+        <div class="row" id="page-identification">
             <div class="col-xs-12">
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-6">
-                                        <div class="unit-name">{% if unit.name %}{{ unit.name }}{% endif %}</div>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="community-name text-right">{% if unit.community %}{{ unit.community.name }}{% endif %}</div>
-                                        <div class="unitgroup-name text-right">{% if unit.unitgroup %}{{ unit.unitgroup.name }}{% endif %}</div>
-                                    </div>
-                                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="unit-name">{% if unit.name %}{{ unit.name }}{% endif %}</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="community-name text-right">{% if unit.community %}{{ unit.community.name }}{% endif %}</div>
+                                <div class="unitgroup-name text-right">{% if unit.unitgroup %}{{ unit.unitgroup.name }}{% endif %}</div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
+        <div class="row" id="page-show">
+            <div class="col-xs-7">
 
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
@@ -71,41 +70,6 @@
                             </div>
                         </div>
                     </div>
-{#}
-                    <div class="col-xs-12 col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h1 class="panel-title">{{ 'unit.title.occupant'|trans }}</h1>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="records_list table table-striped table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>{{ 'occupant.person.action'|trans }}</th>
-                                            <th>{{ 'occupant.person.name'|trans }}</th>
-                                            <th>{{ 'occupant.person.contact.phone'|trans }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for ticket in [1,2,3,4,5,6,7,8] %}
-                                        <tr>
-                                            <td>
-                                                <div class="btn-toolbar">
-                                                    <div class="btn-group" role="group">
-                                                        <a type="button" class="btn btn-xs btn-warning" href="#">{{ icon('search') }}</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-{#}
                 </div>
 
                 <div class="row">
@@ -141,6 +105,70 @@
                                             <td>{% if ticket.createdAt %}{{ ticket.createdAt|ago }}{% endif %}</td>
                                         </tr>
                                     {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-5">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">{{ 'unit.title.unitresident'|trans }}</h1>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="records_list table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'resident.action'|trans }}</th>
+                                            <th>{{ 'resident.name'|trans }}</th>
+                                            <th>{{ 'resident.phone'|trans }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">{{ 'unit.title.carpark'|trans }}</h1>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="records_list table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'carpark.action'|trans }}</th>
+                                            <th>{{ 'carpark.name'|trans }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h1 class="panel-title">{{ 'unit.title.warehouse'|trans }}</h1>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="records_list table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>{{ 'warehouse.action'|trans }}</th>
+                                            <th>{{ 'warehouse.unitgroup'|trans }}</th>
+                                            <th>{{ 'warehouse.name'|trans }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     </tbody>
                                 </table>
                             </div>

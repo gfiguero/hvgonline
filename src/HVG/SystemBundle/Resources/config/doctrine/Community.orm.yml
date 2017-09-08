@@ -36,6 +36,9 @@ HVG\SystemBundle\Entity\Community:
         funds:
             targetEntity: HVG\SystemBundle\Entity\Fund
             mappedBy: community
+        carparks:
+            targetEntity: HVG\SystemBundle\Entity\Carpark
+            mappedBy: community
     manyToMany:
         users:
             targetEntity: HVG\UserBundle\Entity\User
@@ -48,6 +51,9 @@ HVG\SystemBundle\Entity\Community:
         hash:
             type: string
             length: 100
+            nullable: true
+        insurancePolicyExpiration:
+            type: datetime
             nullable: true
         logo:
             type: string

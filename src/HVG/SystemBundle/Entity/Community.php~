@@ -2,8 +2,13 @@
 
 namespace HVG\SystemBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * Community
+ * @Vich\Uploadable
  */
 class Community
 {
@@ -564,5 +569,104 @@ class Community
     public function getHash()
     {
         return $this->hash;
+    }
+    /**
+     * @var string
+     */
+    private $logo;
+
+
+    /**
+     * Set logo
+     *
+     * @param string $logo
+     *
+     * @return Community
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get logo
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @Vich\UploadableField(mapping="community_logo", fileNameProperty="logo")
+     * @var File $file
+     */
+    private $file;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @return Community
+     */
+    
+    public function setFile(File $file = null)
+    {
+        $this->file = $file;
+
+        if ($file) {
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $carparks;
+
+
+    /**
+     * Add carpark
+     *
+     * @param \HVG\SystemBundle\Entity\Carpark $carpark
+     *
+     * @return Community
+     */
+    public function addCarpark(\HVG\SystemBundle\Entity\Carpark $carpark)
+    {
+        $this->carparks[] = $carpark;
+
+        return $this;
+    }
+
+    /**
+     * Remove carpark
+     *
+     * @param \HVG\SystemBundle\Entity\Carpark $carpark
+     */
+    public function removeCarpark(\HVG\SystemBundle\Entity\Carpark $carpark)
+    {
+        $this->carparks->removeElement($carpark);
+    }
+
+    /**
+     * Get carparks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarparks()
+    {
+        return $this->carparks;
     }
 }

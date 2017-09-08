@@ -1,0 +1,44 @@
+HVG\SystemBundle\Entity\Guest:
+    type: entity
+    table: Guest
+    repositoryClass: HVG\SystemBundle\Entity\GuestRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToMany:
+        people:
+            targetEntity: HVG\SystemBundle\Entity\Person
+            inversedBy: guests
+            cascade: ['persist', 'merge']
+    manyToOne:
+        unit:
+            targetEntity: HVG\SystemBundle\Entity\Unit
+            inversedBy: guests
+        carpark:
+            targetEntity: HVG\SystemBundle\Entity\Carpark
+            inversedBy: guests
+    fields:
+        note:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

@@ -630,4 +630,72 @@ class Community
         return $this->file;
     }
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $carparks;
+
+
+    /**
+     * Add carpark
+     *
+     * @param \HVG\SystemBundle\Entity\Carpark $carpark
+     *
+     * @return Community
+     */
+    public function addCarpark(\HVG\SystemBundle\Entity\Carpark $carpark)
+    {
+        $this->carparks[] = $carpark;
+
+        return $this;
+    }
+
+    /**
+     * Remove carpark
+     *
+     * @param \HVG\SystemBundle\Entity\Carpark $carpark
+     */
+    public function removeCarpark(\HVG\SystemBundle\Entity\Carpark $carpark)
+    {
+        $this->carparks->removeElement($carpark);
+    }
+
+    /**
+     * Get carparks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarparks()
+    {
+        return $this->carparks;
+    }
+    /**
+     * @var \DateTime
+     */
+    private $insurancePolicyExpiration;
+
+
+    /**
+     * Set insurancePolicyExpiration
+     *
+     * @param \DateTime $insurancePolicyExpiration
+     *
+     * @return Community
+     */
+    public function setInsurancePolicyExpiration($insurancePolicyExpiration)
+    {
+        $this->insurancePolicyExpiration = $insurancePolicyExpiration;
+
+        return $this;
+    }
+
+    /**
+     * Get insurancePolicyExpiration
+     *
+     * @return \DateTime
+     */
+    public function getInsurancePolicyExpiration()
+    {
+        return $this->insurancePolicyExpiration;
+    }
 }

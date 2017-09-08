@@ -21,7 +21,8 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <h1 class="page-header">{{ 'unitinsurancepolicy.index.title'|trans }}</h1>
                     {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
-                    {% autoescape false %}{{ 'unitinsurancepolicy.new.message'|trans }}{% endautoescape %}
+                    {% set insurancepolicyexpiration = community.insurancepolicyexpiration|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd 'de' LLLL 'de' y") %}
+                    {% autoescape false %}{{ 'unitinsurancepolicy.new.message'|trans({'%insurancepolicyexpiration%' : insurancepolicyexpiration }) }}{% endautoescape %}
                     {{ form_start(newForm, {'style':'horizontal'}) }}
                     {{ form_widget(newForm) }}
                     <div class="form-group">

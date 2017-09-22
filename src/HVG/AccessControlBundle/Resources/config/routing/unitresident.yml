@@ -2,3 +2,5 @@ accesscontrol_unitresident_searchbyunit:
     path:     /{unit}/searchbyunit
     defaults: { _controller: "HVGAccessControlBundle:UnitResident:searchByUnit" }
     methods:  GET
+    options:
+        expose: true

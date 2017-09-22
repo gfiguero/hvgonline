@@ -189,6 +189,8 @@ class Guest
      */
     public function addPerson(\HVG\SystemBundle\Entity\Person $person)
     {
+        $person->addGuest($this);
+
         $this->people[] = $person;
 
         return $this;
@@ -241,5 +243,63 @@ class Guest
     public function getUnit()
     {
         return $this->unit;
+    }
+    /**
+     * @var string
+     */
+    private $note;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Carpark
+     */
+    private $carpark;
+
+
+    /**
+     * Set note
+     *
+     * @param string $note
+     *
+     * @return Guest
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set carpark
+     *
+     * @param \HVG\SystemBundle\Entity\Carpark $carpark
+     *
+     * @return Guest
+     */
+    public function setCarpark(\HVG\SystemBundle\Entity\Carpark $carpark = null)
+    {
+        $this->carpark = $carpark;
+
+        return $this;
+    }
+
+    /**
+     * Get carpark
+     *
+     * @return \HVG\SystemBundle\Entity\Carpark
+     */
+    public function getCarpark()
+    {
+        return $this->carpark;
     }
 }

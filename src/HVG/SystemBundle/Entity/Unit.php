@@ -96,6 +96,16 @@ class Unit
     }
 
     /**
+     * Get communityName
+     *
+     * @return string
+     */
+    public function getCommunityName()
+    {
+        return (string) $this->getUnitGroup()->getName() . ' ' . $this->name;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt

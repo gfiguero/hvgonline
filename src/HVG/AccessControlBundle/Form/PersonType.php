@@ -20,11 +20,11 @@ class PersonType extends AbstractType
                 'required' => true,
                 'attr' => array('class' => 'input-lg rut'),
             ))
-            ->add('search', 'button', array(
-                'label' => false,
-                'button_class' => 'default btn-lg',
-                'attr' => array('icon' => 'search fa-fw'),
-            ))
+//            ->add('search', 'button', array(
+//                'label' => false,
+//                'button_class' => 'default btn-lg',
+//                'attr' => array('icon' => 'search fa-fw'),
+//            ))
             ->add('name', null, array(
                 'label' => 'person.form.name',
                 'translation_domain' => 'HVGAccessControlBundle',

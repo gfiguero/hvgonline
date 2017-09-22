@@ -21,6 +21,10 @@ HVG\SystemBundle\Entity\Guest:
             targetEntity: HVG\SystemBundle\Entity\Carpark
             inversedBy: guests
     fields:
+        licence:
+            type: string
+            length: 6
+            nullable: true
         note:
             type: text
             nullable: true

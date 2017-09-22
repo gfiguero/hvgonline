@@ -302,4 +302,33 @@ class Guest
     {
         return $this->carpark;
     }
+    /**
+     * @var string
+     */
+    private $licence;
+
+
+    /**
+     * Set licence
+     *
+     * @param string $licence
+     *
+     * @return Guest
+     */
+    public function setLicence($licence)
+    {
+        $this->licence = $licence;
+
+        return $this;
+    }
+
+    /**
+     * Get licence
+     *
+     * @return string
+     */
+    public function getLicence()
+    {
+        return $this->licence;
+    }
 }

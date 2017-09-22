@@ -39,6 +39,7 @@
                                 <tr>
                                     <th>{{ 'guest.form.actions'|trans }}</th>
                                     <th>{{ knp_pagination_sortable(guests, 'guest.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                    <th>{{ knp_pagination_sortable(guests, 'guest.form.licence'|trans, 'licence') }}{% if sort == 'licence' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(guests, 'guest.form.note'|trans, 'note') }}{% if sort == 'note' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(guests, 'guest.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                     <th>{{ knp_pagination_sortable(guests, 'guest.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
@@ -57,6 +58,7 @@
                                         </div>
                                     </td>
                                     <td>{% if guest.id %}{{ guest.id }}{% endif %}</td>
+                                    <td>{% if guest.licence %}{{ guest.licence }}{% endif %}</td>
                                     <td>{% if guest.note %}{{ guest.note }}{% endif %}</td>
                                     <td>{% if guest.createdAt %}{{ guest.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>
                                     <td>{% if guest.updatedAt %}{{ guest.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd-LLL-Y - HH:mm") }}{% endif %}</td>

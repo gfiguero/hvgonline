@@ -20,10 +20,12 @@ class Builder implements ContainerAwareInterface
         $sidemenu->setChildrenAttribute('class', 'nav');
         $sidemenu->setChildrenAttribute('id', 'aside-menu');
 
-        $sidemenu->addChild('sidemenu.guest.root', array('route' => 'accesscontrol_guest_new', 'routeParameters' => array('hash' => $hash)))->setExtras(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
-            'offer_account_edit',
+        $sidemenu->addChild('sidemenu.guest.new', array('route' => 'accesscontrol_guest_new', 'routeParameters' => array('hash' => $hash)))->setAttributes(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
+            'accesscontrol_guest_new',
         )));
-
+        $sidemenu->addChild('sidemenu.guest.index', array('route' => 'accesscontrol_guest_index', 'routeParameters' => array('hash' => $hash)))->setAttributes(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
+            'accesscontrol_guest_index',
+        )));
 
         return $sidemenu;
     }

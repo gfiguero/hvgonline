@@ -36,6 +36,12 @@ class GuestType extends AbstractType
                 'allow_delete' => true,
                 'attr' => array('label_col' => 3, 'widget_col' => 9),
             ))
+            ->add('licence', null, array(
+                'label' => 'guest.form.licence',
+                'translation_domain' => 'HVGAccessControlBundle',
+                'required' => false,
+                'attr' => array('label_col' => 3, 'widget_col' => 9),
+            ))
             ->add('carpark', null, array(
                 'label' => 'guest.form.carpark',
                 'translation_domain' => 'HVGAccessControlBundle',
@@ -46,6 +52,12 @@ class GuestType extends AbstractType
                 'choice_label' => function($carpark) {
                     return $carpark->getName();
                 }
+            ))
+            ->add('note', null, array(
+                'label' => 'guest.form.note',
+                'translation_domain' => 'HVGAccessControlBundle',
+                'required' => false,
+                'attr' => array('label_col' => 3, 'widget_col' => 9),
             ))
         ;
     }

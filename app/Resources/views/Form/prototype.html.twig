@@ -1,10 +1,12 @@
 {% block _hvg_accesscontrolbundle_guest_people_widget %}
     {% spaceless %}
         {% if prototype is defined %}
-            {% set prototype_html = '<div class="col-xs-2"><a href="#" class="btn btn-danger btn-lg" data-removefield="collection" data-field="__id__">' ~ icon('times fa-fw') ~ '</a></div>' %}
-            {% set prototype_html = prototype_html ~ '<div class="col-xs-10">' ~ form_widget(prototype) ~ '</div>' %}
+            {% set prototype_html = '' %}
+            {% set prototype_html = prototype_html ~ '<div class="col-xs-2"><a href="#" class="btn btn-danger btn-lg" data-removefield="collection" data-field="__id__">' ~ icon('times fa-fw') ~ '</a></div>' %}
+            {% set prototype_html = prototype_html ~ '<div class="col-xs-10 form-inline">' ~ form_widget(prototype,{'style':'inline'}) ~ '</div>' %}
             {% set prototype_html = '<div class="row guest-person">' ~ prototype_html ~ '</div>' %}
-            {% set prototype_script = '$("#__id___rut").rut();' %}
+            {% set prototype_script = '' %}
+            {% set prototype_script = prototype_script ~ '$("#__id___rut").rut();' %}
             {% set prototype_script = prototype_script ~ '$("#__id___rut").autocomplete({minLength:11,autoFocus:true,source:function(request,response){$.ajax({url:"' ~ absolute_url(path("accesscontrol_guest_search_person")) ~ '",data:{rut:request.term},success:function(data){console.log(data);response($.map(data,function(person){return{label:person.rut,value:person.rut,name:person.name};}));}});},select:function(event,ui){$("#__id___name").val(ui.item.name);}});' %}
             {% set prototype_script = '<script type="text/javascript">$(document).ready(function(){' ~ prototype_script ~ '});</script>' %}
             {% set prototype_html = prototype_html ~ prototype_script %}

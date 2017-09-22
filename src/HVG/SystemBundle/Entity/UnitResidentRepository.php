@@ -14,7 +14,7 @@ class UnitResidentRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->getEntityManager()
             ->createQueryBuilder('r')
-            ->select('r.name')
+            ->select('r.name, r.phone')
             ->from('HVGSystemBundle:UnitResident', 'r')
             ->where('r.unit = :unit')
             ->setParameters(array('unit' => $unit))

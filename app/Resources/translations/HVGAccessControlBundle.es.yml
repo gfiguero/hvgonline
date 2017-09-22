@@ -1,0 +1,21 @@
+sidemenu:
+    guest:
+        new: Registrar visita
+        index: Lista de visitas
+
+guest:
+    index:
+        title: Control de Visitas
+    form:
+        unit: Unidad
+        residents: Residentes
+        people: Visitantes
+        carpark: Estacionamiento
+        created_at: Fecha
+        name: Nombre
+        rut: Rut
+        licence: Patente
+        note: Nota
+    new:
+        title: Registrar visita
+        submit: Registrar

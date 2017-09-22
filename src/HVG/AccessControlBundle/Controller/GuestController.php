@@ -28,6 +28,7 @@ class GuestController extends Controller
         $guests = $em->getRepository('HVGSystemBundle:Guest')->findByCommunity($community);
         return $this->render('HVGAccessControlBundle:Guest:index.html.twig', array(
             'guests' => $guests,
+            'community' => $community,
         ));
     }
 
@@ -54,9 +55,6 @@ class GuestController extends Controller
                 $em->flush();
                 $request->getSession()->getFlashBag()->add( 'success', 'guest.new.flash' );
                 return $this->redirect($this->generateUrl('accesscontrol_guest_new', array('hash' => $hash)));
-                return $this->render('HVGAccessControlBundle:Guest:finish.html.twig', array(
-                    'community' => $community,
-                ));
             }
         }
 

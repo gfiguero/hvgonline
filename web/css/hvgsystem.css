@@ -7427,7 +7427,7 @@ button.close {
   }
 }
 body {
-  background-image: url("/img/bg.png");
+  background-image: url(../img/bg.png);
 }
 #wrapper {
   width: 100%;

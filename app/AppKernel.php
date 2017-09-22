@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Liip\ImagineBundle\LiipImagineBundle(),
             new HVG\UserBundle\HVGUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
 //            new Unisystem\UserBundle\UnisystemUserBundle(),
 //            new Unisystem\AdminBundle\UnisystemAdminBundle(),
 //            new Unisystem\FrontpageBundle\UnisystemFrontpageBundle(),

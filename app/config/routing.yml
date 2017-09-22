@@ -32,6 +32,9 @@ fos_user:
     resource: "@HVGUserBundle/Resources/config/routing.yml"
     prefix:   /user
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 hvg_admin:
     resource: "@HVGAdminBundle/Resources/config/routing.yml"
     prefix:   /admin

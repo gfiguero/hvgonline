@@ -17,13 +17,13 @@ class Builder implements ContainerAwareInterface
         $hash = $request->attributes->get('hash');
 
         $sidemenu = $factory->createItem('root');
-        $sidemenu->setChildrenAttribute('class', 'nav');
-        $sidemenu->setChildrenAttribute('id', 'aside-menu');
+        $sidemenu->setChildrenAttribute('class', 'nav nav-pills nav-stacked');
+        $sidemenu->setChildrenAttribute('id', 'side-menu');
 
-        $sidemenu->addChild('sidemenu.guest.new', array('route' => 'accesscontrol_guest_new', 'routeParameters' => array('hash' => $hash)))->setAttributes(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
-            'accesscontrol_guest_new',
+        $sidemenu->addChild('sidemenu.guest.new', array('route' => 'accesscontrol_guest_new', 'routeParameters' => array('hash' => $hash)))->setExtras(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
+            array('route' => 'accesscontrol_guest_new', 'parameters' => array('hash' => $hash)),
         )));
-        $sidemenu->addChild('sidemenu.guest.index', array('route' => 'accesscontrol_guest_index', 'routeParameters' => array('hash' => $hash)))->setAttributes(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
+        $sidemenu->addChild('sidemenu.guest.index', array('route' => 'accesscontrol_guest_index', 'routeParameters' => array('hash' => $hash)))->setExtras(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
             'accesscontrol_guest_index',
         )));
 

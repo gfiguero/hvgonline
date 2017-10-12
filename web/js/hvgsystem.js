@@ -1,18 +1,17 @@
 jQuery(document).ready(function($) {
-    $('#side-menu').metisMenu();
+    var optionsFileinput = {
+        showPreview: false,
+        showRemove: false,
+        showUpload: false,
+        showCancel: false,
+        showClose: false,
+        showZoom: false,
+        browseClass: 'btn btn-primary btn-block',
+        browseLabel: 'Seleccionar Archivo'
+    }
+    $(".fileinput").find('input').fileinput(optionsFileinput);
 });
 
-var optionsFileinput = {
-    showPreview: false,
-    showRemove: false,
-    showUpload: false,
-    showCancel: false,
-    showClose: false,
-    showZoom: false,
-    browseClass: 'btn btn-primary btn-block',
-    browseLabel: 'Seleccionar Archivo'
-}
-$(".fileinput").find('input').fileinput(optionsFileinput);
 
 $(function() {
     $(window).bind("load resize", function() {

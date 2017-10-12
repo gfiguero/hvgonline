@@ -6,6 +6,11 @@ HTTPDUSER=`ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]gin
 setfacl -R -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads web/media
 setfacl -dR -m u:"$HTTPDUSER":rwX -m u:`whoami`:rwX web/uploads web/media
 
+setfacl -R -m u:hvg:rwX -m u:`whoami`:rwX app/cache app/logs
+setfacl -dR -m u:hvg:rwX -m u:`whoami`:rwX app/cache app/logs
+setfacl -R -m u:hvg:rwX -m u:`whoami`:rwX web/uploads web/media
+setfacl -dR -m u:hvg:rwX -m u:`whoami`:rwX web/uploads web/media
+
 php app/console generate:bundle --namespace HVG/SystemBundle --dir src --bundle-name HVGSystemBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/UserBundle --dir src --bundle-name HVGUserBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/AdminBundle --dir src --bundle-name HVGAdminBundle --format yml --shared --no-interaction

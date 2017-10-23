@@ -62,7 +62,6 @@ class GuestController extends Controller
                 $em->persist($guest);
                 $em->flush();
                 //$request->getSession()->getFlashBag()->add( 'success', 'guest.new.flash' );
-                dump($guest);
                 return $this->redirect($this->generateUrl('accesscontrol_accessmonitor_index', array('hash' => $hash, 'accessgate' => $accessgate->getId(), 'accessguard' => $accessguard->getId(), 'unitgroup' => $unitgroup->getId(), 'unit' => $unit->getId())));
             }
         }

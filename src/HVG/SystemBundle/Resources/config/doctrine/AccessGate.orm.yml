@@ -1,0 +1,23 @@
+HVG\SystemBundle\Entity\AccessGate:
+    type: entity
+    table: AccessGate
+    repositoryClass: HVG\SystemBundle\Entity\AccessGateRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        guests:
+            targetEntity: HVG\SystemBundle\Entity\Guest
+            mappedBy: accessgate
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: accessgates
+    fields:
+        name:
+            type: string
+            length: 100
+    lifecycleCallbacks: {  }

@@ -14,8 +14,8 @@ class GuestType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder 
-            ->add('licence', null, array(
-                'label' => 'guest.form.licence',
+            ->add('carLicence', null, array(
+                'label' => 'guest.form.carLicence',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
@@ -29,8 +29,8 @@ class GuestType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 
-            ->add('carpark', null, array(
-                'label' => 'guest.form.carpark',
+            ->add('guestcarpark', null, array(
+                'label' => 'guest.form.guestcarpark',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGSystemBundle',
             )) 

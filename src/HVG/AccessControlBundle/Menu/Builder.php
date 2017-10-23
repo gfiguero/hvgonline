@@ -10,24 +10,40 @@ class Builder implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
-    public function sideMenu(FactoryInterface $factory, array $options)
+    public function topMenu(FactoryInterface $factory, array $options)
     {
 
         $request = $this->container->get('request');
         $hash = $request->attributes->get('hash');
+        $accessguard = $request->attributes->get('accessguard');
+        $accessgate = $request->attributes->get('accessgate');
 
-        $sidemenu = $factory->createItem('root');
-        $sidemenu->setChildrenAttribute('class', 'nav nav-pills nav-stacked');
-        $sidemenu->setChildrenAttribute('id', 'side-menu');
-
-        $sidemenu->addChild('sidemenu.guest.new', array('route' => 'accesscontrol_guest_new', 'routeParameters' => array('hash' => $hash)))->setExtras(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
+        $topmenu = $factory->createItem('root');
+        $topmenu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
+        $topmenu->setChildrenAttribute('id', 'top-menu');
+/*
+        $topmenu->addChild('topmenu.guest.new', array('route' => 'accesscontrol_guest_new', 'routeParameters' => array('hash' => $hash)))->setExtras(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
             array('route' => 'accesscontrol_guest_new', 'parameters' => array('hash' => $hash)),
         )));
-        $sidemenu->addChild('sidemenu.guest.index', array('route' => 'accesscontrol_guest_index', 'routeParameters' => array('hash' => $hash)))->setExtras(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
+        $topmenu->addChild('topmenu.guest.index', array('route' => 'accesscontrol_guest_index', 'routeParameters' => array('hash' => $hash)))->setExtras(array('translation_domain' => 'HVGAccessControlBundle', 'routes' => array(
             'accesscontrol_guest_index',
         )));
+*/
+        if ($accessgate and $accessguard) {
+            $topmenu->addChild('topmenu.accessgate', array('route' => 'accesscontrol_accessgate_change', 'routeParameters' => array(
+                'hash' => $hash,
+                'accessguard' => $accessguard->getId(),
+                'accessgate' => $accessgate->getId(),
+            )))->setLabel($accessgate->getName());
 
-        return $sidemenu;
+            $topmenu->addChild('topmenu.accessguard', array('route' => 'accesscontrol_accessguard_change', 'routeParameters' => array(
+                'hash' => $hash,
+                'accessguard' => $accessguard->getId(),
+                'accessgate' => $accessgate->getId(),
+            )))->setLabel($accessguard->getName());
+        }
+
+        return $topmenu;
     }
 
 }

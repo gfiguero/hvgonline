@@ -1,0 +1,24 @@
+unitlog_index:
+    path:     /
+    defaults: { _controller: "HVGSystemBundle:UnitLog:index" }
+    methods:  GET
+
+unitlog_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGSystemBundle:UnitLog:show" }
+    methods:  GET
+
+unitlog_new:
+    path:     /new
+    defaults: { _controller: "HVGSystemBundle:UnitLog:new" }
+    methods:  [GET, POST]
+
+unitlog_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGSystemBundle:UnitLog:edit" }
+    methods:  [GET, POST]
+
+unitlog_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGSystemBundle:UnitLog:delete" }
+    methods:  DELETE

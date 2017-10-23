@@ -698,4 +698,121 @@ class Community
     {
         return $this->insurancePolicyExpiration;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $guestcarparks;
+
+
+    /**
+     * Add guestcarpark
+     *
+     * @param \HVG\SystemBundle\Entity\GuestCarpark $guestcarpark
+     *
+     * @return Community
+     */
+    public function addGuestcarpark(\HVG\SystemBundle\Entity\GuestCarpark $guestcarpark)
+    {
+        $this->guestcarparks[] = $guestcarpark;
+
+        return $this;
+    }
+
+    /**
+     * Remove guestcarpark
+     *
+     * @param \HVG\SystemBundle\Entity\GuestCarpark $guestcarpark
+     */
+    public function removeGuestcarpark(\HVG\SystemBundle\Entity\GuestCarpark $guestcarpark)
+    {
+        $this->guestcarparks->removeElement($guestcarpark);
+    }
+
+    /**
+     * Get guestcarparks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGuestcarparks()
+    {
+        return $this->guestcarparks;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accessgates;
+
+
+    /**
+     * Add accessgate
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGate $accessgate
+     *
+     * @return Community
+     */
+    public function addAccessgate(\HVG\SystemBundle\Entity\AccessGate $accessgate)
+    {
+        $this->accessgates[] = $accessgate;
+
+        return $this;
+    }
+
+    /**
+     * Remove accessgate
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGate $accessgate
+     */
+    public function removeAccessgate(\HVG\SystemBundle\Entity\AccessGate $accessgate)
+    {
+        $this->accessgates->removeElement($accessgate);
+    }
+
+    /**
+     * Get accessgates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccessgates()
+    {
+        return $this->accessgates;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accessguards;
+
+
+    /**
+     * Add accessguard
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGuard $accessguard
+     *
+     * @return Community
+     */
+    public function addAccessguard(\HVG\SystemBundle\Entity\AccessGuard $accessguard)
+    {
+        $this->accessguards[] = $accessguard;
+
+        return $this;
+    }
+
+    /**
+     * Remove accessguard
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGuard $accessguard
+     */
+    public function removeAccessguard(\HVG\SystemBundle\Entity\AccessGuard $accessguard)
+    {
+        $this->accessguards->removeElement($accessguard);
+    }
+
+    /**
+     * Get accessguards
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccessguards()
+    {
+        return $this->accessguards;
+    }
 }

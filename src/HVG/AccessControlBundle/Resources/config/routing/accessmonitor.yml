@@ -1,0 +1,8 @@
+accesscontrol_accessmonitor_index:
+    path:     /{hash}/{accessgate}/{accessguard}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGAccessControlBundle:AccessMonitor:index", unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        unitgroup: '\d+|'
+        unit: '\d+|'
+

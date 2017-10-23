@@ -3,39 +3,40 @@
         {% if prototype is defined %}
             {% set prototype_html = '' %}
             {% set prototype_html = prototype_html ~ '<div class="col-xs-2"><a href="#" class="btn btn-danger btn-lg" data-removefield="collection" data-field="__id__">' ~ icon('times fa-fw') ~ '</a></div>' %}
-            {% set prototype_html = prototype_html ~ '<div class="col-xs-10 form-inline">' ~ form_widget(prototype,{'style':'inline'}) ~ '</div>' %}
+            {% set prototype_html = prototype_html ~ '<div class="col-xs-8">' ~ form_widget(prototype,{'style':'horizontal'}) ~ '</div>' %}
+            {% set prototype_html = prototype_html ~ '<div class="col-xs-2"><a href="#" class="btn btn-primary btn-lg" id="__id___search">' ~ icon('search fa-fw') ~ '</a></div>' %}
             {% set prototype_html = '<div class="row guest-person">' ~ prototype_html ~ '</div>' %}
             {% set prototype_script = '' %}
-            {% set prototype_script = prototype_script ~ '$("#__id___rut").rut();' %}
-            {% set prototype_script = prototype_script ~ '$("#__id___rut").autocomplete({minLength:11,autoFocus:true,source:function(request,response){$.ajax({url:"' ~ absolute_url(path("accesscontrol_guest_search_person")) ~ '",data:{rut:request.term},success:function(data){console.log(data);response($.map(data,function(person){return{label:person.rut,value:person.rut,name:person.name};}));}});},select:function(event,ui){$("#__id___name").val(ui.item.name);}});' %}
+            {% set prototype_script = prototype_script ~ '$("#__id___rut").rut().focus(function(){$("#__id___error").remove();$("#__id___notfound").remove();}).on("rutInvalido", function(){ $(this).parent().addClass("has-error").append(\'<span id="__id___error" class="help-block">Rut Inválido.</span>\') }).on("rutValido", function(){ $(this).parent().removeClass("has-error") });' %}
+            {% set prototype_script = prototype_script ~ '$("#__id___search").click(function(){if($.validateRut($("#__id___rut").val(), null, { minimumLength: 4 })){$.ajax({url:"' ~ absolute_url(path("accesscontrol_guest_search_person")) ~ '",data:{rut:$("#__id___rut").val()},success:function(data){ $("#__id___name").val(data.name); $("#__id___notfound").remove(); if(data.status){$("#__id___rut").parent().append(\'<span id="__id___notfound" class="help-block">Rut no registrado.</span>\')} }});}});' %}
             {% set prototype_script = '<script type="text/javascript">$(document).ready(function(){' ~ prototype_script ~ '});</script>' %}
             {% set prototype_html = prototype_html ~ prototype_script %}
             {% set attr = attr|merge({'data-prototype': prototype_html }) %}
             {% set attr = attr|merge({'data-prototype-name': prototype_name }) %}
         {% endif %}
         <div {{ block('widget_container_attributes') }}>
-            <div class="row guest-person">
-                <div class="col-xs-10">
-                    <a href="#" class="btn btn-success btn-lg" data-addfield="collection" data-collection="{{ form.vars.id }}" data-prototype-name="{{ prototype_name }}">{{ icon('plus fa-fw') }}</a>
-                </div>
-            </div>
             <ul class="bc-collection list-unstyled">
                 {% for field in form %}
                     <li>
                         <div class="row">
+                            <div class="col-xs-10">
+                                {{ form_widget(field) }}
+                                {{ form_errors(field) }}
+                            </div>
                             {% if form.vars.allow_delete %}
                                 <div class="col-xs-2">
                                     <a href="#" class="btn btn-danger btn-lg" data-removefield="collection" data-field="{{ field.vars.id }}">{{ icon('times fa-fw') }}</a>
                                 </div>
                             {% endif %}
-                            <div class="col-xs-10">
-                                {{ form_widget(field) }}
-                                {{ form_errors(field) }}
-                            </div>
                         </div>
                     </li>
                 {% endfor %}
             </ul>
+            <div class="row guest-person">
+                <div class="col-xs-12">
+                    <a href="#" class="btn btn-success btn-lg btn-block" data-addfield="collection" data-collection="{{ form.vars.id }}" data-prototype-name="{{ prototype_name }}">{{ icon('plus fa-fw') }}&nbsp;{{ form.vars.add_button_text|trans({}, translation_domain) }}</a>
+                </div>
+            </div>
         </div>
     {% endspaceless %}
 {% endblock _hvg_accesscontrolbundle_guest_people_widget %}

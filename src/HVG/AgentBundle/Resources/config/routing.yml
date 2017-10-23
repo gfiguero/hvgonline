@@ -6,6 +6,14 @@ hvg_agent_unitgroup:
     resource: "@HVGAgentBundle/Resources/config/routing/unitgroup.yml"
     prefix:   /unitgroup
 
+hvg_agent_unitlog:
+    resource: "@HVGAgentBundle/Resources/config/routing/unitlog.yml"
+    prefix:   /unitlog
+
+hvg_agent_unitmemo:
+    resource: "@HVGAgentBundle/Resources/config/routing/unitmemo.yml"
+    prefix:   /unitmemo
+
 hvg_agent_community:
     resource: "@HVGAgentBundle/Resources/config/routing/community.yml"
     prefix:   /community

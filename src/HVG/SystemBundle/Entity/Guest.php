@@ -331,4 +331,120 @@ class Guest
     {
         return $this->licence;
     }
+    /**
+     * @var string
+     */
+    private $carLicence;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\GuestCarpark
+     */
+    private $guestcarpark;
+
+
+    /**
+     * Set carLicence
+     *
+     * @param string $carLicence
+     *
+     * @return Guest
+     */
+    public function setCarLicence($carLicence)
+    {
+        $this->carLicence = $carLicence;
+
+        return $this;
+    }
+
+    /**
+     * Get carLicence
+     *
+     * @return string
+     */
+    public function getCarLicence()
+    {
+        return $this->carLicence;
+    }
+
+    /**
+     * Set guestcarpark
+     *
+     * @param \HVG\SystemBundle\Entity\GuestCarpark $guestcarpark
+     *
+     * @return Guest
+     */
+    public function setGuestcarpark(\HVG\SystemBundle\Entity\GuestCarpark $guestcarpark = null)
+    {
+        $this->guestcarpark = $guestcarpark;
+
+        return $this;
+    }
+
+    /**
+     * Get guestcarpark
+     *
+     * @return \HVG\SystemBundle\Entity\GuestCarpark
+     */
+    public function getGuestcarpark()
+    {
+        return $this->guestcarpark;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\AccessGate
+     */
+    private $accessgate;
+
+
+    /**
+     * Set accessgate
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGate $accessgate
+     *
+     * @return Guest
+     */
+    public function setAccessgate(\HVG\SystemBundle\Entity\AccessGate $accessgate = null)
+    {
+        $this->accessgate = $accessgate;
+
+        return $this;
+    }
+
+    /**
+     * Get accessgate
+     *
+     * @return \HVG\SystemBundle\Entity\AccessGate
+     */
+    public function getAccessgate()
+    {
+        return $this->accessgate;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\AccessGuard
+     */
+    private $accessguard;
+
+
+    /**
+     * Set accessguard
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGuard $accessguard
+     *
+     * @return Guest
+     */
+    public function setAccessguard(\HVG\SystemBundle\Entity\AccessGuard $accessguard = null)
+    {
+        $this->accessguard = $accessguard;
+
+        return $this;
+    }
+
+    /**
+     * Get accessguard
+     *
+     * @return \HVG\SystemBundle\Entity\AccessGuard
+     */
+    public function getAccessguard()
+    {
+        return $this->accessguard;
+    }
 }

@@ -1,0 +1,124 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'accessgate.show.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul class="nav nav-pills">
+                {% for current in unitgroups %}
+                    <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : current.id }) }}">{{ current.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {% if units is not empty %}
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul class="nav nav-pills">
+                {% for current in units %}
+                    <li {% if current == unit %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : current.id }) }}">{{ current.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if unitresidents is not empty %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accessmonitor.index.residents'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="records_list table table-striped table-hover">
+            {% for unitresident in unitresidents %}
+                <tr>
+                    <td>{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
+                    <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if unitmemos is not empty %}
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accessmonitor.index.unitmemos'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="records_list table table-striped table-hover">
+                <tr>
+                    <th>{{ 'unitmemos.form.createdAt'|trans }}</th>
+                    <th>{{ 'unitmemos.form.description'|trans }}</th>
+                    <th>{{ 'unitmemos.form.expiredAt'|trans }}</th>
+                </tr>
+            {% for unitmemo in unitmemos %}
+                <tr>
+                    <td>{% if unitmemo.createdAt %}{{ unitmemo.createdAt|ago }}{% endif %}</td>
+                    <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
+                    <td>{% if unitmemo.expiredAt %}{{ unitmemo.expiredAt|ago }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if unit %}
+    <p>
+        <a href="{{ path('accesscontrol_guest_new', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-success btn-lg btn-block">{{ icon('plus fa-fw') }}&nbsp;{{ 'guest.new.link'|trans }}</a>
+    </p>
+    {% endif %}
+
+    {% if guests is not empty %}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accessmonitor.index.guests'|trans }}</h3>
+        </div>
+{#}
+        <div class="panel-body">
+            {% for guest in guests %}
+            <div class="alert alert-success">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>{{ guest.createdat|ago }}</h4>
+                        <h4>{% if guest.carLicence %}{{ 'guest.form.carlicence'|trans }}:&nbsp;{{ guest.carLicence }}{% endif %}</h4>
+                        <h4>{% if guest.guestcarpark %}{{ 'guest.form.guestcarpark'|trans }}:&nbsp;{{ guest.guestcarpark.name }}{% endif %}</h4>
+                    </div>
+                    <div class="col-md-6">
+                        {% for person in guest.people %}
+                            <p>{{ person.name }}&nbsp;{{ person.rut }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{#}
+        <div class="table-responsive">
+            <table class="records_list table table-hover">
+            {% for guest in guests %}
+                {% for person in guest.people %}
+                    <tr>
+                        <td>{{ guest.id }}</td>
+                        <td>{% if person.name %}{{ person.name }}{% endif %}</td>
+                        <td>{% if person.rut %}{{ person.rut }}{% endif %}</td>
+                        <td>{% if guest.carLicence %}{{ guest.carLicence }}{% endif %}</td>
+                        <td>{{ guest.createdat|ago }}</td>
+                        <td>{% if guest.guestcarpark %}{{ guest.guestcarpark.name }}{% endif %}</td>
+                        <td>{% if guest.accessguard %}{{ guest.accessguard.name }}{% endif %}</td>
+                        <td>{% if guest.accessgate %}{{ guest.accessgate.name }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

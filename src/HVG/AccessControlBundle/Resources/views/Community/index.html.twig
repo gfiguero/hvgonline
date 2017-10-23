@@ -1,0 +1,20 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'community.index.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    <section>
+        <div class="container">
+            <div class="row" id="page-header">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h1 class="page-header">{{ 'community.index.title'|trans }}</h1>
+                    {% for community in communities %}
+                        <a href="{{ path('accesscontrol_accessgate_index', {'hash' : community.hash }) }}" class="btn btn-primary btn-lg btn-block">{{ community }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

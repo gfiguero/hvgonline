@@ -39,6 +39,15 @@ HVG\SystemBundle\Entity\Community:
         carparks:
             targetEntity: HVG\SystemBundle\Entity\Carpark
             mappedBy: community
+        guestcarparks:
+            targetEntity: HVG\SystemBundle\Entity\GuestCarpark
+            mappedBy: community
+        accessgates:
+            targetEntity: HVG\SystemBundle\Entity\AccessGate
+            mappedBy: community
+        accessguards:
+            targetEntity: HVG\SystemBundle\Entity\AccessGuard
+            mappedBy: community
     manyToMany:
         users:
             targetEntity: HVG\UserBundle\Entity\User

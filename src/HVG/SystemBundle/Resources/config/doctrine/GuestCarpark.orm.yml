@@ -1,0 +1,44 @@
+HVG\SystemBundle\Entity\GuestCarpark:
+    type: entity
+    table: GuestCarpark
+    repositoryClass: HVG\SystemBundle\Entity\GuestCarparkRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: guestcarparks
+    oneToMany:
+        guests:
+            targetEntity: HVG\SystemBundle\Entity\Guest
+            mappedBy: guestcarpark
+    fields:
+        name:
+            type: string
+            length: 100
+            nullable: true
+        note:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

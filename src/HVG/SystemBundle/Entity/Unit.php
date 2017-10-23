@@ -568,4 +568,82 @@ class Unit
     {
         return $this->residents;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $logs;
+
+
+    /**
+     * Add log
+     *
+     * @param \HVG\SystemBundle\Entity\UnitLog $log
+     *
+     * @return Unit
+     */
+    public function addLog(\HVG\SystemBundle\Entity\UnitLog $log)
+    {
+        $this->logs[] = $log;
+
+        return $this;
+    }
+
+    /**
+     * Remove log
+     *
+     * @param \HVG\SystemBundle\Entity\UnitLog $log
+     */
+    public function removeLog(\HVG\SystemBundle\Entity\UnitLog $log)
+    {
+        $this->logs->removeElement($log);
+    }
+
+    /**
+     * Get logs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLogs()
+    {
+        return $this->logs;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $memos;
+
+
+    /**
+     * Add memo
+     *
+     * @param \HVG\SystemBundle\Entity\UnitMemo $memo
+     *
+     * @return Unit
+     */
+    public function addMemo(\HVG\SystemBundle\Entity\UnitMemo $memo)
+    {
+        $this->memos[] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Remove memo
+     *
+     * @param \HVG\SystemBundle\Entity\UnitMemo $memo
+     */
+    public function removeMemo(\HVG\SystemBundle\Entity\UnitMemo $memo)
+    {
+        $this->memos->removeElement($memo);
+    }
+
+    /**
+     * Get memos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMemos()
+    {
+        return $this->memos;
+    }
 }

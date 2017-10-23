@@ -10,25 +10,21 @@
             <h1 class="page-header">{{ 'guest.new.title'|trans }}</h1>
             {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
             {{ form_start(newForm, {'style':'horizontal'}) }}
-            {{ form_row(newForm.unit) }}
-            <div class="form-group">
-                <label class="control-label col-lg-3 required">{{'guest.form.residents'|trans}}</label>
-                <div class="col-lg-9">
-                    <div class="panel panel-default">
-                        <ul class="list-group" id="unit-residents"><li class="list-group-item">Seleccione Unidad</li></ul>
-                    </div>
-                </div>
-            </div>
             {{ form_row(newForm.people) }}
-            {{ form_row(newForm.licence) }}
-            {{ form_row(newForm.carpark) }}
+            {{ form_row(newForm.carlicence) }}
+            {{ form_row(newForm.guestcarpark) }}
             {{ form_row(newForm.note) }}
             <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                    <button type="submit" class="btn btn-primary btn-lg">{{ icon('send fa-fw') }}&nbsp;{{ 'guest.new.submit'|trans }}</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">{{ icon('send fa-fw') }}&nbsp;{{ 'guest.new.submit'|trans }}</button>
                 </div>
             </div>
             {{ form_end(newForm) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9 col-lg-offset-3">
+            <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-danger btn-lg btn-block">{{ icon('times fa-fw') }}&nbsp;{{ 'guest.new.cancel'|trans }}</a>
         </div>
     </div>
 {% endblock %}
@@ -36,10 +32,12 @@
 {% block javascript %}
 <script src="{{ asset('js/braincrafted/bc-bootstrap-collection.js') }}"></script>
 <script src="{{ asset('js/jquery.rut.js') }}"></script>
+{#}
 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+/*
     var optionsUnit = {
         enableFiltering: true,
         enableCaseInsensitiveFiltering: true,
@@ -60,7 +58,6 @@ $(document).ready(function() {
                 $.each(data, function(i, item){
                     $('#unit-residents').append('<li class="list-group-item">' + data[i].name + '<span class="badge" style="font-size: 15px; background-color: #6699ff;">' + data[i].phone + '</span></li>');
                 })
-                console.log(data);
             });
         }
     };
@@ -79,15 +76,10 @@ $(document).ready(function() {
             filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-lg multiselect-clear-filter" type="button"><i class="glyphicon glyphicon-remove-circle"></i></button></span>',
         },
     };
-    $('#hvg_accesscontrolbundle_guest_carpark').multiselect(optionsCarpark);
+    $('#hvg_accesscontrolbundle_guest_guestcarpark').multiselect(optionsCarpark);
+*/
 });
 </script>
+{#}
 {% endblock %}
 
-{% block stylesheet %}
-<style type="text/css">
-.guest-person {
-    margin-bottom: 5px;
-}
-</style>
-{% endblock %}

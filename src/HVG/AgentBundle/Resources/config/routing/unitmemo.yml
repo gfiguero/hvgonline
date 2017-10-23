@@ -1,0 +1,28 @@
+agent_unitmemo_index:
+    path:     /{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:index", community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+agent_unitmemo_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:show" }
+    methods:  GET
+
+agent_unitmemo_new:
+    path:     /{unit}/new
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:new" }
+    methods:  [GET, POST]
+
+agent_unitmemo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:edit" }
+    methods:  [GET, POST]
+
+agent_unitmemo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:delete" }
+    methods:  DELETE

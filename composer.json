@@ -79,7 +79,8 @@
             "jquery": "*",
             "jquery-ui": "*",
             "bootstrap-toggle": "*",
-            "jquery-ui-bootstrap": "*"
+            "jquery-ui-bootstrap": "*",
+            "bootswatch": "*"
         },
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",

@@ -3,18 +3,27 @@ php app/console doctrine:generate:entities HVGSystemBundle:Result --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Community --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:UnitGroup --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Unit --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:UnitLog --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:UnitMemo --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:UnitResident --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Warehouse --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Carpark --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:GuestCarpark --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Area --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Vehicle --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:AccessGate --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:AccessGuard --path=src
+
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Result --format=yml --with-write --overwrite --no-interaction --route-prefix=result
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Community --format=yml --with-write --overwrite --no-interaction --route-prefix=community
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:UnitGroup --format=yml --with-write --overwrite --no-interaction --route-prefix=unitgroup
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Unit --format=yml --with-write --overwrite --no-interaction --route-prefix=unit
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:UnitLog --format=yml --with-write --overwrite --no-interaction --route-prefix=unitlog
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:UnitMemo --format=yml --with-write --overwrite --no-interaction --route-prefix=unitmemo
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:UnitResident --format=yml --with-write --overwrite --no-interaction --route-prefix=unitresident
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Warehouse --format=yml --with-write --overwrite --no-interaction --route-prefix=warehouse
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Carpark --format=yml --with-write --overwrite --no-interaction --route-prefix=carpark
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:GuestCarpark --format=yml --with-write --overwrite --no-interaction --route-prefix=guestcarpark
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Area --format=yml --with-write --overwrite --no-interaction --route-prefix=area
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Vehicle --format=yml --with-write --overwrite --no-interaction --route-prefix=vehicle
 

@@ -1,0 +1,18 @@
+accesscontrol_accessgate_index:
+    path:     /{hash}/index
+    defaults: { _controller: "HVGAccessControlBundle:AccessGate:index" }
+    methods:  GET
+
+accesscontrol_accessgate_change:
+    path:     /{hash}/{accessgate}/{accessguard}/change
+    defaults: { _controller: "HVGAccessControlBundle:AccessGate:change" }
+    methods:  GET
+
+#accesscontrol_accessgate_show:
+#    path:     /{hash}/{accessgate}/{unitgroup}/{unit}
+#    defaults: { _controller: "HVGAccessControlBundle:AccessGate:show", unitgroup: '', unit: '' }
+#    methods:  GET
+#    requirements:
+#        unitgroup: '\d+|'
+#        unit: '\d+|'
+#

@@ -1,0 +1,82 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'accessgate.show.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    <section>
+        <div class="container">
+            <div class="row" id="page-header">
+                <div class="col-md-12">
+                    <h1 class="page-header">{{ 'accessgate.show.title'|trans }}</h1>
+                </div>
+            </div>
+
+            <div class="row" id="page-filter">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                {% for unitgroup in unitgroups %}
+                                    <li {% if unitgroup == currentUnitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessgate_show', {'hash' : community.hash, 'accessgate' : accessgate.id, 'unitgroup' : unitgroup.id }) }}">{{ unitgroup.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    {% if units is not empty %}
+                    <div class="panel">
+                        <div class="panel-body">
+                            <ul class="nav nav-pills">
+                                {% for unit in units %}
+                                    <li {% if unit == currentUnit %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessgate_show', {'hash' : community.hash, 'accessgate' : accessgate.id, 'unitgroup' : currentUnitgroup.id, 'unit' : unit.id }) }}">{{ unit.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if unitresidents is not empty %}
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">{{ 'accessgate.show.residents'|trans }}</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="records_list table table-striped table-hover">
+                            {% for unitresident in unitresidents %}
+                                <tr>
+                                    <td>{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
+                                    <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if unitmemos is not empty %}
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="panel-title">{{ 'accessgate.show.unitmemos'|trans }}</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="records_list table table-striped table-hover">
+                            {% for unitmemo in unitmemos %}
+                                <tr>
+                                    <td>{% if unitmemo.createdAt %}{{ unitmemo.createdAt|ago }}{% endif %}</td>
+                                    <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
+                                    <td>{% if unitmemo.expiredAt %}{{ unitmemo.expiredAt|ago }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- /#page-filter -->
+
+        </div>
+    </section>
+{% endblock %}

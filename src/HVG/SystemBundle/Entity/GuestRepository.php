@@ -3,6 +3,7 @@
 namespace HVG\SystemBundle\Entity;
 
 use HVG\SystemBundle\Entity\Community;
+use HVG\SystemBundle\Entity\Unit;
 /**
  * GuestRepository
  *
@@ -20,4 +21,20 @@ class GuestRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getLastByUnit(Unit $unit = null)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('g');
+        $qb->select('g', 'gp', 'gc', 'gag', 'gat')
+            ->from('HVGSystemBundle:Guest', 'g')
+            ->leftJoin('g.people', 'gp')
+            ->leftJoin('g.guestcarpark', 'gc')
+            ->leftJoin('g.accessguard', 'gag')
+            ->leftJoin('g.accessgate', 'gat')
+            ->orderBy('g.createdAt', 'DESC')
+            ->where('g.unit = :unit')
+            ->andWhere('g.createdAt > :datetime')
+            ->setParameters(array('unit' => $unit, 'datetime' => new \DateTime('-24 hours')))
+        ;
+        return $qb->getQuery()->getResult();
+    }
 }

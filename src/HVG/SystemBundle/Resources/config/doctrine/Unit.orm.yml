@@ -42,6 +42,12 @@ HVG\SystemBundle\Entity\Unit:
         carparks:
             targetEntity: HVG\SystemBundle\Entity\Carpark
             mappedBy: unit
+        logs:
+            targetEntity: HVG\SystemBundle\Entity\UnitLog
+            mappedBy: unit
+        memos:
+            targetEntity: HVG\SystemBundle\Entity\UnitMemo
+            mappedBy: unit
     fields:
         name:
             type: string

@@ -1,0 +1,5 @@
+accesscontrol_community_index:
+    path:     /index
+    defaults: { _controller: "HVGAccessControlBundle:Community:index" }
+    methods:  GET
+

@@ -10,12 +10,32 @@ guest:
         unit: Unidad
         residents: Residentes
         people: Visitantes
-        carpark: Estacionamiento
+        addperson: Agregar visitante
+        guestcarpark: Estacionamiento
         created_at: Fecha
         name: Nombre
         rut: Rut
-        licence: Patente
+        carlicence: Patente Vehicular
         note: Nota
     new:
+        link: Registrar nueva visita
         title: Registrar visita
         submit: Registrar
+        cancel: Cancelar
+
+person:
+    form:
+        rut: Rut
+        name: Nombre
+
+unitmemos:
+    form:
+        description: Descripción
+        expiredAt: Vencimiento
+        createdAt: Registro
+
+accessmonitor:
+    index:
+        residents: Residentes
+        unitmemos: Memos
+        guests: Últimas Visitas

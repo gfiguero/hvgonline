@@ -2,6 +2,22 @@ hvg_accesscontrol_guest:
     resource: "@HVGAccessControlBundle/Resources/config/routing/guest.yml"
     prefix:   /guest
 
+hvg_accesscontrol_community:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/community.yml"
+    prefix:   /community
+
+hvg_accesscontrol_accessgate:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/accessgate.yml"
+    prefix:   /accessgate
+
+hvg_accesscontrol_accessguard:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/accessguard.yml"
+    prefix:   /accessguard
+
+hvg_accesscontrol_accessmonitor:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/accessmonitor.yml"
+    prefix:   /accessmonitor
+
 hvg_accesscontrol_unitresident:
     resource: "@HVGAccessControlBundle/Resources/config/routing/unitresident.yml"
     prefix:   /unitresident

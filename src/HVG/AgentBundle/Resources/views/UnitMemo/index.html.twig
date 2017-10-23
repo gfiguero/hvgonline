@@ -1,0 +1,94 @@
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
+
+{% block title %}{{ 'unitmemo.index.title'|trans }}{% endblock %}
+
+{% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
+
+{% block agent %}
+    <div id="page-wrapper">
+        <div class="row" id="page-header">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unitmemo.index.title'|trans }}</h1>
+                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+            </div>
+        </div>
+        <!-- /#page-header -->
+
+        <div class="row" id="page-filter">
+            <div class="col-lg-12">
+                <p>
+                    <ul class="nav nav-pills">
+                        {% for community in communities %}
+                            <li {% if community == currentCommunity %}class="active"{% endif %}><a href="{{ path('agent_unitmemo_index', {community : community.id}) }}">{{ community.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </p>
+                <p>
+                    <ul class="nav nav-pills">
+                        {% for unitgroup in unitgroups %}
+                            <li {% if unitgroup == currentUnitgroup %}class="active"{% endif %}><a href="{{ path('agent_unitmemo_index', {community : unitgroup.community.id, unitgroup : unitgroup.id}) }}">{{ unitgroup.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </p>
+                <p>
+                    <ul class="nav nav-pills">
+                        {% for unit in units %}
+                            <li {% if unit == currentUnit %}class="active"{% endif %}><a href="{{ path('agent_unitmemo_index', {community : unit.community.id, unitgroup : unit.unitgroup.id, unit : unit.id}) }}">{{ unit.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <!-- /#page-filter -->
+
+        {% if currentUnit %}
+        <div class="row" id="page-toolbar">
+            <div class="col-lg-12 block">
+                <p>
+                    <div class="btn-toolbar">
+                        <a type="button" class="btn btn-success" href="{{ path('agent_unitmemo_new', {unit: currentUnit.id}) }}">{{ icon('plus') }}&nbsp;{{ 'unitmemo.new.link'|trans }}</a>
+                    </div>
+                </p>
+            </div>
+        </div>
+
+        <div class="row" id="page-list">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">{{ 'unitmemo.index.list'|trans }}</h1>
+                    </div>
+                    {% if unitmemos is empty %}
+                    <div class="panel-body">
+                        <div class="text-center">{{ 'unitmemo.index.empty'|trans }}</div>
+                    </div>
+                    {% else %}
+                    <div class="table-responsive">
+                        <table class="records_list table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>{{ 'unitmemo.form.description'|trans }}</th>
+                                    <th>{{ 'unitmemo.form.expiredAt'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for unitmemo in unitmemos %}
+                                <tr>
+                                    <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
+                                    <td>{% if unitmemo.expiredAt %}{{ unitmemo.expiredAt|ago }}{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                </div>                
+            </div>
+        </div>
+        <!-- /#page-list -->        
+        {% endif %}
+
+    </div>
+    <!-- /#page-wrapper -->
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'HVGSystemBundle::base.html.twig' %}
+{% use 'HVGSystemBundle::navbar.html.twig' %}
+{% use 'HVGSystemBundle::sidebar.html.twig' %}
+{% use 'HVGSystemBundle::icons.html.twig' %}
+
+{% set translation_domain = 'HVGSystemBundle' %}
+{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'unitmemo.title.index'|trans }}{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+        <div class="row" id="page-header">
+            <div class="col-lg-12">
+                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unitmemo.title.index'|trans }}</h1>
+                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+            </div>
+        </div>
+        <!-- /#page-header -->
+
+        <div class="row" id="page-toolbar">
+            <div class="col-lg-12">
+                <div class="btn-toolbar">
+                    <a type="button" class="btn btn-default" href="{{ path('unitmemo_index') }}">{{ icon('list') }}&nbsp;{{ 'unitmemo.list.link'|trans }}</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('pencil') }}&nbsp;{{ 'unitmemo.edit.link'|trans }}</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalDelete">{{ icon('trash-o') }}&nbsp;{{ 'unitmemo.delete.link'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-toolbar -->
+
+        <div class="row" id="page-show">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">{{ 'unitmemo.show.properties'|trans }}</h2>
+                    </div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                            <dt>{{ 'unitmemo.form.id'|trans }}</dt>
+                                <dd>{% if unitMemo.id %}{{ unitMemo.id }}{% endif %}</dd>
+                            <dt>{{ 'unitmemo.form.description'|trans }}</dt>
+                                <dd>{% if unitMemo.description %}{{ unitMemo.description }}{% endif %}</dd>
+                            <dt>{{ 'unitmemo.form.expiredAt'|trans }}</dt>
+                                <dd>{% if unitMemo.expiredAt %}{{ unitMemo.expiredAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y") }}{% endif %}</dd>
+                            <dt>{{ 'unitmemo.form.createdAt'|trans }}</dt>
+                                <dd>{% if unitMemo.createdAt %}{{ unitMemo.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                            <dt>{{ 'unitmemo.form.updatedAt'|trans }}</dt>
+                                <dd>{% if unitMemo.updatedAt %}{{ unitMemo.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d 'de' LLLL 'de' Y - HH:mm") }}{% endif %}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-show -->
+
+        <div id="page-modal">
+            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'unitmemo.edit.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    {{ form_start(editForm, { 'style': 'horizontal' }) }}
+                                        {{ form_widget(editForm) }}
+                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'unitmemo.edit.submit'|trans }}</button>
+                                        </div></div>
+                                    {{ form_end(editForm) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                            <h4 class="modal-title" id="myModalLabel">{{ 'unitmemo.delete.title'|trans }}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-xs-2 text-center">{{ icon('exclamation-triangle fa-5x') }}</div>
+                                <div class="col-xs-10"><p>{{ 'unitmemo.delete.message'|trans }}</p></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            {{ form_start(deleteForm) }}
+                                <button type="submit" class="btn btn-danger pull-right">{{ icon('trash-o') }}&nbsp;{{ 'unitmemo.delete.submit'|trans }}</button>
+                            {{ form_end(deleteForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /#page-modal -->
+
+    </div>
+    <!-- /#page-wrapper -->
+{% endblock %}
+

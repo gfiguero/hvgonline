@@ -4,7 +4,7 @@ accesscontrol_guest_links:
     methods:  GET
 
 accesscontrol_guest_index:
-    path:     /{hash}/index
+    path:     /index
     defaults: { _controller: "HVGAccessControlBundle:Guest:index" }
     methods:  GET
 
@@ -24,6 +24,6 @@ accesscontrol_guest_search_person:
     methods:  GET
 
 accesscontrol_guest_new:
-    path:     /{hash}/new
+    path:     /{hash}/{accessgate}/{accessguard}/{unitgroup}/{unit}/new
     defaults: { _controller: "HVGAccessControlBundle:Guest:new" }
     methods:  [GET, POST]

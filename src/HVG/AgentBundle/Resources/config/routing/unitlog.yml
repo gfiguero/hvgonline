@@ -1,0 +1,28 @@
+agent_unitlog_index:
+    path:     /{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGAgentBundle:UnitLog:index", community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+agent_unitlog_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGAgentBundle:UnitLog:show" }
+    methods:  GET
+
+agent_unitlog_new:
+    path:     /new
+    defaults: { _controller: "HVGAgentBundle:UnitLog:new" }
+    methods:  [GET, POST]
+
+agent_unitlog_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGAgentBundle:UnitLog:edit" }
+    methods:  [GET, POST]
+
+agent_unitlog_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGAgentBundle:UnitLog:delete" }
+    methods:  DELETE

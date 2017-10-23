@@ -17,11 +17,17 @@ HVG\SystemBundle\Entity\Guest:
         unit:
             targetEntity: HVG\SystemBundle\Entity\Unit
             inversedBy: guests
-        carpark:
-            targetEntity: HVG\SystemBundle\Entity\Carpark
+        guestcarpark:
+            targetEntity: HVG\SystemBundle\Entity\GuestCarpark
+            inversedBy: guests
+        accessgate:
+            targetEntity: HVG\SystemBundle\Entity\AccessGate
+            inversedBy: guests
+        accessguard:
+            targetEntity: HVG\SystemBundle\Entity\AccessGuard
             inversedBy: guests
     fields:
-        licence:
+        carLicence:
             type: string
             length: 6
             nullable: true

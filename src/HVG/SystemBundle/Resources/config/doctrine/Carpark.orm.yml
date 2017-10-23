@@ -15,17 +15,11 @@ HVG\SystemBundle\Entity\Carpark:
         community:
             targetEntity: HVG\SystemBundle\Entity\Community
             inversedBy: carparks
-    oneToMany:
-        guests:
-            targetEntity: HVG\SystemBundle\Entity\Guest
-            mappedBy: carpark
     fields:
         name:
             type: string
             length: 100
             nullable: true
-        guest:
-            type: boolean
         note:
             type: text
             nullable: true

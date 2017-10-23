@@ -1,0 +1,23 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'accessgate.index.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">{{ 'accessgate.change.title'|trans }}</h1>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills">
+                {% for current in accessgates %}
+                    <li {% if current == accessgate %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessgate_change', {'hash' : community.hash, 'accessguard' : accessguard.id, 'accessgate' : current.id }) }}" >{{ current.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div>
+        <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id }) }}" class="btn btn-primary btn-lg pull-right">{{ 'accessgate.change.submit'|trans }}</a>
+    </div>
+{% endblock %}

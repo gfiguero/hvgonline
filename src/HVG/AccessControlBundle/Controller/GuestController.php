@@ -5,6 +5,10 @@ namespace HVG\AccessControlBundle\Controller;
 use HVG\SystemBundle\Entity\Community;
 use HVG\SystemBundle\Entity\Guest;
 use HVG\SystemBundle\Entity\Person;
+use HVG\SystemBundle\Entity\AccessGate;
+use HVG\SystemBundle\Entity\AccessGuard;
+use HVG\SystemBundle\Entity\UnitGroup;
+use HVG\SystemBundle\Entity\Unit;
 use HVG\AccessControlBundle\Form\GuestType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,16 +36,20 @@ class GuestController extends Controller
         ));
     }
 
-    public function newAction(Request $request, $hash)
+    public function newAction(Request $request, $hash, AccessGate $accessgate, AccessGuard $accessguard, UnitGroup $unitgroup, Unit $unit)
     {
         $em = $this->getDoctrine()->getManager();
         $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
+
         $guest = new Guest();
         $newForm = $this->createForm(new GuestType(), $guest, array('community' => $community));
         $newForm->handleRequest($request);
 
         if ($newForm->isSubmitted()) {
             if($newForm->isValid()) {
+                $guest->setUnit($unit);
+                $guest->setAccessgate($accessgate);
+                $guest->setAccessguard($accessguard);
                 $people = $guest->getPeople();
                 $em = $this->getDoctrine()->getManager();
                 foreach ($people as $person) {
@@ -53,14 +61,19 @@ class GuestController extends Controller
                 }
                 $em->persist($guest);
                 $em->flush();
-                $request->getSession()->getFlashBag()->add( 'success', 'guest.new.flash' );
-                return $this->redirect($this->generateUrl('accesscontrol_guest_new', array('hash' => $hash)));
+                //$request->getSession()->getFlashBag()->add( 'success', 'guest.new.flash' );
+                dump($guest);
+                return $this->redirect($this->generateUrl('accesscontrol_accessmonitor_index', array('hash' => $hash, 'accessgate' => $accessgate->getId(), 'accessguard' => $accessguard->getId(), 'unitgroup' => $unitgroup->getId(), 'unit' => $unit->getId())));
             }
         }
 
         return $this->render('HVGAccessControlBundle:Guest:new.html.twig', array(
             'newForm' => $newForm->createView(),
             'community' => $community,
+            'accessgate' => $accessgate,
+            'accessguard' => $accessguard,
+            'unitgroup' => $unitgroup,
+            'unit' => $unit,
         ));
     }
     public function testAction(Request $request)
@@ -72,8 +85,10 @@ class GuestController extends Controller
     {
         $rut = $request->query->get('rut');
         $em = $this->getDoctrine()->getManager();
-        $people = $em->getRepository('HVGSystemBundle:Person')->searchByRut($rut);
-        return new JsonResponse($people);
+        $person = $em->getRepository('HVGSystemBundle:Person')->findOneByRut($rut);
+        $result['status'] = $person ? 0 : 1;
+        $result['name'] = $person ? $person->getName() : '';
+        return new JsonResponse($result);
 
     }
 

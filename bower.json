@@ -5,6 +5,7 @@
         "jquery": "*",
         "jquery-ui": "*",
         "bootstrap-toggle": "*",
-        "jquery-ui-bootstrap": "*"
+        "jquery-ui-bootstrap": "*",
+        "bootswatch": "*"
     }
 }

@@ -1,13 +1,11 @@
 {% extends 'HVGAccessControlBundle:Base:base.html.twig' %}
-{% use 'HVGAccessControlBundle:Base:aside.html.twig' %}
+{% use 'HVGAccessControlBundle:Base:navbar.html.twig' %}
 
 {% block body %}
+    {% block navbar %}{{ parent() }}{% endblock %}
     <div class="container">
         <div class="row">
-            <aside class="col-md-3">
-                {% block aside %}{{ parent() }}{% endblock %}
-            </aside>
-            <div class="col-md-9">
+            <div class="col-md-12">
                 {% block accesscontrol %}{% endblock %}
             </div>
         </div>

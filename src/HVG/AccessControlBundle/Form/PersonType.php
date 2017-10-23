@@ -18,7 +18,7 @@ class PersonType extends AbstractType
                 'label' => 'person.form.rut',
                 'translation_domain' => 'HVGAccessControlBundle',
                 'required' => true,
-                'attr' => array('class' => 'input-lg rut'),
+                'attr' => array('class' => 'input rut', 'label_col' => 3, 'widget_col' => 9),
             ))
 //            ->add('search', 'button', array(
 //                'label' => false,
@@ -29,7 +29,7 @@ class PersonType extends AbstractType
                 'label' => 'person.form.name',
                 'translation_domain' => 'HVGAccessControlBundle',
                 'required' => true,
-                'attr' => array('class' => 'input-lg'),
+                'attr' => array('class' => 'input', 'label_col' => 3, 'widget_col' => 9),
             ))
         ;
     }
@@ -41,7 +41,7 @@ class PersonType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'HVG\SystemBundle\Entity\Person',
-            'attr' => array('style' => 'inline')
+            'attr' => array('style' => 'horizontal')
         ));
     }
 

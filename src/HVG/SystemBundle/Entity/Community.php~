@@ -669,4 +669,111 @@ class Community
     {
         return $this->carparks;
     }
+    /**
+     * @var \DateTime
+     */
+    private $insurancePolicyExpiration;
+
+
+    /**
+     * Set insurancePolicyExpiration
+     *
+     * @param \DateTime $insurancePolicyExpiration
+     *
+     * @return Community
+     */
+    public function setInsurancePolicyExpiration($insurancePolicyExpiration)
+    {
+        $this->insurancePolicyExpiration = $insurancePolicyExpiration;
+
+        return $this;
+    }
+
+    /**
+     * Get insurancePolicyExpiration
+     *
+     * @return \DateTime
+     */
+    public function getInsurancePolicyExpiration()
+    {
+        return $this->insurancePolicyExpiration;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $guestcarparks;
+
+
+    /**
+     * Add guestcarpark
+     *
+     * @param \HVG\SystemBundle\Entity\GuestCarpark $guestcarpark
+     *
+     * @return Community
+     */
+    public function addGuestcarpark(\HVG\SystemBundle\Entity\GuestCarpark $guestcarpark)
+    {
+        $this->guestcarparks[] = $guestcarpark;
+
+        return $this;
+    }
+
+    /**
+     * Remove guestcarpark
+     *
+     * @param \HVG\SystemBundle\Entity\GuestCarpark $guestcarpark
+     */
+    public function removeGuestcarpark(\HVG\SystemBundle\Entity\GuestCarpark $guestcarpark)
+    {
+        $this->guestcarparks->removeElement($guestcarpark);
+    }
+
+    /**
+     * Get guestcarparks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGuestcarparks()
+    {
+        return $this->guestcarparks;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accessgates;
+
+
+    /**
+     * Add accessgate
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGate $accessgate
+     *
+     * @return Community
+     */
+    public function addAccessgate(\HVG\SystemBundle\Entity\AccessGate $accessgate)
+    {
+        $this->accessgates[] = $accessgate;
+
+        return $this;
+    }
+
+    /**
+     * Remove accessgate
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGate $accessgate
+     */
+    public function removeAccessgate(\HVG\SystemBundle\Entity\AccessGate $accessgate)
+    {
+        $this->accessgates->removeElement($accessgate);
+    }
+
+    /**
+     * Get accessgates
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccessgates()
+    {
+        return $this->accessgates;
+    }
 }

@@ -16,6 +16,7 @@
             <table class="records_list table table-striped table-hover">
             {% for unitresident in unitresidents %}
                 <tr>
+                    <td>{% if unitresident.unit %}{{ unitresident.unit }}{% endif %}</td>
                     <td>{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
                     <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
                 </tr>
@@ -34,6 +35,7 @@
             <table class="records_list table table-striped table-hover">
             {% for unitmemo in unitmemos %}
                 <tr>
+                    <td>{% if unitmemo.unit %}{{ unitmemo.unit }}{% endif %}</td>
                     <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
                 </tr>
             {% endfor %}

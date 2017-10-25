@@ -26,3 +26,10 @@ assetic:
             inputs: 
                 - Resources/js/custom.js
             output: js/hvgsystem.js
+        accesscontrol_bootswatch_css:
+            inputs:
+                - ../src/HVG/AccessControlBundle/Resources/less/build.less
+            filters:
+                - less
+                - cssrewrite
+            output: ../src/HVG/AccessControlBundle/Resources/public/css/orion.css

@@ -10,4 +10,19 @@ namespace HVG\SystemBundle\Entity;
  */
 class UnitMemoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findBySearch($community, $search)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('m')
+            ->select('m')
+            ->from('HVGSystemBundle:UnitMemo', 'm')
+            ->join('m.unit', 'mu')
+            ->join('mu.community', 'muc')
+            ->where('muc.id = :community')
+            ->andWhere('m.description LIKE :search')
+            ->setParameters(array('community' => $community, 'search' => '%'.$search.'%'))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

@@ -66,6 +66,10 @@ class GuestController extends Controller
             }
         }
 
+        $person = new Person();
+        $guest->addPerson($person);
+        $newForm->setData($guest);
+
         return $this->render('HVGAccessControlBundle:Guest:new.html.twig', array(
             'newForm' => $newForm->createView(),
             'community' => $community,

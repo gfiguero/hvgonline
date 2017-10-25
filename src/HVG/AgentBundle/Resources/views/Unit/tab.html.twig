@@ -1,0 +1,20 @@
+{% block unittab %}
+    {% trans_default_domain 'HVGAgentBundle' %}
+    {% if unit %}
+    <div class="row" id="unit-tab">
+        <div class="col-md-12">
+            <p>
+                <ul class="nav nav-pills">
+                    <li><a href="#">{{ unit }}</a></li>
+                    <li><a href="#">{{ 'unit.show.unitresident'|trans }}</a></li>
+                    <li><a href="#">{{ 'unit.show.carpark'|trans }}</a></li>
+                    <li><a href="#">{{ 'unit.show.unitmemo'|trans }}</a></li>
+                    <li><a href="#">{{ 'unit.show.ticket'|trans }}</a></li>
+                    <li><a href="#">{{ 'unit.show.warehouse'|trans }}</a></li>
+                </ul>
+            </p>
+        </div>
+    </div>
+    <!-- /#unit-tab -->
+    {% endif %}
+{% endblock %}

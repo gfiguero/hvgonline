@@ -6,34 +6,52 @@
 {% trans_default_domain translation_domain %}
 
 {% block agent %}
-    <div id="page-wrapper">
-        <div class="row" id="page-header">
-            <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unit.index.title'|trans }}</h1>
-                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
-            </div>
+    <div class="row" id="page-header">
+        <div class="col-lg-12">
+            <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unit.index.title'|trans }}</h1>
+            {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
         </div>
-        <!-- /#page-header -->
-
-        <div class="row" id="page-filter">
-            <div class="col-lg-12">
-                <ul class="nav nav-pills">
-                    {% for community in communities %}
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ community }}<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                            {% for unitgroup in community.unitgroups %}
-                                <li><a href="{{ path('agent_unit_unitgroup', {id : unitgroup.id}) }}"><span class="badge">{{ unitgroup.units|length }}</span>&nbsp;{{ unitgroup.name }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        <!-- /#page-filter -->
-
     </div>
-    <!-- /#page-wrapper -->
+    <!-- /#page-header -->
+
+    <div class="row" id="page-filter">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <ul class="nav nav-pills">
+                        {% for current in communities %}
+                            <li {% if current == community %}class="active"{% endif %}><a href="{{ path('agent_unit_index', {'community' : current.id }) }}">{{ current.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            {% if unitgroups is not empty %}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <ul class="nav nav-pills">
+                        {% for current in unitgroups %}
+                            <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('agent_unit_index', {'community' : community.id, 'unitgroup' : current.id }) }}">{{ current.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if units is not empty %}
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <ul class="nav nav-pills">
+                        {% for unit in units %}
+                            <li><a href="{{ path('agent_unit_show', {'id' : unit.id }) }}">{{ unit.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <!-- /#page-filter -->
 
 {% endblock %}

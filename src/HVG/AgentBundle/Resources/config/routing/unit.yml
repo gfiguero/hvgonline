@@ -1,11 +1,40 @@
 agent_unit_index:
-    path:     /
-    defaults: { _controller: "HVGAgentBundle:Unit:index" }
+    path:     /{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGAgentBundle:Unit:index", community: '', unitgroup: '', unit: '' }
     methods:  GET
+    requirements:
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
 
 agent_unit_show:
     path:     /{id}/show
     defaults: { _controller: "HVGAgentBundle:Unit:show" }
+    methods:  GET
+
+agent_unit_ticket:
+    path:     /{id}/ticket
+    defaults: { _controller: "HVGAgentBundle:Unit:ticket" }
+    methods:  GET
+
+agent_unit_unitresident:
+    path:     /{id}/unitresident
+    defaults: { _controller: "HVGAgentBundle:Unit:unitresident" }
+    methods:  GET
+
+agent_unit_carpark:
+    path:     /{id}/carpark
+    defaults: { _controller: "HVGAgentBundle:Unit:carpark" }
+    methods:  GET
+
+agent_unit_warehouse:
+    path:     /{id}/warehouse
+    defaults: { _controller: "HVGAgentBundle:Unit:warehouse" }
+    methods:  GET
+
+agent_unit_unitmemo:
+    path:     /{id}/unitmemo
+    defaults: { _controller: "HVGAgentBundle:Unit:unitmemo" }
     methods:  GET
 
 agent_unit_unitgroup:

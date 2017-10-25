@@ -1,0 +1,12 @@
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
+{% use 'HVGAgentBundle:DataCenter:communities.html.twig' %}
+{% use 'HVGAgentBundle:DataCenter:unitgroups.html.twig' %}
+{% use 'HVGAgentBundle:DataCenter:units.html.twig' %}
+{% use 'HVGAgentBundle:DataCenter:tab.html.twig' %}
+
+{% block agent %}
+    {% block communities %}{{ parent() }}{% endblock %}
+    {% block unitgroups %}{{ parent() }}{% endblock %}
+    {% block units %}{{ parent() }}{% endblock %}
+    {% block datacenter %}{{ parent() }}{% endblock %}
+{% endblock %}

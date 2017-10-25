@@ -2,12 +2,15 @@
 
 {% trans_default_domain 'HVGAccessControlBundle' %}
 
-{% block title %}{{ 'accessgate.show.title'|trans }}{% endblock %}
+{% block title %}{{ 'accessmonitor.index.title'|trans }}{% endblock %}
 
 {% block accesscontrol %}
+    {{ form(searchForm, {'action': path('accesscontrol_accessmonitor_search', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id}) }) }}
+
     <div class="panel panel-default">
         <div class="panel-body">
             <ul class="nav nav-pills">
+                <li {% if not unitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id}) }}">{{ icon('home fa-fw') }} Inicio</a></li>
                 {% for current in unitgroups %}
                     <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : current.id }) }}">{{ current.name }}</a></li>
                 {% endfor %}
@@ -52,16 +55,9 @@
         </div>
         <div class="table-responsive">
             <table class="records_list table table-striped table-hover">
-                <tr>
-                    <th>{{ 'unitmemos.form.createdAt'|trans }}</th>
-                    <th>{{ 'unitmemos.form.description'|trans }}</th>
-                    <th>{{ 'unitmemos.form.expiredAt'|trans }}</th>
-                </tr>
             {% for unitmemo in unitmemos %}
                 <tr>
-                    <td>{% if unitmemo.createdAt %}{{ unitmemo.createdAt|ago }}{% endif %}</td>
                     <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
-                    <td>{% if unitmemo.expiredAt %}{{ unitmemo.expiredAt|ago }}{% endif %}</td>
                 </tr>
             {% endfor %}
             </table>
@@ -109,10 +105,10 @@
                         <td>{% if person.name %}{{ person.name }}{% endif %}</td>
                         <td>{% if person.rut %}{{ person.rut }}{% endif %}</td>
                         <td>{% if guest.carLicence %}{{ guest.carLicence }}{% endif %}</td>
-                        <td>{{ guest.createdat|ago }}</td>
                         <td>{% if guest.guestcarpark %}{{ guest.guestcarpark.name }}{% endif %}</td>
                         <td>{% if guest.accessguard %}{{ guest.accessguard.name }}{% endif %}</td>
                         <td>{% if guest.accessgate %}{{ guest.accessgate.name }}{% endif %}</td>
+                        <td>{{ guest.createdat|ago }}</td>
                     </tr>
                 {% endfor %}
             {% endfor %}

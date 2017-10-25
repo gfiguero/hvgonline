@@ -1,0 +1,14 @@
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
+{% use 'HVGAgentBundle:Unit:nav.html.twig' %}
+{% use 'HVGAgentBundle:Unit:tab.html.twig' %}
+
+{% block title %}{{ 'unit.index.title'|trans }}{% endblock %}
+
+{% set translation_domain = 'HVGAgentBundle' %}
+{% trans_default_domain translation_domain %}
+
+{% block agent %}
+    {% block unitnav %}{{ parent() }}{% endblock %}
+    {% block unittab %}{{ parent() }}{% endblock %}
+    {% block unit %}{{ parent() }}{% endblock %}
+{% endblock %}

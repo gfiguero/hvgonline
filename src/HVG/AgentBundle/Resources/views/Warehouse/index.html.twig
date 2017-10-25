@@ -1,0 +1,48 @@
+{% extends 'HVGAgentBundle:Warehouse:layout.html.twig' %}
+
+{% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
+
+{% block warehouse %}
+    <div class="row" id="page-list">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">{{ 'warehouse.index.list'|trans }}</h1>
+                </div>
+                {% if warehouses is empty %}
+                <div class="panel-body">
+                    <div class="text-center">{{ 'warehouse.index.empty'|trans }}</div>
+                </div>
+                {% else %}
+                <div class="table-responsive">
+                    <table class="records_list table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('times fa-fw') }}</a></div>
+                                </th>
+                                <th>{{ 'warehouse.form.name'|trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for warehouse in warehouses %}
+                            <tr>
+                                <td>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-primary">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
+                                </td>
+                                <td>{% if warehouse.name %}{{ warehouse.name }}{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>                
+        </div>
+    </div>
+    <!-- /#page-list -->        
+{% endblock %}

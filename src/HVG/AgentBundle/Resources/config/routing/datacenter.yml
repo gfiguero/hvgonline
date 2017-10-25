@@ -1,0 +1,48 @@
+agent_datacenter_index:
+    path:     /{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGAgentBundle:DataCenter:index", community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+agent_datacenter_unit:
+    path:     /{id}/unit
+    defaults: { _controller: "HVGAgentBundle:DataCenter:unit" }
+    methods:  GET
+
+agent_datacenter_ticket:
+    path:     /{id}/ticket
+    defaults: { _controller: "HVGAgentBundle:DataCenter:ticket" }
+    methods:  GET
+
+agent_datacenter_unitresident:
+    path:     /{id}/unitresident
+    defaults: { _controller: "HVGAgentBundle:DataCenter:unitresident" }
+    methods:  GET
+
+agent_datacenter_carpark:
+    path:     /{id}/carpark
+    defaults: { _controller: "HVGAgentBundle:DataCenter:carpark" }
+    methods:  GET
+
+agent_datacenter_warehouse:
+    path:     /{id}/warehouse
+    defaults: { _controller: "HVGAgentBundle:DataCenter:warehouse" }
+    methods:  GET
+
+agent_datacenter_unitmemo:
+    path:     /{id}/unitmemo
+    defaults: { _controller: "HVGAgentBundle:DataCenter:unitmemo" }
+    methods:  GET
+
+agent_datacenter_unitgroup:
+    path:     /{id}/unitgroup
+    defaults: { _controller: "HVGAgentBundle:DataCenter:unitgroup" }
+    methods:  GET
+
+agent_datacenter_community:
+    path:     /{id}/community
+    defaults: { _controller: "HVGAgentBundle:DataCenter:community" }
+    methods:  GET

@@ -91,8 +91,7 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.datacenter']->setChildrenAttribute('class', 'dropdown-menu');
         $sidemenu['sidemenu.datacenter']->addChild('sidemenu.community', array('route' => 'agent_community_index'))->setExtra('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unitgroup', array('route' => 'agent_unitgroup_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unit', array('route' => 'agent_unit_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unitinsurancepolicy', array('route' => 'agent_unitinsurancepolicy_index'))->setExtra('translation_domain', 'HVGAgentBundle');
+//        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unit', array('route' => 'agent_unit_index'))->setExtra('translation_domain', 'HVGAgentBundle');
 
         $sidemenu->addChild('sidemenu.directory', array('uri' => '#'));
         $sidemenu['sidemenu.directory']->setExtras(array('icon' => 'address-book fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
@@ -120,7 +119,7 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.petition.root']->addChild('sidemenu.petition.sent', array('route' => 'agent_petition_sent'))->setExtra('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.petition.root']->addChild('sidemenu.petition.received', array('route' => 'agent_petition_received'))->setExtra('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.petition.root']->addChild('sidemenu.petition.area', array('route' => 'agent_petition_area'))->setExtra('translation_domain', 'HVGAgentBundle');
-        if(in_array('ROLE_ADMIN', $roles)) $sidemenu['sidemenu.petition.root']->addChild('sidemenu.petition.index', array('route' => 'agent_petition_index'))->setExtra('translation_domain', 'HVGAgentBundle');
+        //if(in_array('ROLE_ADMIN', $roles)) $sidemenu['sidemenu.petition.root']->addChild('sidemenu.petition.index', array('route' => 'agent_petition_index'))->setExtra('translation_domain', 'HVGAgentBundle');
 
         $sidemenu->addChild('sidemenu.resources', array('uri' => '#'));
         $sidemenu['sidemenu.resources']->setExtras(array('icon' => 'paperclip fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
@@ -128,6 +127,13 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.resources']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'));
         $sidemenu['sidemenu.resources']->setChildrenAttribute('class', 'dropdown-menu');
         $sidemenu['sidemenu.resources']->addChild('sidemenu.communitystaff', array('route' => 'agent_communitystaff_index'))->setExtra('translation_domain', 'HVGAgentBundle');
+
+        $sidemenu->addChild('sidemenu.unitresident', array('route' => 'agent_unitresident_index'));
+        $sidemenu['sidemenu.unitresident']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitresident_index')));
+        $sidemenu['sidemenu.unitresident']->setLabel('unitresident.index.title');
+
+        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unitinsurancepolicy', array('route' => 'agent_unitinsurancepolicy_index'));
+        $sidemenu['sidemenu.datacenter']['sidemenu.unitinsurancepolicy']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitinsurancepolicy_index')));
 
         return $sidemenu;
     }

@@ -10,4 +10,33 @@ namespace HVG\SystemBundle\Entity;
  */
 class WarehouseRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByUnitgroup($unitgroup)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('w')
+            ->select('w')
+            ->from('HVGSystemBundle:Warehouse', 'w')
+            ->join('w.unit', 'wu')
+            ->join('wu.unitgroup', 'wuu')
+            ->where('wuu.id = :unitgroup')
+            ->setParameters(array('unitgroup' => $unitgroup))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByCommunity($community)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('w')
+            ->select('w')
+            ->from('HVGSystemBundle:Warehouse', 'w')
+            ->join('w.unit', 'wu')
+            ->join('wu.community', 'wuc')
+            ->where('wuc.id = :community')
+            ->setParameters(array('community' => $community))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

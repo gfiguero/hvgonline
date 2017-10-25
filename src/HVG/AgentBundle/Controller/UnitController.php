@@ -15,13 +15,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UnitController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Community $community = null, UnitGroup $unitgroup = null, Unit $unit = null)
     {
         $em = $this->getDoctrine()->getManager();
         $communities = $em->getRepository('HVGSystemBundle:Community')->findAll();
+        $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findByCommunity($community);
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findByUnitgroup($unitgroup);
 
         return $this->render('HVGAgentBundle:Unit:index.html.twig', array(
+            'community' => $community,
+            'unitgroup' => $unitgroup,
             'communities' => $communities,
+            'unitgroups' => $unitgroups,
+            'units' => $units,
         ));
     }
 

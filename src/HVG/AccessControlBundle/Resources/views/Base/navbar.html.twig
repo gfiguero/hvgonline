@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Orión HVG</a>
+            <a class="navbar-brand" href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id}) }}">Orión HVG</a>
         </div>
         <div class="navbar-collapse collapse">
             {% set topmenu = knp_menu_get('HVGAccessControlBundle:Builder:topMenu') %}

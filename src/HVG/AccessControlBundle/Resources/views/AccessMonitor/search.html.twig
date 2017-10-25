@@ -1,0 +1,71 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'accessmonitor.search.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    {{ form(searchForm, {'action': path('accesscontrol_accessmonitor_search', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id}) }) }}
+
+    {% if unitresidents is not empty %}
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accessmonitor.index.residents'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="records_list table table-striped table-hover">
+            {% for unitresident in unitresidents %}
+                <tr>
+                    <td>{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
+                    <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if unitmemos is not empty %}
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accessmonitor.index.unitmemos'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="records_list table table-striped table-hover">
+            {% for unitmemo in unitmemos %}
+                <tr>
+                    <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if guests is not empty %}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accessmonitor.index.guests'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="records_list table table-hover">
+            {% for guest in guests %}
+                {% for person in guest.people %}
+                    <tr>
+                        <td>{{ guest.unit }}</td>
+                        <td>{% if person.name %}{{ person.name }}{% endif %}</td>
+                        <td>{% if person.rut %}{{ person.rut }}{% endif %}</td>
+                        <td>{% if guest.carLicence %}{{ guest.carLicence }}{% endif %}</td>
+                        <td>{% if guest.guestcarpark %}{{ guest.guestcarpark.name }}{% endif %}</td>
+                        <td>{% if guest.accessguard %}{{ guest.accessguard.name }}{% endif %}</td>
+                        <td>{% if guest.accessgate %}{{ guest.accessgate.name }}{% endif %}</td>
+                        <td>{{ guest.createdat|ago }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

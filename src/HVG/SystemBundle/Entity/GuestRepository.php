@@ -3,6 +3,7 @@
 namespace HVG\SystemBundle\Entity;
 
 use HVG\SystemBundle\Entity\Community;
+use HVG\SystemBundle\Entity\UnitGroup;
 use HVG\SystemBundle\Entity\Unit;
 /**
  * GuestRepository
@@ -33,8 +34,62 @@ class GuestRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('g.createdAt', 'DESC')
             ->where('g.unit = :unit')
             ->andWhere('g.createdAt > :datetime')
-            ->setParameters(array('unit' => $unit, 'datetime' => new \DateTime('-24 hours')))
+            ->setParameters(array('unit' => $unit, 'datetime' => new \DateTime('-48 hours')))
         ;
         return $qb->getQuery()->getResult();
+    }
+
+    public function getLastByUnitgroup(UnitGroup $unitgroup = null)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('g');
+        $qb->select('g', 'gp', 'gc', 'gag', 'gat')
+            ->from('HVGSystemBundle:Guest', 'g')
+            ->join('g.unit', 'gu')
+            ->leftJoin('g.people', 'gp')
+            ->leftJoin('g.guestcarpark', 'gc')
+            ->leftJoin('g.accessguard', 'gag')
+            ->leftJoin('g.accessgate', 'gat')
+            ->orderBy('g.createdAt', 'DESC')
+            ->where('gu.unitgroup = :unitgroup')
+            ->andWhere('g.createdAt > :datetime')
+            ->setParameters(array('unitgroup' => $unitgroup, 'datetime' => new \DateTime('-48 hours')))
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getLastByCommunity(Community $community = null)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('g');
+        $qb->select('g', 'gp', 'gc', 'gag', 'gat')
+            ->from('HVGSystemBundle:Guest', 'g')
+            ->join('g.unit', 'gu')
+            ->leftJoin('g.people', 'gp')
+            ->leftJoin('g.guestcarpark', 'gc')
+            ->leftJoin('g.accessguard', 'gag')
+            ->leftJoin('g.accessgate', 'gat')
+            ->orderBy('g.createdAt', 'DESC')
+            ->where('gu.community = :community')
+            ->andWhere('g.createdAt > :datetime')
+            ->setParameters(array('community' => $community, 'datetime' => new \DateTime('-48 hours')))
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findBySearch($community, $search)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('g', 'gu', 'guc')
+            ->select('g', 'gu', 'gp')
+            ->from('HVGSystemBundle:Guest', 'g')
+            ->leftJoin('g.unit', 'gu')
+            ->leftJoin('g.people', 'gp')
+            ->leftJoin('gu.community', 'guc')
+            ->andWhere('g.carLicence LIKE :search')
+            ->orWhere('gp.name LIKE :search')
+            ->andWhere('guc.id = :community')
+            ->setParameters(array('community' => $community, 'search' => '%'.$search.'%'))
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }

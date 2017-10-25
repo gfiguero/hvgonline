@@ -1,0 +1,9 @@
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
+{% use 'HVGAgentBundle:Warehouse:finder.html.twig' %}
+{% use 'HVGAgentBundle:Warehouse:tabs.html.twig' %}
+
+{% block agent %}
+    {% block tabs %}{{ parent() }}{% endblock %}
+    {% block finder %}{{ parent() }}{% endblock %}
+    {% block warehouse %}{% endblock %}
+{% endblock %}

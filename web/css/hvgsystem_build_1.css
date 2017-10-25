@@ -7692,9 +7692,6 @@ form .alert ul {
   list-style: none;
   padding-left: 0;
 }
-body {
-  background-image: url(../img/bg.png);
-}
 #wrapper {
   width: 100%;
 }
@@ -7750,9 +7747,6 @@ table.dataTable thead .sorting:after {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-.btn-toolbar .btn {
-  margin-bottom: 5px;
 }
 @media (min-width: 768px) {
   .dl-horizontal dt {

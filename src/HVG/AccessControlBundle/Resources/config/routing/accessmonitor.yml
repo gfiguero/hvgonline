@@ -6,3 +6,8 @@ accesscontrol_accessmonitor_index:
         unitgroup: '\d+|'
         unit: '\d+|'
 
+accesscontrol_accessmonitor_search:
+    path:     /{hash}/{accessgate}/{accessguard}/search
+    defaults: { _controller: "HVGAccessControlBundle:AccessMonitor:search" }
+    methods:  [GET, POST]
+

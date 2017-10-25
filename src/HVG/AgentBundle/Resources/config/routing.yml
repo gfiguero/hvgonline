@@ -2,6 +2,10 @@ hvg_agent_dashboard:
     resource: "@HVGAgentBundle/Resources/config/routing/dashboard.yml"
     prefix:   /
 
+hvg_agent_datacenter:
+    resource: "@HVGAgentBundle/Resources/config/routing/datacenter.yml"
+    prefix:   /datacenter
+
 hvg_agent_unitgroup:
     resource: "@HVGAgentBundle/Resources/config/routing/unitgroup.yml"
     prefix:   /unitgroup
@@ -13,6 +17,22 @@ hvg_agent_unitlog:
 hvg_agent_unitmemo:
     resource: "@HVGAgentBundle/Resources/config/routing/unitmemo.yml"
     prefix:   /unitmemo
+
+hvg_agent_unitresident:
+    resource: "@HVGAgentBundle/Resources/config/routing/unitresident.yml"
+    prefix:   /unitresident
+
+hvg_agent_warehouse:
+    resource: "@HVGAgentBundle/Resources/config/routing/warehouse.yml"
+    prefix:   /warehouse
+
+hvg_agent_carpark:
+    resource: "@HVGAgentBundle/Resources/config/routing/carpark.yml"
+    prefix:   /carpark
+
+hvg_agent_guest:
+    resource: "@HVGAgentBundle/Resources/config/routing/guest.yml"
+    prefix:   /guest
 
 hvg_agent_community:
     resource: "@HVGAgentBundle/Resources/config/routing/community.yml"

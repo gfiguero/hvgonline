@@ -101,13 +101,63 @@ unit:
     show:
         title: Datos del Departamento
         link: Detalles del Departamento
-        tickets: Tickets
+        ticket: Tickets
+        unitresident: Residentes
+        carpark: Estacionamientos
+        warehouse: Bodegas
+        unitmemo: Memorándums
     form:
         actions: Acciones
         id: ID
         name: Departamento
         community: Comunidad
         unitgroup: Grupo
+
+unitresident:
+    index:
+        title: Residentes
+        list: Lista de residentes
+        home: Inicio
+        link: Residentes
+    form:
+        name: Nombre
+        phone: Teléfono
+
+warehouse:
+    index:
+        title: Bodegas
+        list: Lista de bodegas
+        home: Inicio
+        link: Bodegas
+    form:
+        name: Nombre
+
+guest:
+    index:
+        title: Visitas
+        list: Lista de visitas
+        home: Inicio
+        link: Visitas
+    form:
+        name: Nombre
+
+carpark:
+    index:
+        title: Estacionamientos
+        list: Lista de estacionamientos
+        home: Inicio
+        link: Estacionamientos
+    form:
+        name: Nombre
+
+unitmemo:
+    index:
+        title: Memorándums
+        list: Lista de memorándums
+        home: Inicio
+        link: Memorándums
+    form:
+        name: Nombre
 
 unitinsurancepolicy:
     index:

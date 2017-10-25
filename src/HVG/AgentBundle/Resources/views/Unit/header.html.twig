@@ -1,0 +1,9 @@
+{% block unitheader %}
+    <div class="row" id="page-header">
+        <div class="col-lg-12">
+            <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'unit.index.title'|trans }}</h1>
+            {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
+        </div>
+    </div>
+    <!-- /#page-header -->
+{% endblock %}

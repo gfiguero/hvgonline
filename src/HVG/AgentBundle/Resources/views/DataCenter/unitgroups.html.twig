@@ -1,0 +1,16 @@
+{% block unitgroups %}
+    <div class="row" id="unit-nav">
+        <div class="col-md-12">
+        {% if unitgroups is not empty %}
+            <p>
+                <ul class="nav nav-pills">
+                    {% for current in unitgroups %}
+                        <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('agent_datacenter_unitgroup', {'id' : current.id }) }}">{{ current.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </p>
+        {% endif %}
+        </div>
+    </div>
+    <!-- /#unitgroups -->
+{% endblock %}

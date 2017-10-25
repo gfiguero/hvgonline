@@ -7,25 +7,25 @@ assetic:
     filters:
         cssrewrite: ~
         less:
-            node: %kernel.root_dir%/../bin/node
-            node_paths: [%kernel.root_dir%/../node_modules]
+            node: /usr/bin/node
+            node_paths: [/usr/local/lib/node_modules]
             apply_to: "\.less$"
             formatter: "compressed"
             preserve_comments: false
     read_from: %kernel.root_dir%/
     write_to: %kernel.root_dir%/../web
     assets:
-        hvgsystem_css:
-            inputs:
-                - Resources/less/build.less
-            filters:
-                - less
-                - cssrewrite
-            output: css/hvgsystem.css
-        hvgsystem_js:
-            inputs: 
-                - Resources/js/custom.js
-            output: js/hvgsystem.js
+#        hvgsystem_css:
+#            inputs:
+#                - Resources/less/build.less
+#            filters:
+#                - less
+#                - cssrewrite
+#            output: css/hvgsystem.css
+#        hvgsystem_js:
+#            inputs: 
+#                - Resources/js/custom.js
+#            output: js/hvgsystem.js
         accesscontrol_bootswatch_css:
             inputs:
                 - ../src/HVG/AccessControlBundle/Resources/less/build.less
@@ -33,3 +33,10 @@ assetic:
                 - less
                 - cssrewrite
             output: ../src/HVG/AccessControlBundle/Resources/public/css/orion.css
+        agent_bootswatch_css:
+            inputs:
+                - ../src/HVG/AgentBundle/Resources/less/build.less
+            filters:
+                - less
+                - cssrewrite
+            output: ../src/HVG/AgentBundle/Resources/public/css/orion.css

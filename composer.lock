@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ed2493dcb6ac8ab8d1659c4f2e91aee",
+    "content-hash": "531974bbb9c4ab77323a1e365478894e",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -110,151 +110,6 @@
                 "bootstrap"
             ],
             "time": "2016-01-23T17:44:32+00:00"
-        },
-        {
-            "name": "components/bootstrap",
-            "version": "3.3.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/components/bootstrap.git",
-                "reference": "fe6e7683be66ba45a725816efdb51d4566733043"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/components/bootstrap/zipball/fe6e7683be66ba45a725816efdb51d4566733043",
-                "reference": "fe6e7683be66ba45a725816efdb51d4566733043",
-                "shasum": ""
-            },
-            "require": {
-                "components/jquery": "1.9.1 - 3"
-            },
-            "suggest": {
-                "components/bootstrap-default": "Provide a theme for Bootstrap as components/bootstrap only provides the CSS as file assets"
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "js/bootstrap.js"
-                    ],
-                    "files": [
-                        "js/*.js",
-                        "css/*.css",
-                        "css/*.map",
-                        "fonts/*",
-                        "less/mixins/*.less",
-                        "less/*.less"
-                    ],
-                    "shim": {
-                        "deps": [
-                            "jquery"
-                        ]
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jacob Thornton",
-                    "email": "jacobthornton@gmail.com"
-                },
-                {
-                    "name": "Mark Otto",
-                    "email": "markdotto@gmail.com"
-                }
-            ],
-            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-            "homepage": "http://getbootstrap.com",
-            "keywords": [
-                "css",
-                "framework",
-                "front-end",
-                "less",
-                "mobile-first",
-                "responsive",
-                "web"
-            ],
-            "time": "2016-07-26T05:59:20+00:00"
-        },
-        {
-            "name": "components/font-awesome",
-            "version": "4.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/components/font-awesome.git",
-                "reference": "885308b939369d147bec93174722786bc2c4eedd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/components/font-awesome/zipball/885308b939369d147bec93174722786bc2c4eedd",
-                "reference": "885308b939369d147bec93174722786bc2c4eedd",
-                "shasum": ""
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "styles": [
-                        "css/font-awesome.css"
-                    ],
-                    "files": [
-                        "css/font-awesome.min.css",
-                        "css/font-awesome.css.map",
-                        "fonts/*"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT",
-                "OFL-1.1"
-            ],
-            "description": "The iconic font designed for use with Twitter Bootstrap.",
-            "time": "2016-10-25T10:56:23+00:00"
-        },
-        {
-            "name": "components/jquery",
-            "version": "3.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/components/jquery.git",
-                "reference": "e5534d4ab8e80c159553d507e358ed20a806d3bf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/components/jquery/zipball/e5534d4ab8e80c159553d507e358ed20a806d3bf",
-                "reference": "e5534d4ab8e80c159553d507e358ed20a806d3bf",
-                "shasum": ""
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "jquery.js"
-                    ],
-                    "files": [
-                        "jquery.min.js",
-                        "jquery.min.map",
-                        "jquery.slim.js",
-                        "jquery.slim.min.js",
-                        "jquery.slim.min.map"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "JS Foundation and other contributors"
-                }
-            ],
-            "description": "jQuery JavaScript Library",
-            "homepage": "http://jquery.com",
-            "time": "2017-03-21T07:01:49+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1010,16 +865,16 @@
         },
         {
             "name": "doctrine/orm",
-            "version": "v2.5.11",
+            "version": "v2.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "249b737094f1e7cba4f0a8d19acf5be6cf3ed504"
+                "reference": "984535cadc609e9eef8c89414aa3568ee97aa79f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/249b737094f1e7cba4f0a8d19acf5be6cf3ed504",
-                "reference": "249b737094f1e7cba4f0a8d19acf5be6cf3ed504",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/984535cadc609e9eef8c89414aa3568ee97aa79f",
+                "reference": "984535cadc609e9eef8c89414aa3568ee97aa79f",
                 "shasum": ""
             },
             "require": {
@@ -1030,11 +885,11 @@
                 "doctrine/instantiator": "^1.0.1",
                 "ext-pdo": "*",
                 "php": ">=5.4",
-                "symfony/console": "~2.5|~3.0"
+                "symfony/console": "~2.5|~3.0|~4.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0",
-                "symfony/yaml": "~2.3|~3.0"
+                "symfony/yaml": "~2.3|~3.0|~4.0"
             },
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
@@ -1082,7 +937,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2017-09-18T06:50:20+00:00"
+            "time": "2017-10-23T18:21:04+00:00"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -1149,12 +1004,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "71be5a749e1ca3d2ea1a710752612d8e63c6e902"
+                "reference": "715e6f149fa5c835900c7eeb3beea2867578f77e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/71be5a749e1ca3d2ea1a710752612d8e63c6e902",
-                "reference": "71be5a749e1ca3d2ea1a710752612d8e63c6e902",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/715e6f149fa5c835900c7eeb3beea2867578f77e",
+                "reference": "715e6f149fa5c835900c7eeb3beea2867578f77e",
                 "shasum": ""
             },
             "require": {
@@ -1218,7 +1073,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2017-10-16T09:08:26+00:00"
+            "time": "2017-10-24T09:06:59+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1551,59 +1406,6 @@
             "time": "2016-12-05T10:18:33+00:00"
         },
         {
-            "name": "kartik-v/bootstrap-fileinput",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "be8efda7d4ed0bb6e5b83711228fe3fabdd1f8ac"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/be8efda7d4ed0bb6e5b83711228fe3fabdd1f8ac",
-                "reference": "be8efda7d4ed0bb6e5b83711228fe3fabdd1f8ac",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "kartik\\plugins\\fileinput\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kartik Visweswaran",
-                    "email": "kartikv2@gmail.com",
-                    "homepage": "http://www.krajee.com/"
-                }
-            ],
-            "description": "An enhanced HTML 5 file input for Bootstrap 3.x with features for file preview for many file types, multiple selection, ajax uploads, and more.",
-            "homepage": "https://github.com/kartik-v/bootstrap-fileinput",
-            "keywords": [
-                "ajax",
-                "bootstrap",
-                "delete",
-                "file",
-                "image",
-                "input",
-                "jquery",
-                "multiple",
-                "preview",
-                "progress",
-                "upload"
-            ],
-            "time": "2017-10-18T12:51:14+00:00"
-        },
-        {
             "name": "knplabs/knp-components",
             "version": "1.3.5",
             "source": {
@@ -1927,52 +1729,6 @@
             "time": "2017-07-12T16:38:48+00:00"
         },
         {
-            "name": "koala-framework/composer-extra-assets",
-            "version": "v2.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/koala-framework/composer-extra-assets.git",
-                "reference": "8421543ac20ee59f5171e7b36a8830b7070a57cb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/koala-framework/composer-extra-assets/zipball/8421543ac20ee59f5171e7b36a8830b7070a57cb",
-                "reference": "8421543ac20ee59f5171e7b36a8830b7070a57cb",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "mouf/nodejs-installer": ">=1.0.2 <2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.5.*"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "Kwf\\ComposerExtraAssets\\Plugin",
-                "mouf": {
-                    "nodejs": {
-                        "version": ">=0.10"
-                    }
-                },
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Kwf\\ComposerExtraAssets\\": "Kwf/ComposerExtraAssets"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "description": "Composer Plugin for installing Assets using native npm/bower",
-            "homepage": "https://github.com/koala-framework/composer-extra-assets",
-            "time": "2016-09-07T08:58:41+00:00"
-        },
-        {
             "name": "kriswallsmith/assetic",
             "version": "v1.4.0",
             "source": {
@@ -2229,156 +1985,6 @@
             "time": "2017-06-19T01:22:40+00:00"
         },
         {
-            "name": "mouf/nodejs-installer",
-            "version": "v1.0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thecodingmachine/nodejs-installer.git",
-                "reference": "8e995c32384c329593159ec924276364ae5f5071"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/nodejs-installer/zipball/8e995c32384c329593159ec924276364ae5f5071",
-                "reference": "8e995c32384c329593159ec924276364ae5f5071",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0.0",
-                "ext-openssl": "*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "composer/composer": "*"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": [
-                    "Mouf\\NodeJsInstaller\\NodeJsPlugin"
-                ],
-                "mouf": {
-                    "logo": "node-js.png"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Mouf\\NodeJsInstaller\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "David Négrier",
-                    "email": "d.negrier@thecodingmachine.com",
-                    "homepage": "http://mouf-php.com"
-                }
-            ],
-            "description": "An installer package that let's you install NodeJS and NPM as a Composer dependency.",
-            "homepage": "http://mouf-php.com/packages/mouf/nodejs-installer",
-            "keywords": [
-                "installer",
-                "nodejs",
-                "npm"
-            ],
-            "time": "2016-11-17T08:47:39+00:00"
-        },
-        {
-            "name": "mrohnstock/bootstrap-multiselect",
-            "version": "0.9.13",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mrohnstock/bootstrap-multiselect.git",
-                "reference": "6d19ec9669a1de732717b0b188820c3094cbd998"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mrohnstock/bootstrap-multiselect/zipball/6d19ec9669a1de732717b0b188820c3094cbd998",
-                "reference": "6d19ec9669a1de732717b0b188820c3094cbd998",
-                "shasum": ""
-            },
-            "require": {
-                "components/bootstrap": ">= 2.3.2",
-                "components/jquery": ">=1.11.0",
-                "robloach/component-installer": "*"
-            },
-            "type": "component",
-            "extra": {
-                "component": {
-                    "scripts": [
-                        "js/bootstrap-multiselect.js",
-                        "js/bootstrap-multiselect-collapsible-groups.js"
-                    ],
-                    "files": [
-                        "css/bootstrap-multiselect.css",
-                        "js/bootstrap-multiselect.js",
-                        "js/bootstrap-multiselect-collapsible-groups.js",
-                        "less/bootstrap-multiselect.less"
-                    ],
-                    "shim": {
-                        "deps": [
-                            "jquery"
-                        ]
-                    }
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "description": "Twitter Bootstrap plugin to make selects user friendly.",
-            "homepage": "http://davidstutz.github.io/bootstrap-multiselect/",
-            "keywords": [
-                "JS",
-                "bootstrap",
-                "css",
-                "jquery",
-                "less",
-                "multiselect"
-            ],
-            "time": "2016-02-12T07:38:09+00:00"
-        },
-        {
-            "name": "onokumus/metismenu",
-            "version": "v2.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/onokumus/metismenu.git",
-                "reference": "412043318ac2cf5c589154d6042d7ac45fffc0be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/onokumus/metismenu/zipball/412043318ac2cf5c589154d6042d7ac45fffc0be",
-                "reference": "412043318ac2cf5c589154d6042d7ac45fffc0be",
-                "shasum": ""
-            },
-            "suggest": {
-                "components/jquery": ">=1.9"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Osman Nuri Okumus",
-                    "email": "onokumus@gmail.com",
-                    "homepage": "http://onokumus.com"
-                }
-            ],
-            "description": "A jQuery menu plugin",
-            "homepage": "https://github.com/onokumus/metisMenu",
-            "keywords": [
-                "JS",
-                "bootstrap",
-                "css",
-                "jquery",
-                "menu",
-                "plugin",
-                "web"
-            ],
-            "time": "2017-03-08T16:25:10+00:00"
-        },
-        {
             "name": "paragonie/random_compat",
             "version": "v2.0.11",
             "source": {
@@ -2472,54 +2078,6 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
-        },
-        {
-            "name": "robloach/component-installer",
-            "version": "0.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/RobLoach/component-installer.git",
-                "reference": "908a859aa7c4949ba9ad67091e67bac10b66d3d7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/RobLoach/component-installer/zipball/908a859aa7c4949ba9ad67091e67bac10b66d3d7",
-                "reference": "908a859aa7c4949ba9ad67091e67bac10b66d3d7",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "kriswallsmith/assetic": "1.*",
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "composer/composer": "1.*@alpha",
-                "phpunit/phpunit": "4.*"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                },
-                "class": "ComponentInstaller\\ComponentInstallerPlugin"
-            },
-            "autoload": {
-                "psr-0": {
-                    "ComponentInstaller": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rob Loach",
-                    "homepage": "http://robloach.net"
-                }
-            ],
-            "description": "Allows installation of Components via Composer.",
-            "time": "2015-08-10T12:35:38+00:00"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -4010,8 +3568,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20,
-        "kartik-v/bootstrap-fileinput": 20
+        "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

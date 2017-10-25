@@ -36,6 +36,7 @@ unitmemos:
 
 accessmonitor:
     index:
+        title: Control de Acceso
         residents: Residentes
         unitmemos: Memos
         guests: Últimas Visitas

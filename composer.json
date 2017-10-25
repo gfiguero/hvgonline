@@ -29,14 +29,7 @@
         "knplabs/knp-menu-bundle": "^2.1",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "liip/imagine-bundle": "^1.5",
-        "mouf/nodejs-installer": "^1.0",
-        "koala-framework/composer-extra-assets": "^2.0",
         "braincrafted/bootstrap-bundle": "^2.2",
-        "onokumus/metismenu": "^2.5",
-        "components/font-awesome": "^4.6",
-        "mrohnstock/bootstrap-multiselect": "^0.9.13",
-        "components/bootstrap": "^3.3",
-        "kartik-v/bootstrap-fileinput": "dev-master",
         "symfony/validator": "^2.8",
         "knplabs/knp-time-bundle": "^1.6",
         "friendsofsymfony/jsrouting-bundle": "^1.6",
@@ -57,31 +50,18 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-install-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "bower install"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "bower update"
         ]
     },
     "config": {
         "bin-dir": "bin"
     },
     "extra": {
-        "mouf": {
-            "nodejs": {
-                "includeBinInPath ": true
-            }
-        },
-        "require-npm": {
-            "less": "*"
-        },
-        "require-bower": {
-            "jquery": "*",
-            "jquery-ui": "*",
-            "bootstrap-toggle": "*",
-            "jquery-ui-bootstrap": "*",
-            "bootswatch": "*"
-        },
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",

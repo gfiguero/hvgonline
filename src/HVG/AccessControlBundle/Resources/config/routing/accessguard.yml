@@ -1,9 +1,9 @@
 accesscontrol_accessguard_index:
-    path:     /{hash}/{accessgate}
+    path:     /{hash}/{checkpoint}
     defaults: { _controller: "HVGAccessControlBundle:AccessGuard:index" }
     methods:  GET
 
 accesscontrol_accessguard_change:
-    path:     /{hash}/{accessgate}/{accessguard}/change
+    path:     /{hash}/{checkpoint}/{accessguard}/change
     defaults: { _controller: "HVGAccessControlBundle:AccessGuard:change" }
     methods:  GET

@@ -12,9 +12,9 @@
     <meta name="author" content="HVG">
     <meta name="language" content="es">
     <title>{% block title %}{% endblock %} - Orión HVG</title>
-    <link href="{{ asset('css/font-awesome/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('css/jqueryui/jquery-ui.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/multiselect/bootstrap-multiselect.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('vendor/jquery-ui/themes/base/jquery-ui.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap-multiselect/css/bootstrap-multiselect.css') }}" rel="stylesheet">
     <link href="{{ asset('bundles/hvgaccesscontrol/css/orion.css') }}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,10 +26,11 @@
 </head>
 <body>
     {% block body %}{% endblock %}
-    <script src="{{ asset('js/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/jqueryui/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/multiselect/bootstrap-multiselect.js') }}"></script>
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-multiselect/js/bootstrap-multiselect.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.rut/jquery.rut.min.js') }}"></script>
     {% block javascript %}{% endblock %}
 </body>
 </html>

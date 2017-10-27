@@ -11,7 +11,7 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <h1 class="page-header">{{ 'community.index.title'|trans }}</h1>
                     {% for community in communities %}
-                        <a href="{{ path('accesscontrol_accessgate_index', {'hash' : community.hash }) }}" class="btn btn-primary btn-lg btn-block">{{ community }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
+                        <a href="{{ path('accesscontrol_checkpoint_index', {'hash' : community.hash }) }}" class="btn btn-primary btn-lg btn-block">{{ community }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
                     {% endfor %}
                 </div>
             </div>

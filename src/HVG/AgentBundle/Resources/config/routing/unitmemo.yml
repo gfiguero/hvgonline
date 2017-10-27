@@ -1,33 +1,28 @@
-agent_unitresident_index:
+agent_unitmemo_index:
     path:     /{community}/{unitgroup}/{unit}
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unit", community: '', unitgroup: '', unit: '' }
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:index", community: '', unitgroup: '', unit: '' }
     methods:  GET
     requirements:
         community: '\d+|'
         unitgroup: '\d+|'
         unit: '\d+|'
 
-agent_unitresident_unitgroup:
-    path:     /{id}/unitgroup
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unitgroup" }
-    methods:  GET
-
-agent_unitresident_community:
-    path:     /{id}/community
-    defaults: { _controller: "HVGAgentBundle:UnitResident:community" }
-    methods:  GET
-
-agent_unitresident_new:
+agent_unitmemo_new:
     path:     /{unit}/new
-    defaults: { _controller: "HVGAgentBundle:UnitResident:new" }
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:new" }
     methods:  [GET, POST]
 
-agent_unitresident_edit:
-    path:     /{unitresident}/edit
-    defaults: { _controller: "HVGAgentBundle:UnitResident:edit" }
+agent_unitmemo_show:
+    path:     /{unitmemo}/show
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:show" }
+    methods:  GET
+
+agent_unitmemo_edit:
+    path:     /{unitmemo}/edit
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:edit" }
     methods:  [GET, POST]
 
-agent_unitresident_delete:
-    path:     /{unitresident}/delete
-    defaults: { _controller: "HVGAgentBundle:UnitResident:delete" }
-    methods:  DELETE
+agent_unitmemo_delete:
+    path:     /{unitmemo}/delete
+    defaults: { _controller: "HVGAgentBundle:UnitMemo:delete" }
+    methods:  [GET, DELETE]

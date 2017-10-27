@@ -12,12 +12,12 @@
         <div class="panel-body">
             <ul class="nav nav-pills">
                 {% for current in accessguards %}
-                    <li {% if current == accessguard %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessguard_change', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : current.id }) }}" >{{ current.name }}</a></li>
+                    <li {% if current == accessguard %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessguard_change', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : current.id }) }}" >{{ current.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
     </div>
     <div>
-        <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id }) }}" class="btn btn-primary btn-lg pull-right">{{ 'accessguard.change.submit'|trans }}</a>
+        <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id }) }}" class="btn btn-primary btn-lg pull-right">{{ 'accessguard.change.submit'|trans }}</a>
     </div>
 {% endblock %}

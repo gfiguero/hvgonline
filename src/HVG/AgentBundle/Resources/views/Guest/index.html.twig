@@ -1,17 +1,17 @@
-{% extends 'HVGAgentBundle:UnitResident:layout.html.twig' %}
+{% extends 'HVGAgentBundle:Guest:layout.html.twig' %}
 
 {% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
 
-{% block unitresident %}
+{% block guest %}
     <div class="row" id="page-list">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="panel-title">{{ 'unitresident.index.list'|trans }}</h1>
+                    <h1 class="panel-title">{{ 'guest.index.list'|trans }}</h1>
                 </div>
-                {% if unitresidents is empty %}
+                {% if guests is empty %}
                 <div class="panel-body">
-                    <div class="text-center">{{ 'unitresident.index.empty'|trans }}</div>
+                    <div class="text-center">{{ 'guest.index.empty'|trans }}</div>
                 </div>
                 {% else %}
                 <div class="table-responsive">
@@ -23,21 +23,31 @@
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('edit fa-fw') }}</a></div>
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('times fa-fw') }}</a></div>
                                 </th>
-                                <th>{{ 'unitresident.form.name'|trans }}</th>
-                                <th>{{ 'unitresident.form.phone'|trans }}</th>
+                                <th>{{ 'guest.form.person'|trans }}</th>
+                                <th>{{ 'guest.form.carlicence'|trans }}</th>
+                                <th>{{ 'guest.form.guestcarpark'|trans }}</th>
+                                <th>{{ 'guest.form.unit'|trans }}</th>
+                                <th>{{ 'guest.form.accessgate'|trans }}</th>
+                                <th>{{ 'guest.form.createdAt'|trans }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {% for unitresident in unitresidents %}
+                        {% for guest in guests %}
+                            {% for person in guest.people %}
                             <tr>
                                 <td>
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-primary">{{ icon('search fa-fw') }}</a></div>
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
                                 </td>
-                                <td>{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
-                                <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
+                                <td>{% if person.name %}{{ person.name }}{% endif %}</td>
+                                <td>{% if guest.carlicence %}{{ guest.carlicence }}{% endif %}</td>
+                                <td>{% if guest.guestcarpark %}{{ guest.guestcarpark.name }}{% endif %}</td>
+                                <td>{% if guest.unit %}{{ guest.unit }}{% endif %}</td>
+                                <td>{% if guest.accessGate %}{{ guest.accessGate.name }}{% endif %}</td>
+                                <td>{% if guest.createdAt %}{{ guest.createdAt|ago }}{% endif %}</td>
                             </tr>
+                            {% endfor %}
                         {% endfor %}
                         </tbody>
                     </table>

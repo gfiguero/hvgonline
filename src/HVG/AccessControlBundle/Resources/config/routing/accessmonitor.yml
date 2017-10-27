@@ -1,5 +1,5 @@
 accesscontrol_accessmonitor_index:
-    path:     /{hash}/{accessgate}/{accessguard}/{unitgroup}/{unit}
+    path:     /{hash}/{checkpoint}/{accessguard}/{unitgroup}/{unit}
     defaults: { _controller: "HVGAccessControlBundle:AccessMonitor:index", unitgroup: '', unit: '' }
     methods:  GET
     requirements:
@@ -7,7 +7,7 @@ accesscontrol_accessmonitor_index:
         unit: '\d+|'
 
 accesscontrol_accessmonitor_search:
-    path:     /{hash}/{accessgate}/{accessguard}/search
+    path:     /{hash}/{checkpoint}/{accessguard}/search
     defaults: { _controller: "HVGAccessControlBundle:AccessMonitor:search" }
     methods:  [GET, POST]
 

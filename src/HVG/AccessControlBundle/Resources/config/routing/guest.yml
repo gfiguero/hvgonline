@@ -3,27 +3,12 @@ accesscontrol_guest_links:
     defaults: { _controller: "HVGAccessControlBundle:Guest:links" }
     methods:  GET
 
-accesscontrol_guest_index:
-    path:     /index
-    defaults: { _controller: "HVGAccessControlBundle:Guest:index" }
-    methods:  GET
-
-accesscontrol_guest_test:
-    path:     /test
-    defaults: { _controller: "HVGAccessControlBundle:Guest:test" }
-    methods:  GET
-
-accesscontrol_guest_search_residents:
-    path:     /searchresidents
-    defaults: { _controller: "HVGAccessControlBundle:Guest:searchResidents" }
-    methods:  GET
+accesscontrol_guest_new:
+    path:     /{hash}/{checkpoint}/{accessguard}/{unitgroup}/{unit}/new
+    defaults: { _controller: "HVGAccessControlBundle:Guest:new" }
+    methods:  [GET, POST]
 
 accesscontrol_guest_search_person:
     path:     /searchperson
     defaults: { _controller: "HVGAccessControlBundle:Guest:searchPerson" }
     methods:  GET
-
-accesscontrol_guest_new:
-    path:     /{hash}/{accessgate}/{accessguard}/{unitgroup}/{unit}/new
-    defaults: { _controller: "HVGAccessControlBundle:Guest:new" }
-    methods:  [GET, POST]

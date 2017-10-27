@@ -16,7 +16,7 @@ class Builder implements ContainerAwareInterface
         $request = $this->container->get('request');
         $hash = $request->attributes->get('hash');
         $accessguard = $request->attributes->get('accessguard');
-        $accessgate = $request->attributes->get('accessgate');
+        $checkpoint = $request->attributes->get('checkpoint');
 
         $topmenu = $factory->createItem('root');
         $topmenu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
@@ -29,17 +29,17 @@ class Builder implements ContainerAwareInterface
             'accesscontrol_guest_index',
         )));
 */
-        if ($accessgate and $accessguard) {
-            $topmenu->addChild('topmenu.accessgate', array('route' => 'accesscontrol_accessgate_change', 'routeParameters' => array(
+        if ($checkpoint and $accessguard) {
+            $topmenu->addChild('topmenu.checkpoint', array('route' => 'accesscontrol_checkpoint_change', 'routeParameters' => array(
                 'hash' => $hash,
                 'accessguard' => $accessguard->getId(),
-                'accessgate' => $accessgate->getId(),
-            )))->setLabel($accessgate->getName());
+                'checkpoint' => $checkpoint->getId(),
+            )))->setLabel($checkpoint->getName());
 
             $topmenu->addChild('topmenu.accessguard', array('route' => 'accesscontrol_accessguard_change', 'routeParameters' => array(
                 'hash' => $hash,
                 'accessguard' => $accessguard->getId(),
-                'accessgate' => $accessgate->getId(),
+                'checkpoint' => $checkpoint->getId(),
             )))->setLabel($accessguard->getName());
         }
 

@@ -11,7 +11,7 @@ php app/console doctrine:generate:entities HVGSystemBundle:Carpark --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:GuestCarpark --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Area --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Vehicle --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:AccessGate --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Checkpoint --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:AccessGuard --path=src
 
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Result --format=yml --with-write --overwrite --no-interaction --route-prefix=result

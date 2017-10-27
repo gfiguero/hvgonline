@@ -15,7 +15,7 @@ class Builder implements ContainerAwareInterface
         $roles = $this->container->get('security.token_storage')->getToken()->getUser()->getRoles();
 
         $menu = $factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'nav navbar-nav');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
         $menu->setChildrenAttribute('id', 'top-menu');
 
         if(in_array('ROLE_AGENT', $roles)) {
@@ -60,7 +60,7 @@ class Builder implements ContainerAwareInterface
             $menu->addChild('topmenu.agentdashboard', array('route' => 'agent_dashboard_index'));
             $menu['topmenu.agentdashboard']->setExtras(array('icon' => 'dashboard fa-fw', 'translation_domain' => 'HVGAgentBundle'));
         }
-
+/*
         if(in_array('ROLE_ADMIN', $roles)) {
             $menu->addChild('topmenu.user', array('route' => 'user_index'));
             $menu['topmenu.user']->setExtras(array('icon' => 'id-card fa-fw', 'translation_domain' => 'HVGAgentBundle'));
@@ -68,7 +68,7 @@ class Builder implements ContainerAwareInterface
             $menu->addChild('topmenu.systemdashboard', array('route' => 'hvg_system_dashboard'));
             $menu['topmenu.systemdashboard']->setExtras(array('icon' => 'gears fa-fw', 'translation_domain' => 'HVGAgentBundle'));
         }
-
+*/
         $menu->addChild('topmenu.logout', array('route' => 'fos_user_security_logout'));
         $menu['topmenu.logout']->setExtras(array('icon' => 'sign-out fa-fw', 'translation_domain' => 'HVGAgentBundle'));
 
@@ -136,6 +136,40 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.datacenter']['sidemenu.unitinsurancepolicy']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitinsurancepolicy_index')));
 
         return $sidemenu;
+    }
+
+    public function tabsMenu(FactoryInterface $factory, array $options)
+    {
+        $request = $this->container->get('request');
+        $community = $request->attributes->get('community') ? $request->attributes->get('community')->getId() : null;
+        $unitgroup = $request->attributes->get('unitgroup') ? $request->attributes->get('unitgroup')->getId() : null;
+        $unit = $request->attributes->get('unit') ? $request->attributes->get('unit')->getId() : null;
+
+        $tabs = $factory->createItem('root');
+        $tabs->setChildrenAttribute('class', 'nav nav-pills');
+        $tabs->setChildrenAttribute('id', 'tabs-menu');
+
+        $tabs->addChild('unitresident', array('route' => 'agent_unitresident_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
+        $tabs['unitresident']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitresident_index')));
+        $tabs['unitresident']->setLabel('unitresident.index.title');
+
+        $tabs->addChild('warehouse', array('route' => 'agent_warehouse_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
+        $tabs['warehouse']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_warehouse_index')));
+        $tabs['warehouse']->setLabel('warehouse.index.title');
+
+        $tabs->addChild('unitmemo', array('route' => 'agent_unitmemo_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
+        $tabs['unitmemo']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitmemo_index')));
+        $tabs['unitmemo']->setLabel('unitmemo.index.title');
+
+        $tabs->addChild('guest', array('route' => 'agent_guest_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
+        $tabs['guest']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_guest_index')));
+        $tabs['guest']->setLabel('guest.index.title');
+
+        $tabs->addChild('carpark', array('route' => 'agent_carpark_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
+        $tabs['carpark']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_carpark_index')));
+        $tabs['carpark']->setLabel('carpark.index.title');
+
+        return $tabs;
     }
 
 }

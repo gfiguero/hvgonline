@@ -15,10 +15,10 @@ class PersonType extends AbstractType
     {
         $builder
             ->add('rut', null, array(
-                'label' => 'person.form.rut',
+                'label' => false,
                 'translation_domain' => 'HVGAccessControlBundle',
                 'required' => true,
-                'attr' => array('class' => 'input rut', 'label_col' => 3, 'widget_col' => 9),
+                'attr' => array('class' => 'input rut input-lg', 'label_col' => 0, 'widget_col' => 12, 'placeholder' => 'person.form.rut'),
             ))
 //            ->add('search', 'button', array(
 //                'label' => false,
@@ -26,10 +26,10 @@ class PersonType extends AbstractType
 //                'attr' => array('icon' => 'search fa-fw'),
 //            ))
             ->add('name', null, array(
-                'label' => 'person.form.name',
+                'label' => false,
                 'translation_domain' => 'HVGAccessControlBundle',
                 'required' => true,
-                'attr' => array('class' => 'input', 'label_col' => 3, 'widget_col' => 9),
+                'attr' => array('class' => 'input input-lg', 'label_col' => 0, 'widget_col' => 12, 'placeholder' => 'person.form.name'),
             ))
         ;
     }

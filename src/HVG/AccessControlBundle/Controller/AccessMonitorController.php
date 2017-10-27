@@ -5,22 +5,22 @@ namespace HVG\AccessControlBundle\Controller;
 use HVG\SystemBundle\Entity\Community;
 use HVG\SystemBundle\Entity\UnitGroup;
 use HVG\SystemBundle\Entity\Unit;
-use HVG\SystemBundle\Entity\AccessGate;
+use HVG\SystemBundle\Entity\Checkpoint;
 use HVG\SystemBundle\Entity\AccessGuard;
-use HVG\AccessControlBundle\Form\MonitorType;
+use HVG\AccessControlBundle\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class AccessMonitorController extends Controller
 {
-    public function indexAction(Request $request, $hash, AccessGate $accessgate, AccessGuard $accessguard, UnitGroup $unitgroup = null, Unit $unit = null)
+    public function indexAction(Request $request, $hash, Checkpoint $checkpoint, AccessGuard $accessguard, UnitGroup $unitgroup = null, Unit $unit = null)
     {
         $em = $this->getDoctrine()->getManager();
         $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
         $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findByCommunity($community);
         $units = $em->getRepository('HVGSystemBundle:Unit')->findByUnitgroup($unitgroup);
-        $unitresidents = $em->getRepository('HVGSystemBundle:UnitResident')->findByUnit($unit);
-        $unitmemos = $em->getRepository('HVGSystemBundle:UnitMemo')->findByUnit($unit);
+        $unitresidents = $em->getRepository('HVGSystemBundle:UnitResident')->findByUnit($unit, 'name', 'ASC');
+        $unitmemos = $em->getRepository('HVGSystemBundle:UnitMemo')->getAvailableByUnit($unit);
         if ($unit) {
             $guests = $em->getRepository('HVGSystemBundle:Guest')->getLastByUnit($unit);
         } elseif ($unitgroup) {
@@ -29,11 +29,11 @@ class AccessMonitorController extends Controller
             $guests = $em->getRepository('HVGSystemBundle:Guest')->getLastByCommunity($community);
         }
 
-        $searchForm = $this->createForm(new MonitorType());
+        $searchForm = $this->createForm(new SearchType());
 
         return $this->render('HVGAccessControlBundle:AccessMonitor:index.html.twig', array(
             'community' => $community,
-            'accessgate' => $accessgate,
+            'checkpoint' => $checkpoint,
             'accessguard' => $accessguard,
             'unitgroup' => $unitgroup,
             'unit' => $unit,
@@ -46,24 +46,24 @@ class AccessMonitorController extends Controller
         ));
     }
 
-    public function searchAction(Request $request, $hash, AccessGate $accessgate, AccessGuard $accessguard)
+    public function searchAction(Request $request, $hash, Checkpoint $checkpoint, AccessGuard $accessguard)
     {
         $em = $this->getDoctrine()->getManager();
         $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
 
-        $searchForm = $this->createForm(new MonitorType());
+        $searchForm = $this->createForm(new SearchType());
         $searchForm->handleRequest($request);
 
         if ($searchForm->isSubmitted()) {
             if($searchForm->isValid()) {
-                $search = $searchForm['monitor']->getData();
+                $search = $searchForm['search']->getData();
                 $unitresidents = $em->getRepository('HVGSystemBundle:UnitResident')->findBySearch($community, $search);
                 $unitmemos = $em->getRepository('HVGSystemBundle:UnitMemo')->findBySearch($community, $search);
                 $guests = $em->getRepository('HVGSystemBundle:Guest')->findBySearch($community, $search);
 
                 return $this->render('HVGAccessControlBundle:AccessMonitor:search.html.twig', array(
                     'community' => $community,
-                    'accessgate' => $accessgate,
+                    'checkpoint' => $checkpoint,
                     'accessguard' => $accessguard,
                     'unitresidents' => $unitresidents,
                     'unitmemos' => $unitmemos,
@@ -73,7 +73,7 @@ class AccessMonitorController extends Controller
             }
         }
 
-        return $this->redirect($this->generateUrl('accesscontrol_accessmonitor_index', array('hash' => $hash, 'accessgate' => $accessgate->getId(), 'accessguard' => $accessguard->getId())));
+        return $this->redirect($this->generateUrl('accesscontrol_accessmonitor_index', array('hash' => $hash, 'checkpoint' => $checkpoint->getId(), 'accessguard' => $accessguard->getId())));
 
     }
 }

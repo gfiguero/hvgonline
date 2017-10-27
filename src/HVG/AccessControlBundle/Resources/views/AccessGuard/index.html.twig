@@ -11,7 +11,7 @@
                 <div class="col-sm-8 col-sm-offset-2">
                     <h1 class="page-header">{{ 'accessguard.index.title'|trans }}</h1>
                     {% for accessguard in accessguards %}
-                        <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id }) }}" class="btn btn-primary btn-lg btn-block">{{ accessguard.name }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
+                        <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id }) }}" class="btn btn-primary btn-lg btn-block">{{ accessguard.name }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
                     {% endfor %}
                 </div>
             </div>

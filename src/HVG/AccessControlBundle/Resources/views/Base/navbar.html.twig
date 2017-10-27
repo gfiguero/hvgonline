@@ -8,8 +8,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            {% if community is defined and accessgate is defined and accessguard is defined %}
-                <a class="navbar-brand" href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id}) }}">Control de Acceso - {{ community }}</a>
+            {% if community is defined and checkpoint is defined and accessguard is defined %}
+                <a class="navbar-brand" href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id}) }}">Control de Acceso - {{ community }}</a>
             {% endif %}
         </div>
         <div class="navbar-collapse collapse">

@@ -418,4 +418,33 @@ class Guest
     {
         return $this->accessgate;
     }
+    /**
+     * @var \HVG\SystemBundle\Entity\AccessGuard
+     */
+    private $accessguard;
+
+
+    /**
+     * Set accessguard
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGuard $accessguard
+     *
+     * @return Guest
+     */
+    public function setAccessguard(\HVG\SystemBundle\Entity\AccessGuard $accessguard = null)
+    {
+        $this->accessguard = $accessguard;
+
+        return $this;
+    }
+
+    /**
+     * Get accessguard
+     *
+     * @return \HVG\SystemBundle\Entity\AccessGuard
+     */
+    public function getAccessguard()
+    {
+        return $this->accessguard;
+    }
 }

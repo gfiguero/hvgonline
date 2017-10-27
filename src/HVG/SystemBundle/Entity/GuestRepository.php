@@ -13,24 +13,15 @@ use HVG\SystemBundle\Entity\Unit;
  */
 class GuestRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findByCommunity(Community $community)
-    {
-        $qb = $this->getEntityManager()->createQueryBuilder('g');
-        $qb->select('g')
-            ->from('HVGSystemBundle:Guest', 'g')
-            ->orderBy('g.createdAt', 'DESC');
-        return $qb->getQuery()->getResult();
-    }
-
     public function getLastByUnit(Unit $unit = null)
     {
         $qb = $this->getEntityManager()->createQueryBuilder('g');
-        $qb->select('g', 'gp', 'gc', 'gag', 'gat')
+        $qb->select('g', 'gp', 'gcp', 'gg', 'gc')
             ->from('HVGSystemBundle:Guest', 'g')
             ->leftJoin('g.people', 'gp')
-            ->leftJoin('g.guestcarpark', 'gc')
-            ->leftJoin('g.accessguard', 'gag')
-            ->leftJoin('g.accessgate', 'gat')
+            ->leftJoin('g.guestcarpark', 'gcp')
+            ->leftJoin('g.accessguard', 'gg')
+            ->leftJoin('g.checkpoint', 'gc')
             ->orderBy('g.createdAt', 'DESC')
             ->where('g.unit = :unit')
             ->andWhere('g.createdAt > :datetime')
@@ -42,13 +33,13 @@ class GuestRepository extends \Doctrine\ORM\EntityRepository
     public function getLastByUnitgroup(UnitGroup $unitgroup = null)
     {
         $qb = $this->getEntityManager()->createQueryBuilder('g');
-        $qb->select('g', 'gp', 'gc', 'gag', 'gat')
+        $qb->select('g', 'gp', 'gcp', 'gg', 'gc')
             ->from('HVGSystemBundle:Guest', 'g')
             ->join('g.unit', 'gu')
             ->leftJoin('g.people', 'gp')
-            ->leftJoin('g.guestcarpark', 'gc')
-            ->leftJoin('g.accessguard', 'gag')
-            ->leftJoin('g.accessgate', 'gat')
+            ->leftJoin('g.guestcarpark', 'gcp')
+            ->leftJoin('g.accessguard', 'gg')
+            ->leftJoin('g.checkpoint', 'gc')
             ->orderBy('g.createdAt', 'DESC')
             ->where('gu.unitgroup = :unitgroup')
             ->andWhere('g.createdAt > :datetime')
@@ -60,13 +51,13 @@ class GuestRepository extends \Doctrine\ORM\EntityRepository
     public function getLastByCommunity(Community $community = null)
     {
         $qb = $this->getEntityManager()->createQueryBuilder('g');
-        $qb->select('g', 'gp', 'gc', 'gag', 'gat')
+        $qb->select('g', 'gp', 'gcp', 'gg', 'gc')
             ->from('HVGSystemBundle:Guest', 'g')
             ->join('g.unit', 'gu')
             ->leftJoin('g.people', 'gp')
-            ->leftJoin('g.guestcarpark', 'gc')
-            ->leftJoin('g.accessguard', 'gag')
-            ->leftJoin('g.accessgate', 'gat')
+            ->leftJoin('g.guestcarpark', 'gcp')
+            ->leftJoin('g.accessguard', 'gg')
+            ->leftJoin('g.checkpoint', 'gc')
             ->orderBy('g.createdAt', 'DESC')
             ->where('gu.community = :community')
             ->andWhere('g.createdAt > :datetime')
@@ -88,6 +79,53 @@ class GuestRepository extends \Doctrine\ORM\EntityRepository
             ->orWhere('gp.name LIKE :search')
             ->andWhere('guc.id = :community')
             ->setParameters(array('community' => $community, 'search' => '%'.$search.'%'))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByUnit($unit, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('g')
+            ->select('g', 'gu')
+            ->from('HVGSystemBundle:Guest', 'g')
+            ->join('g.unit', 'gu')
+            ->where('g.unit = :unit')
+            ->orderBy('g.'.$sort, $direction)
+            ->setParameters(array('unit' => $unit))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByUnitgroup($unitgroup, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('g')
+            ->select('g', 'gu')
+            ->from('HVGSystemBundle:Guest', 'g')
+            ->join('g.unit', 'gu')
+            ->join('gu.unitgroup', 'gug')
+            ->where('gug.id = :unitgroup')
+            ->orderBy('g.'.$sort, $direction)
+            ->setParameters(array('unitgroup' => $unitgroup))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByCommunity($community, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('g')
+            ->select('g', 'gu')
+            ->from('HVGSystemBundle:Guest', 'g')
+            ->join('g.unit', 'gu')
+            ->join('gu.community', 'guc')
+            ->where('guc.id = :community')
+            ->orderBy('g.'.$sort, $direction)
+            ->setParameters(array('community' => $community))
             ->getQuery()
             ->getResult()
         ;

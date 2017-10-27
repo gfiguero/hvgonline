@@ -7,20 +7,15 @@ agent_warehouse_index:
         unitgroup: '\d+|'
         unit: '\d+|'
 
-agent_warehouse_unitgroup:
-    path:     /{id}/unitgroup
-    defaults: { _controller: "HVGAgentBundle:Warehouse:unitgroup" }
-    methods:  GET
-
-agent_warehouse_community:
-    path:     /{id}/community
-    defaults: { _controller: "HVGAgentBundle:Warehouse:community" }
-    methods:  GET
-
 agent_warehouse_new:
     path:     /{unit}/new
     defaults: { _controller: "HVGAgentBundle:Warehouse:new" }
     methods:  [GET, POST]
+
+agent_warehouse_show:
+    path:     /{warehouse}/show
+    defaults: { _controller: "HVGAgentBundle:Warehouse:show" }
+    methods:  GET
 
 agent_warehouse_edit:
     path:     /{warehouse}/edit
@@ -30,4 +25,4 @@ agent_warehouse_edit:
 agent_warehouse_delete:
     path:     /{warehouse}/delete
     defaults: { _controller: "HVGAgentBundle:Warehouse:delete" }
-    methods:  DELETE
+    methods:  [GET, DELETE]

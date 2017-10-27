@@ -1,0 +1,10 @@
+{% block unittabs %}
+    {% trans_default_domain 'HVGAgentBundle' %}
+    <div class="row" id="tabs">
+        <div class="col-md-12">
+            {{ knp_menu_render('HVGAgentBundle:Builder:tabsMenu', {'currentClass': 'active'}) }}
+            <p></p>
+        </div>
+    </div>
+    <!-- /#unit-tab -->
+{% endblock %}

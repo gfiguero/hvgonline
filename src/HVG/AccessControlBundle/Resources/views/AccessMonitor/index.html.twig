@@ -5,14 +5,14 @@
 {% block title %}{{ 'accessmonitor.index.title'|trans }}{% endblock %}
 
 {% block accesscontrol %}
-    {{ form(searchForm, {'action': path('accesscontrol_accessmonitor_search', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id}) }) }}
+    {{ form(searchForm, {'action': path('accesscontrol_accessmonitor_search', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id}) }) }}
 
     <div class="panel panel-default">
         <div class="panel-body">
             <ul class="nav nav-pills">
-                <li {% if not unitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id}) }}">{{ icon('home fa-fw') }} Inicio</a></li>
+                <li {% if not unitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id}) }}">{{ icon('home fa-fw') }} Inicio</a></li>
                 {% for current in unitgroups %}
-                    <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : current.id }) }}">{{ current.name }}</a></li>
+                    <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id, 'unitgroup' : current.id }) }}">{{ current.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -23,7 +23,7 @@
         <div class="panel-body">
             <ul class="nav nav-pills">
                 {% for current in units %}
-                    <li {% if current == unit %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : current.id }) }}">{{ current.name }}</a></li>
+                    <li {% if current == unit %}class="active"{% endif %}><a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : current.id }) }}">{{ current.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -39,8 +39,8 @@
             <table class="records_list table table-striped table-hover">
             {% for unitresident in unitresidents %}
                 <tr>
-                    <td>{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
-                    <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
+                    <td style="white-space: nowrap;">{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
+                    <td style="white-space: nowrap;">{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
                 </tr>
             {% endfor %}
             </table>
@@ -57,7 +57,7 @@
             <table class="records_list table table-striped table-hover">
             {% for unitmemo in unitmemos %}
                 <tr>
-                    <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
+                    <td style="white-space: nowrap;">{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
                 </tr>
             {% endfor %}
             </table>
@@ -67,7 +67,7 @@
 
     {% if unit %}
     <p>
-        <a href="{{ path('accesscontrol_guest_new', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-success btn-lg btn-block">{{ icon('plus fa-fw') }}&nbsp;{{ 'guest.new.link'|trans }}</a>
+        <a href="{{ path('accesscontrol_guest_new', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-success btn-lg btn-block">{{ icon('plus fa-fw') }}&nbsp;{{ 'guest.new.link'|trans }}</a>
     </p>
     {% endif %}
 
@@ -101,14 +101,14 @@
             {% for guest in guests %}
                 {% for person in guest.people %}
                     <tr>
-                        <td>{{ guest.id }}</td>
-                        <td>{% if person.name %}{{ person.name }}{% endif %}</td>
-                        <td>{% if person.rut %}{{ person.rut }}{% endif %}</td>
-                        <td>{% if guest.carLicence %}{{ guest.carLicence }}{% endif %}</td>
-                        <td>{% if guest.guestcarpark %}{{ guest.guestcarpark.name }}{% endif %}</td>
-                        <td>{% if guest.accessguard %}{{ guest.accessguard.name }}{% endif %}</td>
-                        <td>{% if guest.accessgate %}{{ guest.accessgate.name }}{% endif %}</td>
-                        <td>{{ guest.createdat|ago }}</td>
+                        <td style="white-space: nowrap;">{{ guest.unit }}</td>
+                        <td style="white-space: nowrap;">{% if person.name %}{{ person.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if person.rut %}{{ person.rut }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.carLicence %}{{ guest.carLicence }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.guestcarpark %}{{ guest.guestcarpark.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.accessguard %}{{ guest.accessguard.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.checkpoint %}{{ guest.checkpoint.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{{ guest.createdat|ago }}</td>
                     </tr>
                 {% endfor %}
             {% endfor %}

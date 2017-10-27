@@ -1,33 +1,28 @@
 agent_carpark_index:
     path:     /{community}/{unitgroup}/{unit}
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unit", community: '', unitgroup: '', unit: '' }
+    defaults: { _controller: "HVGAgentBundle:Carpark:index", community: '', unitgroup: '', unit: '' }
     methods:  GET
     requirements:
         community: '\d+|'
         unitgroup: '\d+|'
         unit: '\d+|'
 
-agent_carpark_unitgroup:
-    path:     /{id}/unitgroup
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unitgroup" }
-    methods:  GET
-
-agent_carpark_community:
-    path:     /{id}/community
-    defaults: { _controller: "HVGAgentBundle:UnitResident:community" }
-    methods:  GET
-
 agent_carpark_new:
     path:     /{unit}/new
-    defaults: { _controller: "HVGAgentBundle:UnitResident:new" }
+    defaults: { _controller: "HVGAgentBundle:Carpark:new" }
     methods:  [GET, POST]
+
+agent_carpark_show:
+    path:     /{carpark}/show
+    defaults: { _controller: "HVGAgentBundle:Carpark:show" }
+    methods:  GET
 
 agent_carpark_edit:
     path:     /{carpark}/edit
-    defaults: { _controller: "HVGAgentBundle:UnitResident:edit" }
+    defaults: { _controller: "HVGAgentBundle:Carpark:edit" }
     methods:  [GET, POST]
 
 agent_carpark_delete:
     path:     /{carpark}/delete
-    defaults: { _controller: "HVGAgentBundle:UnitResident:delete" }
-    methods:  DELETE
+    defaults: { _controller: "HVGAgentBundle:Carpark:delete" }
+    methods:  [GET, DELETE]

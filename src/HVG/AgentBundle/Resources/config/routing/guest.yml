@@ -1,33 +1,28 @@
 agent_guest_index:
     path:     /{community}/{unitgroup}/{unit}
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unit", community: '', unitgroup: '', unit: '' }
+    defaults: { _controller: "HVGAgentBundle:Guest:index", community: '', unitgroup: '', unit: '' }
     methods:  GET
     requirements:
         community: '\d+|'
         unitgroup: '\d+|'
         unit: '\d+|'
 
-agent_guest_unitgroup:
-    path:     /{id}/unitgroup
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unitgroup" }
-    methods:  GET
-
-agent_guest_community:
-    path:     /{id}/community
-    defaults: { _controller: "HVGAgentBundle:UnitResident:community" }
-    methods:  GET
-
 agent_guest_new:
     path:     /{unit}/new
-    defaults: { _controller: "HVGAgentBundle:UnitResident:new" }
+    defaults: { _controller: "HVGAgentBundle:Guest:new" }
     methods:  [GET, POST]
+
+agent_guest_show:
+    path:     /{guest}/show
+    defaults: { _controller: "HVGAgentBundle:Guest:show" }
+    methods:  GET
 
 agent_guest_edit:
     path:     /{guest}/edit
-    defaults: { _controller: "HVGAgentBundle:UnitResident:edit" }
+    defaults: { _controller: "HVGAgentBundle:Guest:edit" }
     methods:  [GET, POST]
 
 agent_guest_delete:
     path:     /{guest}/delete
-    defaults: { _controller: "HVGAgentBundle:UnitResident:delete" }
-    methods:  DELETE
+    defaults: { _controller: "HVGAgentBundle:Guest:delete" }
+    methods:  [GET, DELETE]

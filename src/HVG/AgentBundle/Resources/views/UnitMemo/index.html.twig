@@ -1,21 +1,23 @@
-{% extends 'HVGAgentBundle:UnitResident:layout.html.twig' %}
+{% extends 'HVGAgentBundle:UnitMemo:layout.html.twig' %}
 
 {% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
 
-{% block unitresident %}
+{% block title %}{{ 'unitmemo.index.title'|trans }}{% endblock %}
+
+{% block unitmemo %}
     <div class="row" id="page-list">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1 class="panel-title">{{ 'unitresident.index.list'|trans }}</h1>
+                    <h1 class="panel-title">{{ 'unitmemo.index.list'|trans }}</h1>
                 </div>
-                {% if unitresidents is empty %}
+                {% if unitmemos is empty %}
                 <div class="panel-body">
-                    <div class="text-center">{{ 'unitresident.index.empty'|trans }}</div>
+                    <div class="text-center">{{ 'unitmemo.index.empty'|trans }}</div>
                 </div>
                 {% else %}
                 <div class="table-responsive">
-                    <table class="records_list table table-striped table-hover">
+                    <table class="records_list table table-striped table-hover table-middle">
                         <thead>
                             <tr>
                                 <th>
@@ -23,27 +25,37 @@
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('edit fa-fw') }}</a></div>
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('times fa-fw') }}</a></div>
                                 </th>
-                                <th>{{ 'unitresident.form.name'|trans }}</th>
-                                <th>{{ 'unitresident.form.phone'|trans }}</th>
+                                <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.description'|trans, 'description') }}{% if sort == 'description' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.expiredAt'|trans, 'expiredAt') }}{% if sort == 'expiredAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.unit'|trans, 'unit') }}{% if sort == 'unit' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {% for unitresident in unitresidents %}
+                        {% for unitmemo in unitmemos %}
                             <tr>
                                 <td>
-                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-primary">{{ icon('search fa-fw') }}</a></div>
-                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
-                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('agent_unitmemo_show', {'unitmemo' : unitmemo.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('agent_unitmemo_edit', {'unitmemo' : unitmemo.id}) }}" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('agent_unitmemo_delete', {'unitmemo' : unitmemo.id}) }}" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
                                 </td>
-                                <td>{% if unitresident.name %}{{ unitresident.name }}{% endif %}</td>
-                                <td>{% if unitresident.phone %}{{ unitresident.phone }}{% endif %}</td>
+                                <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
+                                <td>{% if unitmemo.createdAt %}{{ unitmemo.createdAt|ago }}{% endif %}</td>
+                                <td>{% if unitmemo.expiredAt %}{{ unitmemo.expiredAt|ago }}{% endif %}</td>
+                                <td>{% if unitmemo.unit %}{{ unitmemo.unit }}{% endif %}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 {% endif %}
-            </div>                
+            </div>
+
+            {% if unitmemos is not empty %}
+            <div class="text-center">
+                {{ knp_pagination_render(unitmemos) }}
+            </div>
+            {% endif %}
         </div>
     </div>
     <!-- /#page-list -->        

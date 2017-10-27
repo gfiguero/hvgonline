@@ -1,26 +1,21 @@
 agent_unitresident_index:
     path:     /{community}/{unitgroup}/{unit}
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unit", community: '', unitgroup: '', unit: '' }
+    defaults: { _controller: "HVGAgentBundle:UnitResident:index", community: '', unitgroup: '', unit: '' }
     methods:  GET
     requirements:
         community: '\d+|'
         unitgroup: '\d+|'
         unit: '\d+|'
 
-agent_unitresident_unitgroup:
-    path:     /{id}/unitgroup
-    defaults: { _controller: "HVGAgentBundle:UnitResident:unitgroup" }
-    methods:  GET
-
-agent_unitresident_community:
-    path:     /{id}/community
-    defaults: { _controller: "HVGAgentBundle:UnitResident:community" }
-    methods:  GET
-
 agent_unitresident_new:
     path:     /{unit}/new
     defaults: { _controller: "HVGAgentBundle:UnitResident:new" }
     methods:  [GET, POST]
+
+agent_unitresident_show:
+    path:     /{unitresident}/show
+    defaults: { _controller: "HVGAgentBundle:UnitResident:show" }
+    methods:  GET
 
 agent_unitresident_edit:
     path:     /{unitresident}/edit
@@ -30,4 +25,4 @@ agent_unitresident_edit:
 agent_unitresident_delete:
     path:     /{unitresident}/delete
     defaults: { _controller: "HVGAgentBundle:UnitResident:delete" }
-    methods:  DELETE
+    methods:  [GET, DELETE]

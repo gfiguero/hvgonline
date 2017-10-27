@@ -1,7 +1,7 @@
-HVG\SystemBundle\Entity\AccessGate:
+HVG\SystemBundle\Entity\Checkpoint:
     type: entity
-    table: AccessGate
-    repositoryClass: HVG\SystemBundle\Entity\AccessGateRepository
+    table: Checkpoint
+    repositoryClass: HVG\SystemBundle\Entity\CheckpointRepository
     id:
         id:
             type: integer
@@ -11,11 +11,11 @@ HVG\SystemBundle\Entity\AccessGate:
     oneToMany:
         guests:
             targetEntity: HVG\SystemBundle\Entity\Guest
-            mappedBy: accessgate
+            mappedBy: checkpoint
     manyToOne:
         community:
             targetEntity: HVG\SystemBundle\Entity\Community
-            inversedBy: accessgates
+            inversedBy: checkpoints
     fields:
         name:
             type: string

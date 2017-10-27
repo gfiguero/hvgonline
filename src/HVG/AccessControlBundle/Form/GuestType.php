@@ -43,7 +43,7 @@ class GuestType extends AbstractType
                 'label' => 'guest.form.carlicence',
                 'translation_domain' => 'HVGAccessControlBundle',
                 'required' => false,
-                'attr' => array('label_col' => 3, 'widget_col' => 9),
+                'attr' => array('label_col' => 3, 'widget_col' => 9, 'class' => 'input input-lg'),
             ))
             ->add('guestcarpark', null, array(
                 'label' => 'guest.form.guestcarpark',
@@ -51,7 +51,7 @@ class GuestType extends AbstractType
                 'required' => false,
                 'placeholder' => 'Seleccione Estacionamiento',
                 'choices' => $community->getGuestCarparks(),
-                'attr' => array('label_col' => 3, 'widget_col' => 9),
+                'attr' => array('label_col' => 3, 'widget_col' => 9, 'class' => 'input input-lg'),
                 'choice_label' => function($guestcarpark) {
                     return $guestcarpark->getName();
                 }
@@ -60,7 +60,7 @@ class GuestType extends AbstractType
                 'label' => 'guest.form.note',
                 'translation_domain' => 'HVGAccessControlBundle',
                 'required' => false,
-                'attr' => array('label_col' => 3, 'widget_col' => 9),
+                'attr' => array('label_col' => 3, 'widget_col' => 9, 'class' => 'input input-lg'),
             ))
         ;
     }

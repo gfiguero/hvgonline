@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         <div class="col-lg-9 col-lg-offset-3">
-            <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'accessgate' : accessgate.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-danger btn-lg btn-block">{{ icon('times fa-fw') }}&nbsp;{{ 'guest.new.cancel'|trans }}</a>
+            <a href="{{ path('accesscontrol_accessmonitor_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-danger btn-lg btn-block">{{ icon('times fa-fw') }}&nbsp;{{ 'guest.new.cancel'|trans }}</a>
         </div>
     </div>
 {% endblock %}

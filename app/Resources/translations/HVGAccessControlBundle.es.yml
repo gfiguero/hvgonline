@@ -40,3 +40,21 @@ accessmonitor:
         residents: Residentes
         unitmemos: Memos
         guests: Últimas Visitas
+
+accessguard:
+    index:
+        title: Guardias de acceso
+    change:
+        title: Cambio de guardia
+        submit: Confirmar cambio
+
+community:
+    index:
+        title: Comunidades
+
+checkpoint:
+    index:
+        title: Puntos de control
+    change:
+        title: Cambiar punto de control
+        submit: Confirmar cambio

@@ -776,4 +776,43 @@ class Community
     {
         return $this->accessgates;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accessguards;
+
+
+    /**
+     * Add accessguard
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGuard $accessguard
+     *
+     * @return Community
+     */
+    public function addAccessguard(\HVG\SystemBundle\Entity\AccessGuard $accessguard)
+    {
+        $this->accessguards[] = $accessguard;
+
+        return $this;
+    }
+
+    /**
+     * Remove accessguard
+     *
+     * @param \HVG\SystemBundle\Entity\AccessGuard $accessguard
+     */
+    public function removeAccessguard(\HVG\SystemBundle\Entity\AccessGuard $accessguard)
+    {
+        $this->accessguards->removeElement($accessguard);
+    }
+
+    /**
+     * Get accessguards
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccessguards()
+    {
+        return $this->accessguards;
+    }
 }

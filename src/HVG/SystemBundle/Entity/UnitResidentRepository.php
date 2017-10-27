@@ -23,30 +23,47 @@ class UnitResidentRepository extends \Doctrine\ORM\EntityRepository
         ;
     }
 
-    public function findByUnitgroup($unitgroup)
+    public function findByUnit($unit, $sort, $direction)
     {
         return $this->getEntityManager()
             ->createQueryBuilder('r')
-            ->select('r')
+            ->select('r', 'ru')
+            ->from('HVGSystemBundle:UnitResident', 'r')
+            ->join('r.unit', 'ru')
+            ->where('r.unit = :unit')
+            ->orderBy('r.'.$sort, $direction)
+            ->setParameters(array('unit' => $unit))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByUnitgroup($unitgroup, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('r')
+            ->select('r', 'ru')
             ->from('HVGSystemBundle:UnitResident', 'r')
             ->join('r.unit', 'ru')
             ->join('ru.unitgroup', 'ruu')
             ->where('ruu.id = :unitgroup')
+            ->orderBy('r.'.$sort, $direction)
             ->setParameters(array('unitgroup' => $unitgroup))
             ->getQuery()
             ->getResult()
         ;
     }
 
-    public function findByCommunity($community)
+    public function findByCommunity($community, $sort, $direction)
     {
         return $this->getEntityManager()
             ->createQueryBuilder('r')
-            ->select('r')
+            ->select('r', 'ru')
             ->from('HVGSystemBundle:UnitResident', 'r')
             ->join('r.unit', 'ru')
             ->join('ru.community', 'ruc')
             ->where('ruc.id = :community')
+            ->orderBy('r.'.$sort, $direction)
             ->setParameters(array('community' => $community))
             ->getQuery()
             ->getResult()

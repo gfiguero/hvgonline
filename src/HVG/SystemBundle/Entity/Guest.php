@@ -447,4 +447,33 @@ class Guest
     {
         return $this->accessguard;
     }
+    /**
+     * @var \HVG\SystemBundle\Entity\Checkpoint
+     */
+    private $checkpoint;
+
+
+    /**
+     * Set checkpoint
+     *
+     * @param \HVG\SystemBundle\Entity\Checkpoint $checkpoint
+     *
+     * @return Guest
+     */
+    public function setCheckpoint(\HVG\SystemBundle\Entity\Checkpoint $checkpoint = null)
+    {
+        $this->checkpoint = $checkpoint;
+
+        return $this;
+    }
+
+    /**
+     * Get checkpoint
+     *
+     * @return \HVG\SystemBundle\Entity\Checkpoint
+     */
+    public function getCheckpoint()
+    {
+        return $this->checkpoint;
+    }
 }

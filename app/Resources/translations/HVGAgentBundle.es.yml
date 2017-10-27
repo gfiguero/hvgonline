@@ -116,12 +116,32 @@ unit:
 unitresident:
     index:
         title: Residentes
+        link: Residentes
         list: Lista de residentes
         home: Inicio
-        link: Residentes
+        empty: No hay residentes seleccionados
+    show:
+        title: Datos de residente
+    new:
+        title: Nuevo Residente
+        link: Agregar Residente
+        submit: Registrar
+    edit:
+        title: Edición de residente
+        link: Editar residente
+        submit: Guardar cambios
+    delete:
+        title: Borrar residente
+        link: Borrar residente
+        submit: Confirmar
+        cancel: Cancelar
     form:
         name: Nombre
+        email: Email
+        age: Edad
+        assistance: Requiere asistencia
         phone: Teléfono
+        unit: Departamento
 
 warehouse:
     index:
@@ -139,7 +159,12 @@ guest:
         home: Inicio
         link: Visitas
     form:
-        name: Nombre
+        person: Persona
+        carlicence: Vehículo
+        guestcarpark: Estacionamiento
+        unit: Departamento
+        accessgate: Punto de control
+        createdAt: Registro
 
 carpark:
     index:
@@ -153,11 +178,30 @@ carpark:
 unitmemo:
     index:
         title: Memorándums
+        link: Memorándums
         list: Lista de memorándums
         home: Inicio
-        link: Memorándums
+        empty: No hay memorándums seleccionados
+    show:
+        title: Datos de memorándum
+    new:
+        title: Nuevo Memorándum
+        link: Agregar Memorándum
+        submit: Registrar
+    edit:
+        title: Edición de memorándum
+        link: Editar memorándum
+        submit: Guardar cambios
+    delete:
+        title: Borrar memorándum
+        link: Borrar memorándum
+        submit: Confirmar
+        cancel: Cancelar
     form:
-        name: Nombre
+        description: Descripción
+        unit: Departamento
+        createdAt: Registro
+        expiredAt: Expiración
 
 unitinsurancepolicy:
     index:

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class MonitorType extends AbstractType
+class SearchType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -14,7 +14,7 @@ class MonitorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('monitor', null, array(
+            ->add('search', null, array(
                 'label' => false,
                 'attr' => array(
                     'input_group' => array(

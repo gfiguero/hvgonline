@@ -10,6 +10,52 @@ namespace HVG\SystemBundle\Entity;
  */
 class UnitMemoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByUnit($unit, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('m')
+            ->select('m')
+            ->from('HVGSystemBundle:UnitMemo', 'm')
+            ->where('m.unit = :unit')
+            ->orderBy('m.'.$sort, $direction)
+            ->setParameters(array('unit' => $unit))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByUnitgroup($unitgroup, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('m')
+            ->select('m')
+            ->from('HVGSystemBundle:UnitMemo', 'm')
+            ->join('m.unit', 'mu')
+            ->join('mu.unitgroup', 'mug')
+            ->where('mug.id = :unitgroup')
+            ->orderBy('m.'.$sort, $direction)
+            ->setParameters(array('unitgroup' => $unitgroup))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByCommunity($community, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('m')
+            ->select('m')
+            ->from('HVGSystemBundle:UnitMemo', 'm')
+            ->join('m.unit', 'mu')
+            ->join('mu.community', 'muc')
+            ->where('muc.id = :community')
+            ->orderBy('m.'.$sort, $direction)
+            ->setParameters(array('community' => $community))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findBySearch($community, $search)
     {
         return $this->getEntityManager()
@@ -21,6 +67,20 @@ class UnitMemoRepository extends \Doctrine\ORM\EntityRepository
             ->where('muc.id = :community')
             ->andWhere('m.description LIKE :search')
             ->setParameters(array('community' => $community, 'search' => '%'.$search.'%'))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getAvailableByUnit($unit)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('m')
+            ->select('m')
+            ->from('HVGSystemBundle:UnitMemo', 'm')
+            ->where('m.unit = :unit')
+            ->andWhere('m.expiredAt > :datetime')
+            ->setParameters(array('unit' => $unit, 'datetime' => new \DateTime('now')))
             ->getQuery()
             ->getResult()
         ;

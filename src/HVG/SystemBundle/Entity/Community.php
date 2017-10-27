@@ -815,4 +815,43 @@ class Community
     {
         return $this->accessguards;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $checkpoints;
+
+
+    /**
+     * Add checkpoint
+     *
+     * @param \HVG\SystemBundle\Entity\Checkpoint $checkpoint
+     *
+     * @return Community
+     */
+    public function addCheckpoint(\HVG\SystemBundle\Entity\Checkpoint $checkpoint)
+    {
+        $this->checkpoints[] = $checkpoint;
+
+        return $this;
+    }
+
+    /**
+     * Remove checkpoint
+     *
+     * @param \HVG\SystemBundle\Entity\Checkpoint $checkpoint
+     */
+    public function removeCheckpoint(\HVG\SystemBundle\Entity\Checkpoint $checkpoint)
+    {
+        $this->checkpoints->removeElement($checkpoint);
+    }
+
+    /**
+     * Get checkpoints
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCheckpoints()
+    {
+        return $this->checkpoints;
+    }
 }

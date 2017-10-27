@@ -20,8 +20,8 @@ HVG\SystemBundle\Entity\Guest:
         guestcarpark:
             targetEntity: HVG\SystemBundle\Entity\GuestCarpark
             inversedBy: guests
-        accessgate:
-            targetEntity: HVG\SystemBundle\Entity\AccessGate
+        checkpoint:
+            targetEntity: HVG\SystemBundle\Entity\Checkpoint
             inversedBy: guests
         accessguard:
             targetEntity: HVG\SystemBundle\Entity\AccessGuard

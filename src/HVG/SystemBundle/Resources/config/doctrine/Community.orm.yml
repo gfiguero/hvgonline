@@ -42,8 +42,8 @@ HVG\SystemBundle\Entity\Community:
         guestcarparks:
             targetEntity: HVG\SystemBundle\Entity\GuestCarpark
             mappedBy: community
-        accessgates:
-            targetEntity: HVG\SystemBundle\Entity\AccessGate
+        checkpoints:
+            targetEntity: HVG\SystemBundle\Entity\Checkpoint
             mappedBy: community
         accessguards:
             targetEntity: HVG\SystemBundle\Entity\AccessGuard

@@ -6,9 +6,9 @@ hvg_accesscontrol_community:
     resource: "@HVGAccessControlBundle/Resources/config/routing/community.yml"
     prefix:   /community
 
-hvg_accesscontrol_accessgate:
-    resource: "@HVGAccessControlBundle/Resources/config/routing/accessgate.yml"
-    prefix:   /accessgate
+hvg_accesscontrol_checkpoint:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/checkpoint.yml"
+    prefix:   /checkpoint
 
 hvg_accesscontrol_accessguard:
     resource: "@HVGAccessControlBundle/Resources/config/routing/accessguard.yml"

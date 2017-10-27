@@ -1,0 +1,20 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'checkpoint.index.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    <section>
+        <div class="container">
+            <div class="row" id="page-header">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <h1 class="page-header">{{ 'checkpoint.index.title'|trans }}</h1>
+                    {% for checkpoint in checkpoints %}
+                        <a href="{{ path('accesscontrol_accessguard_index', {'hash' : community.hash, 'checkpoint' : checkpoint.id }) }}" class="btn btn-primary btn-lg btn-block">{{ checkpoint.name }}&nbsp;{{ icon('arrow-right fa-fw') }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

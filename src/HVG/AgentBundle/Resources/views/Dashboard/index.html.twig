@@ -1,158 +1,62 @@
-{% extends 'HVGSystemBundle::base.html.twig' %}
-{% use 'HVGSystemBundle::navbar.html.twig' %}
-{% use 'HVGAgentBundle::sidebar.html.twig' %}
-{% use 'HVGSystemBundle::icons.html.twig' %}
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
 
-{% set translation_domain = 'HVGAgentBundle' %}
-{% trans_default_domain translation_domain %}
+{% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
 
 {% block title %}{{ 'dashboard.index.title'|trans }}{% endblock %}
 
-{% block body %}
-    <div id="page-wrapper">
-        <div class="row" id="page-header">
-            <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'dashboard.index.title'|trans }}</h1>
-                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
-            </div>
+{% block agent %}
+    <div class="row" id="page-header">
+        <div class="col-lg-12">
+            <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'dashboard.index.title'|trans }}</h1>
+            {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
         </div>
-        <!-- /#page-header -->
-
-        <div class="row">
-{#}
-            <div class="col-md-3">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">{{ icon('comments fa-fw fa-4x') }}</div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">78</div>
-                                <div>{{ 'dashboard.counter.petition' }}</div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <a href="{{ path('agent_ticket_index') }}">
-                        <div class="panel-footer">
-                            <div class="pull-left">{{ 'dashboard.link.petition'|trans }}</div>
-                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-green">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">{{ icon('tasks fa-fw fa-4x') }}</div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">25</div>
-                                <div>{{ 'dashboard.counter.petitionaction' }}</div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <a href="{{ path('agent_petitionaction_index') }}">
-                        <div class="panel-footer">
-                            <div class="pull-left">{{ 'dashboard.link.petitionaction'|trans }}</div>
-                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-{#}
-
-            <div class="col-md-3">
-                <div class="panel panel-yellow">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">{{ icon('ticket fa-fw fa-5x') }}</div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{{ tickets|length }}</div>
-                                <div>{{ 'dashboard.counter.ticket'|trans }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="{{ path('agent_ticket_received') }}">
-                        <div class="panel-footer">
-                            <div class="pull-left">{{ 'ticket.received.link'|trans }}</div>
-                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="panel panel-red">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">{{ icon('hand-o-up fa-fw fa-5x') }}</div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">{{ petitions|length }}</div>
-                                <div>{{ 'dashboard.counter.petition'|trans }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="{{ path('agent_petition_received') }}">
-                        <div class="panel-footer">
-                            <div class="pull-left">{{ 'petition.received.link'|trans }}</div>
-                            <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-{#}
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Anuncios de desarrollo del sistema: V1.0.5</h1>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Tanto los tickets como los requerimientos desde ahora tienen responsables.</li>
-                        <li class="list-group-item">El menú "recibidos" ahora muestra los elementos donde el usuario es responsable.</li>
-                        <li class="list-group-item">El menú "área" muestra los elementos dentro del área de trabajo del usuario, aunque éste no sea responsable.</li>
-                        <li class="list-group-item">El menú "enviados" muestra los elementos que el usuario ingresó al sistema, para hacer seguimiento.</li>
-                        <li class="list-group-item">El menú "nuevo" ahora también permite crear un nuevo requerimiento.</li>
-                        <li class="list-group-item">Desde la vista de ticket, ahora se puede generar un nuevo requerimiento que quedará vinculado a ése ticket. Aparecerá referenciado en la parte inferior de la vista de ticket.</li>
-                        <li class="list-group-item">Al seleccionar un responsable en cualquiera de los formularios, aparecerá el nombre del responsable y entre paréntesis el nombre de usuario. Esto permitirá diferenciar usuarios con el mismo nombre.</li>
-                        <li class="list-group-item">La vista general ahora muestra sólo los elementos donde el usuario es responsable.</li>
-                        <li class="list-group-item">Varios cambios en diseño estructural del sistema (no visibles) que permitirán mayor flexibilidad y rápida mantención en el futuro.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Anuncios de desarrollo del sistema: V1.0.4</h1>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">Las acciones de requerimientos y tickets ahora pueden llevar un archivo adjunto</li>
-                        <li class="list-group-item">Las acciones de requerimientos y tickets llevan un botón para descargar el adjunto</li>
-                        <li class="list-group-item">Modificada la barra de navegación superior</li>
-                        <li class="list-group-item">Rediseño en la búsqueda de tickets y requerimientos. Ahora existen 3 grupos: Enviados, Recibidos, y Área</li>
-                        <li class="list-group-item">Agregada zona especial para la creación de Tickets. La lista inicial estará vacía.</li>
-                        <li class="list-group-item">En el filtro de cración de tickets ya no aparecen los ticket de comunidades que no corresponden a los permisos de cada usuario.</li>
-                        <li class="list-group-item">Prontamente los Tickets tendrán responsabilidad asignada. El sistema ya está preparado para la asignación pero falta contruir algunas secciones.</li>
-                        <li class="list-group-item">Estandarización y rediseño de algunas secciones de la vista de requerimientos y tickets</li>
-                        <li class="list-group-item">Las acciones en ticket ahora también se muestran ordenadas desde la última a la primera</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-{#}
-
     </div>
-    <!-- /#page-wrapper -->
+    <!-- /#page-header -->
+
+    <div class="row" id="page-dashboard">
+        <div class="col-md-3">
+            <div class="panel panel-yellow">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">{{ icon('ticket fa-fw fa-5x') }}</div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ tickets|length }}</div>
+                            <div>{{ 'dashboard.counter.ticket'|trans }}</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ path('agent_ticket_received') }}">
+                    <div class="panel-footer">
+                        <div class="pull-left">{{ 'ticket.received.link'|trans }}</div>
+                        <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="panel panel-red">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-xs-3">{{ icon('hand-o-up fa-fw fa-5x') }}</div>
+                        <div class="col-xs-9 text-right">
+                            <div class="huge">{{ petitions|length }}</div>
+                            <div>{{ 'dashboard.counter.petition'|trans }}</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ path('agent_petition_received') }}">
+                    <div class="panel-footer">
+                        <div class="pull-left">{{ 'petition.received.link'|trans }}</div>
+                        <div class="pull-right">{{ icon('arrow-circle-right fa-fw fa-lg') }}</div>
+                        <div class="clearfix"></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-dashboard -->
 
 {% endblock %}
 

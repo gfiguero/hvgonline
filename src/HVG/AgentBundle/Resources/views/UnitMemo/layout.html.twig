@@ -1,9 +1,11 @@
 {% extends 'HVGAgentBundle:Base:layout.html.twig' %}
-{% use 'HVGAgentBundle:UnitResident:finder.html.twig' %}
-{% use 'HVGAgentBundle:UnitResident:tabs.html.twig' %}
+{% use 'HVGAgentBundle:Base:unittabs.html.twig' %}
+{% use 'HVGAgentBundle:UnitMemo:finder.html.twig' %}
+{% use 'HVGAgentBundle:UnitMemo:tools.html.twig' %}
 
 {% block agent %}
-    {% block tabs %}{{ parent() }}{% endblock %}
+    {% block unittabs %}{{ parent() }}{% endblock %}
     {% block finder %}{{ parent() }}{% endblock %}
-    {% block unitresident %}{% endblock %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block unitmemo %}{% endblock %}
 {% endblock %}

@@ -3,10 +3,10 @@
     <div class="row" id="selector">
         <div class="col-md-12">
             <ul class="nav nav-pills">
-                <li class="active"><a href="{{ path('agent_unitresident_index') }}">{{ icon('home fa-fw') }}&nbsp;{{ 'unitresident.index.home'|trans }}</a></li>
-                {% if community %}<li class="active"><a href="{{ path('agent_unitresident_index', {'community' : community.id}) }}">{{ community.name }}</a></li>{% endif %}
-                {% if unitgroup %}<li class="active"><a href="{{ path('agent_unitresident_index', {'community' : community.id, 'unitgroup' : unitgroup.id}) }}">{{ unitgroup.name }}</a></li>{% endif %}
-                {% if unit %}<li class="active"><a href="{{ path('agent_unitresident_index', {'community' : community.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id}) }}">{{ unit.name }}</a></li>{% endif %}
+                <li class="active"><a href="{{ path('agent_unitmemo_index') }}">{{ icon('home fa-fw') }}&nbsp;{{ 'unitmemo.index.home'|trans }}</a></li>
+                {% if community %}<li class="active"><a href="{{ path('agent_unitmemo_index', {'community' : community.id}) }}">{{ community.name }}</a></li>{% endif %}
+                {% if unitgroup %}<li class="active"><a href="{{ path('agent_unitmemo_index', {'community' : community.id, 'unitgroup' : unitgroup.id}) }}">{{ unitgroup.name }}</a></li>{% endif %}
+                {% if unit %}<li class="active"><a href="{{ path('agent_unitmemo_index', {'community' : community.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id}) }}">{{ unit.name }}</a></li>{% endif %}
             </ul>
             <p></p>
         </div>
@@ -16,7 +16,7 @@
         {% if not community %}{% if communities is not empty %}
             <ul class="nav nav-pills">
                 {% for current in communities %}
-                    <li {% if current == community %}class="active"{% endif %}><a href="{{ path('agent_unitresident_index', {'community' : current.id}) }}">{{ current.name }}</a></li>
+                    <li {% if current == community %}class="active"{% endif %}><a href="{{ path('agent_unitmemo_index', {'community' : current.id}) }}">{{ current.name }}</a></li>
                 {% endfor %}
             </ul>
             <p></p>
@@ -24,7 +24,7 @@
         {% if not unitgroup %}{% if unitgroups is not empty %}
             <ul class="nav nav-pills">
                 {% for current in unitgroups %}
-                    <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('agent_unitresident_index', {'community' : community.id, 'unitgroup' : current.id}) }}">{{ current.name }}</a></li>
+                    <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('agent_unitmemo_index', {'community' : community.id, 'unitgroup' : current.id}) }}">{{ current.name }}</a></li>
                 {% endfor %}
             </ul>
             <p></p>
@@ -32,7 +32,7 @@
         {% if not unit %}{% if units is not empty %}
             <ul class="nav nav-pills">
                 {% for current in units %}
-                    <li {% if current == unit %}class="active"{% endif %}><a href="{{ path('agent_unitresident_index', {'community' : community.id, 'unitgroup' : unitgroup.id, 'unit' : current.id}) }}">{{ current.name }}</a></li>
+                    <li {% if current == unit %}class="active"{% endif %}><a href="{{ path('agent_unitmemo_index', {'community' : community.id, 'unitgroup' : unitgroup.id, 'unit' : current.id}) }}">{{ current.name }}</a></li>
                 {% endfor %}
             </ul>
             <p></p>

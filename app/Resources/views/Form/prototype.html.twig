@@ -2,9 +2,8 @@
     {% spaceless %}
         {% if prototype is defined %}
             {% set prototype_html = '' %}
-            {% set prototype_html = prototype_html ~ '<div class="col-xs-2"><a href="#" class="btn btn-danger btn-lg" data-removefield="collection" data-field="__id__">' ~ icon('times fa-fw') ~ '</a></div>' %}
-            {% set prototype_html = prototype_html ~ '<div class="col-xs-8">' ~ form_widget(prototype,{'style':'horizontal'}) ~ '</div>' %}
-            {% set prototype_html = prototype_html ~ '<div class="col-xs-2"><a href="#" class="btn btn-primary btn-lg" id="__id___search">' ~ icon('search fa-fw') ~ '</a></div>' %}
+            {% set prototype_html = prototype_html ~ '<div class="col-xs-9 col-sm-10">' ~ form_widget(prototype,{'style':'horizontal'}) ~ '</div>' %}
+            {% set prototype_html = prototype_html ~ '<div class="col-xs-3 col-sm-2"><div class="form-group"><div class="col-md-12"><a href="#" class="btn btn-primary btn-lg btn-block" id="__id___search">' ~ icon('search fa-fw') ~ '</a></div></div><div class="form-group"><div class="col-md-12"><a href="#" class="btn btn-danger btn-lg btn-block" data-removefield="collection" data-field="__id__">' ~ icon('times fa-fw') ~ '</a></div></div></div>' %}
             {% set prototype_html = '<div class="row guest-person">' ~ prototype_html ~ '</div>' %}
             {% set prototype_script = '' %}
             {% set prototype_script = prototype_script ~ '$("#__id___rut").rut().focus(function(){$("#__id___error").remove();$("#__id___notfound").remove();}).on("rutInvalido", function(){ $(this).parent().addClass("has-error").append(\'<span id="__id___error" class="help-block">Rut Inválido.</span>\') }).on("rutValido", function(){ $(this).parent().removeClass("has-error") });' %}
@@ -15,21 +14,24 @@
             {% set attr = attr|merge({'data-prototype-name': prototype_name }) %}
         {% endif %}
         <div {{ block('widget_container_attributes') }}>
+            <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
             <ul class="bc-collection list-unstyled">
                 {% for field in form %}
                     <li>
                         <div class="row">
-                            <div class="col-xs-10">
+                            {% if form.vars.allow_delete %}
+                            {% endif %}
+                            <div class="col-xs-9 col-sm-10">
                                 {{ form_widget(field) }}
                                 {{ form_errors(field) }}
                             </div>
-                            {% if form.vars.allow_delete %}
-                                <div class="col-xs-2">
-                                    <a href="#" class="btn btn-danger btn-lg" data-removefield="collection" data-field="{{ field.vars.id }}">{{ icon('times fa-fw') }}</a>
-                                </div>
-                            {% endif %}
+                            <div class="col-xs-3 col-sm-2">
+                                <div class="form-group"><div class="col-md-12"><a href="#" class="btn btn-primary btn-lg btn-block" id="{{ field.vars.id }}_search">{{ icon('search') }}</a></div></div>
+                                <div class="form-group"><div class="col-md-12"><a href="#" class="btn btn-danger btn-lg btn-block" data-removefield="collection" data-field="{{ field.vars.id }}">{{ icon('times') }}</a></div></div>
+                            </div>
                         </div>
                     </li>
+                    <script type="text/javascript">jQuery(document).ready(function(){$("#{{ field.vars.id }}_rut").rut().focus(function(){$("#{{ field.vars.id }}_error").remove();$("#{{ field.vars.id }}_notfound").remove();}).on("rutInvalido", function(){ $(this).parent().addClass("has-error").append('<span id="{{ field.vars.id }}_error" class="help-block">Rut Inválido.</span>') }).on("rutValido", function(){ $(this).parent().removeClass("has-error") });$("#{{ field.vars.id }}_search").click(function(){if($.validateRut($("#{{ field.vars.id }}_rut").val(), null, { minimumLength: 4 })){$.ajax({url:"http://orion.hvg.cl/~gfiguero/hvgonline/app_dev.php/accesscontrol/guest/searchperson",data:{rut:$("#{{ field.vars.id }}_rut").val()},success:function(data){ $("#{{ field.vars.id }}_name").val(data.name); $("#{{ field.vars.id }}_notfound").remove(); if(data.status){$("#{{ field.vars.id }}_rut").parent().append('<span id="{{ field.vars.id }}_notfound" class="help-block">Rut no registrado.</span>')} }});}});});</script>
                 {% endfor %}
             </ul>
             <div class="row guest-person">

@@ -16,7 +16,7 @@ HVG\SystemBundle\Entity\UnitMemo:
         description:
             type: text
         expiredAt:
-            type: date
+            type: datetime
         createdAt:
             type: datetime
             gedmo:

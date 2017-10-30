@@ -75,9 +75,23 @@ class CarparkController extends Controller
         $unitgroup = $unit->getUnitgroup();
         $community = $unitgroup->getCommunity();
 
-        $em = $this->getDoctrine()->getManager();
         $carparks = new Carpark();
         $newForm = $this->createForm(new CarparkType(), $carparks);
+        $newForm->handleRequest($request);
+
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $carpark->setUnit($unit);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($carparks);
+                $em->flush();
+                return $this->redirect($this->generateUrl('agent_carparks_index', array(
+                    'community' => $community->getId(),
+                    'unitgroup' => $unitgroup->getId(),
+                    'unit' => $unit->getId(),
+                )));
+            }
+        }
 
         return $this->render('HVGAgentBundle:Carpark:new.html.twig', array(
             'community' => $community,

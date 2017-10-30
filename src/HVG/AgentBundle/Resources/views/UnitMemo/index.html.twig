@@ -25,9 +25,10 @@
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('edit fa-fw') }}</a></div>
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('times fa-fw') }}</a></div>
                                 </th>
+                                <th>{{ icon('flag fa-fw text-success') }}</th>
+                                <th>{{ icon('calendar-o fa-fw') }}&nbsp;{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.expiredAt'|trans, 'expiredAt') }}{% if sort == 'expiredAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ icon('calendar-o fa-fw') }}&nbsp;{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.description'|trans, 'description') }}{% if sort == 'description' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
-                                <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.expiredAt'|trans, 'expiredAt') }}{% if sort == 'expiredAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 <th>{{ knp_pagination_sortable(unitmemos, 'unitmemo.form.unit'|trans, 'unit') }}{% if sort == 'unit' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                             </tr>
                         </thead>
@@ -39,9 +40,10 @@
                                     <div class="btn-group"><a href="{{ path('agent_unitmemo_edit', {'unitmemo' : unitmemo.id}) }}" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
                                     <div class="btn-group"><a href="{{ path('agent_unitmemo_delete', {'unitmemo' : unitmemo.id}) }}" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
                                 </td>
+                                <td>{% if unitmemo.expiredAt|date('Y-m-d') > ("now"|date('Y-m-d')) %}{{ icon('flag fa-fw text-success') }}{% else %}{{ icon('flag fa-fw') }}{% endif %}</td>
+                                <td>{% if unitmemo.expiredAt %}<span class="fa fa-calendar-o fa-fw" data-toggle="tooltip" data-placement="left" title="{{ unitmemo.expiredAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL y - HH:mm") }}"></span>&nbsp;{{ unitmemo.expiredAt|ago }}{% endif %}</td>
+                                <td>{% if unitmemo.createdAt %}<span class="fa fa-calendar-o fa-fw" data-toggle="tooltip" data-placement="left" title="{{ unitmemo.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL y - HH:mm") }}"></span>&nbsp;{{ unitmemo.createdAt|ago }}{% endif %}</td>
                                 <td>{% if unitmemo.description %}{{ unitmemo.description }}{% endif %}</td>
-                                <td>{% if unitmemo.createdAt %}{{ unitmemo.createdAt|ago }}{% endif %}</td>
-                                <td>{% if unitmemo.expiredAt %}{{ unitmemo.expiredAt|ago }}{% endif %}</td>
                                 <td>{% if unitmemo.unit %}{{ unitmemo.unit }}{% endif %}</td>
                             </tr>
                         {% endfor %}
@@ -60,3 +62,5 @@
     </div>
     <!-- /#page-list -->        
 {% endblock %}
+
+{% block javascript %}<script type="text/javascript">$(function () { $('[data-toggle="tooltip"]').tooltip() })</script>{% endblock %}

@@ -5,27 +5,19 @@ namespace HVG\AgentBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
-class UnitMemoType extends AbstractType
+class WarehouseType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('description', null, array(
-                'label' => 'unitmemo.form.description',
+        $builder 
+            ->add('name', null, array(
+                'label' => 'warehouse.form.name',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGAgentBundle',
-            ))
-            ->add('expiredAt', DateTimeType::class, array(
-                'label' => 'unitmemo.form.expiredAt',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
-                'format' => 'dd MMMM yyyy',
-                'years' => range(date('Y'), date('Y') + 10),
             ))
         ;
     }
@@ -36,7 +28,7 @@ class UnitMemoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'HVG\SystemBundle\Entity\UnitMemo'
+            'data_class' => 'HVG\SystemBundle\Entity\Warehouse'
         ));
     }
 
@@ -45,8 +37,7 @@ class UnitMemoType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'hvg_agentbundle_unitmemo';
+        return 'hvg_agentbundle_warehouse';
     }
-
 
 }

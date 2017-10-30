@@ -250,12 +250,6 @@ class Guest
     private $note;
 
     /**
-     * @var \HVG\SystemBundle\Entity\Carpark
-     */
-    private $carpark;
-
-
-    /**
      * Set note
      *
      * @param string $note
@@ -279,58 +273,6 @@ class Guest
         return $this->note;
     }
 
-    /**
-     * Set carpark
-     *
-     * @param \HVG\SystemBundle\Entity\Carpark $carpark
-     *
-     * @return Guest
-     */
-    public function setCarpark(\HVG\SystemBundle\Entity\Carpark $carpark = null)
-    {
-        $this->carpark = $carpark;
-
-        return $this;
-    }
-
-    /**
-     * Get carpark
-     *
-     * @return \HVG\SystemBundle\Entity\Carpark
-     */
-    public function getCarpark()
-    {
-        return $this->carpark;
-    }
-    /**
-     * @var string
-     */
-    private $licence;
-
-
-    /**
-     * Set licence
-     *
-     * @param string $licence
-     *
-     * @return Guest
-     */
-    public function setLicence($licence)
-    {
-        $this->licence = $licence;
-
-        return $this;
-    }
-
-    /**
-     * Get licence
-     *
-     * @return string
-     */
-    public function getLicence()
-    {
-        return $this->licence;
-    }
     /**
      * @var string
      */
@@ -389,35 +331,7 @@ class Guest
     {
         return $this->guestcarpark;
     }
-    /**
-     * @var \HVG\SystemBundle\Entity\AccessGate
-     */
-    private $accessgate;
 
-
-    /**
-     * Set accessgate
-     *
-     * @param \HVG\SystemBundle\Entity\AccessGate $accessgate
-     *
-     * @return Guest
-     */
-    public function setAccessgate(\HVG\SystemBundle\Entity\AccessGate $accessgate = null)
-    {
-        $this->accessgate = $accessgate;
-
-        return $this;
-    }
-
-    /**
-     * Get accessgate
-     *
-     * @return \HVG\SystemBundle\Entity\AccessGate
-     */
-    public function getAccessgate()
-    {
-        return $this->accessgate;
-    }
     /**
      * @var \HVG\SystemBundle\Entity\AccessGuard
      */

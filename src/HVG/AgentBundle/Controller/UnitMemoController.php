@@ -25,7 +25,7 @@ class UnitMemoController extends Controller
         $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findByCommunity($community);
         $units = $em->getRepository('HVGSystemBundle:Unit')->findByUnitgroup($unitgroup);
 
-        $sort = $request->query->has('sort') ? $request->query->get('sort') : 'createdAt';
+        $sort = $request->query->has('sort') ? $request->query->get('sort') : 'expiredAt';
         $direction = $request->query->has('direction') ? $request->query->get('direction') : 'DESC';
 
         if($unit){
@@ -77,7 +77,23 @@ class UnitMemoController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $unitmemo = new UnitMemo();
+        $unitmemo->setExpiredAt(new \DateTime('+2 days'));
         $newForm = $this->createForm(new UnitMemoType(), $unitmemo);
+        $newForm->handleRequest($request);
+
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $unitmemo->setUnit($unit);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($unitmemo);
+                $em->flush();
+                return $this->redirect($this->generateUrl('agent_unitmemo_index', array(
+                    'community' => $community->getId(),
+                    'unitgroup' => $unitgroup->getId(),
+                    'unit' => $unit->getId(),
+                )));
+            }
+        }
 
         return $this->render('HVGAgentBundle:UnitMemo:new.html.twig', array(
             'community' => $community,

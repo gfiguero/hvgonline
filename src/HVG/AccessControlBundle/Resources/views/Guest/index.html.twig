@@ -5,42 +5,29 @@
 {% block title %}{{ 'guest.index.title'|trans }}{% endblock %}
 
 {% block accesscontrol %}
-    <div class="row" id="page-header">
-        <div class="col-xs-12">
-            <h1 class="page-header">{{ 'guest.index.title'|trans }}</h1>
-            {% include 'HVGAccessControlBundle:Base:flashbag.html.twig' %}
-            <div class="panel panel-default">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>{{ 'guest.form.created_at'|trans }}</th>
-                                <th>{{ 'guest.form.unit'|trans }}</th>
-                                <th>{{ 'guest.form.licence'|trans }}</th>
-                                <th>{{ 'guest.form.carpark'|trans }}</th>
-                                <th>{{ 'guest.form.name'|trans }}</th>
-                                <th>{{ 'guest.form.rut'|trans }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for guest in guests %}
-                                {% for person in guest.people %}
-                                <tr>
-                                    {% if loop.first %}
-                                        <td rowspan="{{ guest.people|length }}">{{ guest.createdat|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL y HH:mm") }}</td>
-                                        <td rowspan="{{ guest.people|length }}">{{ guest.unit.communityname }}</td>
-                                        <td rowspan="{{ guest.people|length }}">{% if guest.licence %}{{ guest.licence }}{% endif %}</td>
-                                        <td rowspan="{{ guest.people|length }}">{% if guest.carpark %}{{ guest.carpark.name }}{% endif %}</td>
-                                    {% endif %}
-                                        <td>{{ person.name }}</td>
-                                        <td>{{ person.rut }}</td>
-                                </tr>
-                            {% endfor %}
-                        {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    {% if guests is not empty %}
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'guest.index.title'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="records_list table table-hover">
+            {% for guest in guests %}
+                {% for person in guest.people %}
+                    <tr>
+                        <td style="white-space: nowrap;">{{ guest.unit }}</td>
+                        <td style="white-space: nowrap;">{% if person.name %}{{ person.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if person.rut %}{{ person.rut }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.carLicence %}{{ guest.carLicence }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.guestcarpark %}{{ guest.guestcarpark.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.accessguard %}{{ guest.accessguard.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if guest.checkpoint %}{{ guest.checkpoint.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{{ guest.createdat|ago }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </table>
         </div>
     </div>
+    {% endif %}
 {% endblock %}

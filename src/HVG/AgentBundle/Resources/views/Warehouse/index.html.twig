@@ -2,6 +2,8 @@
 
 {% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
 
+{% block title %}{{ 'warehouse.index.title'|trans }}{% endblock %}
+
 {% block warehouse %}
     <div class="row" id="page-list">
         <div class="col-lg-12">
@@ -23,18 +25,20 @@
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('edit fa-fw') }}</a></div>
                                     <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('times fa-fw') }}</a></div>
                                 </th>
-                                <th>{{ 'warehouse.form.name'|trans }}</th>
+                                <th>{{ knp_pagination_sortable(warehouses, 'warehouse.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(warehouses, 'warehouse.form.unit'|trans, 'unit') }}{% if sort == 'unit' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                             </tr>
                         </thead>
                         <tbody>
                         {% for warehouse in warehouses %}
                             <tr>
                                 <td>
-                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-primary">{{ icon('search fa-fw') }}</a></div>
-                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
-                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('agent_warehouse_show', {'warehouse' : warehouse.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('agent_warehouse_edit', {'warehouse' : warehouse.id}) }}" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('agent_warehouse_delete', {'warehouse' : warehouse.id}) }}" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
                                 </td>
                                 <td>{% if warehouse.name %}{{ warehouse.name }}{% endif %}</td>
+                                <td>{% if warehouse.unit %}{{ warehouse.unit }}{% endif %}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -42,6 +46,12 @@
                 </div>
                 {% endif %}
             </div>                
+
+            {% if warehouses is not empty %}
+            <div class="text-center">
+                {{ knp_pagination_render(warehouses) }}
+            </div>
+            {% endif %}
         </div>
     </div>
     <!-- /#page-list -->        

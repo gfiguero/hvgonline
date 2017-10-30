@@ -6,6 +6,7 @@ sidemenu:
 guest:
     index:
         title: Control de Visitas
+        link: Visitas
     form:
         unit: Unidad
         residents: Residentes
@@ -36,6 +37,7 @@ unitmemos:
 
 accessmonitor:
     index:
+        home: Inicio
         title: Control de Acceso
         residents: Residentes
         unitmemos: Memos

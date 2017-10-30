@@ -1,6 +1,6 @@
-accesscontrol_guest_links:
-    path:     /links
-    defaults: { _controller: "HVGAccessControlBundle:Guest:links" }
+accesscontrol_guest_index:
+    path:     /{hash}/{checkpoint}/{accessguard}
+    defaults: { _controller: "HVGAccessControlBundle:Guest:index" }
     methods:  GET
 
 accesscontrol_guest_new:

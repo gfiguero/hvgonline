@@ -24,7 +24,13 @@ sidemenu:
     datacenter: Centro de Datos
     community: Comunidades
     unitgroup: Torres
-    unit: Departamentos
+    unit:
+        root: Departamentos
+        unitmemo: Memorándums
+        unitresident: Residentes
+        carpark: Estacionamientos
+        warehouse: Bodegas
+        guest: Visitas
     unitinsurancepolicy: Pólizas
     person: Personas
     contact: Contactos
@@ -146,24 +152,59 @@ unitresident:
 warehouse:
     index:
         title: Bodegas
+        link: Bodegas
         list: Lista de bodegas
         home: Inicio
-        link: Bodegas
+        empty: No hay bodegas seleccionados
+    show:
+        title: Datos de bodega
+    new:
+        title: Nueva bodega
+        link: Agregar bodega
+        submit: Registrar
+    edit:
+        title: Edición de bodega
+        link: Editar bodega
+        submit: Guardar cambios
+    delete:
+        title: Borrar bodega
+        link: Borrar bodega
+        submit: Confirmar
+        cancel: Cancelar
     form:
         name: Nombre
+        unit: Departamento
 
 guest:
     index:
         title: Visitas
+        link: Visitas
         list: Lista de visitas
         home: Inicio
-        link: Visitas
+        empty: No hay visitas seleccionadas
+    show:
+        title: Datos de visita
+        people: Personas
+    new:
+        title: Nueva visita
+        link: Agregar visita
+        submit: Registrar
+    edit:
+        title: Edición de visita
+        link: Editar visita
+        submit: Guardar cambios
+    delete:
+        title: Borrar visita
+        link: Borrar visita
+        submit: Confirmar
+        cancel: Cancelar
     form:
         person: Persona
         carlicence: Vehículo
         guestcarpark: Estacionamiento
         unit: Departamento
-        accessgate: Punto de control
+        accessguard: Guardia
+        checkpoint: Punto de control
         createdAt: Registro
 
 carpark:

@@ -75,9 +75,23 @@ class WarehouseController extends Controller
         $unitgroup = $unit->getUnitgroup();
         $community = $unitgroup->getCommunity();
 
-        $em = $this->getDoctrine()->getManager();
         $warehouse = new Warehouse();
         $newForm = $this->createForm(new WarehouseType(), $warehouse);
+        $newForm->handleRequest($request);
+
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $warehouse->setUnit($unit);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($warehouse);
+                $em->flush();
+                return $this->redirect($this->generateUrl('agent_warehouse_index', array(
+                    'community' => $community->getId(),
+                    'unitgroup' => $unitgroup->getId(),
+                    'unit' => $unit->getId(),
+                )));
+            }
+        }
 
         return $this->render('HVGAgentBundle:Warehouse:new.html.twig', array(
             'community' => $community,

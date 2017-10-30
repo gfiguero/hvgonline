@@ -16,23 +16,16 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class GuestController extends Controller
 {
-    public function linksAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $communities = $em->getRepository('HVGSystemBundle:Community')->findAll();
-        return $this->render('HVGAccessControlBundle:Guest:links.html.twig', array(
-            'communities' => $communities,
-        ));
-    }
-
-    public function indexAction(Request $request, $hash)
+    public function indexAction(Request $request, $hash, Checkpoint $checkpoint, AccessGuard $accessguard)
     {
         $em = $this->getDoctrine()->getManager();
         $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
-        $guests = $em->getRepository('HVGSystemBundle:Guest')->findByCommunity($community);
+        $guests = $em->getRepository('HVGSystemBundle:Guest')->getLastByCommunity($community);
         return $this->render('HVGAccessControlBundle:Guest:index.html.twig', array(
             'guests' => $guests,
             'community' => $community,
+            'checkpoint' => $checkpoint,
+            'accessguard' => $accessguard,
         ));
     }
 
@@ -79,11 +72,7 @@ class GuestController extends Controller
             'unit' => $unit,
         ));
     }
-    public function testAction(Request $request)
-    {
-        return $this->render('HVGAccessControlBundle:Guest:test.html.twig', array(
-        ));
-    }
+
     public function searchPersonAction(Request $request)
     {
         $rut = $request->query->get('rut');
@@ -92,13 +81,5 @@ class GuestController extends Controller
         $result['status'] = $person ? 0 : 1;
         $result['name'] = $person ? $person->getName() : '';
         return new JsonResponse($result);
-
-    }
-
-    public function searchResidentsAction(Request $request, Unit $unit)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $residents = $em->getRepository('HVGSystemBundle:Resident')->findByUnit($unit);
-        return new JsonResponse($residents);
     }
 }

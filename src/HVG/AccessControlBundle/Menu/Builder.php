@@ -41,6 +41,17 @@ class Builder implements ContainerAwareInterface
                 'accessguard' => $accessguard->getId(),
                 'checkpoint' => $checkpoint->getId(),
             )))->setLabel($accessguard->getName());
+
+//            $topmenu->addChild('topmenu.guest', array('route' => 'accesscontrol_guest_index', 'routeParameters' => array(
+//                'hash' => $hash,
+//                'accessguard' => $accessguard->getId(),
+//                'checkpoint' => $checkpoint->getId(),
+//            )))->setLabel('guest.index.link')->setExtras(array('translation_domain' => 'HVGAccessControlBundle'));
+            $topmenu->addChild('topmenu.home', array('route' => 'accesscontrol_accessmonitor_index', 'routeParameters' => array(
+                'hash' => $hash,
+                'accessguard' => $accessguard->getId(),
+                'checkpoint' => $checkpoint->getId(),
+            )))->setLabel('accessmonitor.index.home')->setExtras(array('translation_domain' => 'HVGAccessControlBundle'));
         }
 
         return $topmenu;

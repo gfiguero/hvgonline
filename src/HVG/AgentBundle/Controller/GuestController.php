@@ -75,9 +75,23 @@ class GuestController extends Controller
         $unitgroup = $unit->getUnitgroup();
         $community = $unitgroup->getCommunity();
 
-        $em = $this->getDoctrine()->getManager();
         $guest = new Guest();
         $newForm = $this->createForm(new GuestType(), $guest);
+        $newForm->handleRequest($request);
+
+        if ($newForm->isSubmitted()) {
+            if($newForm->isValid()) {
+                $guest->setUnit($unit);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($guest);
+                $em->flush();
+                return $this->redirect($this->generateUrl('agent_guest_index', array(
+                    'community' => $community->getId(),
+                    'unitgroup' => $unitgroup->getId(),
+                    'unit' => $unit->getId(),
+                )));
+            }
+        }
 
         return $this->render('HVGAgentBundle:Guest:new.html.twig', array(
             'community' => $community,

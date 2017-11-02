@@ -1,3 +1,7 @@
+hvg_exchange:
+    resource: "@HVGExchangeBundle/Resources/config/routing.yml"
+    prefix:   /exchange
+
 hvg_access_control:
     resource: "@HVGAccessControlBundle/Resources/config/routing.yml"
     prefix:   /accesscontrol

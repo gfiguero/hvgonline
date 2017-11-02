@@ -38,6 +38,7 @@ class AppKernel extends Kernel
             new HVG\ContabilityBundle\HVGContabilityBundle(),
             new HVG\PublicBundle\HVGPublicBundle(),
             new HVG\AccessControlBundle\HVGAccessControlBundle(),
+            new HVG\ExchangeBundle\HVGExchangeBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

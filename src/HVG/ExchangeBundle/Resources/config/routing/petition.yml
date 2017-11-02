@@ -1,0 +1,65 @@
+exchange_petition_index:
+    path:     /index
+    defaults: { _controller: "HVGExchangeBundle:Petition:index" }
+    methods:  GET
+
+exchange_petition_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGExchangeBundle:Petition:show" }
+    methods:  GET
+
+exchange_petition_new:
+    path:     /new
+    defaults: { _controller: "HVGExchangeBundle:Petition:new" }
+    methods:  [GET, POST]
+
+exchange_petition_status:
+    path:     /{id}/status
+    defaults: { _controller: "HVGExchangeBundle:Petition:status" }
+    methods:  [GET, POST]
+
+exchange_petition_addreference:
+    path:     /{id}/addreference
+    defaults: { _controller: "HVGExchangeBundle:Petition:addreference" }
+    methods:  [GET, POST]
+
+exchange_petition_removereference:
+    path:     /{id}/removereference
+    defaults: { _controller: "HVGExchangeBundle:Petition:removereference" }
+    methods:  [GET]
+
+exchange_petition_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGExchangeBundle:Petition:edit" }
+    methods:  [GET, POST]
+
+exchange_petition_completeobjective:
+    path:     /{id}/completeobjective
+    defaults: { _controller: "HVGExchangeBundle:Petition:completeObjective" }
+    methods:  GET
+
+exchange_petition_restartobjective:
+    path:     /{id}/restartobjective
+    defaults: { _controller: "HVGExchangeBundle:Petition:restartObjective" }
+    methods:  GET
+
+exchange_petition_my:
+    path:     /my
+    defaults: { _controller: "HVGExchangeBundle:Petition:my" }
+    methods:  GET
+
+exchange_petition_area:
+    path:     /area
+    defaults: { _controller: "HVGExchangeBundle:Petition:area" }
+    methods:  GET
+
+exchange_petition_sent:
+    path:     /sent
+    defaults: { _controller: "HVGExchangeBundle:Petition:sent" }
+    methods:  GET
+
+exchange_petition_received:
+    path:     /received
+    defaults: { _controller: "HVGExchangeBundle:Petition:received" }
+    methods:  GET
+

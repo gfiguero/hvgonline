@@ -1,0 +1,11 @@
+hvg_exchange_homepage:
+    path:     /
+    defaults: { _controller: HVGExchangeBundle:Dashboard:index }
+
+hvg_exchange_petition:
+    resource: "@HVGExchangeBundle/Resources/config/routing/petition.yml"
+    prefix:   /petition
+
+hvg_exchange_ticket:
+    resource: "@HVGExchangeBundle/Resources/config/routing/ticket.yml"
+    prefix:   /ticket

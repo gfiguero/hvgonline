@@ -1,0 +1,64 @@
+exchange_ticket_index:
+    path:     /index
+    defaults: { _controller: "HVGExchangeBundle:Ticket:index" }
+    methods:  GET
+
+exchange_ticket_prepare:
+    path:     /prepare
+    defaults: { _controller: "HVGExchangeBundle:Ticket:prepare" }
+    methods:  GET
+
+exchange_ticket_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGExchangeBundle:Ticket:show" }
+    methods:  GET
+
+exchange_ticket_new:
+    path:     /new
+    defaults: { _controller: "HVGExchangeBundle:Ticket:new" }
+    methods:  [GET, POST]
+
+exchange_ticket_status:
+    path:     /{id}/status
+    defaults: { _controller: "HVGExchangeBundle:Ticket:status" }
+    methods:  [GET, POST]
+
+exchange_ticket_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGExchangeBundle:Ticket:edit" }
+    methods:  [GET, POST]
+
+exchange_ticket_filter:
+    path:     /filter
+    defaults: { _controller: "HVGExchangeBundle:Ticket:filter" }
+    methods:  [GET, POST]
+
+exchange_ticket_search:
+    path:     /search
+    defaults: { _controller: "HVGExchangeBundle:Ticket:search" }
+    methods:  [GET, POST]
+
+exchange_ticket_my:
+    path:     /my
+    defaults: { _controller: "HVGExchangeBundle:Ticket:my" }
+    methods:  GET
+
+exchange_ticket_area:
+    path:     /area
+    defaults: { _controller: "HVGExchangeBundle:Ticket:area" }
+    methods:  GET
+
+exchange_ticket_sent:
+    path:     /sent
+    defaults: { _controller: "HVGExchangeBundle:Ticket:sent" }
+    methods:  GET
+
+exchange_ticket_received:
+    path:     /received
+    defaults: { _controller: "HVGExchangeBundle:Ticket:received" }
+    methods:  GET
+
+exchange_ticket_newpetition:
+    path:     /{id}/newpetition
+    defaults: { _controller: "HVGExchangeBundle:Ticket:newpetition" }
+    methods:  [GET, POST]

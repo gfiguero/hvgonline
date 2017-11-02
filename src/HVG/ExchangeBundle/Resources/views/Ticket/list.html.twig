@@ -1,0 +1,45 @@
+{% block ticketList %}
+    {% set translation_domain = 'HVGAgentBundle' %}
+    {% trans_default_domain translation_domain %}
+
+    {% if tickets is empty %}
+    <div class="panel-body" id="ticket_list">
+        <div class="text-center"><em>{{ 'ticket.prepare.notickets'|trans }}</em></div>
+    </div>
+    {% else %}
+    <div class="table-responsive" id="ticket_list">
+        <table class="records_list table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>{{ 'ticket.form.actions'|trans }}</th>
+                    <th>{{ 'ticket.form.id'|trans }}</th>
+                    <th>{{ 'ticket.form.ticketstatus'|trans }}</th>
+                    <th>{{ 'ticket.form.unit'|trans }}</th>
+                    <th>{{ 'ticket.form.area'|trans }}</th>
+                    <th>{{ 'ticket.form.createdAt'|trans }}</th>
+                    <th class="col-md-5">{{ 'ticket.form.description'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, ticket in tickets %}
+                    <tr>
+                        <td>
+                            <div class="btn-toolbar">
+                                <div class="btn-group" role="group">
+                                    <a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_ticket_show', { 'id': ticket.id }) }}" aria-label="{{ 'ticket.show.link'|trans }}">{{ icon('search') }}</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{% if ticket.id %}{{ ticket.id }}{% endif %}</td>
+                        <td>{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</td>
+                        <td>{% if ticket.unit %}{{ ticket.unit }}{% endif %}</td>
+                        <td>{% if ticket.area %}{{ ticket.area.name }}{% endif %}</td>
+                        <td>{% if ticket.createdAt %}{{ ticket.createdAt|ago }}{% endif %}</td>
+                        <td>{% if ticket.description %}{{ ticket.description }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+{% endblock %}

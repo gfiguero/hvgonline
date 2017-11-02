@@ -1,14 +1,11 @@
-{% extends 'HVGSystemBundle::base.html.twig' %}
-{% use 'HVGSystemBundle::navbar.html.twig' %}
-{% use 'HVGAgentBundle::sidebar.html.twig' %}
-{% use 'HVGSystemBundle::icons.html.twig' %}
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
 
 {% set translation_domain = 'HVGAgentBundle' %}
 {% trans_default_domain translation_domain %}
 
 {% block title %}{{ 'petition.area.title'|trans }}{% endblock %}
 
-{% block body %}
+{% block agent %}
     <div id="page-wrapper">
         <div class="row" id="page-header">
             <div class="col-lg-12">

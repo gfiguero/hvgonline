@@ -1,0 +1,60 @@
+HVG\SystemBundle\Entity\Pet:
+    type: entity
+    table: Pet
+    repositoryClass: HVG\SystemBundle\Entity\PetRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        unit:
+            targetEntity: HVG\SystemBundle\Entity\Unit
+            inversedBy: pets
+        owner:
+            targetEntity: HVG\SystemBundle\Entity\Person
+            cascade: ['persist', 'merge']
+    fields:
+        name:
+            type: string
+            length: 200
+        petgroup:
+            type: integer
+        gender:
+            type: string
+            length: 1
+        race:
+            type: string
+            length: 100
+        phone:
+            type: string
+            length: 20
+        color:
+            type: integer
+        photography:
+            type: string
+            length: 100
+        email:
+            type: string
+            length: 100
+        terms:
+            type: boolean
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

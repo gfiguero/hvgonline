@@ -2,3 +2,21 @@ services:
 #    hvg_public.example:
 #        class: HVG\PublicBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    hvg_public.form.type.petgroup:
+        class: HVG\PublicBundle\Form\Type\PetGroupType
+        arguments: 
+            - '%petgroups%'
+        tags:
+            - { name: form.type }
+
+    hvg_public.form.type.petgender:
+        class: HVG\PublicBundle\Form\Type\PetGenderType
+        arguments: ["%petgenders%"]
+        tags:
+            - { name: form.type }
+
+    hvg_public.form.type.petcolor:
+        class: HVG\PublicBundle\Form\Type\PetColorType
+        arguments: ["%petcolors%"]
+        tags:
+            - { name: form.type }

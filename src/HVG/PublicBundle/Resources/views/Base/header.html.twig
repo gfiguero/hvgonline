@@ -1,0 +1,21 @@
+{% block header %}
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {% if community is defined %}
+                <a class="navbar-brand" href="{{ path('public_dashboard_index', {'hash' : community.hash}) }}">Inicio - {{ community }}</a>
+            {% endif %}
+        </div>
+        <div class="navbar-collapse collapse">
+            {% set topmenu = knp_menu_get('HVGPublicBundle:Builder:topMenu') %}
+            {{ knp_menu_render(topmenu, {'currentClass': 'active', 'ancestorClass': 'active', 'leaf_class': 'leaf'}) }}
+        </div>
+    </div>
+</nav>
+{% endblock %}

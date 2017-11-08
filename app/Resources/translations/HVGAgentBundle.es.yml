@@ -22,7 +22,9 @@ topmenu:
 
 sidemenu:
     datacenter: Centro de Datos
-    community: Comunidades
+    community:
+        root: Comunidades
+        guestcarpark: Estacionamientos de visita
     unitgroup: Torres
     unit:
         root: Departamentos
@@ -148,6 +150,32 @@ unitresident:
         assistance: Requiere asistencia
         phone: Teléfono
         unit: Departamento
+
+guestcarpark:
+    index:
+        title: Estacionamientos de visita
+        link: Est. Visita
+        list: Lista de estacionamientos de visita
+        home: Inicio
+        empty: No hay estacionamientos seleccionados
+    show:
+        title: Datos de estacionamiento
+    new:
+        title: Nuevo estacionamiento
+        link: Agregar estacionamiento
+        submit: Registrar
+    edit:
+        title: Edición de estacionamiento
+        link: Editar estacionamiento
+        submit: Guardar cambios
+    delete:
+        title: Borrar estacionamiento
+        link: Borrar estacionamiento
+        submit: Confirmar
+        cancel: Cancelar
+    form:
+        name: Nombre
+        community: Comunidad
 
 warehouse:
     index:

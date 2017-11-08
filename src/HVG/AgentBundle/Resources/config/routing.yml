@@ -34,6 +34,10 @@ hvg_agent_guest:
     resource: "@HVGAgentBundle/Resources/config/routing/guest.yml"
     prefix:   /guest
 
+hvg_agent_guestcarpark:
+    resource: "@HVGAgentBundle/Resources/config/routing/guestcarpark.yml"
+    prefix:   /guestcarpark
+
 hvg_agent_community:
     resource: "@HVGAgentBundle/Resources/config/routing/community.yml"
     prefix:   /community

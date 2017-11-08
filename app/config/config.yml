@@ -26,3 +26,23 @@ parameters:
         ROLE_AGENT: Agente
         ROLE_ADMIN: Administrador
         ROLE_SUPER_ADMIN: Administrador de Sistema
+    petgroups:
+        0: Canino
+        1: Felino
+        3: Ave
+        4: Pez
+        5: Exótico
+    petgenders:
+        m: Macho
+        h: Hembra
+        c: Macho Castrado
+        e: Hembra Esterilizada
+        s: Sin sexar
+    petcolors:
+        0: Negro
+        1: Blanco
+        2: Café
+        3: Gris
+        4: Blanco y negro
+        5: Blanco y café
+        6: Otro

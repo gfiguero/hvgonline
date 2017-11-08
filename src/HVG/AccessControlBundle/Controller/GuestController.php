@@ -43,6 +43,7 @@ class GuestController extends Controller
                 $guest->setUnit($unit);
                 $guest->setCheckpoint($checkpoint);
                 $guest->setAccessguard($accessguard);
+                $guest->setCarLicence(strtoupper($guest->getCarLicence()));
                 $people = $guest->getPeople();
                 $em = $this->getDoctrine()->getManager();
                 foreach ($people as $person) {

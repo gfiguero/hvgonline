@@ -33,6 +33,7 @@ assetic:
                 - less
                 - cssrewrite
             output: ../src/HVG/AccessControlBundle/Resources/public/css/orion.css
+
         agent_bootswatch_css:
             inputs:
                 - ../src/HVG/AgentBundle/Resources/less/build.less
@@ -40,3 +41,11 @@ assetic:
                 - less
                 - cssrewrite
             output: ../src/HVG/AgentBundle/Resources/public/css/orion.css
+
+        public_bootswatch_css:
+            inputs:
+                - ../src/HVG/PublicBundle/Resources/less/build.less
+            filters:
+                - less
+                - cssrewrite
+            output: ../src/HVG/PublicBundle/Resources/public/css/orion.css

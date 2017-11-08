@@ -1,0 +1,49 @@
+HVG\SystemBundle\Entity\AccessPermission:
+    type: entity
+    table: AccessPermission
+    repositoryClass: HVG\SystemBundle\Entity\AccessPermissionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        unit:
+            targetEntity: HVG\SystemBundle\Entity\Unit
+            inversedBy: accesspermission
+        applicant:
+            targetEntity: HVG\SystemBundle\Entity\Person
+        visitant:
+            targetEntity: HVG\SystemBundle\Entity\Person
+    fields:
+        description:
+            type: text
+        cardfront:
+            type: string
+            length: 100
+        cardback:
+            type: string
+            length: 100
+        expiredAt:
+            type: datetime
+        granted:
+            type: boolean
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,26 @@
+agent_guestcarpark_index:
+    path:     /{community}
+    defaults: { _controller: "HVGAgentBundle:GuestCarpark:index", community: '' }
+    methods:  GET
+    requirements:
+        community: '\d+|'
+
+agent_guestcarpark_new:
+    path:     /{community}/new
+    defaults: { _controller: "HVGAgentBundle:GuestCarpark:new" }
+    methods:  [GET, POST]
+
+agent_guestcarpark_show:
+    path:     /{guestcarpark}/show
+    defaults: { _controller: "HVGAgentBundle:GuestCarpark:show" }
+    methods:  GET
+
+agent_guestcarpark_edit:
+    path:     /{guestcarpark}/edit
+    defaults: { _controller: "HVGAgentBundle:GuestCarpark:edit" }
+    methods:  [GET, POST]
+
+agent_guestcarpark_delete:
+    path:     /{guestcarpark}/delete
+    defaults: { _controller: "HVGAgentBundle:GuestCarpark:delete" }
+    methods:  [GET, DELETE]

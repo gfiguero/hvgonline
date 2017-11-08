@@ -1,0 +1,5 @@
+public_accesspermission_new:
+    path:     /{hash}/new
+    defaults: { _controller: "HVGPublicBundle:AccessPermission:new" }
+    methods:  [GET, POST]
+

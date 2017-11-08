@@ -10,4 +10,18 @@ namespace HVG\SystemBundle\Entity;
  */
 class GuestCarparkRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByCommunity($community, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('g')
+            ->select('g', 'c')
+            ->from('HVGSystemBundle:GuestCarpark', 'g')
+            ->join('g.community', 'c')
+            ->where('c.id = :community')
+            ->orderBy('g.'.$sort, $direction)
+            ->setParameters(array('community' => $community))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

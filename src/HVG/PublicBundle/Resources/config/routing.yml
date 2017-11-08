@@ -1,4 +1,19 @@
+hvg_dashboard_dashboard:
+    resource: "@HVGPublicBundle/Resources/config/routing/dashboard.yml"
+    prefix:   /dashboard
+
 hvg_public_unitinsurancepolicy:
     resource: "@HVGPublicBundle/Resources/config/routing/unitinsurancepolicy.yml"
     prefix:   /unitinsurancepolicy
 
+hvg_public_pet:
+    resource: "@HVGPublicBundle/Resources/config/routing/pet.yml"
+    prefix:   /pet
+
+hvg_public_accesspermission:
+    resource: "@HVGPublicBundle/Resources/config/routing/accesspermission.yml"
+    prefix:   /accesspermission
+
+hvg_public_broker:
+    resource: "@HVGPublicBundle/Resources/config/routing/broker.yml"
+    prefix:   /broker

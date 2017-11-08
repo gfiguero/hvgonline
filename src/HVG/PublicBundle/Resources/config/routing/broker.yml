@@ -1,0 +1,4 @@
+public_bloker_new:
+    path:     /{hash}/new
+    defaults: { _controller: "HVGPublicBundle:Broker:new" }
+    methods:  [GET, POST]

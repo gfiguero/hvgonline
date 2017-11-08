@@ -48,6 +48,12 @@ HVG\SystemBundle\Entity\Unit:
         memos:
             targetEntity: HVG\SystemBundle\Entity\UnitMemo
             mappedBy: unit
+        pets:
+            targetEntity: HVG\SystemBundle\Entity\Pet
+            mappedBy: unit
+        accesspermission:
+            targetEntity: HVG\SystemBundle\Entity\AccessPermission
+            mappedBy: unit
     fields:
         name:
             type: string

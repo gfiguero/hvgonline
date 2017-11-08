@@ -1,0 +1,5 @@
+public_pet_new:
+    path:     /{hash}/new
+    defaults: { _controller: "HVGPublicBundle:Pet:new" }
+    methods:  [GET, POST]
+

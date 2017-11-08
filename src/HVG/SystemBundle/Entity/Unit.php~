@@ -607,4 +607,82 @@ class Unit
     {
         return $this->logs;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $memos;
+
+
+    /**
+     * Add memo
+     *
+     * @param \HVG\SystemBundle\Entity\UnitMemo $memo
+     *
+     * @return Unit
+     */
+    public function addMemo(\HVG\SystemBundle\Entity\UnitMemo $memo)
+    {
+        $this->memos[] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Remove memo
+     *
+     * @param \HVG\SystemBundle\Entity\UnitMemo $memo
+     */
+    public function removeMemo(\HVG\SystemBundle\Entity\UnitMemo $memo)
+    {
+        $this->memos->removeElement($memo);
+    }
+
+    /**
+     * Get memos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMemos()
+    {
+        return $this->memos;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $pets;
+
+
+    /**
+     * Add pet
+     *
+     * @param \HVG\SystemBundle\Entity\Pet $pet
+     *
+     * @return Unit
+     */
+    public function addPet(\HVG\SystemBundle\Entity\Pet $pet)
+    {
+        $this->pets[] = $pet;
+
+        return $this;
+    }
+
+    /**
+     * Remove pet
+     *
+     * @param \HVG\SystemBundle\Entity\Pet $pet
+     */
+    public function removePet(\HVG\SystemBundle\Entity\Pet $pet)
+    {
+        $this->pets->removeElement($pet);
+    }
+
+    /**
+     * Get pets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPets()
+    {
+        return $this->pets;
+    }
 }

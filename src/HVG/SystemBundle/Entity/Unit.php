@@ -646,4 +646,82 @@ class Unit
     {
         return $this->memos;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $pets;
+
+
+    /**
+     * Add pet
+     *
+     * @param \HVG\SystemBundle\Entity\Pet $pet
+     *
+     * @return Unit
+     */
+    public function addPet(\HVG\SystemBundle\Entity\Pet $pet)
+    {
+        $this->pets[] = $pet;
+
+        return $this;
+    }
+
+    /**
+     * Remove pet
+     *
+     * @param \HVG\SystemBundle\Entity\Pet $pet
+     */
+    public function removePet(\HVG\SystemBundle\Entity\Pet $pet)
+    {
+        $this->pets->removeElement($pet);
+    }
+
+    /**
+     * Get pets
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPets()
+    {
+        return $this->pets;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accesspermission;
+
+
+    /**
+     * Add accesspermission
+     *
+     * @param \HVG\SystemBundle\Entity\AccessPermission $accesspermission
+     *
+     * @return Unit
+     */
+    public function addAccesspermission(\HVG\SystemBundle\Entity\AccessPermission $accesspermission)
+    {
+        $this->accesspermission[] = $accesspermission;
+
+        return $this;
+    }
+
+    /**
+     * Remove accesspermission
+     *
+     * @param \HVG\SystemBundle\Entity\AccessPermission $accesspermission
+     */
+    public function removeAccesspermission(\HVG\SystemBundle\Entity\AccessPermission $accesspermission)
+    {
+        $this->accesspermission->removeElement($accesspermission);
+    }
+
+    /**
+     * Get accesspermission
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccesspermission()
+    {
+        return $this->accesspermission;
+    }
 }

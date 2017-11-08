@@ -1,0 +1,11 @@
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
+{% use 'HVGAgentBundle:Base:communitytabs.html.twig' %}
+{% use 'HVGAgentBundle:GuestCarpark:finder.html.twig' %}
+{% use 'HVGAgentBundle:GuestCarpark:tools.html.twig' %}
+
+{% block agent %}
+    {% block communitytabs %}{{ parent() }}{% endblock %}
+    {% block finder %}{{ parent() }}{% endblock %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block guestcarpark %}{% endblock %}
+{% endblock %}

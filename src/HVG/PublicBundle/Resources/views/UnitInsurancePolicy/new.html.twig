@@ -1,48 +1,38 @@
-{% extends 'HVGPublicBundle:Base:base.html.twig' %}
+{% extends 'HVGPublicBundle:Base:layout.html.twig' %}
 
 {% trans_default_domain 'HVGPublicBundle' %}
 
 {% block title %}{{ 'unitinsurancepolicy.index.title'|trans }}{% endblock %}
 
-{% block body %}
-    <section>
-        <div class="container">
-            <div class="row images">
-                <div class="col-xs-6 col-sm-2 col-sm-offset-2">
-                    <img class="img-responsive img-thumbnail center-block" src="{{ asset('/img/LOGOHORIZONTAL.png') | imagine_filter('logo_small') }}" />
-                </div>
-                <div class="col-xs-6 col-sm-2 col-sm-offset-4">
-                    {% if community.logo %}
-                    <img class="img-responsive img-thumbnail center-block" src="{{ vich_uploader_asset(community, 'file', 'HVG\\SystemBundle\\Entity\\Community') | imagine_filter('logo_small') }}" />
-                    {% endif %}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <h1 class="page-header">{{ 'unitinsurancepolicy.index.title'|trans }}</h1>
-                    {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
-                    {% set insurancepolicyexpiration = community.insurancepolicyexpiration|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd 'de' LLLL 'de' y") %}
-                    {% autoescape false %}{{ 'unitinsurancepolicy.new.message'|trans({'%insurancepolicyexpiration%' : insurancepolicyexpiration }) }}{% endautoescape %}
-                    {{ form_start(newForm, {'style':'horizontal'}) }}
-                    {{ form_widget(newForm) }}
-                    <div class="form-group">
-                        <div class="col-md-8 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">{{ icon('send fa-fw') }}&nbsp;{{ 'unitinsurancepolicy.new.submit'|trans }}</button>
-                        </div>
+{% block public %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">{{ 'unitinsurancepolicy.new.title'|trans }}</h1>
+                {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
+                {% set insurancepolicyexpiration = community.insurancepolicyexpiration|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd 'de' LLLL 'de' y") %}
+                {% autoescape false %}{{ 'unitinsurancepolicy.new.message'|trans({'%insurancepolicyexpiration%' : insurancepolicyexpiration }) }}{% endautoescape %}
+                {{ form_start(newForm, {'style':'horizontal'}) }}
+                {{ form_widget(newForm) }}
+                <div class="form-group">
+                    <div class="col-md-8 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary btn-lg">{{ icon('send fa-fw') }}&nbsp;{{ 'unitinsurancepolicy.new.submit'|trans }}</button>
                     </div>
-                    {{ form_end(newForm) }}
                 </div>
+                {{ form_end(newForm) }}
             </div>
         </div>
-    </section>
+    </div>
 {% endblock %}
 
 {% block stylesheet %}
+{#}
 <style type="text/css">
 .images {
     margin-top: 20px;
 }
 </style>
+{#}
 {% endblock %}
 
 {% block javascript %}
@@ -55,11 +45,13 @@ $(document).ready(function() {
         showCancel: false,
         showClose: false,
         showZoom: false,
-        browseClass: 'btn btn-primary btn-block',
+        captionClass: 'input input-lg',
+        browseClass: 'btn btn-primary btn-block btn-lg',
         browseLabel: 'Seleccionar Archivo'
     }
     $(".fileinput").find('input').fileinput(optionsFileinput);
 
+/*
     var optionsUnit = {
         enableFiltering: true,
         enableCaseInsensitiveFiltering: true,
@@ -70,6 +62,7 @@ $(document).ready(function() {
         filterPlaceholder: 'Buscar',
     };
     $('#hvg_publicbundle_unitinsurancepolicy_unit').multiselect(optionsUnit);
+*/
 });
 </script>
 {% endblock %}

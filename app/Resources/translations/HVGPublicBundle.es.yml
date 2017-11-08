@@ -1,9 +1,14 @@
+dashboard:
+    index:
+        title: Sistema de Registros
+
 unitinsurancepolicy:
     index:
-        title: Actualización de Pólizas de Seguros
+        title: Pólizas de Seguros
     new:
+        title: Actualizar póliza de seguro
         submit: Enviar
-        flash: La póliza de seguro del ha sido enviada correctamente.
+        flash: La póliza de seguro ha sido enviada correctamente.
         message: |
             <p>Te recordamos que la Ley 19.537 en su artículo 36 dispone que:</p>
             <blockquote><p>"todas las unidades de un condominio deberán ser aseguradas contra riesgo de incendio, cada propietario deberá contratar este seguro, y en caso de no hacerlo, lo contratará el administrador por cuenta y cargo de aquél, formulándose el cobro de la prima correspondiente conjuntamente con el de los gastos comunes."</p></blockquote>
@@ -24,3 +29,44 @@ unitinsurancepolicy:
         day: Día
         contactname: Nombre de contacto
         contactemail: Email de contacto
+
+pet:
+    index:
+        title: Registro de Mascotas
+    new:
+        title: Nuevo registro de mascota
+        submit: Registrar mascota
+        flash: La mascota ha sido registrada correctamente.
+        message: |
+            <p>"Mensaje de tenencia responsable de mascotas"</p>
+    form:
+        unit: Departamento
+        name: Nombre de la mascota
+        owner: Persona responsable
+        race: Raza (opcional)
+        gender: Género
+        color: Color
+        photography: Fotografía
+        phone: Teléfono
+        email: Email
+        petgroup: Especie de mascota
+        terms: Declaro que mi mascota tiene sus vacunas al día y cumple con las condiciones de tenencia responsable.
+
+accesspermission:
+    index:
+        title: Permisos de Acceso
+    new:
+        title: Nuevo permiso de acceso
+        submit: Enviar solicitud de permiso
+    form:
+        unit: Departamento
+        visitant: Persona Visitante
+        description: Descripción del permiso
+        applicant: Persona que otorga permiso
+        cardfront: Cédula de identidad (Anverso)
+        cardback: Cédula de identidad (Reverso)
+
+person:
+    form:
+        rut: Número de rol único tributario (RUT)
+        name: Nombre completo

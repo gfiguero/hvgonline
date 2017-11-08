@@ -17,7 +17,7 @@ class UnitInsurancePolicyType extends AbstractType
         $builder
             ->add('unit', null, array(
                 'label' => 'unitinsurancepolicy.form.unit',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
                 'placeholder' => 'Seleccione Unidad',
@@ -25,13 +25,13 @@ class UnitInsurancePolicyType extends AbstractType
             ))
             ->add('file', 'fileinput', array(
                 'label' => 'unitinsurancepolicy.form.filename',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))
             ->add('expiredAt', null, array(
                 'label' => 'unitinsurancepolicy.form.expiredAt',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
                 'placeholder' => array( 
@@ -42,13 +42,13 @@ class UnitInsurancePolicyType extends AbstractType
             ))
             ->add('contactname', null, array(
                 'label' => 'unitinsurancepolicy.form.contactname',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))
             ->add('contactemail', null, array(
                 'label' => 'unitinsurancepolicy.form.contactemail',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))

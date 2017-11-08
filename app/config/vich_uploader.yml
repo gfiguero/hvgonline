@@ -33,3 +33,7 @@ vich_uploader:
             uri_prefix: uploads/community_logo
             upload_destination: %kernel.root_dir%/../web/uploads/community_logo
             namer: vich_uploader.namer_origname
+        pet_photography_file:
+            uri_prefix: uploads/pet_photography_file
+            upload_destination: %kernel.root_dir%/../web/uploads/pet_photography_file
+            namer: vich_uploader.namer_origname

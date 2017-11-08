@@ -1,17 +1,18 @@
 {
-    "name": "hvg-orion-asssets",
-    "description": "Sistema de administración de condominios y comunidades",
-    "dependencies": {
-        "bootstrap-toggle": "*",
-        "bootstrap": "*",
-        "bootswatch": "*",
-        "jquery-ui-bootstrap": "*",
-        "jquery-ui": "*",
-        "jquery": "*",
-        "font-awesome": "*",
-        "bootstrap-multiselect": "*",
-        "bootstrap": "*",
-        "bootstrap-fileinput": "*",
-        "jquery.rut": "*"
-    }
+  "name": "hvg-orion-asssets",
+  "description": "Sistema de administración de condominios y comunidades",
+  "dependencies": {
+    "bootstrap-toggle": "*",
+    "bootstrap": "*",
+    "bootswatch": "*",
+    "jquery-ui-bootstrap": "*",
+    "jquery-ui": "*",
+    "jquery": "*",
+    "font-awesome": "*",
+    "bootstrap-multiselect": "*",
+    "bootstrap-fileinput": "*",
+    "jquery.rut": "*",
+    "animate.css": "^3.5.2",
+    "remarkable-bootstrap-notify": "^3.1.3"
+  }
 }

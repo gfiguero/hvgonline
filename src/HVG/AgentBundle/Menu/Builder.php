@@ -140,6 +140,19 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.carpark', array('route' => 'agent_carpark_index'))->setExtra('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.warehouse', array('route' => 'agent_warehouse_index'))->setExtra('translation_domain', 'HVGAgentBundle');
 
+        $sidemenu->addChild('sidemenu.community.root', array('uri' => '#'));
+        $sidemenu['sidemenu.community.root']->setExtras(array('icon' => 'group fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
+        $sidemenu['sidemenu.community.root']->setAttributes(array('class' => 'dropdown'));
+        $sidemenu['sidemenu.community.root']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'));
+        $sidemenu['sidemenu.community.root']->setChildrenAttribute('class', 'dropdown-menu');
+        $sidemenu['sidemenu.community.root']->addChild('sidemenu.community.guestcarpark', array('route' => 'agent_guestcarpark_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_guestcarpark_index',
+            'agent_guestcarpark_new',
+            'agent_guestcarpark_show',
+            'agent_guestcarpark_edit',
+            'agent_guestcarpark_delete',
+        )));
+
         $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unitinsurancepolicy', array('route' => 'agent_unitinsurancepolicy_index'));
         $sidemenu['sidemenu.datacenter']['sidemenu.unitinsurancepolicy']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitinsurancepolicy_index')));
 
@@ -208,6 +221,27 @@ class Builder implements ContainerAwareInterface
         )));
 
         return $tabs;
+    }
+    public function communityTabsMenu(FactoryInterface $factory, array $options)
+    {
+        $request = $this->container->get('request');
+        $community = $options['community'] ? $options['community']->getId() : null;
+
+        $communityTabs = $factory->createItem('root');
+        $communityTabs->setChildrenAttribute('class', 'nav nav-pills');
+        $communityTabs->setChildrenAttribute('id', 'communityTabs-menu');
+
+        $communityTabs->addChild('guestcarpark', array('route' => 'agent_guestcarpark_index', 'routeParameters' => array('community' => $community)));
+        $communityTabs['guestcarpark']->setLabel('guestcarpark.index.title');
+        $communityTabs['guestcarpark']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_guestcarpark_index',
+            'agent_guestcarpark_show',
+            'agent_guestcarpark_new',
+            'agent_guestcarpark_edit',
+            'agent_guestcarpark_delete',
+        )));
+
+        return $communityTabs;
     }
 
 }

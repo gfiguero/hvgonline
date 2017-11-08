@@ -1,0 +1,7 @@
+{% extends 'HVGPublicBundle:Base:base.html.twig' %}
+{% use 'HVGPublicBundle:Base:header.html.twig' %}
+
+{% block body %}
+    {% block header %}{{ parent() }}{% endblock %}
+    {% block public %}{% endblock %}
+{% endblock %}

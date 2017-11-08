@@ -1,0 +1,43 @@
+{% extends 'HVGPublicBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGPublicBundle' %}
+
+{% block title %}{{ 'accesspermission.index.title'|trans }}{% endblock %}
+
+{% block public %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">{{ 'accesspermission.new.title'|trans }}</h1>
+                {% autoescape false %}{{ 'accesspermission.new.message'|trans }}{% endautoescape %}
+                {{ form_start(newForm, {'style':'horizontal'}) }}
+                {{ form_widget(newForm) }}
+                <div class="form-group">
+                    <div class="col-md-8 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary btn-lg">{{ icon('send fa-fw') }}&nbsp;{{ 'accesspermission.new.submit'|trans }}</button>
+                    </div>
+                </div>
+                {{ form_end(newForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var optionsFileinput = {
+        showPreview: false,
+        showRemove: false,
+        showUpload: false,
+        showCancel: false,
+        showClose: false,
+        showZoom: false,
+        captionClass: 'input input-lg',
+        browseClass: 'btn btn-primary btn-block btn-lg',
+        browseLabel: 'Seleccionar Archivo'
+    }
+    $(".fileinput").find('input').fileinput(optionsFileinput);
+});
+</script>
+{% endblock %}

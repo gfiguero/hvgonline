@@ -27,6 +27,8 @@ HVG\SystemBundle\Entity\Pet:
         race:
             type: string
             length: 100
+        weight:
+            type: integer
         phone:
             type: string
             length: 20

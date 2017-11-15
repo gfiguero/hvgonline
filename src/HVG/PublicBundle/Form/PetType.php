@@ -28,6 +28,30 @@ class PetType extends AbstractType
                 'placeholder' => 'Seleccione Unidad',
                 'choices' => $community->getUnits(),
             ))
+            ->add('owner', PersonType::class, array(
+                'label' => 'pet.form.owner',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGPublicBundle',
+                'required' => true,
+            ))
+            ->add('phone', null, array(
+                'label' => 'pet.form.phone',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
+                'translation_domain' => 'HVGPublicBundle',
+                'required' => true,
+            ))
+            ->add('email', null, array(
+                'label' => 'pet.form.email',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
+                'translation_domain' => 'HVGPublicBundle',
+                'required' => true,
+            ))
+            ->add('name', null, array(
+                'label' => 'pet.form.name',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
+                'translation_domain' => 'HVGPublicBundle',
+                'required' => true,
+            ))
             ->add('petgroup', PetGroupType::class, array(
                 'label' => 'pet.form.petgroup',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
@@ -54,33 +78,15 @@ class PetType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
             ))
-            ->add('name', null, array(
-                'label' => 'pet.form.name',
+            ->add('weight', null, array(
+                'label' => 'pet.form.weight',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))
-            ->add('photography', 'file', array(
+            ->add('photographyfile', 'file', array(
                 'label' => 'pet.form.photography',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGPublicBundle',
-                'required' => true,
-            ))
-            ->add('owner', PersonType::class, array(
-                'label' => 'pet.form.owner',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGPublicBundle',
-                'required' => true,
-            ))
-            ->add('phone', null, array(
-                'label' => 'pet.form.phone',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
-                'translation_domain' => 'HVGPublicBundle',
-                'required' => true,
-            ))
-            ->add('email', null, array(
-                'label' => 'pet.form.email',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))

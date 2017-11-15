@@ -34,23 +34,25 @@ pet:
     index:
         title: Registro de Mascotas
     new:
-        title: Nuevo registro de mascota
+        title: Solicitud de Autorización para Tenencia Responsable de Mascotas
         submit: Registrar mascota
         flash: La mascota ha sido registrada correctamente.
         message: |
-            <p>"Mensaje de tenencia responsable de mascotas"</p>
+            <p>Mediante el presente formulario, solicito al comité de administración la autorización para mantener y criar al interior de nuestro departamento una mascota comprometiéndome desde ya a su tenencia responsable y a cumplir el reglamento interno sobre tenencia responsable de mascotas.</p>
+            <p>Esta solicitud sera revisada y la respuesta sera enviada vía correo electrónico, pudiendo ser revocada si se infringen las normas sobre tenencia responsable.</p>
     form:
         unit: Departamento
         name: Nombre de la mascota
         owner: Persona responsable
         race: Raza (opcional)
+        weight: Peso [Kg]
         gender: Género
         color: Color
         photography: Fotografía
         phone: Teléfono
         email: Email
         petgroup: Especie de mascota
-        terms: Declaro que mi mascota tiene sus vacunas al día y cumple con las condiciones de tenencia responsable.
+        terms: Declaro conocer, aceptar el reglamento sobre tenencia responsable de mascotas (disponible en www.condominiomallen.cl) y me comprometo a su fiel cumplimiento y declaro que el propietario de la vivienda esta en conocimiento aceptando la presentación de esta solicitud.
 
 accesspermission:
     index:

@@ -24,9 +24,9 @@ class Builder implements ContainerAwareInterface
             'hash' => $hash,
         )))->setLabel('pet.index.title')->setExtras(array('translation_domain' => 'HVGPublicBundle'));
 
-        $topmenu->addChild('topmenu.home', array('route' => 'public_accesspermission_new', 'routeParameters' => array(
-            'hash' => $hash,
-        )))->setLabel('accesspermission.index.title')->setExtras(array('translation_domain' => 'HVGPublicBundle'));
+//        $topmenu->addChild('topmenu.home', array('route' => 'public_accesspermission_new', 'routeParameters' => array(
+//            'hash' => $hash,
+//        )))->setLabel('accesspermission.index.title')->setExtras(array('translation_domain' => 'HVGPublicBundle'));
 
         $topmenu->addChild('topmenu.unitinsurancepolicy', array('route' => 'public_unitinsurancepolicy_new', 'routeParameters' => array(
             'hash' => $hash,

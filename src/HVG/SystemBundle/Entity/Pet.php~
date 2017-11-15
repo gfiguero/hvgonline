@@ -2,8 +2,13 @@
 
 namespace HVG\SystemBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * Pet
+ * @Vich\Uploadable
  */
 class Pet
 {
@@ -191,6 +196,36 @@ class Pet
      * @var string
      */
     private $photography;
+
+    /**
+     * @Vich\UploadableField(mapping="pet_photography_file", fileNameProperty="photography")
+     * @var File
+     */
+    private $photographyfile;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $photographyfile
+     */
+    
+    public function setPhotographyFile(File $photographyfile = null)
+    {
+        $this->photographyfile = $photographyfile;
+
+        if ($photographyfile) {
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getPhotographyFile()
+    {
+        return $this->photographyfile;
+    }
+
 
 
     /**
@@ -427,5 +462,34 @@ class Pet
     public function getOwner()
     {
         return $this->owner;
+    }
+    /**
+     * @var integer
+     */
+    private $petgroup;
+
+
+    /**
+     * Set petgroup
+     *
+     * @param integer $petgroup
+     *
+     * @return Pet
+     */
+    public function setPetgroup($petgroup)
+    {
+        $this->petgroup = $petgroup;
+
+        return $this;
+    }
+
+    /**
+     * Get petgroup
+     *
+     * @return integer
+     */
+    public function getPetgroup()
+    {
+        return $this->petgroup;
     }
 }

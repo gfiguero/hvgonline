@@ -18,6 +18,7 @@ class AccessMonitorController extends Controller
         $em = $this->getDoctrine()->getManager();
         $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
         $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findByCommunity($community);
+        $communityevents = $em->getRepository('HVGSystemBundle:CommunityEvent')->findValidByCommunity($community);
         $units = $em->getRepository('HVGSystemBundle:Unit')->findByUnitgroup($unitgroup);
         $unitresidents = $em->getRepository('HVGSystemBundle:UnitResident')->findByUnit($unit, 'name', 'ASC');
         $unitmemos = $em->getRepository('HVGSystemBundle:UnitMemo')->getAvailableByUnit($unit);
@@ -33,6 +34,7 @@ class AccessMonitorController extends Controller
 
         return $this->render('HVGAccessControlBundle:AccessMonitor:index.html.twig', array(
             'community' => $community,
+            'communityevents' => $communityevents,
             'checkpoint' => $checkpoint,
             'accessguard' => $accessguard,
             'unitgroup' => $unitgroup,

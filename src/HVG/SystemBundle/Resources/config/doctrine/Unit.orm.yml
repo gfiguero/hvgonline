@@ -8,6 +8,10 @@ HVG\SystemBundle\Entity\Unit:
             id: true
             generator:
                 strategy: AUTO
+    manyToMany:
+        communityevents:
+            targetEntity: HVG\SystemBundle\Entity\CommunityEvent
+            mappedBy: units
     manyToOne:
         unitgroup:
             targetEntity: HVG\SystemBundle\Entity\UnitGroup

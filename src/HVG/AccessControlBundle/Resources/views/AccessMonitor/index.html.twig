@@ -66,9 +66,27 @@
     {% endif %}
 
     {% if unit %}
-    <p>
-        <a href="{{ path('accesscontrol_guest_new', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-success btn-lg btn-block">{{ icon('plus fa-fw') }}&nbsp;{{ 'guest.new.link'|trans }}</a>
-    </p>
+        {% if communityevents is not empty %}
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ 'accessmonitor.index.communityevents'|trans }}</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="records_list table table-striped table-hover">
+                    {% for communityevent in communityevents %}
+                        <tr>
+                            <td style="white-space: nowrap;">{% if communityevent.name %}{{ communityevent.name }}{% endif %}</td>
+                            <td style="white-space: nowrap;">{% if unit in communityevent.units %}{{ icon('check-circle fa-lg') }}{% else %}{{ icon('times-circle fa-lg') }}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+
+        <p>
+            <a href="{{ path('accesscontrol_guest_new', {'hash' : community.hash, 'checkpoint' : checkpoint.id, 'accessguard' : accessguard.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id }) }}" class="btn btn-success btn-lg btn-block">{{ icon('plus fa-fw') }}&nbsp;{{ 'guest.new.link'|trans }}</a>
+        </p>
     {% endif %}
 
     {% if guests is not empty %}

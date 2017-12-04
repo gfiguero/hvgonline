@@ -119,8 +119,10 @@ php app/console generate:doctrine:crud --entity=HVGUserBundle:User --format=yml 
 php app/console doctrine:generate:entities HVGSystemBundle:UnitInsurancePolicy --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Pet --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:AccessPermission --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:CommunityEvent --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:UnitInsurancePolicy --format=yml --with-write --overwrite --no-interaction --route-prefix=unitinsurancepolicy
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Pet --format=yml --with-write --overwrite --no-interaction --route-prefix=pet
+php app/console generate:doctrine:crud --entity=HVGSystemBundle:CommunityEvent --format=yml --with-write --overwrite --no-interaction --route-prefix=communityevent
 
 
 php app/console doctrine:schema:update --force

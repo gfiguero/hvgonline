@@ -685,4 +685,43 @@ class Unit
     {
         return $this->pets;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accesspermission;
+
+
+    /**
+     * Add accesspermission
+     *
+     * @param \HVG\SystemBundle\Entity\AccessPermission $accesspermission
+     *
+     * @return Unit
+     */
+    public function addAccesspermission(\HVG\SystemBundle\Entity\AccessPermission $accesspermission)
+    {
+        $this->accesspermission[] = $accesspermission;
+
+        return $this;
+    }
+
+    /**
+     * Remove accesspermission
+     *
+     * @param \HVG\SystemBundle\Entity\AccessPermission $accesspermission
+     */
+    public function removeAccesspermission(\HVG\SystemBundle\Entity\AccessPermission $accesspermission)
+    {
+        $this->accesspermission->removeElement($accesspermission);
+    }
+
+    /**
+     * Get accesspermission
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccesspermission()
+    {
+        return $this->accesspermission;
+    }
 }

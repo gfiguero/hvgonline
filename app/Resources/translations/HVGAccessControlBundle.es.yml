@@ -42,6 +42,7 @@ accessmonitor:
         residents: Residentes
         unitmemos: Memos
         guests: Últimas Visitas
+        communityevents: Eventos de Comunidad
 
 accessguard:
     index:

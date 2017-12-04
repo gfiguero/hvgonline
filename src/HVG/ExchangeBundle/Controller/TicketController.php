@@ -6,35 +6,39 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use HVG\SystemBundle\Entity\Community;
+use HVG\SystemBundle\Entity\UnitGroup;
+use HVG\SystemBundle\Entity\Unit;
 use HVG\SystemBundle\Entity\Ticket;
-use HVG\SystemBundle\Entity\TicketAction;
-use HVG\SystemBundle\Entity\Petition;
-use HVG\SystemBundle\Entity\PetitionAction;
 
 use HVG\ExchangeBundle\Form\TicketType;
-use HVG\ExchangeBundle\Form\TicketFilterType;
-use HVG\ExchangeBundle\Form\PetitionType;
-use HVG\ExchangeBundle\Entity\TicketFilter;
 
 class TicketController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Community $community = null, UnitGroup $unitgroup = null, Unit $unit = null)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
+
         $communities = $user->getCommunities();
-        $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findBy(array('community' => $communities->toArray()));
-        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
+        $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findByCommunity($community);
+        $units = $em->getRepository('HVGSystemBundle:Unit')->findByUnitgroup($unitgroup);
+//        $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findBy(array('community' => $communities->toArray()));
+//        $units = $em->getRepository('HVGSystemBundle:Unit')->findBy(array('community' => $communities->toArray()));
+
         $sort = $request->query->get('sort');
         $direction = $request->query->get('direction');
         if($sort) $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('unit' => $units), array($sort => $direction));
         else $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('unit' => $units));
         $paginator = $this->get('knp_paginator');
         $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
-        $ticketFilter = new TicketFilter();
-        $ticketFilterForm = $this->createTicketFilterForm($ticketFilter);
         return $this->render('HVGExchangeBundle:Ticket:index.html.twig', array(
-            'ticketFilterForm' => $ticketFilterForm->createView(),
+            'communities' => $communities,
+            'unitgroups' => $unitgroups,
+            'units' => $units,
+            'community' => $community,
+            'unitgroup' => $unitgroup,
+            'unit' => $unit,
             'tickets' => $tickets,
             'direction' => $direction,
             'sort' => $sort,

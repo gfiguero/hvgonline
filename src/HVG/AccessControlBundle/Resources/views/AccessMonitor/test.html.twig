@@ -1,0 +1,25 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'accessmonitor.index.title'|trans }}{% endblock %}
+
+{% block accesscontrol %}
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accessmonitor.index.communityevents'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="records_list table table-striped table-hover">
+            {% for communityevent in communityevents %}
+                {% for unit in communityevent.units %}
+                    <tr>
+                        <td style="white-space: nowrap;">{% if communityevent.name %}{{ communityevent.name }}{% endif %}</td>
+                        <td style="white-space: nowrap;">{% if unit.name %}{{ unit.name }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

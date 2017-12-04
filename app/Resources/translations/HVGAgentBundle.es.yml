@@ -25,6 +25,7 @@ sidemenu:
     community:
         root: Comunidades
         guestcarpark: Estacionamientos de visita
+        communityevent: Eventos de comunidad
     unitgroup: Torres
     unit:
         root: Departamentos
@@ -309,6 +310,35 @@ communitystaff:
         person:
             name: Nombre del Colaborador
             rut: Rol Único Tributario
+
+communityevent:
+    index:
+        title: Eventos
+        link: Explorar Eventos
+        list: Lista de Eventos
+        empty: No hay eventos seleccionados
+    show:
+        title: Datos del Evento
+        link: Detalles del Evento
+    new:
+        title: Nuevo evento
+        link: Agregar evento
+        submit: Registrar
+    edit:
+        title: Edición de evento
+        link: Editar evento
+        submit: Guardar cambios
+    delete:
+        title: Borrar evento
+        link: Borrar evento
+        submit: Confirmar
+        cancel: Cancelar
+    form:
+        name: Nombre
+        startedAt: Inicio
+        finnishedAt: Final
+        community: Comunidad
+        units: Departamentos habilitados
 
 ticket:
     index:

@@ -1,0 +1,26 @@
+agent_communityevent_index:
+    path:     /{community}
+    defaults: { _controller: "HVGAgentBundle:CommunityEvent:index", community: '' }
+    methods:  GET
+    requirements:
+        community: '\d+|'
+
+agent_communityevent_new:
+    path:     /{community}/new
+    defaults: { _controller: "HVGAgentBundle:CommunityEvent:new" }
+    methods:  [GET, POST]
+
+agent_communityevent_show:
+    path:     /{communityevent}/show
+    defaults: { _controller: "HVGAgentBundle:CommunityEvent:show" }
+    methods:  GET
+
+agent_communityevent_edit:
+    path:     /{communityevent}/edit
+    defaults: { _controller: "HVGAgentBundle:CommunityEvent:edit" }
+    methods:  [GET, POST]
+
+agent_communityevent_delete:
+    path:     /{communityevent}/delete
+    defaults: { _controller: "HVGAgentBundle:CommunityEvent:delete" }
+    methods:  [GET, DELETE]

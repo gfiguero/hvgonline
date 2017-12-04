@@ -1,0 +1,44 @@
+HVG\SystemBundle\Entity\CommunityEvent:
+    type: entity
+    table: CommunityEvent
+    repositoryClass: HVG\SystemBundle\Entity\CommunityEventRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: communityevents
+    manyToMany:
+        units:
+            targetEntity: HVG\SystemBundle\Entity\Unit
+            inversedBy: communityevents
+    fields:
+        name:
+            type: string
+            length: 300
+        startedAt:
+            type: datetime
+        finnishedAt:
+            type: datetime
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

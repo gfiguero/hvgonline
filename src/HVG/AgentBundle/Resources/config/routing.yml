@@ -46,6 +46,10 @@ hvg_agent_communitystaff:
     resource: "@HVGAgentBundle/Resources/config/routing/communitystaff.yml"
     prefix:   /communitystaff
 
+hvg_agent_communityevent:
+    resource: "@HVGAgentBundle/Resources/config/routing/communityevent.yml"
+    prefix:   /communityevent
+
 hvg_agent_contact:
     resource: "@HVGAgentBundle/Resources/config/routing/contact.yml"
     prefix:   /contact

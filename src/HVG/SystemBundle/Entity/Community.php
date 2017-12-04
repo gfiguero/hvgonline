@@ -854,4 +854,43 @@ class Community
     {
         return $this->checkpoints;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $communityevents;
+
+
+    /**
+     * Add communityevent
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityEvent $communityevent
+     *
+     * @return Community
+     */
+    public function addCommunityevent(\HVG\SystemBundle\Entity\CommunityEvent $communityevent)
+    {
+        $this->communityevents[] = $communityevent;
+
+        return $this;
+    }
+
+    /**
+     * Remove communityevent
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityEvent $communityevent
+     */
+    public function removeCommunityevent(\HVG\SystemBundle\Entity\CommunityEvent $communityevent)
+    {
+        $this->communityevents->removeElement($communityevent);
+    }
+
+    /**
+     * Get communityevents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommunityevents()
+    {
+        return $this->communityevents;
+    }
 }

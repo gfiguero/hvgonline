@@ -24,6 +24,9 @@ HVG\SystemBundle\Entity\Community:
         communitystaffs:
             targetEntity: HVG\SystemBundle\Entity\CommunityStaff
             mappedBy: community
+        communityevents:
+            targetEntity: HVG\SystemBundle\Entity\CommunityEvent
+            mappedBy: community
         projects:
             targetEntity: HVG\SystemBundle\Entity\Project
             mappedBy: community

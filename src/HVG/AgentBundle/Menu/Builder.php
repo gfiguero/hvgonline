@@ -152,6 +152,13 @@ class Builder implements ContainerAwareInterface
             'agent_guestcarpark_edit',
             'agent_guestcarpark_delete',
         )));
+        $sidemenu['sidemenu.community.root']->addChild('sidemenu.community.communityevent', array('route' => 'agent_communityevent_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_communityevent_index',
+            'agent_communityevent_new',
+            'agent_communityevent_show',
+            'agent_communityevent_edit',
+            'agent_communityevent_delete',
+        )));
 
         $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unitinsurancepolicy', array('route' => 'agent_unitinsurancepolicy_index'));
         $sidemenu['sidemenu.datacenter']['sidemenu.unitinsurancepolicy']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitinsurancepolicy_index')));
@@ -222,6 +229,7 @@ class Builder implements ContainerAwareInterface
 
         return $tabs;
     }
+
     public function communityTabsMenu(FactoryInterface $factory, array $options)
     {
         $request = $this->container->get('request');
@@ -239,6 +247,16 @@ class Builder implements ContainerAwareInterface
             'agent_guestcarpark_new',
             'agent_guestcarpark_edit',
             'agent_guestcarpark_delete',
+        )));
+
+        $communityTabs->addChild('communityevent', array('route' => 'agent_communityevent_index', 'routeParameters' => array('community' => $community)));
+        $communityTabs['communityevent']->setLabel('communityevent.index.title');
+        $communityTabs['communityevent']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_communityevent_index',
+            'agent_communityevent_show',
+            'agent_communityevent_new',
+            'agent_communityevent_edit',
+            'agent_communityevent_delete',
         )));
 
         return $communityTabs;

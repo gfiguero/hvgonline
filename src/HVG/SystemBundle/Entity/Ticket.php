@@ -513,4 +513,62 @@ class Ticket
     {
         return $this->ticketpetitions;
     }
+    /**
+     * @var \HVG\SystemBundle\Entity\Zone
+     */
+    private $zone;
+
+
+    /**
+     * Set zone
+     *
+     * @param \HVG\SystemBundle\Entity\Zone $zone
+     *
+     * @return Ticket
+     */
+    public function setZone(\HVG\SystemBundle\Entity\Zone $zone = null)
+    {
+        $this->zone = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Get zone
+     *
+     * @return \HVG\SystemBundle\Entity\Zone
+     */
+    public function getZone()
+    {
+        return $this->zone;
+    }
+    /**
+     * @var integer
+     */
+    private $status;
+
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Ticket
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }

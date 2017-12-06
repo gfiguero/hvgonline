@@ -12,6 +12,7 @@ setfacl -R -m u:hvg:rwX -m u:`whoami`:rwX web/uploads web/media
 setfacl -dR -m u:hvg:rwX -m u:`whoami`:rwX web/uploads web/media
 
 php app/console generate:bundle --namespace HVG/SystemBundle --dir src --bundle-name HVGSystemBundle --format yml --shared --no-interaction
+php app/console generate:bundle --namespace HVG/ConfigurationBundle --dir src --bundle-name HVGConfigurationBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/UserBundle --dir src --bundle-name HVGUserBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/AdminBundle --dir src --bundle-name HVGAdminBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/ResourcePlannerBundle --dir src --bundle-name HVGResourcePlannerBundle --format yml --shared --no-interaction

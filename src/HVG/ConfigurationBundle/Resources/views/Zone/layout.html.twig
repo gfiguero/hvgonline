@@ -1,0 +1,9 @@
+{% extends 'HVGConfigurationBundle:Base:layout.html.twig' %}
+{% use 'HVGConfigurationBundle:Base:header.html.twig' %}
+{% use 'HVGConfigurationBundle:Zone:aside.html.twig' %}
+{% use 'HVGConfigurationBundle:Zone:tools.html.twig' %}
+
+{% block configuration %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block zone %}{% endblock %}
+{% endblock %}

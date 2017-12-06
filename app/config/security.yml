@@ -50,6 +50,8 @@ security:
         - { path: ^/register, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
         - { path: ^/resetting, roles: [IS_AUTHENTICATED_ANONYMOUSLY] }
         - { path: ^/agent, roles: [ROLE_AGENT] }
+        - { path: ^/exchange, roles: [ROLE_AGENT] }
+        - { path: ^/configuration, roles: [ROLE_ADMIN] }
         - { path: ^/admin, roles: [ROLE_ADMIN] }
         - { path: ^/system, roles: [ROLE_ADMIN] }
         - { path: ^/user, roles: [ROLE_ADMIN] }

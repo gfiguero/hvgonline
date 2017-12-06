@@ -1,0 +1,30 @@
+exchange_ticketoperation_index:
+    path:     /index/{status}/{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGExchangeBundle:TicketOperation:index", status: '', community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        status: '\d+|'
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+exchange_ticketoperation_new:
+    path:     /{unit}/new
+    defaults: { _controller: "HVGExchangeBundle:TicketOperation:new" }
+    methods:  [GET, POST]
+
+exchange_ticketoperation_show:
+    path:     /{ticket}/show
+    defaults: { _controller: "HVGExchangeBundle:TicketOperation:show" }
+    methods:  GET
+
+exchange_ticketoperation_edit:
+    path:     /{ticket}/edit
+    defaults: { _controller: "HVGExchangeBundle:TicketOperation:edit" }
+    methods:  [GET, POST]
+
+exchange_ticketoperation_delete:
+    path:     /{ticket}/delete
+    defaults: { _controller: "HVGExchangeBundle:TicketOperation:delete" }
+    methods:  [GET, DELETE]
+

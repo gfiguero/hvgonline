@@ -1,0 +1,7 @@
+hvg_configuration_zone:
+    resource: "@HVGConfigurationBundle/Resources/config/routing/zone.yml"
+    prefix:   /zone
+
+hvg_configuration_user:
+    resource: "@HVGConfigurationBundle/Resources/config/routing/user.yml"
+    prefix:   /user

@@ -46,3 +46,11 @@ parameters:
         4: Blanco y negro
         5: Blanco y café
         6: Otro
+    ticketstatuses:
+        1: Nuevo
+        2: Zonalizado
+        3: Asignado
+        4: En Progreso
+        5: Pendiente
+        6: Resuelto
+        7: Cerrado

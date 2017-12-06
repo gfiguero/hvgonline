@@ -1,0 +1,25 @@
+configuration_user_index:
+    path:     /index/
+    defaults: { _controller: "HVGConfigurationBundle:User:index" }
+    methods:  GET
+
+configuration_user_new:
+    path:     /new
+    defaults: { _controller: "HVGConfigurationBundle:User:new" }
+    methods:  [GET, POST]
+
+configuration_user_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGConfigurationBundle:User:show" }
+    methods:  GET
+
+configuration_user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGConfigurationBundle:User:edit" }
+    methods:  [GET, POST]
+
+configuration_user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGConfigurationBundle:User:delete" }
+    methods:  [GET, DELETE]
+

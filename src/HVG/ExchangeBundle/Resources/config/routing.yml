@@ -9,3 +9,7 @@ hvg_exchange_petition:
 hvg_exchange_ticket:
     resource: "@HVGExchangeBundle/Resources/config/routing/ticket.yml"
     prefix:   /ticket
+
+hvg_exchange_ticketoperation:
+    resource: "@HVGExchangeBundle/Resources/config/routing/ticketoperation.yml"
+    prefix:   /ticketoperation

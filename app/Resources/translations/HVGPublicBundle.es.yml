@@ -52,7 +52,7 @@ pet:
         phone: Teléfono
         email: Email
         petgroup: Especie de mascota
-        terms: Declaro conocer, aceptar el reglamento sobre tenencia responsable de mascotas (disponible en www.condominiomallen.cl) y me comprometo a su fiel cumplimiento y declaro que el propietario de la vivienda esta en conocimiento aceptando la presentación de esta solicitud.
+        terms: Declaro conocer, aceptar el reglamento sobre tenencia responsable de mascotas y me comprometo a su fiel cumplimiento y declaro que el propietario de la vivienda esta en conocimiento aceptando la presentación de esta solicitud.
 
 accesspermission:
     index:

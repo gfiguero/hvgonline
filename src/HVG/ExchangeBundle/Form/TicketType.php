@@ -1,11 +1,12 @@
 <?php
 
-namespace HVG\AgentBundle\Form;
+namespace HVG\ExchangeBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use HVG\AgentBundle\Form\HiddenUnit;
+
+use HVG\ExchangeBundle\Form\Type\TicketStatusType;
 
 class TicketType extends AbstractType
 {
@@ -15,47 +16,35 @@ class TicketType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('unit', 'hidden_unit')
-            ->add('area', null, array(
-                'label' => 'ticket.form.area',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
-                'placeholder' => 'ticket.form.placeholder.area',
-            ))
-            ->add('liability', null, array(
-                'label' => 'ticket.form.liability',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
-                'placeholder' => 'ticket.form.placeholder.liability',
-                'choice_label' => function ($user) {
-                    return $user->getPersonUsername();
-                }
-            ))
-            ->add('ticketstatus', null, array(
-                'required' => true,
-                'label' => 'ticket.form.ticketstatus',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
-            ))
             ->add('description', null, array(
                 'label' => 'ticket.form.description',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
+                'translation_domain' => 'HVGExchangeBundle',
             ))
             ->add('contactname', null, array(
                 'label' => 'ticket.form.contactname',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
+                'translation_domain' => 'HVGExchangeBundle',
             ))
             ->add('contactphone', null, array(
                 'label' => 'ticket.form.contactphone',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
+                'translation_domain' => 'HVGExchangeBundle',
             ))
             ->add('contactemail', null, array(
                 'label' => 'ticket.form.contactemail',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGAgentBundle',
+                'translation_domain' => 'HVGExchangeBundle',
+            ))
+            ->add('status', TicketStatusType::class, array(
+                'label' => 'ticket.form.status',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGExchangeBundle',
+            ))
+            ->add('zone', null, array(
+                'label' => 'ticket.form.zone',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'translation_domain' => 'HVGExchangeBundle',
             ))
         ;
     }
@@ -75,7 +64,7 @@ class TicketType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'hvg_agentbundle_ticket';
+        return 'hvg_exchangebundle_ticket';
     }
 
 

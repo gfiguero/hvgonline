@@ -54,4 +54,65 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();            
     }
+
+    public function findByCommunity($status, $community, $sort, $direction)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('t');
+        $qb = $qb->select('t', 'u', 'c')->from('HVGSystemBundle:Ticket', 't');
+
+        $qb = $qb->join('t.unit', 'u');
+        $qb = $qb->join('u.community', 'c');
+        $qb = $qb->andWhere('c.id = :community');
+        $qb = $qb->setParameter('community', $community);
+        if ($status) {
+            $qb = $qb->andWhere('t.status = :status');
+            $qb = $qb->setParameter('status', $status);
+        }
+        $qb = $qb->orderBy('t.'.$sort, $direction);
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findByUnitgroup($status, $unitgroup, $sort, $direction)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('t');
+        $qb = $qb->select('t', 'u', 'ug')->from('HVGSystemBundle:Ticket', 't');
+        $qb = $qb->join('t.unit', 'u');
+        $qb = $qb->join('u.unitgroup', 'ug');
+        $qb = $qb->andWhere('ug.id = :unitgroup');
+        $qb = $qb->setParameter('unitgroup', $unitgroup);
+        if ($status) {
+            $qb = $qb->andWhere('t.status = :status');
+            $qb = $qb->setParameter('status', $status);
+        }
+        $qb = $qb->orderBy('t.'.$sort, $direction);
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findByUnit($status, $unit, $sort, $direction)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('t');
+        $qb = $qb->select('t', 'u')->from('HVGSystemBundle:Ticket', 't');
+        $qb = $qb->join('t.unit', 'u');
+        $qb = $qb->andWhere('u.id = :unit');
+        $qb = $qb->setParameter('unit', $unit);
+        if ($status) {
+            $qb = $qb->andWhere('t.status = :status');
+            $qb = $qb->setParameter('status', $status);
+        }
+        $qb = $qb->orderBy('t.'.$sort, $direction);
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findByStatus($status, $sort, $direction)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('t');
+        $qb = $qb->select('t', 'u')->from('HVGSystemBundle:Ticket', 't');
+        $qb = $qb->join('t.unit', 'u');
+        if ($status) {
+            $qb = $qb->andWhere('t.status = :status');
+            $qb = $qb->setParameter('status', $status);
+        }
+        $qb = $qb->orderBy('t.'.$sort, $direction);
+        return $qb->getQuery()->getResult();
+    }
 }

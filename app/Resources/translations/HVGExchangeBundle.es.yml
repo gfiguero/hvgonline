@@ -1,0 +1,209 @@
+dashboard:
+    index:
+        title: Vista General
+    counter:
+        ticket: Tickets Activos
+        petition: Requerimientos Activos
+
+ticket:
+    index:
+        title: Tickets
+        link: Explorar Otros Tickets
+        list: Lista de Tickets
+    area: 
+        link: Tickets del Área
+        title: Tickets del Área
+        list: Lista de Tickets del Área
+    sent: 
+        link: Tickets Enviados
+        title: Tickets Enviados
+        list: Lista de Tickets Enviados
+    received: 
+        link: Tickets Recibidos
+        title: Tickets Recibidos
+        list: Lista de Tickets Recibidos
+    show:
+        pagetitle: Ticket N° %id% - %status%
+        title: Datos de Ticket
+        link: Detalles del Ticket
+        ticketactions: Acciones Realizadas
+        ticketpetitions: Requerimientos Referenciados
+    new:
+        title: Nuevo Ticket
+        link: Nuevo Ticket
+        submit: Registrar Ticket
+        flash: El ticket fué registrado exitosamente
+    edit:
+        title: Edición de Ticket
+        link: Editar Ticket
+        submit: Confirmar Cambios
+        flash: El ticket fué modificado satisfactoriamente
+    editstatus:
+        title: Cambio de Estado
+        link: Cambiar Estado
+        submit: Confirmar Cambio de Estado
+        flash: El estado del ticket se ha actualizado
+    status:
+        all: Todos
+        new: Nuevos
+        zonalized: Zonalizados
+        assigned: Asignados
+        progress: En Progreso
+        pending: Pendientes
+        resolved: Resueltos
+        closed: Cerrados
+    form:
+        actions: Acciones
+        id: ID
+        name: Ticket
+        community: Comunidad
+        unitgroup: Grupo
+        unit: Departamento
+        user: Usuario
+        zone: Zona
+        status: Estado
+        liability: Responsable
+        ticketstatus: Estado
+        area: Area
+        createdAt: Registrado
+        description: Descripción
+        contactname: Nombre de Contacto
+        contactphone: Número de Contacto
+        contactemail: Email de Contacto
+        placeholder:
+            area: No Asignada
+            liability: No Asignado
+
+ticketoperation:
+    index:
+        home: Inicio
+    new:
+        title: Nuevo Ticket
+        submit: Registrar Ticket
+
+ticketaction:
+    index:
+        title: Acciones de Tickets
+        link: Explorar Acciones de Ticket
+        list: Lista de Acciones de Ticket
+    show:
+        link: Detalle de Acción de Ticket
+        title: Datos de Acción de Ticket
+    new:
+        title: Nuevo Registro de Acción
+        link: Nueva Acción de Ticket
+        submit: Registrar Acción de Ticket
+    form:
+        actions: Acciones
+        ticket: Ticket
+        id: ID
+        area: Área
+        user: Usuario
+        description: Descripción
+        community: Comunidad
+        unitgroup: Grupo
+        unit: Departamento
+        createdAt: Registrada
+
+petition:
+    index:
+        title: Requerimientos
+        link: Explorar Otros Requerimientos
+        list: Lista de Requerimientos
+    area: 
+        link: Requerimientos del Área
+        title: Requerimientos del Área
+        list: Lista de Requerimientos del Área
+    sent: 
+        link: Requerimientos Enviados
+        title: Requerimientos Enviados
+        list: Lista de Requerimientos Enviados
+    received: 
+        link: Requerimientos Recibidos
+        title: Requerimientos Recibidos
+        list: Lista de Requerimientos Recibidos
+    show:
+        pagetitle: 'Requerimiento N° %id%'
+        title: Datos de Requerimiento
+        link: Detalles del Requerimiento
+        petitionactions: Acciones Realizadas
+        petitionobjectives: Objetivos
+        completeobjective: Completar
+        referencelist: Requerimientos Referenciados
+        noreference: No hay referencias
+        noobjectives: No hay objetivos
+    new:
+        title: Nuevo Requerimiento
+        link: Nuevo Requerimiento
+        submit: Registrar Requerimiento
+        flash: El requerimiento fué registrado exitosamente
+    edit:
+        title: Edición de Requerimiento
+        link: Editar Requerimiento
+        submit: Confirmar Cambios
+        flash: El requerimiento fué modificado satisfactoriamente
+        addreferencelink: Agregar Referencia
+    editstatus:
+        title: Cambio de Estado
+        link: Cambiar Estado
+        submit: Confirmar Cambio de Estado
+        flash: El estado del requerimiento ha cambiado
+    addreference:
+        title: Nueva Referencia de Requerimiento
+        link: Agregar Referencia
+        id: Id de Referencia
+        submit: Confirmar Referencia
+        flash: Se ha agregado una referencia de requerimiento
+        flasherror: El Requerimiento referenciado no existe
+    removereference:
+        link: Eliminar Referencia
+        flash: Se ha eliminado una referencia
+    form:
+        actions: Acciones
+        id: ID
+        name: Requerimiento
+        community: Comunidad
+        user: Emisor
+        petitionstatus: Estado
+        petitionstatusdescription: Comentario
+        area: Area
+        liability: Responsable
+        expiry: Fecha Límite
+        petitionobjectives: Objetivos
+        addobjective: Agregar Objetivo
+        deleteobjective: Remover
+        createdAt: Registrado
+        updatedAt: Actualizado
+        description: Descripción
+        referenceid: ID de referencia
+        abbreviation:
+            liability: Resp.
+        placeholder:
+            area: No Asignada
+            community: Ninguna
+            liability: No Asignado
+
+petitionaction:
+    index:
+        title: Acciones de Requerimientos
+        link: Explorar Acciones de Requerimientos
+        list: Lista de Acciones de Requerimientos
+    show:
+        link: Detalle de Acción de Requerimiento
+        title: Datos de Acción de Requerimiento
+        download: Descargar
+    new:
+        title: Nuevo Registro de Acción
+        link: Agregar Acción
+        submit: Registrar Acción de Requerimiento
+        flash: Se ha agregado una acción de Requerimiento
+    form:
+        actions: Acciones
+        petition: Requerimiento
+        id: ID
+        area: Área
+        user: Usuario
+        description: Descripción
+        community: Comunidad
+        file: Adjunto
+        createdAt: Registrada

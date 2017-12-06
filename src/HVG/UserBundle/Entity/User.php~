@@ -85,6 +85,16 @@ class User extends BaseUser
     }
 
     /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getPersonUsername()
+    {
+        return $this->person . ' (' . $this->username . ')';
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -163,17 +173,17 @@ class User extends BaseUser
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $ticket_actions;
+    private $ticketactions;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $petition_actions;
+    private $petitionactions;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $petition_evaluations;
+    private $petitionevaluations;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -229,7 +239,7 @@ class User extends BaseUser
      */
     public function addTicketAction(\HVG\SystemBundle\Entity\TicketAction $ticketAction)
     {
-        $this->ticket_actions[] = $ticketAction;
+        $this->ticketactions[] = $ticketAction;
 
         return $this;
     }
@@ -241,7 +251,7 @@ class User extends BaseUser
      */
     public function removeTicketAction(\HVG\SystemBundle\Entity\TicketAction $ticketAction)
     {
-        $this->ticket_actions->removeElement($ticketAction);
+        $this->ticketactions->removeElement($ticketAction);
     }
 
     /**
@@ -251,7 +261,7 @@ class User extends BaseUser
      */
     public function getTicketActions()
     {
-        return $this->ticket_actions;
+        return $this->ticketactions;
     }
 
     /**
@@ -263,7 +273,7 @@ class User extends BaseUser
      */
     public function addPetitionAction(\HVG\SystemBundle\Entity\PetitionAction $petitionAction)
     {
-        $this->petition_actions[] = $petitionAction;
+        $this->petitionactions[] = $petitionAction;
 
         return $this;
     }
@@ -275,7 +285,7 @@ class User extends BaseUser
      */
     public function removePetitionAction(\HVG\SystemBundle\Entity\PetitionAction $petitionAction)
     {
-        $this->petition_actions->removeElement($petitionAction);
+        $this->petitionactions->removeElement($petitionAction);
     }
 
     /**
@@ -285,7 +295,7 @@ class User extends BaseUser
      */
     public function getPetitionActions()
     {
-        return $this->petition_actions;
+        return $this->petitionactions;
     }
 
     /**
@@ -297,7 +307,7 @@ class User extends BaseUser
      */
     public function addPetitionEvaluation(\HVG\SystemBundle\Entity\PetitionEvaluation $petitionEvaluation)
     {
-        $this->petition_evaluations[] = $petitionEvaluation;
+        $this->petitionevaluations[] = $petitionEvaluation;
 
         return $this;
     }
@@ -309,7 +319,7 @@ class User extends BaseUser
      */
     public function removePetitionEvaluation(\HVG\SystemBundle\Entity\PetitionEvaluation $petitionEvaluation)
     {
-        $this->petition_evaluations->removeElement($petitionEvaluation);
+        $this->petitionevaluations->removeElement($petitionEvaluation);
     }
 
     /**
@@ -319,7 +329,7 @@ class User extends BaseUser
      */
     public function getPetitionEvaluations()
     {
-        return $this->petition_evaluations;
+        return $this->petitionevaluations;
     }
 
     /**
@@ -429,5 +439,86 @@ class User extends BaseUser
     public function getCommunities()
     {
         return $this->communities;
+    }
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $petitionsassigned;
+
+
+    /**
+     * Add petitionsassigned
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petitionsassigned
+     *
+     * @return User
+     */
+    public function addPetitionsassigned(\HVG\SystemBundle\Entity\Petition $petitionsassigned)
+    {
+        $this->petitionsassigned[] = $petitionsassigned;
+
+        return $this;
+    }
+
+    /**
+     * Remove petitionsassigned
+     *
+     * @param \HVG\SystemBundle\Entity\Petition $petitionsassigned
+     */
+    public function removePetitionsassigned(\HVG\SystemBundle\Entity\Petition $petitionsassigned)
+    {
+        $this->petitionsassigned->removeElement($petitionsassigned);
+    }
+
+    /**
+     * Get petitionsassigned
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPetitionsassigned()
+    {
+        return $this->petitionsassigned;
+    }
+
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $ticketsassigned;
+
+
+    /**
+     * Add ticketsassigned
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticketsassigned
+     *
+     * @return User
+     */
+    public function addTicketsassigned(\HVG\SystemBundle\Entity\Ticket $ticketsassigned)
+    {
+        $this->ticketsassigned[] = $ticketsassigned;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticketsassigned
+     *
+     * @param \HVG\SystemBundle\Entity\Ticket $ticketsassigned
+     */
+    public function removeTicketsassigned(\HVG\SystemBundle\Entity\Ticket $ticketsassigned)
+    {
+        $this->ticketsassigned->removeElement($ticketsassigned);
+    }
+
+    /**
+     * Get ticketsassigned
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTicketsassigned()
+    {
+        return $this->ticketsassigned;
     }
 }

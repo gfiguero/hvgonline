@@ -8,3 +8,14 @@ twig:
             - :Form:fileinput.html.twig
             - :Form:entitytable.html.twig
             - :Form:prototype.html.twig
+
+    globals:
+        ticketstatuses:
+            1: Nuevo
+            2: Zonalizado
+            3: Asignado
+            4: En Progreso
+            5: Pendiente
+            6: Resuelto
+            7: Cerrado
+        

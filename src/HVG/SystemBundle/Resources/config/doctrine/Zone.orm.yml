@@ -1,0 +1,48 @@
+HVG\SystemBundle\Entity\Zone:
+    type: entity
+    table: Zone
+    repositoryClass: HVG\SystemBundle\Entity\ZoneRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+    oneToMany:
+        tickets:
+            targetEntity: HVG\SystemBundle\Entity\Ticket
+            mappedBy: zone
+    manyToMany:
+        users:
+            targetEntity: HVG\UserBundle\Entity\User
+            mappedBy: zones
+    fields:
+        name:
+            type: string
+            length: 300
+            nullable: true
+        description:
+            type: string
+            length: 300
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

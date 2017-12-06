@@ -83,6 +83,7 @@ class Ticket
     public function __construct()
     {
         $this->ticketactions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ticketpetitions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -476,40 +477,69 @@ class Ticket
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $petitionreference;
+    private $ticketpetitions;
 
 
     /**
-     * Add petitionreference
+     * Add ticketpetition
      *
-     * @param \HVG\SystemBundle\Entity\Petition $petitionreference
+     * @param \HVG\SystemBundle\Entity\Petition $ticketpetition
      *
      * @return Ticket
      */
-    public function addPetitionreference(\HVG\SystemBundle\Entity\Petition $petitionreference)
+    public function addTicketpetition(\HVG\SystemBundle\Entity\Petition $ticketpetition)
     {
-        $this->petitionreference[] = $petitionreference;
+        $this->ticketpetitions[] = $ticketpetition;
 
         return $this;
     }
 
     /**
-     * Remove petitionreference
+     * Remove ticketpetition
      *
-     * @param \HVG\SystemBundle\Entity\Petition $petitionreference
+     * @param \HVG\SystemBundle\Entity\Petition $ticketpetition
      */
-    public function removePetitionreference(\HVG\SystemBundle\Entity\Petition $petitionreference)
+    public function removeTicketpetition(\HVG\SystemBundle\Entity\Petition $ticketpetition)
     {
-        $this->petitionreference->removeElement($petitionreference);
+        $this->ticketpetitions->removeElement($ticketpetition);
     }
 
     /**
-     * Get petitionreference
+     * Get ticketpetitions
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPetitionreference()
+    public function getTicketpetitions()
     {
-        return $this->petitionreference;
+        return $this->ticketpetitions;
+    }
+    /**
+     * @var \HVG\SystemBundle\Entity\Zone
+     */
+    private $zone;
+
+
+    /**
+     * Set zone
+     *
+     * @param \HVG\SystemBundle\Entity\Zone $zone
+     *
+     * @return Ticket
+     */
+    public function setZone(\HVG\SystemBundle\Entity\Zone $zone = null)
+    {
+        $this->zone = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Get zone
+     *
+     * @return \HVG\SystemBundle\Entity\Zone
+     */
+    public function getZone()
+    {
+        return $this->zone;
     }
 }

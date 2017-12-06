@@ -18,6 +18,9 @@ HVG\SystemBundle\Entity\Ticket:
         area:
             targetEntity: HVG\SystemBundle\Entity\Area
             inversedBy: tickets
+        zone:
+            targetEntity: HVG\SystemBundle\Entity\Zone
+            inversedBy: tickets
         user:
             targetEntity: HVG\UserBundle\Entity\User
             inversedBy: tickets
@@ -40,6 +43,8 @@ HVG\SystemBundle\Entity\Ticket:
                     ticket_id:
                         referencedColumnName: id
     fields:
+        status:
+            type: integer
         description:
             type: text
             nullable: true

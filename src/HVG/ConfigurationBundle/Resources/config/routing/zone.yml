@@ -1,0 +1,25 @@
+configuration_zone_index:
+    path:     /index/
+    defaults: { _controller: "HVGConfigurationBundle:Zone:index" }
+    methods:  GET
+
+configuration_zone_new:
+    path:     /new
+    defaults: { _controller: "HVGConfigurationBundle:Zone:new" }
+    methods:  [GET, POST]
+
+configuration_zone_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGConfigurationBundle:Zone:show" }
+    methods:  GET
+
+configuration_zone_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGConfigurationBundle:Zone:edit" }
+    methods:  [GET, POST]
+
+configuration_zone_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGConfigurationBundle:Zone:delete" }
+    methods:  [GET, DELETE]
+

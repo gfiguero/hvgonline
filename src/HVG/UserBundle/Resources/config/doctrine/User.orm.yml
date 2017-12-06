@@ -23,6 +23,17 @@ HVG\UserBundle\Entity\User:
                 inverseJoinColumns:
                     area_id:
                         referencedColumnName: id
+        zones:
+            targetEntity: HVG\SystemBundle\Entity\Zone
+            inversedBy: users
+            joinTable:
+                name: users_zones
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    area_id:
+                        referencedColumnName: id
         communities:
             targetEntity: HVG\SystemBundle\Entity\Community
             inversedBy: users

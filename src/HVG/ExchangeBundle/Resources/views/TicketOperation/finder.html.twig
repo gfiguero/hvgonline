@@ -1,0 +1,44 @@
+{% block finder %}
+    {% set translation_domain = 'HVGExchangeBundle' %}{% trans_default_domain translation_domain %}
+    <div class="row" id="selector">
+        <div class="col-md-12">
+            <ul class="nav nav-pills">
+                <li class="active"><a href="{{ path('exchange_ticketoperation_index', {'status' : status}) }}">{{ icon('home fa-fw') }}&nbsp;{{ 'ticketoperation.index.home'|trans }}</a></li>
+                {% if community %}<li class="active"><a href="{{ path('exchange_ticketoperation_index', {'status' : status, 'community' : community.id}) }}">{{ community.name }}</a></li>{% endif %}
+                {% if unitgroup %}<li class="active"><a href="{{ path('exchange_ticketoperation_index', {'status' : status, 'community' : community.id, 'unitgroup' : unitgroup.id}) }}">{{ unitgroup.name }}</a></li>{% endif %}
+                {% if unit %}<li class="active"><a href="{{ path('exchange_ticketoperation_index', {'status' : status, 'community' : community.id, 'unitgroup' : unitgroup.id, 'unit' : unit.id}) }}">{{ unit.name }}</a></li>{% endif %}
+                {% if ticket is defined %}<li class="active"><a href="{{ path('exchange_ticketoperation_show', {'ticket' : ticket.id}) }}">Ticket {{ ticket.id }}</a></li>{% endif %}
+            </ul>
+            <p></p>
+        </div>
+    </div>
+    <div class="row" id="finder">
+        <div class="col-md-12">
+        {% if not community %}{% if communities is not empty %}
+            <ul class="nav nav-pills">
+                {% for current in communities %}
+                    <li {% if current == community %}class="active"{% endif %}><a href="{{ path('exchange_ticketoperation_index', {'status' : status, 'community' : current.id}) }}">{{ current.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <p></p>
+        {% endif %}{% endif %}
+        {% if not unitgroup %}{% if unitgroups is not empty %}
+            <ul class="nav nav-pills">
+                {% for current in unitgroups %}
+                    <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('exchange_ticketoperation_index', {'status' : status, 'community' : community.id, 'unitgroup' : current.id}) }}">{{ current.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <p></p>
+        {% endif %}{% endif %}
+        {% if not unit %}{% if units is not empty %}
+            <ul class="nav nav-pills">
+                {% for current in units %}
+                    <li {% if current == unit %}class="active"{% endif %}><a href="{{ path('exchange_ticketoperation_index', {'status' : status, 'community' : community.id, 'unitgroup' : unitgroup.id, 'unit' : current.id}) }}">{{ current.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <p></p>
+        {% endif %}{% endif %}
+        </div>
+    </div>
+    <!-- /#finder -->
+{% endblock %}

@@ -45,6 +45,7 @@ HVG\SystemBundle\Entity\Ticket:
     fields:
         status:
             type: integer
+            nullable: true
         description:
             type: text
             nullable: true

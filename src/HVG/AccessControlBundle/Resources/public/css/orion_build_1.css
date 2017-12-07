@@ -4,7 +4,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -6721,6 +6720,54 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: "../../../../../vendor/bower_components/lato-webfont/fonts/lato-italic.woff2" format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: "../../../../../vendor/bower_components/lato-webfont/fonts/lato-italic.woff2" format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: "../../../../../vendor/bower_components/lato-webfont/fonts/lato-regular.woff2" format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: "../../../../../vendor/bower_components/lato-webfont/fonts/lato-regular.woff2" format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: "../../../../../vendor/bower_components/lato-webfont/fonts/lato-bold.woff2" format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: "../../../../../vendor/bower_components/lato-webfont/fonts/lato-bold.woff2" format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 .navbar {
   border-width: 0;

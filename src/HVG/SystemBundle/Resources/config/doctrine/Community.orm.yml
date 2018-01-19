@@ -48,6 +48,9 @@ HVG\SystemBundle\Entity\Community:
         checkpoints:
             targetEntity: HVG\SystemBundle\Entity\Checkpoint
             mappedBy: community
+        zones:
+            targetEntity: HVG\SystemBundle\Entity\Zone
+            mappedBy: community
         accessguards:
             targetEntity: HVG\SystemBundle\Entity\AccessGuard
             mappedBy: community

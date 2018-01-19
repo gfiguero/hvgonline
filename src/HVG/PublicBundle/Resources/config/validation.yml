@@ -1,0 +1,6 @@
+HVG\SystemBundle\Entity\Ticket:
+    properties:
+        contactemail:
+            - Email:
+                message: El email "{{ value }}" no es una dirección válida.
+                checkMX: true

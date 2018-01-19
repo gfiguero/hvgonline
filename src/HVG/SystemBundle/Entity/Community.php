@@ -893,4 +893,43 @@ class Community
     {
         return $this->communityevents;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $zones;
+
+
+    /**
+     * Add zone
+     *
+     * @param \HVG\SystemBundle\Entity\Zone $zone
+     *
+     * @return Community
+     */
+    public function addZone(\HVG\SystemBundle\Entity\Zone $zone)
+    {
+        $this->zones[] = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Remove zone
+     *
+     * @param \HVG\SystemBundle\Entity\Zone $zone
+     */
+    public function removeZone(\HVG\SystemBundle\Entity\Zone $zone)
+    {
+        $this->zones->removeElement($zone);
+    }
+
+    /**
+     * Get zones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getZones()
+    {
+        return $this->zones;
+    }
 }

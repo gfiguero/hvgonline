@@ -1,0 +1,30 @@
+{% extends 'HVGAgentBundle:Carpark:layout.html.twig' %}
+
+{% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'carpark.show.title'|trans }}{% endblock %}
+
+{% block carpark %}
+    <div class="row" id="page-show">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ 'carpark.show.title'|trans }}</h3>
+                </div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>{{ 'carpark.form.name'|trans }}</dt><dd>{% if carpark.name %}{{ carpark.name }}{% endif %}</dd>
+                        <dt>{{ 'carpark.form.unit'|trans }}</dt><dd>{% if carpark.unit %}{{ carpark.unit }}{% endif %}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="btn-toolbar">
+                <div class="btn-group"><a href="{{ path('agent_carpark_edit', {'carpark' : carpark.id}) }}" class="btn btn-warning">{{ icon('edit fa-fw') }}&nbsp;{{ 'carpark.edit.link'|trans }}</a></div>
+                <div class="btn-group"><a href="{{ path('agent_carpark_delete', {'carpark' : carpark.id}) }}" class="btn btn-danger">{{ icon('times fa-fw') }}&nbsp;{{ 'carpark.delete.link'|trans }}</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-list -->
+{% endblock %}

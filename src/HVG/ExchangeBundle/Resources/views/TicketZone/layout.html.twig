@@ -1,0 +1,11 @@
+{% extends 'HVGExchangeBundle:Base:layout.html.twig' %}
+{% use 'HVGExchangeBundle:Base:header.html.twig' %}
+{% use 'HVGExchangeBundle:TicketZone:aside.html.twig' %}
+{% use 'HVGExchangeBundle:TicketZone:finder.html.twig' %}
+{% use 'HVGExchangeBundle:TicketZone:tools.html.twig' %}
+
+{% block exchange %}
+    {% block finder %}{{ parent() }}{% endblock %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block ticketzone %}{% endblock %}
+{% endblock %}

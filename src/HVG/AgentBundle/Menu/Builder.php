@@ -20,6 +20,7 @@ class Builder implements ContainerAwareInterface
 
         if(in_array('ROLE_AGENT', $roles)) {
 
+/*
             $menu->addChild('topmenu.create.menu', array('uri' => '#'));
             $menu['topmenu.create.menu']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false'));
             $menu['topmenu.create.menu']->setExtras(array( 'icon' => 'plus fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle' ));
@@ -55,7 +56,17 @@ class Builder implements ContainerAwareInterface
             $menu['topmenu.area.menu']['topmenu.area.tickets']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'icon' => 'ticket fa-fw'));
             $menu['topmenu.area.menu']->addChild('topmenu.area.petitions', array('route' => 'agent_petition_area'));
             $menu['topmenu.area.menu']['topmenu.area.petitions']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'icon' => 'hand-o-up fa-fw'));
-
+*/
+            $menu->addChild('topmenu.ticket.menu', array('uri' => '#'));
+            $menu['topmenu.ticket.menu']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false'));
+            $menu['topmenu.ticket.menu']->setExtras(array( 'icon' => 'ticket fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle' ));
+            $menu['topmenu.ticket.menu']->setChildrenAttribute('class', 'dropdown-menu');
+            $menu['topmenu.ticket.menu']->addChild('topmenu.ticket.index', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 0)));
+            $menu['topmenu.ticket.menu']['topmenu.ticket.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
+            $menu['topmenu.ticket.menu']->addChild('topmenu.ticketzone.index', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 0)));
+            $menu['topmenu.ticket.menu']['topmenu.ticketzone.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
+            $menu['topmenu.ticket.menu']->addChild('topmenu.ticketliable.index', array('route' => 'exchange_ticketliable_index', 'routeParameters' => array('status' => 0)));
+            $menu['topmenu.ticket.menu']['topmenu.ticketliable.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
 
             $menu->addChild('topmenu.agentdashboard', array('route' => 'agent_dashboard_index'));
             $menu['topmenu.agentdashboard']->setExtras(array('icon' => 'dashboard fa-fw', 'translation_domain' => 'HVGAgentBundle'));
@@ -134,17 +145,54 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.unit.root']->setAttributes(array('class' => 'dropdown'));
         $sidemenu['sidemenu.unit.root']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'));
         $sidemenu['sidemenu.unit.root']->setChildrenAttribute('class', 'dropdown-menu');
-        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.unitmemo', array('route' => 'agent_unitmemo_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.guest', array('route' => 'agent_guest_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.unitresident', array('route' => 'agent_unitresident_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.carpark', array('route' => 'agent_carpark_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.warehouse', array('route' => 'agent_warehouse_index'))->setExtra('translation_domain', 'HVGAgentBundle');
+        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.unitmemo', array('route' => 'agent_unitmemo_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_unitmemo_index',
+            'agent_unitmemo_new',
+            'agent_unitmemo_show',
+            'agent_unitmemo_edit',
+            'agent_unitmemo_delete',
+        )));
+        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.guest', array('route' => 'agent_guest_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_guest_index',
+            'agent_guest_new',
+            'agent_guest_show',
+            'agent_guest_edit',
+            'agent_guest_delete',
+        )));
+        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.unitresident', array('route' => 'agent_unitresident_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_unitresident_index',
+            'agent_unitresident_new',
+            'agent_unitresident_show',
+            'agent_unitresident_edit',
+            'agent_unitresident_delete',
+        )));
+        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.pet', array('route' => 'agent_pet_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_pet_index',
+            'agent_pet_new',
+            'agent_pet_show',
+            'agent_pet_edit',
+            'agent_pet_delete',
+        )));
+        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.warehouse', array('route' => 'agent_warehouse_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_warehouse_index',
+            'agent_warehouse_new',
+            'agent_warehouse_show',
+            'agent_warehouse_edit',
+            'agent_warehouse_delete',
+        )));
 
         $sidemenu->addChild('sidemenu.community.root', array('uri' => '#'));
         $sidemenu['sidemenu.community.root']->setExtras(array('icon' => 'group fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
         $sidemenu['sidemenu.community.root']->setAttributes(array('class' => 'dropdown'));
         $sidemenu['sidemenu.community.root']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'));
         $sidemenu['sidemenu.community.root']->setChildrenAttribute('class', 'dropdown-menu');
+        $sidemenu['sidemenu.community.root']->addChild('sidemenu.community.carpark', array('route' => 'agent_carpark_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_carpark_index',
+            'agent_carpark_new',
+            'agent_carpark_show',
+            'agent_carpark_edit',
+            'agent_carpark_delete',
+        )));
         $sidemenu['sidemenu.community.root']->addChild('sidemenu.community.guestcarpark', array('route' => 'agent_guestcarpark_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
             'agent_guestcarpark_index',
             'agent_guestcarpark_new',
@@ -207,14 +255,14 @@ class Builder implements ContainerAwareInterface
             'agent_unitresident_delete',
         )));
 
-        $tabs->addChild('carpark', array('route' => 'agent_carpark_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
-        $tabs['carpark']->setLabel('carpark.index.title');
-        $tabs['carpark']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
-            'agent_carpark_index',
-            'agent_carpark_show',
-            'agent_carpark_new',
-            'agent_carpark_edit',
-            'agent_carpark_delete',
+        $tabs->addChild('pet', array('route' => 'agent_pet_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
+        $tabs['pet']->setLabel('pet.index.title');
+        $tabs['pet']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_pet_index',
+            'agent_pet_show',
+            'agent_pet_new',
+            'agent_pet_edit',
+            'agent_pet_delete',
         )));
 
         $tabs->addChild('warehouse', array('route' => 'agent_warehouse_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
@@ -238,6 +286,16 @@ class Builder implements ContainerAwareInterface
         $communityTabs = $factory->createItem('root');
         $communityTabs->setChildrenAttribute('class', 'nav nav-pills');
         $communityTabs->setChildrenAttribute('id', 'communityTabs-menu');
+
+        $communityTabs->addChild('carpark', array('route' => 'agent_carpark_index', 'routeParameters' => array('community' => $community)));
+        $communityTabs['carpark']->setLabel('carpark.index.title');
+        $communityTabs['carpark']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_carpark_index',
+            'agent_carpark_show',
+            'agent_carpark_new',
+            'agent_carpark_edit',
+            'agent_carpark_delete',
+        )));
 
         $communityTabs->addChild('guestcarpark', array('route' => 'agent_guestcarpark_index', 'routeParameters' => array('community' => $community)));
         $communityTabs['guestcarpark']->setLabel('guestcarpark.index.title');

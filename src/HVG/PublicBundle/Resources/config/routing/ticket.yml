@@ -1,0 +1,5 @@
+public_ticket_new:
+    path:     /{hash}/new
+    defaults: { _controller: "HVGPublicBundle:Ticket:new" }
+    methods:  [GET, POST]
+

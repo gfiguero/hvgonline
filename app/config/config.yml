@@ -27,8 +27,8 @@ parameters:
         ROLE_ADMIN: Administrador
         ROLE_SUPER_ADMIN: Administrador de Sistema
     petgroups:
-        0: Canino
-        1: Felino
+        1: Canino
+        2: Felino
         3: Ave
         4: Pez
         5: Exótico
@@ -39,18 +39,17 @@ parameters:
         e: Hembra Esterilizada
         s: Sin sexar
     petcolors:
-        0: Negro
-        1: Blanco
-        2: Café
-        3: Gris
-        4: Blanco y negro
-        5: Blanco y café
-        6: Otro
+        1: Negro
+        2: Blanco
+        3: Café
+        4: Gris
+        5: Blanco y negro
+        6: Blanco y café
+        7: Otro
     ticketstatuses:
         1: Nuevo
-        2: Zonalizado
-        3: Asignado
-        4: En Progreso
-        5: Pendiente
-        6: Resuelto
-        7: Cerrado
+        2: Asignado
+        3: En Progreso
+        4: Pendiente
+        5: Resuelto
+        6: Cerrado

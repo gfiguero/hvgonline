@@ -54,6 +54,27 @@ pet:
         petgroup: Especie de mascota
         terms: Declaro conocer, aceptar el reglamento sobre tenencia responsable de mascotas y me comprometo a su fiel cumplimiento y declaro que el propietario de la vivienda esta en conocimiento aceptando la presentación de esta solicitud.
 
+ticket:
+    index:
+        title: Registro de Ticket
+    new:
+        title: Información, reclamos y sugerencias.
+        submit: Registrar ticket
+        flash: El ticket ha sido registrado correctamente.
+        message: |
+            <p></p>
+            <p></p>
+    form:
+        unit: Departamento
+        zone: Asunto
+        description: Descripción
+        contactname: Nombre de contacto
+        contactemail: Email de contacto
+        contactphone: Teléfono de contacto
+        placeholder:
+            unit: Seleccione departamento
+            zone: Seleccione asunto
+
 accesspermission:
     index:
         title: Permisos de Acceso

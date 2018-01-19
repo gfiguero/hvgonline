@@ -39,3 +39,22 @@ services:
         arguments: ['@vich_uploader.storage', '@vich_uploader.upload_handler', '@translator']
         tags:
             - { name: form.type, alias: fileinput }
+
+    hvg_agent.form.type.petgroup:
+        class: HVG\AgentBundle\Form\Type\PetGroupType
+        arguments: 
+            - '%petgroups%'
+        tags:
+            - { name: form.type }
+
+    hvg_agent.form.type.petgender:
+        class: HVG\AgentBundle\Form\Type\PetGenderType
+        arguments: ["%petgenders%"]
+        tags:
+            - { name: form.type }
+
+    hvg_agent.form.type.petcolor:
+        class: HVG\AgentBundle\Form\Type\PetColorType
+        arguments: ["%petcolors%"]
+        tags:
+            - { name: form.type }

@@ -24,6 +24,7 @@ sidemenu:
     datacenter: Centro de Datos
     community:
         root: Comunidades
+        carpark: Estacionamientos de propietarios
         guestcarpark: Estacionamientos de visita
         communityevent: Eventos de comunidad
     unitgroup: Torres
@@ -31,6 +32,7 @@ sidemenu:
         root: Departamentos
         unitmemo: Memorándums
         unitresident: Residentes
+        pet: Mascotas
         carpark: Estacionamientos
         warehouse: Bodegas
         guest: Visitas
@@ -244,6 +246,11 @@ carpark:
         link: Estacionamientos
     form:
         name: Nombre
+        unit: Departamento
+    new:
+        title: Nuevo estacionamiento
+        link: Agregar estacionamiento
+        submit: Registrar
 
 unitmemo:
     index:
@@ -562,6 +569,34 @@ person:
         contacts: Contactos
         createdAt: Registrado
         updatedAt: Actualizado
+
+pet:
+    index:
+        title: Mascotas
+        home: Inicio
+        list: Lista de mascotas
+        empty: No hay mascotas seleccionadas
+    new:
+        title: Nueva mascota
+        submit: Registrar mascota
+        flash: La mascota ha sido registrada correctamente.
+        link: Agregar mascota
+        message: |
+            <p>Mediante el presente formulario, solicito al comité de administración la autorización para mantener y criar al interior de nuestro departamento una mascota comprometiéndome desde ya a su tenencia responsable y a cumplir el reglamento interno sobre tenencia responsable de mascotas.</p>
+            <p>Esta solicitud sera revisada y la respuesta sera enviada vía correo electrónico, pudiendo ser revocada si se infringen las normas sobre tenencia responsable.</p>
+    form:
+        unit: Departamento
+        name: Nombre de la mascota
+        owner: Persona responsable
+        race: Raza (opcional)
+        weight: Peso [Kg]
+        gender: Género
+        color: Color
+        photography: Fotografía
+        phone: Teléfono
+        email: Email
+        petgroup: Especie de mascota
+        terms: La persona responsable declara conocer, aceptar el reglamento sobre tenencia responsable de mascotas, se compromete a su fiel cumplimiento y declara que el propietario de la vivienda esta en conocimiento y acepta este registro.
 
 contact:
     title:

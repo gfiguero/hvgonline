@@ -10,6 +10,10 @@ hvg_public_pet:
     resource: "@HVGPublicBundle/Resources/config/routing/pet.yml"
     prefix:   /pet
 
+hvg_public_ticket:
+    resource: "@HVGPublicBundle/Resources/config/routing/ticket.yml"
+    prefix:   /ticket
+
 hvg_public_accesspermission:
     resource: "@HVGPublicBundle/Resources/config/routing/accesspermission.yml"
     prefix:   /accesspermission

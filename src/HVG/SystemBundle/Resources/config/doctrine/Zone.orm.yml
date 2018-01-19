@@ -11,6 +11,7 @@ HVG\SystemBundle\Entity\Zone:
     manyToOne:
         community:
             targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: zones
     oneToMany:
         tickets:
             targetEntity: HVG\SystemBundle\Entity\Ticket

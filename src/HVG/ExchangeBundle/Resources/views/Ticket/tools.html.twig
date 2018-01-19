@@ -2,14 +2,25 @@
     {% trans_default_domain 'HVGExchangeBundle' %}
     <div class="row" id="tabs">
         <div class="col-md-12">
-            {% if unit %}
+        {% if ticket is defined %}
+            <div class="btn-toolbar">
+                <a href="{{ path('exchange_ticket_show', {'ticket' : ticket.id}) }}" class="btn btn-default">{{ icon('search fa-fw') }}&nbsp;{{ 'ticket.show.link'|trans }}</a>
+                <a href="{{ path('exchange_ticket_edit', {'ticket' : ticket.id}) }}" class="btn btn-success">{{ icon('edit fa-fw') }}&nbsp;{{ 'ticket.edit.link'|trans }}</a>
+                {% if ticketActionForm is defined %}<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalTicketStatusChange">{{ icon('flag fa-fw') }}&nbsp;{{ 'ticket.status.link'|trans }}</button>{% endif %}
+                {% if ticketLiabilityForm is defined %}<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTicketAction">{{ icon('cog fa-fw') }}&nbsp;{{ 'ticket.action.link'|trans }}</button>{% endif %}
+                {% if ticketStatusChangeForm is defined %}<button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTicketLiability">{{ icon('user fa-fw') }}&nbsp;{{ 'ticket.liability.link'|trans }}</button>{% endif %}
+                {% if ticket.status == 1 or ticket.status == 4 %}<a href="{{ path('exchange_ticket_take', {'ticket' : ticket.id}) }}" class="btn btn-success">{{ icon('arrow-down fa-fw') }}&nbsp;{{ 'ticket.take.link'|trans }}</a>{% endif %}
+            </div>
+            <p></p>
+        {% elseif unit %}
             <div class="btn-toolbar">
                 <div class="btn-group">
+                    {#}<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalTicketNew">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticket.new.link'|trans }}</button>{#}
                     <a href="{{ path('exchange_ticket_new', {'unit' : unit.id}) }}" class="btn btn-success">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticket.new.link'|trans }}</a>
                 </div>
             </div>
             <p></p>
-            {% endif %}
+        {% endif %}
         </div>
     </div>
     <!-- /#unit-tab -->

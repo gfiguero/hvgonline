@@ -18,6 +18,30 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <h1 class="text-center">
+                                    {{ icon('ticket fa-fw fa-2x') }}
+                                </h1>
+                            </div>
+                            <div class="col-md-8">
+                                <h1>{{ 'ticket.index.title'|trans }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="text-right">
+                            <a href="{{ path('public_ticket_new', {hash: community.hash}) }}">
+                                <h4>Acceder&nbsp;{{ icon('arrow-circle-right') }}</h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h1 class="text-center">
                                     {{ icon('paw fa-fw fa-2x') }}
                                 </h1>
                             </div>

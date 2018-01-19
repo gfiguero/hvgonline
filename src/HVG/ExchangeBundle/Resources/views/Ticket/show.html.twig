@@ -1,264 +1,196 @@
-{% extends 'HVGSystemBundle::base.html.twig' %}
-{% use 'HVGSystemBundle::navbar.html.twig' %}
-{% use 'HVGAgentBundle::sidebar.html.twig' %}
-{% use 'HVGSystemBundle::icons.html.twig' %}
+{% extends 'HVGExchangeBundle:Ticket:layout.html.twig' %}
 
-{% set translation_domain = 'HVGAgentBundle' %}
+{% set translation_domain = 'HVGExchangeBundle' %}
+
 {% trans_default_domain translation_domain %}
 
 {% block title %}{{ 'ticket.index.title'|trans }}{% endblock %}
 
-{% block body %}
-    <div id="page-wrapper">
-        <div class="row" id="page-header">
-            <div class="col-lg-12">
-                <h1 class="page-header">{% block icons %}{{ parent() }}{% endblock %}{{ 'ticket.show.pagetitle'|trans({'%id%' : ticket.id, '%status%' : ticket.ticketstatus}) }}</h1>
-                {% include 'HVGSystemBundle::flashbag.html.twig' with { 'translation_domain': translation_domain } %}
-                <ol class="breadcrumb">
-                    <li><a href="{{ path('agent_dashboard_index') }}">{{ 'dashboard.index.title'|trans }}</a></li>
-                    <li><a href="{{ path('agent_community_show', { 'id' : ticket.unit.community.id }) }}">{{ ticket.unit.community.name }}</a></li>
-                    <li><a href="{{ path('agent_unitgroup_show', { 'id' : ticket.unit.unitgroup.id }) }}">{{ ticket.unit.unitgroup.name }}</a></li>
-                    <li><a href="{{ path('agent_unit_show', { 'id' : ticket.unit.id }) }}">{{ ticket.unit.name }}</a></li>
-                    <li class="active">{{ ticket.id }}</li>
-                </ol>
-            </div>
-        </div>
-        <!-- /#page-header -->
-
-        <div class="row" id="page-toolbar">
-            <div class="col-lg-12 block">
-                <div class="btn-toolbar">
-                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_sent') }}">{{ icon('arrow-up fa-fw') }}&nbsp;{{ 'ticket.sent.link'|trans }}</a>
-                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_received') }}">{{ icon('arrow-down fa-fw') }}&nbsp;{{ 'ticket.received.link'|trans }}</a>
-                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_area') }}">{{ icon('puzzle-piece fa-fw') }}&nbsp;{{ 'ticket.area.link'|trans }}</a>
+{% block ticket %}
+    <div class="row" id="page-show">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">{{ 'ticket.show.title'|trans }}</h1>
                 </div>
-            </div>
-            <div class="col-lg-12 block">
-                <div class="btn-toolbar">
-{#}                    <a type="button" class="btn btn-default" href="{{ path('agent_ticket_index') }}">{{ icon('list fa-fw') }}&nbsp;{{ 'ticket.index.link'|trans }}</a>{#}
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit">{{ icon('edit fa-fw') }}&nbsp;{{ 'ticket.edit.link'|trans }}</button>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalTicketStatus">{{ icon('refresh fa-fw') }}&nbsp;{{ 'ticket.editstatus.link'|trans }}</button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewTicketAction">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticketaction.new.link'|trans }}</button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalNewPetition">{{ icon('plus fa-fw') }}&nbsp;{{ 'petition.new.link'|trans }}</button>
+                <div class="panel-body">
+                    <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
+                        <dt>{{ 'ticket.form.community'|trans }}</dt><dd>{% if ticket.community %}<a href="{{ path('agent_community_show', { 'id' : ticket.community.id }) }}">{{ ticket.community.name }}</a>{% endif %}</dd>
+                        <dt>{{ 'ticket.form.unitgroup'|trans }}</dt><dd>{% if ticket.unitgroup %}<a href="{{ path('agent_unitgroup_show', { 'id' : ticket.unitgroup.id }) }}">{{ ticket.unitgroup.name }}</a>{% endif %}</dd>
+                        <dt>{{ 'ticket.form.unit'|trans }}</dt><dd>{% if ticket.unit %}<a href="{{ path('agent_unit_show', { 'id' : ticket.unit.id }) }}">{{ ticket.unit.name }}</a>{% endif %}</dd>
+                        <dt>{{ 'ticket.form.id'|trans }}</dt><dd>{% if ticket.id %}{{ ticket.id }}{% endif %}</dd>
+                        <dt>{{ 'ticket.form.liability'|trans }}</dt><dd>{% if ticket.liability %}{{ ticket.liability.person }}{% endif %}</dd>
+                        <dt>{{ 'ticket.form.status'|trans }}</dt><dd>{% if ticket.status %}{{ ticketstatuses[ticket.status] }}{% endif %}</dd>
+                        <dt>{{ 'ticket.form.contactname'|trans }}</dt><dd>{% if ticket.contactname %}{{ ticket.contactname }}{% endif %}</dd>
+                        <dt>{{ 'ticket.form.contactphone'|trans }}</dt><dd>{% if ticket.contactphone %}{{ ticket.contactphone }}{% endif %}</dd>
+                        <dt>{{ 'ticket.form.contactemail'|trans }}</dt><dd>{% if ticket.contactemail %}{{ ticket.contactemail }}{% endif %}</dd>
+                        <dt>{{ 'ticket.form.description'|trans }}</dt><dd>{% if ticket.description %}{{ ticket.description }}{% endif %}</dd>
+                    </dl>
                 </div>
             </div>
         </div>
-        <!-- /#page-toolbar -->
 
-        <div class="row" id="page-show">
-            <div class="col-xs-12">
-                <div class="alert alert-info ticket-description">
-                    {{ 'ticket.form.name'|trans }}: <strong>{% if ticket.description %}{{ ticket.description }}{% endif %}</strong>
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">{{ 'ticket.show.ticketactions'|trans }}</h1>
                 </div>
-                <div class="panel panel-default panel-accordion">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'ticket.show.title'|trans }}</h1>
-                    </div>
-                    <div id="ticket-properties" class="panel-body">
-                        <dl class="dl-horizontal dl-horizontal-sm dl-horizontal-md dl-horizontal-lg">
-                            <dt>{{ 'ticket.form.community'|trans }}</dt><dd>{% if ticket.community %}<a href="{{ path('agent_community_show', { 'id' : ticket.community.id }) }}">{{ ticket.community.name }}</a>{% endif %}</dd>
-                            <dt>{{ 'ticket.form.unitgroup'|trans }}</dt><dd>{% if ticket.unitgroup %}<a href="{{ path('agent_unitgroup_show', { 'id' : ticket.unitgroup.id }) }}">{{ ticket.unitgroup.name }}</a>{% endif %}</dd>
-                            <dt>{{ 'ticket.form.unit'|trans }}</dt><dd>{% if ticket.unit %}<a href="{{ path('agent_unit_show', { 'id' : ticket.unit.id }) }}">{{ ticket.unit.name }}</a>{% endif %}</dd>
-                            <dt>{{ 'ticket.form.id'|trans }}</dt><dd>{% if ticket.id %}{{ ticket.id }}{% endif %}</dd>
-                            <dt>{{ 'ticket.form.liability'|trans }}</dt><dd>{% if ticket.liability %}{{ ticket.liability.person }}{% endif %}</dd>
-                            <dt>{{ 'ticket.form.ticketstatus'|trans }}</dt><dd>{% if ticket.ticketstatus %}{{ ticket.ticketstatus }}{% endif %}</dd>
-                            <dt>{{ 'ticket.form.contactname'|trans }}</dt><dd>{% if ticket.contactname %}{{ ticket.contactname }}{% endif %}</dd>
-                            <dt>{{ 'ticket.form.contactphone'|trans }}</dt><dd>{% if ticket.contactphone %}{{ ticket.contactphone }}{% endif %}</dd>
-                            <dt>{{ 'ticket.form.contactemail'|trans }}</dt><dd>{% if ticket.contactemail %}{{ ticket.contactemail }}{% endif %}</dd>
-                            <dt>{{ 'ticket.form.description'|trans }}</dt><dd>{% if ticket.description %}{{ ticket.description }}{% endif %}</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'ticket.show.ticketactions'|trans }}</h1>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="records_list table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th><div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('cloud-download fa-fw') }}</a></div></th>
-                                    <th>{{ 'ticketaction.form.user'|trans }}</th>
-                                    <th>{{ 'ticketaction.form.description'|trans }}</th>
-                                    <th>{{ 'ticketaction.form.createdAt'|trans }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for key, ticketAction in ticketActions %}
-                                <tr>
-                                    <td>{% if ticketAction.filename %}<a type="button" class="btn btn-xs btn-primary" href="{{ path('agent_ticketaction_getfile', { id : ticketAction.id }) }}">{{ icon('cloud-download fa-fw') }}</a>{% endif %}</td>
-                                    <td>{% if ticketAction.user %}{{ ticketAction.user.username }}{% endif %}</td>
-                                    <td>{% if ticketAction.description %}{{ ticketAction.description }}{% endif %}</td>
-                                    <td>{% if ticketAction.createdAt %}{{ ticketAction.createdAt|ago }}{% endif %}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">{{ 'ticket.show.ticketpetitions'|trans }}</h1>
-                    </div>
-                    {% if ticket.ticketpetitions is not empty %}
-                    <div class="table-responsive">
-                        <table class="records_list table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('search fa-fw') }}</a></div>
-                                    </th>
-                                    <th>{{ 'petition.form.id'|trans }}</th>
-                                    <th>{{ 'petition.form.petitionstatus'|trans }}</th>
-                                    <th>{{ 'petition.form.abbreviation.liability'|trans }}</th>
-                                    <th>{{ 'petition.form.area'|trans }}</th>
-                                    <th>{{ 'petition.form.community'|trans }}</th>
-                                    <th>{{ 'petition.form.expiry'|trans }}</th>
-                                    <th>{{ 'petition.form.createdAt'|trans }}</th>
-                                    <th class="col-md-4">{{ 'petition.form.description'|trans }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for key, ticketpetition in ticket.ticketpetitions %}
-                                {% set difference = date(ticketpetition.expiry|date()).diff(date('now'|date())) %}
-                                <tr {% if difference.invert %}{% if difference.days < 3 %}{{ 'class="warning"' }}{% endif %}{% else %}{{ 'class="danger"' }}{% endif %}>
-                                    <td>
-                                        <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_petition_show', { 'id': ticketpetition.id }) }}" >{{ icon('search fa-fw') }}</a></div>
-                                    </td>
-                                    <td>{% if ticketpetition.id %}{{ ticketpetition.id }}{% endif %}</td>
-                                    <td>{% if ticketpetition.petitionstatus %}{{ ticketpetition.petitionstatus }}{% endif %}</td>
-                                    <td>{% if ticketpetition.liability %}{{ ticketpetition.liability.username }}{% endif %}</td>
-                                    <td>{% if ticketpetition.area %}{{ ticketpetition.area.name }}{% endif %}</td>
-                                    <td>{% if ticketpetition.community %}{{ ticketpetition.community.name }}{% endif %}</td>
-                                    <td>{% if ticketpetition.expiry %}{{ ticketpetition.expiry|ago }}{% endif %}</td>
-                                    <td>{% if ticketpetition.createdAt %}{{ ticketpetition.createdAt|ago }}{% endif %}</td>
-                                    <td>{% if ticketpetition.description %}{{ ticketpetition.description }}{% endif %}</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                    {% else %}
-                    <div class="panel-body">
-                        <div class="text-center"><em>{{ 'petition.show.noreference'|trans }}</em></div>
-                    </div>
-                    {% endif %}
+                <div class="table-responsive">
+                    <table class="records_list table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th><div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('cloud-download fa-fw') }}</a></div></th>
+                                <th>{{ 'ticketaction.form.user'|trans }}</th>
+                                <th>{{ 'ticketaction.form.description'|trans }}</th>
+                                <th>{{ 'ticketaction.form.createdAt'|trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for key, ticketAction in ticketActions %}
+                            <tr>
+                                <td>{% if ticketAction.filename %}<a type="button" target="_blank" class="btn btn-xs btn-primary" href="{{ path('agent_ticketaction_getfile', { id : ticketAction.id }) }}">{{ icon('cloud-download fa-fw') }}</a>{% endif %}</td>
+                                <td>{% if ticketAction.user %}{{ ticketAction.user.username }}{% endif %}</td>
+                                <td>{% if ticketAction.description %}{{ ticketAction.description }}{% endif %}</td>
+                                <td>{% if ticketAction.createdAt %}{{ ticketAction.createdAt|ago }}{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-        <!-- /#page-show -->
-
-        <div id="page-modal">
-            <div class="modal fade" id="modalNewTicketAction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'ticketaction.new.title'|trans({'%ticketId%' : ticket.id}) }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    {{ form_start(newTicketActionForm, { 'style': 'horizontal' }) }}
-                                        {{ form_widget(newTicketActionForm) }}
-                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticketaction.new.submit'|trans }}</button>
-                                        </div></div>
-                                    {{ form_end(newTicketActionForm) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{#}
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">{{ 'ticket.show.ticketpetitions'|trans }}</h1>
                 </div>
-            </div>
-
-            <div class="modal fade" id="modalTicketStatus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'ticket.editstatus.title'|trans({'%ticketId%' : ticket.id}) }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    {{ form_start(ticketStatusForm, { 'style': 'horizontal' }) }}
-                                        {{ form_widget(ticketStatusForm) }}
-                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticket.editstatus.submit'|trans }}</button>
-                                        </div></div>
-                                    {{ form_end(ticketStatusForm) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {% if ticket.ticketpetitions is not empty %}
+                <div class="table-responsive">
+                    <table class="records_list table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('search fa-fw') }}</a></div>
+                                </th>
+                                <th>{{ 'petition.form.id'|trans }}</th>
+                                <th>{{ 'petition.form.petitionstatus'|trans }}</th>
+                                <th>{{ 'petition.form.abbreviation.liability'|trans }}</th>
+                                <th>{{ 'petition.form.area'|trans }}</th>
+                                <th>{{ 'petition.form.community'|trans }}</th>
+                                <th>{{ 'petition.form.expiry'|trans }}</th>
+                                <th>{{ 'petition.form.createdAt'|trans }}</th>
+                                <th class="col-md-4">{{ 'petition.form.description'|trans }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for key, ticketpetition in ticket.ticketpetitions %}
+                            {% set difference = date(ticketpetition.expiry|date()).diff(date('now'|date())) %}
+                            <tr {% if difference.invert %}{% if difference.days < 3 %}{{ 'class="warning"' }}{% endif %}{% else %}{{ 'class="danger"' }}{% endif %}>
+                                <td>
+                                    <div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-warning" href="{{ path('agent_petition_show', { 'id': ticketpetition.id }) }}" >{{ icon('search fa-fw') }}</a></div>
+                                </td>
+                                <td>{% if ticketpetition.id %}{{ ticketpetition.id }}{% endif %}</td>
+                                <td>{% if ticketpetition.petitionstatus %}{{ ticketpetition.petitionstatus }}{% endif %}</td>
+                                <td>{% if ticketpetition.liability %}{{ ticketpetition.liability.username }}{% endif %}</td>
+                                <td>{% if ticketpetition.area %}{{ ticketpetition.area.name }}{% endif %}</td>
+                                <td>{% if ticketpetition.community %}{{ ticketpetition.community.name }}{% endif %}</td>
+                                <td>{% if ticketpetition.expiry %}{{ ticketpetition.expiry|ago }}{% endif %}</td>
+                                <td>{% if ticketpetition.createdAt %}{{ ticketpetition.createdAt|ago }}{% endif %}</td>
+                                <td>{% if ticketpetition.description %}{{ ticketpetition.description }}{% endif %}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-
-            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'ticket.edit.title'|trans({'%ticketId%' : ticket.id}) }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    {{ form_start(editForm, { 'style': 'horizontal' }) }}
-                                        {{ form_widget(editForm) }}
-                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticket.edit.submit'|trans }}</button>
-                                        </div></div>
-                                    {{ form_end(editForm) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {% else %}
+                <div class="panel-body">
+                    <div class="text-center"><em>{{ 'petition.show.noreference'|trans }}</em></div>
                 </div>
-            </div>
-
-            <div class="modal fade" id="modalNewPetition" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
-                            <h4 class="modal-title" id="myModalLabel">{{ 'petition.new.title'|trans }}</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    {{ form_start(petitionForm, { 'style': 'horizontal' }) }}
-                                        {{ form_widget(petitionForm) }}
-                                        <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
-                                            <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'petition.new.submit'|trans }}</button>
-                                        </div></div>
-                                    {{ form_end(petitionForm) }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
             </div>
         </div>
-        <!-- /#page-modal -->
-
+{#}
     </div>
-    <!-- /#page-wrapper -->
-{% endblock %}
+    <!-- /#page-show -->
 
-{% block stylesheet %}
-<style type="text/css">
-.ticket-description { font-size: 1.3em; }
-.community-name { font-size: 2em; }
-.unitgroup-name { font-size: 1em; }
-.unit-name { font-size: 1em; }
-.ticket-id { font-size: 3em; font-weight: bold; }
-.ticket-ticketstatus { font-size: 1.5em; }
-</style>
+    <div id="page-modal">
+        <div class="modal fade" id="modalTicketAction" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                        <h4 class="modal-title" id="myModalLabel">{{ 'ticket.action.title'|trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_start(ticketActionForm, { 'style': 'horizontal' }) }}
+                                    {{ form_widget(ticketActionForm) }}
+                                    <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                        <div class="alert alert-danger" role="alert">{{ icon('exclamation-triangle fa-fw fa-lg') }}&nbsp;{{ 'ticket.form.advice'|trans|raw }}</div>
+                                    </div></div>
+                                    <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                        <button type="submit" class="btn btn-primary">{{ icon('cog fa-fw') }}&nbsp;{{ 'ticket.action.submit'|trans }}</button>
+                                    </div></div>
+                                {{ form_end(ticketActionForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalTicketLiability" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                        <h4 class="modal-title" id="myModalLabel">{{ 'ticket.liability.title'|trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_start(ticketLiabilityForm, { 'style': 'horizontal' }) }}
+                                    {{ form_widget(ticketLiabilityForm) }}
+                                    <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                        <div class="alert alert-danger" role="alert">{{ icon('exclamation-triangle fa-fw fa-lg') }}&nbsp;{{ 'ticket.form.advice'|trans|raw }}</div>
+                                    </div></div>
+                                    <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                        <button type="submit" class="btn btn-default">{{ icon('user fa-fw') }}&nbsp;{{ 'ticket.liability.submit'|trans }}</button>
+                                    </div></div>
+                                {{ form_end(ticketLiabilityForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalTicketStatusChange" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                        <h4 class="modal-title" id="myModalLabel">{{ 'ticket.status.title'|trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_start(ticketStatusChangeForm, { 'style': 'horizontal' }) }}
+                                    {{ form_widget(ticketStatusChangeForm) }}
+                                    <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                        <div class="alert alert-danger" role="alert">{{ icon('exclamation-triangle fa-fw fa-lg') }}&nbsp;{{ 'ticket.form.advice'|trans|raw }}</div>
+                                    </div></div>
+                                    <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                        <button type="submit" class="btn btn-info">{{ icon('flag fa-fw') }}&nbsp;{{ 'ticket.status.submit'|trans }}</button>
+                                    </div></div>
+                                {{ form_end(ticketStatusChangeForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-modal -->
+
 {% endblock %}

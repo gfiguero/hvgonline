@@ -560,4 +560,20 @@ class User extends BaseUser
     {
         return $this->zones;
     }
+
+    /**
+     * Get communitiesFromZones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommunitiesFromZones()
+    {
+        $zones = $this->zones;
+        $communities = new \Doctrine\Common\Collections\ArrayCollection();
+        foreach ($zones as $zone) {
+            $community = $zone->getCommunity();
+            if(!$communities->contains($community)) $communities->add($community);
+        }
+        return $communities;
+    }
 }

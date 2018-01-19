@@ -854,4 +854,82 @@ class Community
     {
         return $this->checkpoints;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $communityevents;
+
+
+    /**
+     * Add communityevent
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityEvent $communityevent
+     *
+     * @return Community
+     */
+    public function addCommunityevent(\HVG\SystemBundle\Entity\CommunityEvent $communityevent)
+    {
+        $this->communityevents[] = $communityevent;
+
+        return $this;
+    }
+
+    /**
+     * Remove communityevent
+     *
+     * @param \HVG\SystemBundle\Entity\CommunityEvent $communityevent
+     */
+    public function removeCommunityevent(\HVG\SystemBundle\Entity\CommunityEvent $communityevent)
+    {
+        $this->communityevents->removeElement($communityevent);
+    }
+
+    /**
+     * Get communityevents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommunityevents()
+    {
+        return $this->communityevents;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $zones;
+
+
+    /**
+     * Add zone
+     *
+     * @param \HVG\SystemBundle\Entity\Zone $zone
+     *
+     * @return Community
+     */
+    public function addZone(\HVG\SystemBundle\Entity\Zone $zone)
+    {
+        $this->zones[] = $zone;
+
+        return $this;
+    }
+
+    /**
+     * Remove zone
+     *
+     * @param \HVG\SystemBundle\Entity\Zone $zone
+     */
+    public function removeZone(\HVG\SystemBundle\Entity\Zone $zone)
+    {
+        $this->zones->removeElement($zone);
+    }
+
+    /**
+     * Get zones
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getZones()
+    {
+        return $this->zones;
+    }
 }

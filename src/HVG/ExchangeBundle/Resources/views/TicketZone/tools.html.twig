@@ -1,0 +1,25 @@
+{% block tools %}
+    {% trans_default_domain 'HVGExchangeBundle' %}
+    <div class="row" id="tabs">
+        <div class="col-md-12">
+        {% if ticket is defined %}
+            <div class="btn-toolbar">
+                <div class="btn-group"><a href="{{ path('exchange_ticket_take', {'ticket' : ticket.id}) }}" class="btn btn-success">{{ icon('arrow-down fa-fw') }}&nbsp;{{ 'ticket.take.link'|trans }}</a></div>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalTicketStatusChange">{{ icon('flag fa-fw') }}&nbsp;{{ 'ticket.status.link'|trans }}</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTicketAction">{{ icon('cog fa-fw') }}&nbsp;{{ 'ticket.action.link'|trans }}</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modalTicketLiability">{{ icon('user fa-fw') }}&nbsp;{{ 'ticket.liability.link'|trans }}</button>
+            </div>
+            <p></p>
+        {% elseif unit %}
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalTicketNew">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticket.new.link'|trans }}</button>
+                    {#}<a href="{{ path('exchange_ticket_new', {'unit' : unit.id}) }}" class="btn btn-success">{{ icon('plus fa-fw') }}&nbsp;{{ 'ticket.new.link'|trans }}</a>{#}
+                </div>
+            </div>
+            <p></p>
+        {% endif %}
+        </div>
+    </div>
+    <!-- /#unit-tab -->
+{% endblock %}

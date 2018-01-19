@@ -1,0 +1,42 @@
+{% extends 'HVGAgentBundle:Pet:layout.html.twig' %}
+
+{% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'pet.show.title'|trans }}{% endblock %}
+
+{% block pet %}
+    <div class="row" id="page-show">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ 'pet.show.title'|trans }}</h3>
+                </div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>{{ 'pet.form.name'|trans }}</dt><dd>{% if pet.name %}{{ pet.name }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.petgroup'|trans }}</dt><dd>{% if pet.petgroup %}{{ petgroups[pet.petgroup] }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.race'|trans }}</dt><dd>{% if pet.race %}{{ pet.race }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.color'|trans }}</dt><dd>{% if pet.color %}{{ petcolors[pet.color] }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.gender'|trans }}</dt><dd>{% if pet.gender %}{{ petgenders[pet.gender] }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.weight'|trans }}</dt><dd>{% if pet.weight %}{{ pet.weight }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.owner'|trans }}</dt><dd>{% if pet.owner %}{{ pet.owner }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.phone'|trans }}</dt><dd>{% if pet.phone %}{{ pet.phone }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.email'|trans }}</dt><dd>{% if pet.email %}{{ pet.email }}{% endif %}</dd>
+                        <dt>{{ 'pet.form.unit'|trans }}</dt><dd>{% if pet.unit %}{{ pet.unit }}{% endif %}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="thumbnail">{% dump(pet) %}
+
+                <img class="img img-responsive" src="{{ vich_uploader_asset(pet, 'photographyfile') | imagine_filter('pet_medium') }}" />
+            </div>
+            <div class="btn-toolbar">
+                <div class="btn-group"><a href="{{ path('agent_pet_edit', {'pet' : pet.id}) }}" class="btn btn-warning">{{ icon('edit fa-fw') }}&nbsp;{{ 'pet.edit.link'|trans }}</a></div>
+                <div class="btn-group"><a href="{{ path('agent_pet_delete', {'pet' : pet.id}) }}" class="btn btn-danger">{{ icon('times fa-fw') }}&nbsp;{{ 'pet.delete.link'|trans }}</a></div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-list -->
+{% endblock %}

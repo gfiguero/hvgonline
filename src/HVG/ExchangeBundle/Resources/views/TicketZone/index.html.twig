@@ -1,0 +1,95 @@
+{% extends 'HVGExchangeBundle:TicketZone:layout.html.twig' %}
+
+{% set translation_domain = 'HVGExchangeBundle' %}
+
+{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'ticket.index.title'|trans }}{% endblock %}
+
+{% block ticketzone %}
+    <div class="row" id="page-list">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">{{ 'ticket.index.list'|trans }}</h1>
+                </div>
+                <div class="table-responsive">
+                    <table class="records_list table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                {#}
+                                <th style="min-width: 120px;">
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('times fa-fw') }}</a></div>
+                                </th>
+                                {#}
+                                <th><div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('search fa-fw') }}</a></div></th>
+                                <th>{{ knp_pagination_sortable(tickets, 'ticket.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(tickets, 'ticket.form.ticketstatus'|trans, 'ticketstatus') }}{% if sort == 'ticketstatus' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(tickets, 'ticket.form.unit'|trans, 'unit') }}{% if sort == 'unit' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(tickets, 'ticket.form.zone'|trans, 'zone') }}{% if sort == 'zone' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(tickets, 'ticket.form.liability'|trans, 'liability') }}{% if sort == 'liability' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th class="col-md-5">{{ 'ticket.form.description'|trans }}</th>
+                                <th>{{ knp_pagination_sortable(tickets, 'ticket.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ticket in tickets %}
+                            <tr>
+                                {#}
+                                <td>
+                                    <div class="btn-group"><a href="{{ path('exchange_ticket_show', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('exchange_ticket_edit', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('exchange_ticket_delete', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
+                                </td>
+                                {#}
+                                <td><div class="btn-group"><a href="{{ path('exchange_ticket_show', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div></td>
+                                <td>{% if ticket.id %}{{ ticket.id }}{% endif %}</td>
+                                <td>{% if ticket.status %}<span class="label label-info">{{ ticketstatuses[ticket.status] }}</span>{% endif %}</td>
+                                <td>{% if ticket.unit %}<span class="label label-primary">{{ ticket.unit.community.name }}</span>&nbsp;<span class="label label-primary">{{ ticket.unit.unitgroup.name }}</span>&nbsp;<span class="label label-primary">{{ ticket.unit.name }}</span>{% endif %}</td>
+                                <td>{% if ticket.zone %}{{ ticket.zone.name }}{% endif %}</td>
+                                <td>{% if ticket.liability %}{{ ticket.liability.person }}{% endif %}</td>
+                                <td>{% if ticket.description %}{{ ticket.description }}{% endif %}</td>
+                                <td>{% if ticket.createdAt %}<span class="fa fa-calendar-o fa-fw" data-toggle="tooltip" data-placement="left" title="{{ ticket.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL y - HH:mm") }}"></span>&nbsp;{{ ticket.createdAt|ago }}{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-list -->
+
+    <div id="page-modal">
+        {% if unit %}
+        <div class="modal fade" id="modalTicketNew" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">{{ icon('times') }}</button>
+                        <h4 class="modal-title" id="myModalLabel">{{ 'ticket.new.title'|trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {{ form_start(ticketNewForm, { 'style': 'horizontal' }) }}
+                                    {{ form_widget(ticketNewForm) }}
+                                    <div class="form-group"><div class="col-lg-offset-4 col-lg-8">
+                                        <button type="submit" class="btn btn-primary">{{ icon('check fa-fw') }}&nbsp;{{ 'ticket.new.submit'|trans }}</button>
+                                    </div></div>
+                                {{ form_end(ticketNewForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <!-- /#page-modal -->
+
+{% endblock %}
+
+{% block javascript %}<script type="text/javascript">$(function () { $('[data-toggle="tooltip"]').tooltip() })</script>{% endblock %}

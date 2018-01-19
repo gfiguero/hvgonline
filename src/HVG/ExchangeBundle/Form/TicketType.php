@@ -15,6 +15,7 @@ class TicketType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $community = $options['unit']->getCommunity();
         $builder
             ->add('description', null, array(
                 'label' => 'ticket.form.description',
@@ -36,15 +37,14 @@ class TicketType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGExchangeBundle',
             ))
-            ->add('status', TicketStatusType::class, array(
-                'label' => 'ticket.form.status',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGExchangeBundle',
-            ))
             ->add('zone', null, array(
                 'label' => 'ticket.form.zone',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGExchangeBundle',
+                'required' => true,
+                'placeholder' => 'Seleccione Zona',
+                'choices' => $community->getZones(),
+                'choice_label' => 'name',
             ))
         ;
     }
@@ -55,7 +55,8 @@ class TicketType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'HVG\SystemBundle\Entity\Ticket'
+            'data_class' => 'HVG\SystemBundle\Entity\Ticket',
+            'unit' => null,
         ));
     }
 

@@ -1,14 +1,12 @@
 agent_carpark_index:
-    path:     /{community}/{unitgroup}/{unit}
-    defaults: { _controller: "HVGAgentBundle:Carpark:index", community: '', unitgroup: '', unit: '' }
+    path:     /{community}
+    defaults: { _controller: "HVGAgentBundle:Carpark:index", community: '' }
     methods:  GET
     requirements:
         community: '\d+|'
-        unitgroup: '\d+|'
-        unit: '\d+|'
 
 agent_carpark_new:
-    path:     /{unit}/new
+    path:     /{community}/new
     defaults: { _controller: "HVGAgentBundle:Carpark:new" }
     methods:  [GET, POST]
 

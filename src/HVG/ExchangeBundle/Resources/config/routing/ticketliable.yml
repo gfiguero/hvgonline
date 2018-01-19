@@ -1,0 +1,50 @@
+exchange_ticketliable_index:
+    path:     /index/{status}/{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:index", status: '', community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        status: '\d+|'
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+exchange_ticketliable_new:
+    path:     /{unit}/new
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:new" }
+    methods:  [GET, POST]
+
+exchange_ticketliable_show:
+    path:     /{ticket}/show
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:show" }
+    methods:  GET
+
+exchange_ticketliable_edit:
+    path:     /{ticket}/edit
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:edit" }
+    methods:  [GET, POST]
+
+exchange_ticketliable_delete:
+    path:     /{ticket}/delete
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:delete" }
+    methods:  [GET, DELETE]
+
+exchange_ticketliable_take:
+    path:     /{ticket}/take
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:take" }
+    methods:  GET
+
+exchange_ticketliable_action:
+    path:     /{ticket}/action
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:action" }
+    methods:  [GET, POST]
+
+exchange_ticketliable_petition:
+    path:     /{ticket}/petition
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:petition" }
+    methods:  [GET, POST]
+
+exchange_ticketliable_status:
+    path:     /{ticket}/status
+    defaults: { _controller: "HVGExchangeBundle:TicketLiable:status" }
+    methods:  [GET, POST]
+

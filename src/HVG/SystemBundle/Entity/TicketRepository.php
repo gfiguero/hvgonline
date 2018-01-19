@@ -103,15 +103,63 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    public function findByStatus($status, $sort, $direction)
+    public function findByStatus($status = null, $community = null, $unitgroup = null, $unit = null, $sort, $direction, $user)
     {
         $qb = $this->getEntityManager()->createQueryBuilder('t');
         $qb = $qb->select('t', 'u')->from('HVGSystemBundle:Ticket', 't');
         $qb = $qb->join('t.unit', 'u');
+        $qb = $qb->join('u.unitgroup', 'g');
+        $qb = $qb->join('u.community', 'c');
+
+        if($unit){
+            $qb = $qb->andWhere('u.id = :unit');
+            $qb = $qb->setParameter('unit', $unit->getId());
+        } elseif ($unitgroup) {
+            $qb = $qb->andWhere('g.id = :unitgroup');
+            $qb = $qb->setParameter('unitgroup', $unitgroup->getId());
+        } elseif ($community) {
+            $qb = $qb->andWhere('c.id = :community');
+            $qb = $qb->setParameter('community', $community->getId());
+        }
+
         if ($status) {
             $qb = $qb->andWhere('t.status = :status');
             $qb = $qb->setParameter('status', $status);
         }
+
+        $qb = $qb->orderBy('t.'.$sort, $direction);
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findByUser($status = null, $community = null, $unitgroup = null, $unit = null, $sort, $direction, $user)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('t');
+        $qb = $qb->select('t', 'u', 'g', 'c', 'z')->from('HVGSystemBundle:Ticket', 't');
+        $qb = $qb->join('t.unit', 'u');
+        $qb = $qb->join('u.unitgroup', 'g');
+        $qb = $qb->join('u.community', 'c');
+        $qb = $qb->leftJoin('t.zone', 'z');
+        $qb = $qb->leftJoin('z.users', 's');
+
+        $qb = $qb->andWhere('s.id = :user');
+        $qb = $qb->setParameter('user', $user->getId());
+
+        if($unit){
+            $qb = $qb->andWhere('u.id = :unit');
+            $qb = $qb->setParameter('unit', $unit->getId());
+        } elseif ($unitgroup) {
+            $qb = $qb->andWhere('g.id = :unitgroup');
+            $qb = $qb->setParameter('unitgroup', $unitgroup->getId());
+        } elseif ($community) {
+            $qb = $qb->andWhere('c.id = :community');
+            $qb = $qb->setParameter('community', $community->getId());
+        }
+
+        if ($status) {
+            $qb = $qb->andWhere('t.status = :status');
+            $qb = $qb->setParameter('status', $status);
+        }
+
         $qb = $qb->orderBy('t.'.$sort, $direction);
         return $qb->getQuery()->getResult();
     }

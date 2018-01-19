@@ -56,6 +56,11 @@ class Zone
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return (string) $this->community . ' - ' . (string) $this->name;
+    }
+
     /**
      * Get id
      *
@@ -253,5 +258,33 @@ class Zone
     {
         return $this->users;
     }
-}
+    /**
+     * @var \HVG\SystemBundle\Entity\Community
+     */
+    private $community;
 
+
+    /**
+     * Set community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     *
+     * @return Zone
+     */
+    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \HVG\SystemBundle\Entity\Community
+     */
+    public function getCommunity()
+    {
+        return $this->community;
+    }
+}

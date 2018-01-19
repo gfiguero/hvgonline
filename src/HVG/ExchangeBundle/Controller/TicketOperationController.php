@@ -109,13 +109,13 @@ class TicketOperationController extends Controller
 
     public function editAction(Request $request, Ticket $ticket)
     {
-        $editForm = $this->createForm(new TicketType(), $ticket);
-        $editForm->handleRequest($request);
-
         $status = $ticket->getStatus();
         $unit = $ticket->getUnit();
         $community = $unit->getCommunity();
         $unitgroup = $unit->getUnitgroup();
+
+        $editForm = $this->createForm(new TicketType(), $ticket, array('community' => $community));
+        $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted()) {
             if($editForm->isValid()) {

@@ -10,18 +10,7 @@ ticket:
         title: Tickets
         link: Explorar Otros Tickets
         list: Lista de Tickets
-    area: 
-        link: Tickets del Área
-        title: Tickets del Área
-        list: Lista de Tickets del Área
-    sent: 
-        link: Tickets Enviados
-        title: Tickets Enviados
-        list: Lista de Tickets Enviados
-    received: 
-        link: Tickets Recibidos
-        title: Tickets Recibidos
-        list: Lista de Tickets Recibidos
+        home: Inicio
     show:
         pagetitle: Ticket N° %id% - %status%
         title: Datos de Ticket
@@ -44,11 +33,24 @@ ticket:
         submit: Confirmar Cambio de Estado
         flash: El estado del ticket se ha actualizado
     status:
+        link: Actualizar estado
+        title: Actualización de estado
+        submit: Confirmar cambio de estado
+    action:
+        link: Accionar
+        title: Nueva acción
+        submit: Confirmar acción
+    liability:
+        link: Reasignar
+        title: Reasignación de ticket
+        submit: Confirmar reasignación
+    take:
+        link: Tomar ticket
+    statusmenu:
         all: Todos
         new: Nuevos
-        zonalized: Zonalizados
         assigned: Asignados
-        progress: En Progreso
+        progress: En progreso
         pending: Pendientes
         resolved: Resueltos
         closed: Cerrados
@@ -62,6 +64,7 @@ ticket:
         user: Usuario
         zone: Zona
         status: Estado
+        reason: Causa
         liability: Responsable
         ticketstatus: Estado
         area: Area
@@ -70,16 +73,31 @@ ticket:
         contactname: Nombre de Contacto
         contactphone: Número de Contacto
         contactemail: Email de Contacto
+        advice: '<strong>ADVERTENCIA</strong>. Esta información es enviada directamente al residente que ha registrado el ticket. <strong>Por favor use un lenguaje apropiado</strong>.'
         placeholder:
             area: No Asignada
             liability: No Asignado
-
-ticketoperation:
-    index:
-        home: Inicio
-    new:
-        title: Nuevo Ticket
-        submit: Registrar Ticket
+    email:
+        new:
+            greeting: Estimado(a) %name%
+            message: Hemos recibido su solicitud. Agradecemos su preocupación por hacernos saber sobre su inquietud.
+            presentation: 'Se ha generado un ticket con el número de identificación %ticket_id%, cuya información contenida se describe a continuación:'
+            regards: Saludos cordiales,
+            signature: Equipo de HVG Administraciones.
+        status:
+            greeting: Estimado(a) %name%
+            message: Su ticket ha sido actualizado.
+            presentation:  'El nuevo estado del ticket número <strong>%ticket_id%</strong> es <strong>%status%</strong>.'
+            reason: 'La causa del cambio de estado es: <strong>"%reason%"</strong>'
+            regards: Saludos cordiales,
+            signature: Equipo de HVG Administraciones.
+        action:
+            greeting: Estimado(a) %name%
+            message: Su ticket ha sido actualizado.
+            presentation:  'Se ha producido una acción en el ticket número %ticket_id%.'
+            reason: 'La descripción de la acción: <strong>"%reason%"</strong>'
+            regards: Saludos cordiales,
+            signature: Equipo de HVG Administraciones.
 
 ticketaction:
     index:
@@ -100,6 +118,7 @@ ticketaction:
         area: Área
         user: Usuario
         description: Descripción
+        file: Archivo
         community: Comunidad
         unitgroup: Grupo
         unit: Departamento
@@ -182,28 +201,3 @@ petition:
             area: No Asignada
             community: Ninguna
             liability: No Asignado
-
-petitionaction:
-    index:
-        title: Acciones de Requerimientos
-        link: Explorar Acciones de Requerimientos
-        list: Lista de Acciones de Requerimientos
-    show:
-        link: Detalle de Acción de Requerimiento
-        title: Datos de Acción de Requerimiento
-        download: Descargar
-    new:
-        title: Nuevo Registro de Acción
-        link: Agregar Acción
-        submit: Registrar Acción de Requerimiento
-        flash: Se ha agregado una acción de Requerimiento
-    form:
-        actions: Acciones
-        petition: Requerimiento
-        id: ID
-        area: Área
-        user: Usuario
-        description: Descripción
-        community: Comunidad
-        file: Adjunto
-        createdAt: Registrada

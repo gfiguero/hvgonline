@@ -22,6 +22,10 @@ hvg_agent_unitresident:
     resource: "@HVGAgentBundle/Resources/config/routing/unitresident.yml"
     prefix:   /unitresident
 
+hvg_agent_pet:
+    resource: "@HVGAgentBundle/Resources/config/routing/pet.yml"
+    prefix:   /pet
+
 hvg_agent_warehouse:
     resource: "@HVGAgentBundle/Resources/config/routing/warehouse.yml"
     prefix:   /warehouse

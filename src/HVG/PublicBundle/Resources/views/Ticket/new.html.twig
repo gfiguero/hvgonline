@@ -1,0 +1,25 @@
+{% extends 'HVGPublicBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGPublicBundle' %}
+
+{% block title %}{{ 'ticket.index.title'|trans }}{% endblock %}
+
+{% block public %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-header">{{ icon('ticket fa-fw fa-lg') }}&nbsp;{{ 'ticket.index.title'|trans }}</h1>
+                <h4>{{ 'ticket.new.title'|trans }}</h4>
+                {% autoescape false %}{{ 'ticket.new.message'|trans }}{% endautoescape %}
+                {{ form_start(newForm, {'style':'horizontal'}) }}
+                {{ form_widget(newForm) }}
+                <div class="form-group">
+                    <div class="col-md-8 col-md-offset-4">
+                        <button type="submit" class="btn btn-primary btn-lg">{{ icon('send fa-fw') }}&nbsp;{{ 'ticket.new.submit'|trans }}</button>
+                    </div>
+                </div>
+                {{ form_end(newForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

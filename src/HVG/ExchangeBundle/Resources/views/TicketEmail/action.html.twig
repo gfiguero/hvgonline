@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<body>
+    {% trans_default_domain 'HVGExchangeBundle' %}
+    <h1>{{ 'ticket.email.action.greeting'|trans({'%name%':ticket.contactname})|raw }}</h1>
+    <p>{{ 'ticket.email.action.message'|trans|raw }}</p>
+    <p>{{ 'ticket.email.action.presentation'|trans({'%ticket_id%':ticket.id})|raw }}</p>
+    {% if reason is defined %}<p>{{ 'ticket.email.action.reason'|trans({'%reason%':reason})|raw }}</p>{% endif %}
+    <hr>
+    <dl>
+        <dt><b>{{ 'ticket.form.id'|trans }}</b></dt><dd>{% if ticket.id %}{{ ticket.id }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.community'|trans }}</b></dt><dd>{% if ticket.community %}{{ ticket.community.name }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.unitgroup'|trans }}</b></dt><dd>{% if ticket.unitgroup %}{{ ticket.unitgroup.name }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.unit'|trans }}</b></dt><dd>{% if ticket.unit %}{{ ticket.unit.name }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.zone'|trans }}</b></dt><dd>{% if ticket.zone %}{{ ticket.zone.name }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.contactname'|trans }}</b></dt><dd>{% if ticket.contactname %}{{ ticket.contactname }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.contactphone'|trans }}</b></dt><dd>{% if ticket.contactphone %}{{ ticket.contactphone }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.contactemail'|trans }}</b></dt><dd>{% if ticket.contactemail %}{{ ticket.contactemail }}{% endif %}</dd>
+        <dt><b>{{ 'ticket.form.description'|trans }}</b></dt><dd>{% if ticket.description %}{{ ticket.description }}{% endif %}</dd>
+    </dl>
+    <hr>
+    <p>{{ 'ticket.email.action.regards'|trans }}</p>
+    <p>{{ 'ticket.email.action.signature'|trans }}</p>
+</body>
+</html>
+
+

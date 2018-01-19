@@ -10,6 +10,14 @@ hvg_exchange_ticket:
     resource: "@HVGExchangeBundle/Resources/config/routing/ticket.yml"
     prefix:   /ticket
 
+hvg_exchange_ticketzone:
+    resource: "@HVGExchangeBundle/Resources/config/routing/ticketzone.yml"
+    prefix:   /ticketzone
+
+hvg_exchange_ticketliable:
+    resource: "@HVGExchangeBundle/Resources/config/routing/ticketliable.yml"
+    prefix:   /ticketliable
+
 hvg_exchange_ticketoperation:
     resource: "@HVGExchangeBundle/Resources/config/routing/ticketoperation.yml"
     prefix:   /ticketoperation

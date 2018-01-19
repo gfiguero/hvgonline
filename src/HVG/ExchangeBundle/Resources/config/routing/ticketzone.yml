@@ -1,0 +1,50 @@
+exchange_ticketzone_index:
+    path:     /index/{status}/{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:index", status: '', community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        status: '\d+|'
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+exchange_ticketzone_new:
+    path:     /{unit}/new
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:new" }
+    methods:  [GET, POST]
+
+exchange_ticketzone_show:
+    path:     /{ticket}/show
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:show" }
+    methods:  GET
+
+exchange_ticketzone_edit:
+    path:     /{ticket}/edit
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:edit" }
+    methods:  [GET, POST]
+
+exchange_ticketzone_delete:
+    path:     /{ticket}/delete
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:delete" }
+    methods:  [GET, DELETE]
+
+exchange_ticketzone_take:
+    path:     /{ticket}/take
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:take" }
+    methods:  GET
+
+exchange_ticketzone_action:
+    path:     /{ticket}/action
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:action" }
+    methods:  [GET, POST]
+
+exchange_ticketzone_petition:
+    path:     /{ticket}/petition
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:petition" }
+    methods:  [GET, POST]
+
+exchange_ticketzone_status:
+    path:     /{ticket}/status
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:status" }
+    methods:  [GET, POST]
+

@@ -1,0 +1,28 @@
+agent_pet_index:
+    path:     /{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGAgentBundle:Pet:index", community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+agent_pet_new:
+    path:     /{unit}/new
+    defaults: { _controller: "HVGAgentBundle:Pet:new" }
+    methods:  [GET, POST]
+
+agent_pet_show:
+    path:     /{pet}/show
+    defaults: { _controller: "HVGAgentBundle:Pet:show" }
+    methods:  GET
+
+agent_pet_edit:
+    path:     /{pet}/edit
+    defaults: { _controller: "HVGAgentBundle:Pet:edit" }
+    methods:  [GET, POST]
+
+agent_pet_delete:
+    path:     /{pet}/delete
+    defaults: { _controller: "HVGAgentBundle:Pet:delete" }
+    methods:  [GET, DELETE]

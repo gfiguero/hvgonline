@@ -260,7 +260,10 @@ class TicketController extends Controller
                 $em->persist($ticket);
                 $em->flush();
                 $email = $ticket->getContactEmail();
-                if($email) {
+                $sendmailcheck = $ticketActionForm['sendmailcheck']->getData();
+                if($sendmailcheck and $email) {
+
+/* comenrario por eliminación de cambio de estado
                     if ($oldStatus != 3) {
                         $message = new \Swift_Message($ticket->getUnit()->getCommunity() . ' - Ticket ' . $ticket->getId());
                         $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
@@ -269,13 +272,14 @@ class TicketController extends Controller
                         $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:status.html.twig', array('ticket' => $ticket, 'status' => $ticket->getStatus(), 'reason' => $ticketAction->getDescription())), 'text/html');
                         $this->get('mailer')->send($message);
                     } else {
+*/
                         $message = new \Swift_Message($ticket->getUnit()->getCommunity() . ' - Ticket ' . $ticket->getId());
                         $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
                         $message->setTo($email);
                         $message->setEncoder(\Swift_Encoding::get8BitEncoding());
                         $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:action.html.twig', array('ticket' => $ticket, 'reason' => $ticketAction->getDescription())), 'text/html');
                         $this->get('mailer')->send($message);
-                    }
+//                    }
                 }
             }
         }

@@ -73,7 +73,7 @@ ticket:
         contactname: Nombre de Contacto
         contactphone: Número de Contacto
         contactemail: Email de Contacto
-        advice: '<strong>ADVERTENCIA</strong>. Esta información es enviada directamente al residente que ha registrado el ticket. <strong>Por favor use un lenguaje apropiado</strong>.'
+        advice: '<strong>ADVERTENCIA</strong>. Si selecciona "Enviar email", la información es enviada directamente al residente que ha registrado el ticket. <strong>Por favor use un lenguaje apropiado</strong>.'
         placeholder:
             area: No Asignada
             liability: No Asignado
@@ -122,6 +122,7 @@ ticketaction:
         community: Comunidad
         unitgroup: Grupo
         unit: Departamento
+        sendmailcheck: Enviar email
         createdAt: Registrada
 
 petition:

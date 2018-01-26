@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+
 class TicketActionType extends AbstractType
 {
     /**
@@ -24,6 +26,14 @@ class TicketActionType extends AbstractType
                 'label' => 'ticketaction.form.file',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGExchangeBundle',
+            ))
+            ->add('sendmailcheck', CheckboxType::class, array(
+                'label' => 'ticketaction.form.sendmailcheck',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'align_with_widget' => true  ),
+                'translation_domain' => 'HVGExchangeBundle',
+                'required' => false,
+                'mapped' => false,
+
             ))
         ;
     }

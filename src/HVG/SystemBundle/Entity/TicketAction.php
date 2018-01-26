@@ -277,4 +277,33 @@ class TicketAction
         return $this->filename;
     }
 
+    /**
+     * @var boolean
+     */
+    private $sendmail;
+
+
+    /**
+     * Set sendmail
+     *
+     * @param boolean $sendmail
+     *
+     * @return TicketAction
+     */
+    public function setSendmail($sendmail)
+    {
+        $this->sendmail = $sendmail;
+
+        return $this;
+    }
+
+    /**
+     * Get sendmail
+     *
+     * @return boolean
+     */
+    public function getSendmail()
+    {
+        return $this->sendmail;
+    }
 }

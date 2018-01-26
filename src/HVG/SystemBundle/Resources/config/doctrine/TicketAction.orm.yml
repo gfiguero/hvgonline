@@ -22,6 +22,9 @@ HVG\SystemBundle\Entity\TicketAction:
             type: string
             length: 300
             nullable: true
+        sendmail:
+            type: boolean
+            nullable: true
         createdAt:
             type: datetime
             gedmo:

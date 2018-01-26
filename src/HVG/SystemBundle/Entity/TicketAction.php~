@@ -2,8 +2,13 @@
 
 namespace HVG\SystemBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * TicketAction
+ * @Vich\Uploadable
  */
 class TicketAction
 {
@@ -20,7 +25,7 @@ class TicketAction
     /**
      * @var string
      */
-    private $file;
+    private $filename;
 
     /**
      * @var \DateTime
@@ -80,30 +85,6 @@ class TicketAction
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set file
-     *
-     * @param string $file
-     *
-     * @return TicketAction
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-
-        return $this;
-    }
-
-    /**
-     * Get file
-     *
-     * @return string
-     */
-    public function getFile()
-    {
-        return $this->file;
     }
 
     /**
@@ -202,6 +183,26 @@ class TicketAction
         return $this->ticket;
     }
 
+    public function getUnit()
+    {
+        $unit = null;
+        if($ticket = $this->getTicket()) $unit = $ticket->getUnit();
+        return $unit;
+    }
+
+    public function getCommunity()
+    {
+        $community = null;
+        if($unit = $this->getUnit()) $community = $unit->getCommunity();
+        return $community;
+    }
+
+    public function getUnitGroup()
+    {
+        $unitGroup = null;
+        if($unit = $this->getUnit()) $unitGroup = $unit->getUnitGroup();
+        return $unitGroup;
+    }
     /**
      * Set user
      *
@@ -225,5 +226,55 @@ class TicketAction
     {
         return $this->user;
     }
-}
 
+    /**
+     * @Vich\UploadableField(mapping="ticket_action_file", fileNameProperty="filename")
+     * @var File
+     */
+    private $file;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @return Testing
+     */
+    
+    public function setFile(File $file = null)
+    {
+        $this->file = $file;
+
+        if ($file) {
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string $filename
+     *
+     * @return PetitionAction
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+        
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+}

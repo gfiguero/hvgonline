@@ -122,7 +122,8 @@ ticketaction:
         community: Comunidad
         unitgroup: Grupo
         unit: Departamento
-        sendmailcheck: Enviar email
+        sendmail: Enviar email
+        sentmail: Email enviado
         createdAt: Registrada
 
 petition:

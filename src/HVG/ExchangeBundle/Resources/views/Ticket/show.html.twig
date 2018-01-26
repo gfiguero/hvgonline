@@ -42,6 +42,7 @@
                                 <th><div class="btn-group" role="group"><a type="button" class="btn btn-xs btn-default disabled" href="#">{{ icon('cloud-download fa-fw') }}</a></div></th>
                                 <th>{{ 'ticketaction.form.user'|trans }}</th>
                                 <th>{{ 'ticketaction.form.description'|trans }}</th>
+                                <th>{{ 'ticketaction.form.sentmail'|trans }}</th>
                                 <th>{{ 'ticketaction.form.createdAt'|trans }}</th>
                             </tr>
                         </thead>
@@ -51,7 +52,8 @@
                                 <td>{% if ticketAction.filename %}<a type="button" target="_blank" class="btn btn-xs btn-primary" href="{{ path('agent_ticketaction_getfile', { id : ticketAction.id }) }}">{{ icon('cloud-download fa-fw') }}</a>{% endif %}</td>
                                 <td>{% if ticketAction.user %}{{ ticketAction.user.username }}{% endif %}</td>
                                 <td>{% if ticketAction.description %}{{ ticketAction.description }}{% endif %}</td>
-                                <td>{% if ticketAction.createdAt %}{{ ticketAction.createdAt|ago }}{% endif %}</td>
+                                <td>{% if ticketAction.sendmail %}{{ icon('check fa-fw') }}{% endif %}</td>
+                                <td>{% if ticketAction.createdAt %}<span class="fa fa-calendar-o fa-fw" data-toggle="tooltip" data-placement="left" title="{{ ticketAction.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL y - HH:mm") }}"></span>&nbsp;{{ ticketAction.createdAt|ago }}{% endif %}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -194,3 +196,5 @@
     <!-- /#page-modal -->
 
 {% endblock %}
+
+{% block javascript %}<script type="text/javascript">$(function () { $('[data-toggle="tooltip"]').tooltip() })</script>{% endblock %}

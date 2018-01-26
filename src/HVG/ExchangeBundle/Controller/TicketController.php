@@ -260,8 +260,8 @@ class TicketController extends Controller
                 $em->persist($ticket);
                 $em->flush();
                 $email = $ticket->getContactEmail();
-                $sendmailcheck = $ticketActionForm['sendmailcheck']->getData();
-                if($sendmailcheck and $email) {
+                $sendmail = $ticketActionForm['sendmail']->getData();
+                if($sendmail and $email) {
 
 /* comenrario por eliminación de cambio de estado
                     if ($oldStatus != 3) {

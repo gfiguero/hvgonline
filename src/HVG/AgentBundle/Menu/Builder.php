@@ -63,10 +63,10 @@ class Builder implements ContainerAwareInterface
             $menu['topmenu.ticket.menu']->setChildrenAttribute('class', 'dropdown-menu');
             $menu['topmenu.ticket.menu']->addChild('topmenu.ticket.index', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 0)));
             $menu['topmenu.ticket.menu']['topmenu.ticket.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
-            $menu['topmenu.ticket.menu']->addChild('topmenu.ticketzone.index', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 0)));
-            $menu['topmenu.ticket.menu']['topmenu.ticketzone.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
-            $menu['topmenu.ticket.menu']->addChild('topmenu.ticketliable.index', array('route' => 'exchange_ticketliable_index', 'routeParameters' => array('status' => 0)));
-            $menu['topmenu.ticket.menu']['topmenu.ticketliable.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
+//            $menu['topmenu.ticket.menu']->addChild('topmenu.ticketzone.index', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 0)));
+//            $menu['topmenu.ticket.menu']['topmenu.ticketzone.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
+//            $menu['topmenu.ticket.menu']->addChild('topmenu.ticketliable.index', array('route' => 'exchange_ticketliable_index', 'routeParameters' => array('status' => 0)));
+//            $menu['topmenu.ticket.menu']['topmenu.ticketliable.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
 
             $menu->addChild('topmenu.agentdashboard', array('route' => 'agent_dashboard_index'));
             $menu['topmenu.agentdashboard']->setExtras(array('icon' => 'dashboard fa-fw', 'translation_domain' => 'HVGAgentBundle'));

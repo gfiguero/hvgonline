@@ -15,6 +15,13 @@ topmenu:
         menu: Área
         tickets: Tickes de mi Área
         petitions: Requerimientos de mi Área
+    ticket:
+        menu: Tickets
+        index: Todos los tickets
+    ticketzone:
+        index:  Tickets de mi zona
+    ticketliable:
+        index: Mis tickets
     user: Usuarios
     agentdashboard: Vista General
     systemdashboard: Configuración de Sistema

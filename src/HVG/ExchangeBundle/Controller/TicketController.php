@@ -160,16 +160,6 @@ class TicketController extends Controller
         $em->persist($ticketAction);
         $em->flush();
 
-        $email = $ticket->getContactEmail();
-        if($email) {
-            $message = new \Swift_Message($ticket->getUnit()->getCommunity() . ' - Ticket ' . $ticket->getId());
-            $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
-            $message->setTo($email);
-            $message->setEncoder(\Swift_Encoding::get8BitEncoding());
-            $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:status.html.twig', array('ticket' => $ticket, 'status' => $ticket->getStatus())), 'text/html');
-            $this->get('mailer')->send($message);
-        }
-
         return $this->redirect($this->generateUrl('exchange_ticket_show', array('ticket' => $ticket->getId())));
     }
 
@@ -262,24 +252,12 @@ class TicketController extends Controller
                 $email = $ticket->getContactEmail();
                 $sendmail = $ticketActionForm['sendmail']->getData();
                 if($sendmail and $email) {
-
-/* comenrario por eliminación de cambio de estado
-                    if ($oldStatus != 3) {
-                        $message = new \Swift_Message($ticket->getUnit()->getCommunity() . ' - Ticket ' . $ticket->getId());
-                        $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
-                        $message->setTo($email);
-                        $message->setEncoder(\Swift_Encoding::get8BitEncoding());
-                        $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:status.html.twig', array('ticket' => $ticket, 'status' => $ticket->getStatus(), 'reason' => $ticketAction->getDescription())), 'text/html');
-                        $this->get('mailer')->send($message);
-                    } else {
-*/
-                        $message = new \Swift_Message($ticket->getUnit()->getCommunity() . ' - Ticket ' . $ticket->getId());
-                        $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
-                        $message->setTo($email);
-                        $message->setEncoder(\Swift_Encoding::get8BitEncoding());
-                        $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:action.html.twig', array('ticket' => $ticket, 'reason' => $ticketAction->getDescription())), 'text/html');
-                        $this->get('mailer')->send($message);
-//                    }
+                    $message = new \Swift_Message($ticket->getUnit()->getCommunity() . ' - Ticket ' . $ticket->getId());
+                    $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
+                    $message->setTo($email);
+                    $message->setEncoder(\Swift_Encoding::get8BitEncoding());
+                    $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:action.html.twig', array('ticket' => $ticket, 'reason' => $ticketAction->getDescription())), 'text/html');
+                    $this->get('mailer')->send($message);
                 }
             }
         }
@@ -330,12 +308,14 @@ class TicketController extends Controller
             if($ticketStatusChangeForm->isValid()) {
                 $newStatus = $ticketStatusChangeForm['status']->getData();
                 $reason = $ticketStatusChangeForm['reason']->getData();
+                $sendmail = $ticketStatusChangeForm['sendmail']->getData();
                 $ticketstatuses = $this->container->getParameter('ticketstatuses');
 
                 $ticketAction = new TicketAction();
                 $ticketAction->setTicket($ticket);
                 $ticketAction->setUser($this->getUser());
                 $ticketAction->setDescription('Cambio de estado: ' . $ticketstatuses[$newStatus] . '. Causa: ' . $reason);
+                $ticketAction->setSendmail($sendmail);
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($ticketAction);
@@ -343,7 +323,7 @@ class TicketController extends Controller
                 $em->flush();
 
                 $email = $ticket->getContactEmail();
-                if($email) {
+                if($sendmail and $email) {
                     $message = new \Swift_Message($ticket->getUnit()->getCommunity() . ' - Ticket ' . $ticket->getId());
                     $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
                     $message->setTo($email);

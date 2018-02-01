@@ -55,5 +55,5 @@ root:
     path: /
     defaults:
         _controller: FrameworkBundle:Redirect:urlRedirect
-        path: /agent
+        path: /public
         permanent: true

@@ -4,6 +4,7 @@ namespace HVG\PublicBundle\Controller;
 
 use HVG\SystemBundle\Entity\Community;
 use HVG\SystemBundle\Entity\Ticket;
+use HVG\SystemBundle\Entity\TicketAction;
 use HVG\PublicBundle\Form\TicketType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;

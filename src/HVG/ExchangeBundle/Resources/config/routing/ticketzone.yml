@@ -33,18 +33,28 @@ exchange_ticketzone_take:
     defaults: { _controller: "HVGExchangeBundle:TicketZone:take" }
     methods:  GET
 
+exchange_ticketzone_release:
+    path:     /{ticket}/release
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:release" }
+    methods:  GET
+
 exchange_ticketzone_action:
     path:     /{ticket}/action
     defaults: { _controller: "HVGExchangeBundle:TicketZone:action" }
     methods:  [GET, POST]
 
-exchange_ticketzone_petition:
-    path:     /{ticket}/petition
-    defaults: { _controller: "HVGExchangeBundle:TicketZone:petition" }
+exchange_ticketzone_liability:
+    path:     /{ticket}/liability
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:liability" }
     methods:  [GET, POST]
 
 exchange_ticketzone_status:
     path:     /{ticket}/status
     defaults: { _controller: "HVGExchangeBundle:TicketZone:status" }
+    methods:  [GET, POST]
+
+exchange_ticketzone_test:
+    path:     /{ticket}/test
+    defaults: { _controller: "HVGExchangeBundle:TicketZone:test" }
     methods:  [GET, POST]
 

@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-header">{{ 'unitinsurancepolicy.new.title'|trans }}</h1>
+                <h1 class="page-header">{{ icon('shield fa-fw fa-lg') }}&nbsp;{{ 'unitinsurancepolicy.new.title'|trans }}</h1>
                 {% include 'HVGPublicBundle:Base:flashbag.html.twig' %}
                 {% set insurancepolicyexpiration = community.insurancepolicyexpiration|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd 'de' LLLL 'de' y") %}
                 {% autoescape false %}{{ 'unitinsurancepolicy.new.message'|trans({'%insurancepolicyexpiration%' : insurancepolicyexpiration }) }}{% endautoescape %}
@@ -50,19 +50,6 @@ $(document).ready(function() {
         browseLabel: 'Seleccionar Archivo'
     }
     $(".fileinput").find('input').fileinput(optionsFileinput);
-
-/*
-    var optionsUnit = {
-        enableFiltering: true,
-        enableCaseInsensitiveFiltering: true,
-        disableIfEmpty: true,
-        maxHeight: 600,
-        buttonWidth: '100%',
-        nonSelectedText: 'Ningún Departamento Seleccionado',
-        filterPlaceholder: 'Buscar',
-    };
-    $('#hvg_publicbundle_unitinsurancepolicy_unit').multiselect(optionsUnit);
-*/
 });
 </script>
 {% endblock %}

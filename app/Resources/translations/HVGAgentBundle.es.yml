@@ -20,7 +20,7 @@ topmenu:
         index: Todos los tickets
     ticketzone:
         index:  Tickets de mi zona
-    ticketliable:
+    ticketliability:
         index: Mis tickets
     user: Usuarios
     agentdashboard: Vista General

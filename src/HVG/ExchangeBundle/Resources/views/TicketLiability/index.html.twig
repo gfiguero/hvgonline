@@ -1,4 +1,4 @@
-{% extends 'HVGExchangeBundle:TicketZone:layout.html.twig' %}
+{% extends 'HVGExchangeBundle:TicketLiability:layout.html.twig' %}
 
 {% set translation_domain = 'HVGExchangeBundle' %}
 
@@ -39,12 +39,12 @@
                             <tr>
                                 {#}
                                 <td>
-                                    <div class="btn-group"><a href="{{ path('exchange_ticketzone_show', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div>
-                                    <div class="btn-group"><a href="{{ path('exchange_ticketzone_edit', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
-                                    <div class="btn-group"><a href="{{ path('exchange_ticketzone_delete', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('exchange_ticketliability_show', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('exchange_ticketliability_edit', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('exchange_ticketliability_delete', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
                                 </td>
                                 {#}
-                                <td><div class="btn-group"><a href="{{ path('exchange_ticketzone_show', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div></td>
+                                <td><div class="btn-group"><a href="{{ path('exchange_ticketliability_show', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div></td>
                                 <td>{% if ticket.id %}{{ ticket.id }}{% endif %}</td>
                                 <td>{% if ticket.status %}<span class="label label-info">{{ ticketstatuses[ticket.status] }}</span>{% endif %}</td>
                                 <td>{% if ticket.unit %}<span class="label label-primary">{{ ticket.unit.community.name }}</span>&nbsp;<span class="label label-primary">{{ ticket.unit.unitgroup.name }}</span>&nbsp;<span class="label label-primary">{{ ticket.unit.name }}</span>{% endif %}</td>

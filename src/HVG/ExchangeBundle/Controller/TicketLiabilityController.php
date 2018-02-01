@@ -16,7 +16,7 @@ use HVG\ExchangeBundle\Form\TicketType;
 use HVG\ExchangeBundle\Form\TicketActionType;
 use HVG\ExchangeBundle\Form\StatusType;
 
-class TicketZoneController extends Controller
+class TicketLiabilityController extends Controller
 {
     public function indexAction(Request $request, $status = null, Community $community = null, UnitGroup $unitgroup = null, Unit $unit = null)
     {
@@ -30,7 +30,7 @@ class TicketZoneController extends Controller
         $sort = $request->query->has('sort') ? $request->query->get('sort') : 'createdAt';
         $direction = $request->query->has('direction') ? $request->query->get('direction') : 'DESC';
 
-        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByUserZone($status, $community, $unitgroup, $unit, $sort, $direction, $user);
+        $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByLiability($status, $community, $unitgroup, $unit, $sort, $direction, $user);
 
         $paginator = $this->get('knp_paginator');
         $tickets = $paginator->paginate($tickets, $request->query->getInt('page', 1), 100);
@@ -41,7 +41,7 @@ class TicketZoneController extends Controller
             $ticketNewForm = $this->createNewTicketForm($ticket, $unit)->createView();
         }
 
-        return $this->render('HVGExchangeBundle:TicketZone:index.html.twig', array(
+        return $this->render('HVGExchangeBundle:TicketLiability:index.html.twig', array(
             'communities' => $communities,
             'unitgroups' => $unitgroups,
             'units' => $units,
@@ -73,7 +73,7 @@ class TicketZoneController extends Controller
         $ticketLiabilityForm = $this->createTicketLiabilityForm($ticket);
         $ticketStatusChangeForm = $this->createTicketStatusChangeForm($ticket);
 
-        return $this->render('HVGExchangeBundle:TicketZone:show.html.twig', array(
+        return $this->render('HVGExchangeBundle:TicketLiability:show.html.twig', array(
             'status' => 0,
             'community' => $community,
             'unitgroup' => $unitgroup,
@@ -89,7 +89,7 @@ class TicketZoneController extends Controller
     private function createNewTicketForm(Ticket $ticket, Unit $unit)
     {
         return $this->createForm('HVG\ExchangeBundle\Form\TicketType', $ticket, array(
-            'action' => $this->generateUrl('exchange_ticketzone_new', array('unit' => $unit->getId())),
+            'action' => $this->generateUrl('exchange_ticketliability_new', array('unit' => $unit->getId())),
             'unit' => $unit,
         ));
     }
@@ -124,7 +124,7 @@ class TicketZoneController extends Controller
                     $this->get('mailer')->send($message);
                 }
 
-                return $this->redirect($this->generateUrl('exchange_ticketzone_index', array(
+                return $this->redirect($this->generateUrl('exchange_ticketliability_index', array(
                     'status' => 0,
                     'community' => $unit->getCommunity()->getId(),
                     'unitgroup' => $unit->getUnitGroup()->getId(),
@@ -134,7 +134,7 @@ class TicketZoneController extends Controller
         }
         $unitgroup = $unit->getUnitGroup();
         $community = $unit->getCommunity();
-        return $this->render('HVGExchangeBundle:TicketZone:new.html.twig', array(
+        return $this->render('HVGExchangeBundle:TicketLiability:new.html.twig', array(
             'status' => 1,
             'community' => $community,
             'unitgroup' => $unitgroup,
@@ -160,7 +160,7 @@ class TicketZoneController extends Controller
         $em->persist($ticketAction);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('exchange_ticketzone_show', array('ticket' => $ticket->getId())));
+        return $this->redirect($this->generateUrl('exchange_ticketliability_show', array('ticket' => $ticket->getId())));
     }
 
     public function releaseAction(Ticket $ticket)
@@ -180,13 +180,13 @@ class TicketZoneController extends Controller
         $em->persist($ticketAction);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('exchange_ticketzone_show', array('ticket' => $ticket->getId())));
+        return $this->redirect($this->generateUrl('exchange_ticketliability_show', array('ticket' => $ticket->getId())));
     }
 
     private function createEditForm(Ticket $ticket)
     {
         return $this->createForm('HVG\ExchangeBundle\Form\TicketType', $ticket, array(
-            'action' => $this->generateUrl('exchange_ticketzone_edit', array('ticket' => $ticket->getId())),
+            'action' => $this->generateUrl('exchange_ticketliability_edit', array('ticket' => $ticket->getId())),
             'unit' => $ticket->getUnit(),
         ));
     }
@@ -210,13 +210,13 @@ class TicketZoneController extends Controller
                 $em->persist($ticketAction);
                 $em->flush();
 
-                return $this->redirect($this->generateUrl('exchange_ticketzone_show', array('ticket' => $ticket->getId())));
+                return $this->redirect($this->generateUrl('exchange_ticketliability_show', array('ticket' => $ticket->getId())));
             }
         }
 
         $unitgroup = $unit->getUnitGroup();
         $community = $unit->getCommunity();
-        return $this->render('HVGExchangeBundle:TicketZone:edit.html.twig', array(
+        return $this->render('HVGExchangeBundle:TicketLiability:edit.html.twig', array(
             'status' => $ticket->getStatus(),
             'community' => $community,
             'unitgroup' => $unitgroup,
@@ -230,7 +230,7 @@ class TicketZoneController extends Controller
     private function createTicketActionForm(Ticket $ticket, TicketAction $ticketAction)
     {
         return $this->createForm('HVG\ExchangeBundle\Form\TicketActionType', $ticketAction, array(
-            'action' => $this->generateUrl('exchange_ticketzone_action', array('ticket' => $ticket->getId())),
+            'action' => $this->generateUrl('exchange_ticketliability_action', array('ticket' => $ticket->getId())),
         ));
     }
 
@@ -261,13 +261,13 @@ class TicketZoneController extends Controller
                 }
             }
         }
-        return $this->redirect($this->generateUrl('exchange_ticketzone_show', array('ticket' => $ticket->getId())));
+        return $this->redirect($this->generateUrl('exchange_ticketliability_show', array('ticket' => $ticket->getId())));
     }
 
     private function createTicketLiabilityForm(Ticket $ticket)
     {
         return $this->createForm('HVG\ExchangeBundle\Form\TicketLiabilityType', $ticket, array(
-            'action' => $this->generateUrl('exchange_ticketzone_liability', array('ticket' => $ticket->getId())),
+            'action' => $this->generateUrl('exchange_ticketliability_liability', array('ticket' => $ticket->getId())),
         ));
     }
 
@@ -290,13 +290,13 @@ class TicketZoneController extends Controller
                 $em->flush();
             }
         }
-        return $this->redirect($this->generateUrl('exchange_ticketzone_show', array('ticket' => $ticket->getId())));
+        return $this->redirect($this->generateUrl('exchange_ticketliability_show', array('ticket' => $ticket->getId())));
     }
 
     private function createTicketStatusChangeForm(Ticket $ticket)
     {
         return $this->createForm('HVG\ExchangeBundle\Form\TicketStatusChangeType', $ticket, array(
-            'action' => $this->generateUrl('exchange_ticketzone_status', array('ticket' => $ticket->getId())),
+            'action' => $this->generateUrl('exchange_ticketliability_status', array('ticket' => $ticket->getId())),
         ));
     }
 
@@ -333,7 +333,7 @@ class TicketZoneController extends Controller
                 }
             }
         }
-        return $this->redirect($this->generateUrl('exchange_ticketzone_show', array('ticket' => $ticket->getId())));
+        return $this->redirect($this->generateUrl('exchange_ticketliability_show', array('ticket' => $ticket->getId())));
     }
 
     public function testAction(Request $request, Ticket $ticket)

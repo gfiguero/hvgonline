@@ -6,7 +6,7 @@ use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
-class TicketBuilder implements ContainerAwareInterface
+class TicketZoneBuilder implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
@@ -16,13 +16,13 @@ class TicketBuilder implements ContainerAwareInterface
         $sidemenu->setChildrenAttribute('class', 'nav nav-pills nav-stacked');
         $sidemenu->setChildrenAttribute('id', 'side-menu');
 
-        $sidemenu->addChild('ticket.statusmenu.all', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 0)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index', 'parameters' => array('status' => 0)))));
-        $sidemenu->addChild('ticket.statusmenu.new', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 1)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index', 'parameters' => array('status' => 1)))));
-        $sidemenu->addChild('ticket.statusmenu.assigned', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 2)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index', 'parameters' => array('status' => 2)))));
-        $sidemenu->addChild('ticket.statusmenu.progress', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 3)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index', 'parameters' => array('status' => 3)))));
-        $sidemenu->addChild('ticket.statusmenu.pending', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 4)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index', 'parameters' => array('status' => 4)))));
-        $sidemenu->addChild('ticket.statusmenu.resolved', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 5)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index', 'parameters' => array('status' => 5)))));
-        $sidemenu->addChild('ticket.statusmenu.closed', array('route' => 'exchange_ticket_index', 'routeParameters' => array('status' => 6)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index', 'parameters' => array('status' => 6)))));
+        $sidemenu->addChild('ticket.statusmenu.all', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 0)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index', 'parameters' => array('status' => 0)))));
+        $sidemenu->addChild('ticket.statusmenu.new', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 1)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index', 'parameters' => array('status' => 1)))));
+        $sidemenu->addChild('ticket.statusmenu.assigned', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 2)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index', 'parameters' => array('status' => 2)))));
+        $sidemenu->addChild('ticket.statusmenu.progress', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 3)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index', 'parameters' => array('status' => 3)))));
+        $sidemenu->addChild('ticket.statusmenu.pending', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 4)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index', 'parameters' => array('status' => 4)))));
+        $sidemenu->addChild('ticket.statusmenu.resolved', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 5)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index', 'parameters' => array('status' => 5)))));
+        $sidemenu->addChild('ticket.statusmenu.closed', array('route' => 'exchange_ticketzone_index', 'routeParameters' => array('status' => 6)))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index', 'parameters' => array('status' => 6)))));
 
         return $sidemenu;
     }

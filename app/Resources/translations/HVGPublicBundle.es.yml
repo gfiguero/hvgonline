@@ -55,10 +55,10 @@ pet:
 
 ticket:
     index:
-        title: Registro de Ticket
+        title: Formulario de contacto
     new:
         title: Información, reclamos y sugerencias.
-        submit: Registrar ticket
+        submit: Enviar
         flash: El ticket ha sido registrado correctamente.
         message: |
             <p></p>

@@ -1,0 +1,60 @@
+exchange_ticketliability_index:
+    path:     /index/{status}/{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:index", status: '', community: '', unitgroup: '', unit: '' }
+    methods:  GET
+    requirements:
+        status: '\d+|'
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+exchange_ticketliability_new:
+    path:     /{unit}/new
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:new" }
+    methods:  [GET, POST]
+
+exchange_ticketliability_show:
+    path:     /{ticket}/show
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:show" }
+    methods:  GET
+
+exchange_ticketliability_edit:
+    path:     /{ticket}/edit
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:edit" }
+    methods:  [GET, POST]
+
+exchange_ticketliability_delete:
+    path:     /{ticket}/delete
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:delete" }
+    methods:  [GET, DELETE]
+
+exchange_ticketliability_take:
+    path:     /{ticket}/take
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:take" }
+    methods:  GET
+
+exchange_ticketliability_release:
+    path:     /{ticket}/release
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:release" }
+    methods:  GET
+
+exchange_ticketliability_action:
+    path:     /{ticket}/action
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:action" }
+    methods:  [GET, POST]
+
+exchange_ticketliability_liability:
+    path:     /{ticket}/liability
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:liability" }
+    methods:  [GET, POST]
+
+exchange_ticketliability_status:
+    path:     /{ticket}/status
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:status" }
+    methods:  [GET, POST]
+
+exchange_ticketliability_test:
+    path:     /{ticket}/test
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:test" }
+    methods:  [GET, POST]
+

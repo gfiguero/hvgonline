@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="page-header">{{ 'pet.index.title'|trans }}</h1>
+                <h1 class="page-header">{{ icon('paw fa-fw fa-lg') }}&nbsp;{{ 'pet.index.title'|trans }}</h1>
                 <h4>{{ 'pet.new.title'|trans }}</h4>
                 {% autoescape false %}{{ 'pet.new.message'|trans }}{% endautoescape %}
                 {{ form_start(newForm, {'style':'horizontal'}) }}

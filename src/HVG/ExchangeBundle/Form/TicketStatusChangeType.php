@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use HVG\ExchangeBundle\Form\Type\TicketStatusType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class TicketStatusChangeType extends AbstractType
 {
@@ -27,6 +28,13 @@ class TicketStatusChangeType extends AbstractType
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
                 'translation_domain' => 'HVGExchangeBundle',
                 'mapped' => false,
+            ))
+            ->add('sendmail', CheckboxType::class, array(
+                'label' => 'ticketaction.form.sendmail',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'align_with_widget' => true  ),
+                'translation_domain' => 'HVGExchangeBundle',
+                'mapped' => false,
+                'required' => false,
             ))
         ;
     }

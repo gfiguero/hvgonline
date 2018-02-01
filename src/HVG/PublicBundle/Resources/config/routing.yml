@@ -21,3 +21,7 @@ hvg_public_accesspermission:
 hvg_public_broker:
     resource: "@HVGPublicBundle/Resources/config/routing/broker.yml"
     prefix:   /broker
+
+hvg_public_page:
+    resource: "@HVGPublicBundle/Resources/config/routing/page.yml"
+    prefix:   /

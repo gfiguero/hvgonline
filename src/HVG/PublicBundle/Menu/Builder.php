@@ -20,6 +20,10 @@ class Builder implements ContainerAwareInterface
         $topmenu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
         $topmenu->setChildrenAttribute('id', 'top-menu');
 
+        $topmenu->addChild('topmenu.ticket', array('route' => 'public_ticket_new', 'routeParameters' => array(
+            'hash' => $hash,
+        )))->setLabel('ticket.index.title')->setExtras(array('translation_domain' => 'HVGPublicBundle'));
+
         $topmenu->addChild('topmenu.pet', array('route' => 'public_pet_new', 'routeParameters' => array(
             'hash' => $hash,
         )))->setLabel('pet.index.title')->setExtras(array('translation_domain' => 'HVGPublicBundle'));

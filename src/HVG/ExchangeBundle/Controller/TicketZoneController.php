@@ -135,7 +135,7 @@ class TicketZoneController extends Controller
         $unitgroup = $unit->getUnitGroup();
         $community = $unit->getCommunity();
         return $this->render('HVGExchangeBundle:TicketZone:new.html.twig', array(
-            'status' => 1,
+            'status' => 0,
             'community' => $community,
             'unitgroup' => $unitgroup,
             'unit' => $unit,

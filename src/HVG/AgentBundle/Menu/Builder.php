@@ -115,7 +115,7 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.directory']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'));
         $sidemenu['sidemenu.directory']->setChildrenAttribute('class', 'dropdown-menu');
         $sidemenu['sidemenu.directory']->addChild('sidemenu.person', array('route' => 'agent_person_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-
+/*
         $sidemenu->addChild('sidemenu.ticket.root', array('uri' => '#'));
         $sidemenu['sidemenu.ticket.root']->setExtras(array('icon' => 'ticket fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
         $sidemenu['sidemenu.ticket.root']->setAttributes(array('class' => 'dropdown'));
@@ -125,7 +125,7 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.ticket.root']->addChild('sidemenu.ticket.sent', array('route' => 'agent_ticket_sent'))->setExtra('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.ticket.root']->addChild('sidemenu.ticket.received', array('route' => 'agent_ticket_received'))->setExtra('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.ticket.root']->addChild('sidemenu.ticket.area', array('route' => 'agent_ticket_area'))->setExtra('translation_domain', 'HVGAgentBundle');
-
+*/
         $sidemenu->addChild('sidemenu.petition.root', array('uri' => '#'));
         $sidemenu['sidemenu.petition.root']->setExtras(array('icon' => 'hand-o-up fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
         $sidemenu['sidemenu.petition.root']->setAttributes(array('class' => 'dropdown'));
@@ -137,13 +137,14 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.petition.root']->addChild('sidemenu.petition.area', array('route' => 'agent_petition_area'))->setExtra('translation_domain', 'HVGAgentBundle');
         //if(in_array('ROLE_ADMIN', $roles)) $sidemenu['sidemenu.petition.root']->addChild('sidemenu.petition.index', array('route' => 'agent_petition_index'))->setExtra('translation_domain', 'HVGAgentBundle');
 
+/*
         $sidemenu->addChild('sidemenu.resources', array('uri' => '#'));
         $sidemenu['sidemenu.resources']->setExtras(array('icon' => 'paperclip fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
         $sidemenu['sidemenu.resources']->setAttributes(array('class' => 'dropdown'));
         $sidemenu['sidemenu.resources']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'));
         $sidemenu['sidemenu.resources']->setChildrenAttribute('class', 'dropdown-menu');
         $sidemenu['sidemenu.resources']->addChild('sidemenu.communitystaff', array('route' => 'agent_communitystaff_index'))->setExtra('translation_domain', 'HVGAgentBundle');
-
+*/
 
         $sidemenu->addChild('sidemenu.unit.root', array('uri' => '#'));
         $sidemenu['sidemenu.unit.root']->setExtras(array('icon' => 'home fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));

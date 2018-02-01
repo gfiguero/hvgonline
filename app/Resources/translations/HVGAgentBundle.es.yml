@@ -591,6 +591,17 @@ pet:
         message: |
             <p>Mediante el presente formulario, solicito al comité de administración la autorización para mantener y criar al interior de nuestro departamento una mascota comprometiéndome desde ya a su tenencia responsable y a cumplir el reglamento interno sobre tenencia responsable de mascotas.</p>
             <p>Esta solicitud sera revisada y la respuesta sera enviada vía correo electrónico, pudiendo ser revocada si se infringen las normas sobre tenencia responsable.</p>
+    show:
+        title: Datos de mascota
+    edit:
+        link: Editar mascota
+        title: Editar mascota
+        submit: Guardar cambios
+    delete:
+        title: Eliminar mascota
+        link: Eliminar mascota
+        submit: Confirmar eliminación
+        cancel: Cancelar
     form:
         unit: Departamento
         name: Nombre de la mascota

@@ -190,6 +190,13 @@ class Builder implements ContainerAwareInterface
             'agent_warehouse_edit',
             'agent_warehouse_delete',
         )));
+        $sidemenu['sidemenu.unit.root']->addChild('sidemenu.unit.unitinsurancepolicy', array('route' => 'agent_unitinsurancepolicy_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_unitinsurancepolicy_index',
+            'agent_unitinsurancepolicy_new',
+            'agent_unitinsurancepolicy_show',
+            'agent_unitinsurancepolicy_edit',
+            'agent_unitinsurancepolicy_delete',
+        )));
 
         $sidemenu->addChild('sidemenu.community.root', array('uri' => '#'));
         $sidemenu['sidemenu.community.root']->setExtras(array('icon' => 'group fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle'));
@@ -217,9 +224,6 @@ class Builder implements ContainerAwareInterface
             'agent_communityevent_edit',
             'agent_communityevent_delete',
         )));
-
-        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unitinsurancepolicy', array('route' => 'agent_unitinsurancepolicy_index'));
-        $sidemenu['sidemenu.datacenter']['sidemenu.unitinsurancepolicy']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array('agent_unitinsurancepolicy_index')));
 
         return $sidemenu;
     }
@@ -283,6 +287,16 @@ class Builder implements ContainerAwareInterface
             'agent_warehouse_new',
             'agent_warehouse_edit',
             'agent_warehouse_delete',
+        )));
+
+        $tabs->addChild('unitinsurancepolicy', array('route' => 'agent_unitinsurancepolicy_index', 'routeParameters' => array('community' => $community,'unitgroup' => $unitgroup,'unit' => $unit)));
+        $tabs['unitinsurancepolicy']->setLabel('unitinsurancepolicy.index.title');
+        $tabs['unitinsurancepolicy']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_unitinsurancepolicy_index',
+            'agent_unitinsurancepolicy_show',
+            'agent_unitinsurancepolicy_new',
+            'agent_unitinsurancepolicy_edit',
+            'agent_unitinsurancepolicy_delete',
         )));
 
         return $tabs;

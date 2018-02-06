@@ -46,6 +46,7 @@ sidemenu:
         carpark: Estacionamientos
         warehouse: Bodegas
         guest: Visitas
+        unitinsurancepolicy: Pólizas
     unitinsurancepolicy: Pólizas
     person: Personas
     contact: Contactos
@@ -89,6 +90,7 @@ dashboard:
         unitresident: Residentes
         pet: Mascotas
         warehouse: Bodegas
+        unitinsurancepolicy: Pólizas
         carpark: Estacionamientos
         guestcarpark: Estacionamientos de visita
         communityevent: Eventos
@@ -308,6 +310,7 @@ unitinsurancepolicy:
         title: Pólizas de Seguros
         link: Explorar Pólizas
         list: Lista de Pólizas
+        home: Inicio
     show:
         title: Datos de la Pólizas
         link: Detalles de la Pólizas

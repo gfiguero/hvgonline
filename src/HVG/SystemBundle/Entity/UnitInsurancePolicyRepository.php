@@ -10,4 +10,49 @@ namespace HVG\SystemBundle\Entity;
  */
 class UnitInsurancePolicyRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByUnit($unit, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('p')
+            ->select('p')
+            ->from('HVGSystemBundle:UnitInsurancePolicy', 'p')
+            ->where('p.unit = :unit')
+            ->orderBy('p.'.$sort, $direction)
+            ->setParameters(array('unit' => $unit))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByUnitgroup($unitgroup, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('p')
+            ->select('p')
+            ->from('HVGSystemBundle:UnitInsurancePolicy', 'p')
+            ->join('p.unit', 'pu')
+            ->join('pu.unitgroup', 'pug')
+            ->where('pug.id = :unitgroup')
+            ->orderBy('p.'.$sort, $direction)
+            ->setParameters(array('unitgroup' => $unitgroup))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByCommunity($community, $sort, $direction)
+    {
+        return $this->getEntityManager()
+            ->createQueryBuilder('p')
+            ->select('p')
+            ->from('HVGSystemBundle:UnitInsurancePolicy', 'p')
+            ->join('p.unit', 'pu')
+            ->join('pu.community', 'puc')
+            ->where('puc.id = :community')
+            ->orderBy('p.'.$sort, $direction)
+            ->setParameters(array('community' => $community))
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

@@ -1,0 +1,11 @@
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
+{% use 'HVGAgentBundle:Base:unittabs.html.twig' %}
+{% use 'HVGAgentBundle:UnitInsurancePolicy:finder.html.twig' %}
+{% use 'HVGAgentBundle:UnitInsurancePolicy:tools.html.twig' %}
+
+{% block agent %}
+    {% block unittabs %}{{ parent() }}{% endblock %}
+    {% block finder %}{{ parent() }}{% endblock %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block unitinsurancepolicy %}{% endblock %}
+{% endblock %}

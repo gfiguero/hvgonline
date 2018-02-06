@@ -1,9 +1,28 @@
 agent_unitinsurancepolicy_index:
-    path:     /
-    defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:index" }
+    path:     /{community}/{unitgroup}/{unit}
+    defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:index", community: '', unitgroup: '', unit: '' }
     methods:  GET
+    requirements:
+        community: '\d+|'
+        unitgroup: '\d+|'
+        unit: '\d+|'
+
+agent_unitinsurancepolicy_new:
+    path:     /{unit}/new
+    defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:new" }
+    methods:  [GET, POST]
 
 agent_unitinsurancepolicy_show:
-    path:     /{id}/show
+    path:     /{unitinsurancepolicy}/show
     defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:show" }
     methods:  GET
+
+agent_unitinsurancepolicy_edit:
+    path:     /{unitinsurancepolicy}/edit
+    defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:edit" }
+    methods:  [GET, POST]
+
+agent_unitinsurancepolicy_delete:
+    path:     /{unitinsurancepolicy}/delete
+    defaults: { _controller: "HVGAgentBundle:UnitInsurancePolicy:delete" }
+    methods:  [GET, DELETE]

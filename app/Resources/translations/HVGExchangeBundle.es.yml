@@ -1,14 +1,28 @@
 dashboard:
     index:
         title: Vista General
-    counter:
-        ticket: Tickets Activos
-        petition: Requerimientos Activos
+        link: Vista General
+    ticket:
+        counter:
+            liability: Mis tickets asignados
+            zone: Tickets de mi zona
+        link:
+            new: Nuevos
+            assigned: Asignados
+            progress: En progreso
+            pending: Pendientes
+ticketliability:
+    index:
+        link: Mis tickets
+
+ticketzone:
+    index:
+        link: Tickets de mi zona
 
 ticket:
     index:
         title: Tickets
-        link: Explorar Otros Tickets
+        link: Tickets
         list: Lista de Tickets
         home: Inicio
     show:

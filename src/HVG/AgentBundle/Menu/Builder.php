@@ -61,7 +61,7 @@ class Builder implements ContainerAwareInterface
             $menu['topmenu.area.menu']['topmenu.area.tickets']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'icon' => 'ticket fa-fw'));
             $menu['topmenu.area.menu']->addChild('topmenu.area.petitions', array('route' => 'agent_petition_area'));
             $menu['topmenu.area.menu']['topmenu.area.petitions']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'icon' => 'hand-o-up fa-fw'));
-*/
+
             $menu->addChild('topmenu.ticket.menu', array('uri' => '#'));
             $menu['topmenu.ticket.menu']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false'));
             $menu['topmenu.ticket.menu']->setExtras(array( 'icon' => 'ticket fa-fw', 'dropdown' => true, 'translation_domain' => 'HVGAgentBundle' ));
@@ -72,9 +72,13 @@ class Builder implements ContainerAwareInterface
             $menu['topmenu.ticket.menu']['topmenu.ticketzone.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
             $menu['topmenu.ticket.menu']->addChild('topmenu.ticketliability.index', array('route' => 'exchange_ticketliability_index', 'routeParameters' => array('status' => 0)));
             $menu['topmenu.ticket.menu']['topmenu.ticketliability.index']->setExtras(array('translation_domain' => 'HVGAgentBundle'));
+*/
 
-            $menu->addChild('topmenu.agentdashboard', array('route' => 'agent_dashboard_index'));
-            $menu['topmenu.agentdashboard']->setExtras(array('icon' => 'dashboard fa-fw', 'translation_domain' => 'HVGAgentBundle'));
+            $menu->addChild('topmenu.exchange', array('route' => 'hvg_exchange_homepage'));
+            $menu['topmenu.exchange']->setExtras(array('icon' => 'envelope fa-fw', 'translation_domain' => 'HVGAgentBundle'));
+
+            $menu->addChild('topmenu.datacenter', array('route' => 'agent_dashboard_index'));
+            $menu['topmenu.datacenter']->setExtras(array('icon' => 'database fa-fw', 'translation_domain' => 'HVGAgentBundle'));
         }
 /*
         if(in_array('ROLE_ADMIN', $roles)) {
@@ -105,7 +109,7 @@ class Builder implements ContainerAwareInterface
         $sidemenu['sidemenu.datacenter']->setAttributes(array('class' => 'dropdown'));
         $sidemenu['sidemenu.datacenter']->setLinkAttributes(array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'aria-expanded' => 'false'));
         $sidemenu['sidemenu.datacenter']->setChildrenAttribute('class', 'dropdown-menu');
-        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.community', array('route' => 'agent_community_index'))->setExtra('translation_domain', 'HVGAgentBundle');
+        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.community.index', array('route' => 'agent_community_index'))->setExtra('translation_domain', 'HVGAgentBundle');
         $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unitgroup', array('route' => 'agent_unitgroup_index'))->setExtra('translation_domain', 'HVGAgentBundle');
 //        $sidemenu['sidemenu.datacenter']->addChild('sidemenu.unit', array('route' => 'agent_unit_index'))->setExtra('translation_domain', 'HVGAgentBundle');
 

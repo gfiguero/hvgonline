@@ -1,5 +1,17 @@
-{% extends 'HVGExchangeBundle:Base:layout.html.twig' %}
+{% extends 'HVGExchangeBundle:Base:base.html.twig' %}
+{% use 'HVGExchangeBundle:Base:header.html.twig' %}
+{% use 'HVGExchangeBundle:Base:sub.html.twig' %}
+{% use 'HVGExchangeBundle:Base:aside.html.twig' %}
+{% use 'HVGExchangeBundle:Base:icons.html.twig' %}
 
-{% block exchange %}
-    {% block dashboard %}{% endblock %}
+{% block body %}
+    {% block header %}{{ parent() }}{% endblock %}
+    <div class="container-fluid">
+        {% block sub %}{{ parent() }}{% endblock %}
+        <div class="row">
+            <div class="col-sm-12">
+                {% block dashboard %}{% endblock %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

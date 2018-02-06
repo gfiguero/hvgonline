@@ -1,6 +1,6 @@
 exchange_ticket_index:
     path:     /index/{status}/{community}/{unitgroup}/{unit}
-    defaults: { _controller: "HVGExchangeBundle:Ticket:index", status: '', community: '', unitgroup: '', unit: '' }
+    defaults: { _controller: "HVGExchangeBundle:Ticket:index", status: '0', community: '', unitgroup: '', unit: '' }
     methods:  GET
     requirements:
         status: '\d+|'

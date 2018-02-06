@@ -1,0 +1,9 @@
+{% extends 'HVGAgentBundle:Base:layout.html.twig' %}
+{% use 'HVGAgentBundle:Person:finder.html.twig' %}
+{% use 'HVGAgentBundle:Person:tools.html.twig' %}
+
+{% block agent %}
+    {% block finder %}{{ parent() }}{% endblock %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block person %}{% endblock %}
+{% endblock %}

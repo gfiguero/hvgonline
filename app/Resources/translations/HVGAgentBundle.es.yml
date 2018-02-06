@@ -26,10 +26,13 @@ topmenu:
     agentdashboard: Vista General
     systemdashboard: Configuración de Sistema
     logout: Desconectar
+    exchange: Correspondencia
+    datacenter: Centro de datos
 
 sidemenu:
     datacenter: Centro de Datos
     community:
+        index: Comunidades
         root: Comunidades
         carpark: Estacionamientos de propietarios
         guestcarpark: Estacionamientos de visita
@@ -76,6 +79,19 @@ dashboard:
     counter:
         ticket: Tickets Activos
         petition: Requerimientos Activos
+    link:
+        community: Comunidades
+        unitgroup: Torres
+        unit: Departamentos
+        person: Personas
+        unitmemo: Memorándums
+        guest: Visitas
+        unitresident: Residentes
+        pet: Mascotas
+        warehouse: Bodegas
+        carpark: Estacionamientos
+        guestcarpark: Estacionamientos de visita
+        communityevent: Eventos
 
 community:
     index:
@@ -551,6 +567,9 @@ petitionobjective:
         updatedAt: Actualizado
 
 person:
+    index:
+        title: Personas
+        link: Personas
     title:
         index: Personas
         properties: Datos de la Persona

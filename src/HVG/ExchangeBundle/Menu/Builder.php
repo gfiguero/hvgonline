@@ -10,6 +10,20 @@ class Builder implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
+    public function subMenu(FactoryInterface $factory, array $options)
+    {
+        $submenu = $factory->createItem('root');
+        $submenu->setChildrenAttribute('class', 'nav nav-pills');
+        $submenu->setChildrenAttribute('id', 'sub-menu');
+
+        $submenu->addChild('dashboard.index.link', array('route' => 'hvg_exchange_homepage'))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'hvg_exchange_homepage'))));
+        $submenu->addChild('ticket.index.link', array('route' => 'exchange_ticket_index'))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticket_index'))));
+        $submenu->addChild('ticketliability.index.link', array('route' => 'exchange_ticketliability_index'))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketliability_index'))));
+        $submenu->addChild('ticketzone.index.link', array('route' => 'exchange_ticketzone_index'))->setExtras(array('translation_domain' => 'HVGExchangeBundle', 'routes' => array(array( 'route' => 'exchange_ticketzone_index'))));
+
+        return $submenu;
+    }
+
     public function sideMenu(FactoryInterface $factory, array $options)
     {
         $sidemenu = $factory->createItem('root');

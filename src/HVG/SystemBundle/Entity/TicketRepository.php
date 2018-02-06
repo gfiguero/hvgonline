@@ -195,4 +195,29 @@ class TicketRepository extends \Doctrine\ORM\EntityRepository
         $qb = $qb->orderBy('t.'.$sort, $direction);
         return $qb->getQuery()->getResult();
     }
+
+    public function countByStatusLiability($status = null, $user)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('t');
+        $qb = $qb->select('count(t)')->from('HVGSystemBundle:Ticket', 't');
+
+        $qb = $qb->andWhere('t.liability = :user');
+        $qb = $qb->andWhere('t.status = :status');
+        $qb = $qb->setParameters(array('user' => $user->getId(), 'status' => $status));
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+
+    public function countByStatusZone($status = null, $user)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder('t');
+        $qb = $qb->select('count(t)')->from('HVGSystemBundle:Ticket', 't');
+        $qb = $qb->leftJoin('t.zone', 'z');
+        $qb = $qb->leftJoin('z.users', 's');
+        $qb = $qb->andWhere('s.id = :user');
+        $qb = $qb->andWhere('t.status = :status');
+        $qb = $qb->setParameters(array('user' => $user->getId(), 'status' => $status));
+
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

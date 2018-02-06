@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findBy(array('liability' => $user, 'ticketstatus' => $statuses));
         $petitions = $em->getRepository('HVGSystemBundle:Petition')->findBy(array('liability' => $user, 'petitionstatus' => $statuses));
         return $this->render('HVGAgentBundle:Dashboard:index.html.twig', array(
-            'tickets' => $tickets,
+            'tickets' => 0,
             'petitions' => $petitions,
         ));
     }

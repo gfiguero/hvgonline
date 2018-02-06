@@ -1,6 +1,6 @@
 exchange_ticketliability_index:
     path:     /index/{status}/{community}/{unitgroup}/{unit}
-    defaults: { _controller: "HVGExchangeBundle:TicketLiability:index", status: '', community: '', unitgroup: '', unit: '' }
+    defaults: { _controller: "HVGExchangeBundle:TicketLiability:index", status: '0', community: '', unitgroup: '', unit: '' }
     methods:  GET
     requirements:
         status: '\d+|'

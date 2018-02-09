@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use HVG\UserBundle\Entity\User;
 use HVG\ConfigurationBundle\Form\UserType;
+use HVG\ConfigurationBundle\Form\RegistrationType;
 
 class UserController extends Controller
 {
@@ -32,7 +33,7 @@ class UserController extends Controller
     public function newAction(Request $request)
     {
         $user = new User();
-        $newForm = $this->createForm(new UserType(), $user);
+        $newForm = $this->createForm(new RegistrationType(), $user);
         $newForm->handleRequest($request);
 
         if ($newForm->isSubmitted()) {

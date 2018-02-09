@@ -24,25 +24,6 @@ class UserType extends AbstractType
                 'translation_domain' => 'HVGConfigurationBundle',
                 'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
             ))
-            ->add('plainPassword', 'repeated', array(
-                'type' => 'password',
-                'options' => array('translation_domain' => 'HVGConfigurationBundle'),
-                'first_options' => array(
-                    'label' => 'user.form.password',
-                    'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
-                ),
-                'second_options' => array(
-                    'label' => 'user.form.password_confirmation',
-                    'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
-                ),
-                'invalid_message' => 'user.password.mismatch',
-                'attr' => array( 'label_col' => 4, 'widget_col' => 8 ),
-            ))
-            ->add('person', null, array(
-                'label' => 'user.form.person',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
-                'translation_domain' => 'HVGConfigurationBundle',
-            ))
             ->add('person', null, array(
                 'label' => 'user.form.person',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
@@ -58,11 +39,6 @@ class UserType extends AbstractType
         ;
     }
     
-    public function getParent()
-    {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-    }
-
     /**
      * {@inheritdoc}
      */

@@ -6,3 +6,21 @@ sidemenu:
     root:
         user: Usuarios
         zone: Zonas
+
+user:
+    form:
+        id: ID
+        email: Email
+        username: Nombre de usuario
+        password: Password
+        password_confirmation: Confirmación de password
+        person: Persona
+        zones: Zonas
+        createdAt: Registro
+    new:
+        link: Nuevo usuario
+        title: Nuevo usuario
+        submit: Confirmar
+    index:
+        list: Lista de usuarios
+        title: Usuarios

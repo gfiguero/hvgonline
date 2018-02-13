@@ -28,6 +28,7 @@ class TicketActionType extends AbstractType
                 'translation_domain' => 'HVGExchangeBundle',
             ))
             ->add('sendmail', CheckboxType::class, array(
+                'required' => false,
                 'label' => 'ticketaction.form.sendmail',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'align_with_widget' => true  ),
                 'translation_domain' => 'HVGExchangeBundle',

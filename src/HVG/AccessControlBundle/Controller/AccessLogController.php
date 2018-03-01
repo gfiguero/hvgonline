@@ -19,7 +19,6 @@ class AccessLogController extends Controller
         $em = $this->getDoctrine()->getManager();
         $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
         $accesslogs = $em->getRepository('HVGSystemBundle:AccessLog')->getLastByCommunity($community);
-        dump($accesslogs);
 
         return $this->render('HVGAccessControlBundle:AccessLog:index.html.twig', array(
             'community' => $community,

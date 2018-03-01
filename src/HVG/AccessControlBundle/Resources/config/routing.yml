@@ -18,6 +18,10 @@ hvg_accesscontrol_accessmonitor:
     resource: "@HVGAccessControlBundle/Resources/config/routing/accessmonitor.yml"
     prefix:   /accessmonitor
 
+hvg_accesscontrol_accesslog:
+    resource: "@HVGAccessControlBundle/Resources/config/routing/accesslog.yml"
+    prefix:   /accesslog
+
 hvg_accesscontrol_unitresident:
     resource: "@HVGAccessControlBundle/Resources/config/routing/unitresident.yml"
     prefix:   /unitresident

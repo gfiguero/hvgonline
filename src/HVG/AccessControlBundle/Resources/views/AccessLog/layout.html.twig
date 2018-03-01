@@ -1,0 +1,7 @@
+{% extends 'HVGAccessControlBundle:Base:layout.html.twig' %}
+{% use 'HVGAccessControlBundle:AccessLog:tools.html.twig' %}
+
+{% block accesscontrol %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block accesslog %}{% endblock %}
+{% endblock %}

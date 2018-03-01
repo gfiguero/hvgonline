@@ -1,0 +1,25 @@
+{% extends 'HVGAccessControlBundle:AccessLog:layout.html.twig' %}
+
+{% trans_default_domain 'HVGAccessControlBundle' %}
+
+{% block title %}{{ 'accesslog.index.title'|trans }}{% endblock %}
+
+{% block accesslog %}
+    {% if accesslogs is not empty %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'accesslog.index.title'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-middle">
+            {% for log in accesslogs %}
+                <tr>
+                    <td>{{ log.createdat|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLL y - HH:mm") }}</td>
+                    <td>{{ log.description }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

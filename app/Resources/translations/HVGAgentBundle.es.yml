@@ -94,6 +94,7 @@ dashboard:
         carpark: Estacionamientos
         guestcarpark: Estacionamientos de visita
         communityevent: Eventos
+        accesslog: Registros de bitácora
 
 community:
     index:
@@ -372,6 +373,23 @@ communityevent:
         finnishedAt: Final
         community: Comunidad
         units: Departamentos habilitados
+
+accesslog:
+    index:
+        title: Registros de bitácora
+        link: Explorar registros de bitácora
+        list: Lista de registros de bitácora
+        empty: No hay registros seleccionados
+    show:
+        title: Datos del registro
+        link: Detalles del registro
+    form:
+        id: ID
+        community: Comunidad
+        checkpoint: Punto de control
+        accessguard: Guardia
+        description: Descripción
+        createdAt: Registro
 
 ticket:
     index:

@@ -341,6 +341,13 @@ class Builder implements ContainerAwareInterface
             'agent_communityevent_delete',
         )));
 
+        $communityTabs->addChild('accesslog', array('route' => 'agent_accesslog_index', 'routeParameters' => array('community' => $community)));
+        $communityTabs['accesslog']->setLabel('accesslog.index.title');
+        $communityTabs['accesslog']->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_accesslog_index',
+            'agent_accesslog_show',
+        )));
+
         return $communityTabs;
     }
 

@@ -1,0 +1,15 @@
+accesscontrol_accesslog_index:
+    path:     /{hash}/{checkpoint}/{accessguard}
+    defaults: { _controller: "HVGAccessControlBundle:AccessLog:index" }
+    methods:  GET
+
+accesscontrol_accesslog_search:
+    path:     /{hash}/{checkpoint}/{accessguard}/search
+    defaults: { _controller: "HVGAccessControlBundle:AccessLog:search" }
+    methods:  [GET, POST]
+
+accesscontrol_accesslog_new:
+    path:     /{hash}/{checkpoint}/{accessguard}/new
+    defaults: { _controller: "HVGAccessControlBundle:AccessLog:new" }
+    methods:  [GET, POST]
+

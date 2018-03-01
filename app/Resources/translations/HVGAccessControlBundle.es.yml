@@ -39,6 +39,7 @@ accessmonitor:
     index:
         home: Inicio
         title: Control de Acceso
+        link: Visitas
         residents: Residentes
         unitmemos: Memos
         guests: Últimas Visitas
@@ -61,3 +62,14 @@ checkpoint:
     change:
         title: Cambiar punto de control
         submit: Confirmar cambio
+
+accesslog:
+    index:
+        title: Bitácora
+        link: Bitácora
+    new:
+        link: Nuevo registro
+        title: Nuevo registro de bitácora
+        submit: Registrar
+    form:
+        description: Descripción

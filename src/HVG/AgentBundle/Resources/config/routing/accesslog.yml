@@ -1,0 +1,11 @@
+agent_accesslog_index:
+    path:     /{community}
+    defaults: { _controller: "HVGAgentBundle:AccessLog:index", community: '' }
+    methods:  GET
+    requirements:
+        community: '\d+|'
+
+agent_accesslog_show:
+    path:     /{accesslog}/show
+    defaults: { _controller: "HVGAgentBundle:AccessLog:show" }
+    methods:  GET

@@ -1,0 +1,33 @@
+{% extends 'HVGAgentBundle:CommunityEvent:layout.html.twig' %}
+
+{% set translation_domain = 'HVGAgentBundle' %}{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'communityevent.delete.title'|trans }}{% endblock %}
+
+{% block communityevent %}
+    <div class="row" id="page-delete">
+        <div class="col-md-6">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ 'communityevent.delete.title'|trans }}</h3>
+                </div>
+                <div class="panel-body">
+                    <dl class="dl-horizontal">
+                        <dt>{{ 'communityevent.form.name'|trans }}</dt><dd>{% if communityevent.name %}{{ communityevent.name }}{% endif %}</dd>
+                        <dt>{{ 'communityevent.form.community'|trans }}</dt><dd>{% if communityevent.community %}{{ communityevent.community }}{% endif %}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        {{ form_start(deleteForm) }}
+        {{ form_widget(deleteForm) }}
+        <div class="col-md-6">
+            <div class="btn-toolbar">
+                <div class="btn-group"><button type="submit" class="btn btn-danger">{{ icon('times fa-fw') }}&nbsp;{{ 'communityevent.delete.submit'|trans }}</button></div>
+                <div class="btn-group"><a type="button" class="btn btn-default" href="{{ path('agent_communityevent_show', {'communityevent' : communityevent.id}) }}">{{ icon('times fa-fw') }}&nbsp;{{ 'communityevent.delete.cancel'|trans }}</a></div>
+            </div>
+        </div>
+        {{ form_end(deleteForm) }}
+    </div>
+    <!-- /#page-list -->
+{% endblock %}

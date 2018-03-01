@@ -126,5 +126,43 @@ class AccessGuard
     {
         return $this->community;
     }
-}
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $accesslogs;
 
+
+    /**
+     * Add accesslog
+     *
+     * @param \HVG\SystemBundle\Entity\AccessLog $accesslog
+     *
+     * @return AccessGuard
+     */
+    public function addAccesslog(\HVG\SystemBundle\Entity\AccessLog $accesslog)
+    {
+        $this->accesslogs[] = $accesslog;
+
+        return $this;
+    }
+
+    /**
+     * Remove accesslog
+     *
+     * @param \HVG\SystemBundle\Entity\AccessLog $accesslog
+     */
+    public function removeAccesslog(\HVG\SystemBundle\Entity\AccessLog $accesslog)
+    {
+        $this->accesslogs->removeElement($accesslog);
+    }
+
+    /**
+     * Get accesslogs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccesslogs()
+    {
+        return $this->accesslogs;
+    }
+}

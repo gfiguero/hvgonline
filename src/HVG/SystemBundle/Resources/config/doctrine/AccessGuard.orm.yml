@@ -12,6 +12,9 @@ HVG\SystemBundle\Entity\AccessGuard:
         guests:
             targetEntity: HVG\SystemBundle\Entity\Guest
             mappedBy: accessguard
+        accesslogs:
+            targetEntity: HVG\SystemBundle\Entity\AccessLog
+            mappedBy: accessguard
     manyToOne:
         community:
             targetEntity: HVG\SystemBundle\Entity\Community

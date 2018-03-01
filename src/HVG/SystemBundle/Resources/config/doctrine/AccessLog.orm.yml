@@ -1,0 +1,38 @@
+HVG\SystemBundle\Entity\AccessLog:
+    type: entity
+    table: AccessLog
+    repositoryClass: HVG\SystemBundle\Entity\AccessLogRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        checkpoint:
+            targetEntity: HVG\SystemBundle\Entity\Checkpoint
+            inversedBy: accesslogs
+        accessguard:
+            targetEntity: HVG\SystemBundle\Entity\AccessGuard
+            inversedBy: accesslogs
+    fields:
+        description:
+            type: text
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

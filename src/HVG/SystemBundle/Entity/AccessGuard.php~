@@ -3,9 +3,9 @@
 namespace HVG\SystemBundle\Entity;
 
 /**
- * Checkpoint
+ * AccessGuard
  */
-class Checkpoint
+class AccessGuard
 {
     /**
      * @var integer
@@ -50,7 +50,7 @@ class Checkpoint
      *
      * @param string $name
      *
-     * @return Checkpoint
+     * @return AccessGuard
      */
     public function setName($name)
     {
@@ -74,7 +74,7 @@ class Checkpoint
      *
      * @param \HVG\SystemBundle\Entity\Guest $guest
      *
-     * @return Checkpoint
+     * @return AccessGuard
      */
     public function addGuest(\HVG\SystemBundle\Entity\Guest $guest)
     {
@@ -108,7 +108,7 @@ class Checkpoint
      *
      * @param \HVG\SystemBundle\Entity\Community $community
      *
-     * @return Checkpoint
+     * @return AccessGuard
      */
     public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
     {
@@ -126,43 +126,5 @@ class Checkpoint
     {
         return $this->community;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $accesslogs;
-
-
-    /**
-     * Add accesslog
-     *
-     * @param \HVG\SystemBundle\Entity\AccessLog $accesslog
-     *
-     * @return Checkpoint
-     */
-    public function addAccesslog(\HVG\SystemBundle\Entity\AccessLog $accesslog)
-    {
-        $this->accesslogs[] = $accesslog;
-
-        return $this;
-    }
-
-    /**
-     * Remove accesslog
-     *
-     * @param \HVG\SystemBundle\Entity\AccessLog $accesslog
-     */
-    public function removeAccesslog(\HVG\SystemBundle\Entity\AccessLog $accesslog)
-    {
-        $this->accesslogs->removeElement($accesslog);
-    }
-
-    /**
-     * Get accesslogs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAccesslogs()
-    {
-        return $this->accesslogs;
-    }
 }
+

@@ -12,6 +12,9 @@ HVG\SystemBundle\Entity\Checkpoint:
         guests:
             targetEntity: HVG\SystemBundle\Entity\Guest
             mappedBy: checkpoint
+        accesslogs:
+            targetEntity: HVG\SystemBundle\Entity\AccessLog
+            mappedBy: checkpoint
     manyToOne:
         community:
             targetEntity: HVG\SystemBundle\Entity\Community

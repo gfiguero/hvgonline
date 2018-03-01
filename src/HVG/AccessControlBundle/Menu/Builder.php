@@ -42,6 +42,12 @@ class Builder implements ContainerAwareInterface
                 'checkpoint' => $checkpoint->getId(),
             )))->setLabel($accessguard->getName());
 
+            $topmenu->addChild('topmenu.accesslog', array('route' => 'accesscontrol_accesslog_index', 'routeParameters' => array(
+                'hash' => $hash,
+                'accessguard' => $accessguard->getId(),
+                'checkpoint' => $checkpoint->getId(),
+            )))->setLabel('accesslog.index.link')->setExtras(array('translation_domain' => 'HVGAccessControlBundle'));
+
 //            $topmenu->addChild('topmenu.guest', array('route' => 'accesscontrol_guest_index', 'routeParameters' => array(
 //                'hash' => $hash,
 //                'accessguard' => $accessguard->getId(),
@@ -51,7 +57,7 @@ class Builder implements ContainerAwareInterface
                 'hash' => $hash,
                 'accessguard' => $accessguard->getId(),
                 'checkpoint' => $checkpoint->getId(),
-            )))->setLabel('accessmonitor.index.home')->setExtras(array('translation_domain' => 'HVGAccessControlBundle'));
+            )))->setLabel('accessmonitor.index.link')->setExtras(array('translation_domain' => 'HVGAccessControlBundle'));
         }
 
         return $topmenu;

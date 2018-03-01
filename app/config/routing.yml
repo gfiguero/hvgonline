@@ -55,5 +55,5 @@ root:
     path: /
     defaults:
         _controller: FrameworkBundle:Redirect:urlRedirect
-        path: /public
+        path: /login
         permanent: true

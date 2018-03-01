@@ -24,4 +24,4 @@ hvg_public_broker:
 
 hvg_public_page:
     resource: "@HVGPublicBundle/Resources/config/routing/page.yml"
-    prefix:   /
+    prefix:   /page

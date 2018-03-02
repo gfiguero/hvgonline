@@ -14,8 +14,10 @@
             <table class="table table-middle">
             {% for log in accesslogs %}
                 <tr>
-                    <td>{{ log.createdat|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLL y - HH:mm") }}</td>
+                    <td>{{ log.createdat|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d LLLL HH:mm") }}</td>
                     <td>{{ log.description }}</td>
+                    <td>{{ log.accessguard.name }}</td>
+                    <td>{{ log.checkpoint.name }}</td>
                 </tr>
             {% endfor %}
             </table>

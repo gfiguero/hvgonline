@@ -224,6 +224,10 @@ class Builder implements ContainerAwareInterface
             'agent_communityevent_edit',
             'agent_communityevent_delete',
         )));
+        $sidemenu['sidemenu.community.root']->addChild('sidemenu.community.accesslog', array('route' => 'agent_accesslog_index'))->setExtras(array('translation_domain' => 'HVGAgentBundle', 'routes' => array(
+            'agent_accesslog_index',
+            'agent_accesslog_new',
+        )));
 
         return $sidemenu;
     }

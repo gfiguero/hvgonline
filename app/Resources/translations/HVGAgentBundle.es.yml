@@ -37,6 +37,7 @@ sidemenu:
         carpark: Estacionamientos de propietarios
         guestcarpark: Estacionamientos de visita
         communityevent: Eventos de comunidad
+        accesslog: Registros de bitácora
     unitgroup: Torres
     unit:
         root: Departamentos

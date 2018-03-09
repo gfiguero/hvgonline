@@ -27,7 +27,7 @@ class TicketController extends Controller
         $unitgroups = $em->getRepository('HVGSystemBundle:UnitGroup')->findByCommunity($community);
         $units = $em->getRepository('HVGSystemBundle:Unit')->findByUnitgroup($unitgroup);
 
-        $sort = $request->query->has('sort') ? $request->query->get('sort') : 'createdAt';
+        $sort = $request->query->has('sort') ? $request->query->get('sort') : 'updatedAt';
         $direction = $request->query->has('direction') ? $request->query->get('direction') : 'DESC';
 
         $tickets = $em->getRepository('HVGSystemBundle:Ticket')->findByStatus($status, $community, $unitgroup, $unit, $sort, $direction, $user);

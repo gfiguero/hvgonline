@@ -932,4 +932,33 @@ class Community
     {
         return $this->zones;
     }
+    /**
+     * @var string
+     */
+    private $host;
+
+
+    /**
+     * Set host
+     *
+     * @param string $host
+     *
+     * @return Community
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    /**
+     * Get host
+     *
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
 }

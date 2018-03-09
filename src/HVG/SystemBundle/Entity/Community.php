@@ -932,4 +932,72 @@ class Community
     {
         return $this->zones;
     }
+    /**
+     * @var string
+     */
+    private $host;
+
+
+    /**
+     * Set host
+     *
+     * @param string $host
+     *
+     * @return Community
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    /**
+     * Get host
+     *
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $processes;
+
+
+    /**
+     * Add process
+     *
+     * @param \HVG\SystemBundle\Entity\Process $process
+     *
+     * @return Community
+     */
+    public function addProcess(\HVG\SystemBundle\Entity\Process $process)
+    {
+        $this->processes[] = $process;
+
+        return $this;
+    }
+
+    /**
+     * Remove process
+     *
+     * @param \HVG\SystemBundle\Entity\Process $process
+     */
+    public function removeProcess(\HVG\SystemBundle\Entity\Process $process)
+    {
+        $this->processes->removeElement($process);
+    }
+
+    /**
+     * Get processes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProcesses()
+    {
+        return $this->processes;
+    }
 }

@@ -1,0 +1,13 @@
+{% extends 'HVGPublicBundle:Page:layout.html.twig' %}
+
+{% trans_default_domain 'HVGPublicBundle' %}
+
+{% block title %}{{ 'page.index.title'|trans }}{% endblock %}
+
+{% block public %}
+    <div class="row" id="page-index">
+        <div class="col-md-12">
+            <h1 class="page-header">{{ 'page.index.title'|trans }}</h1>
+        </div>
+    </div>
+{% endblock %}

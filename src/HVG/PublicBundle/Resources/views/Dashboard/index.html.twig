@@ -2,110 +2,13 @@
 
 {% trans_default_domain 'HVGPublicBundle' %}
 
-{% block title %}{{ 'dashboard.index.title'|trans }}{% endblock %}
+{% block title %}{{ 'page.index.title'|trans }}{% endblock %}
 
 {% block public %}
     <div class="container">
         <div class="row" id="page-header">
             <div class="col-md-12">
-                <h1 class="page-header">{{ 'dashboard.index.title'|trans }}</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h1 class="text-center">
-                                    {{ icon('ticket fa-fw fa-2x') }}
-                                </h1>
-                            </div>
-                            <div class="col-md-8">
-                                <h1>{{ 'ticket.index.title'|trans }}</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="text-right">
-                            <a href="{{ path('public_ticket_new', {hash: community.hash}) }}">
-                                <h4>Acceder&nbsp;{{ icon('arrow-circle-right') }}</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h1 class="text-center">
-                                    {{ icon('paw fa-fw fa-2x') }}
-                                </h1>
-                            </div>
-                            <div class="col-md-8">
-                                <h1>{{ 'pet.index.title'|trans }}</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="text-right">
-                            <a href="{{ path('public_pet_new', {hash: community.hash}) }}">
-                                <h4>Acceder&nbsp;{{ icon('arrow-circle-right') }}</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-{#}
-            <div class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h1 class="text-center">
-                                    {{ icon('key fa-fw fa-2x') }}
-                                </h1>
-                            </div>
-                            <div class="col-md-8">
-                                <h1>{{ 'accesspermission.index.title'|trans }}</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="text-right">
-                            <a href="{{ path('public_accesspermission_new', {hash: community.hash}) }}">
-                                <h4>Acceder&nbsp;{{ icon('arrow-circle-right') }}</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-{#}
-            <div class="col-md-6">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h1 class="text-center">
-                                    {{ icon('shield fa-fw fa-2x') }}
-                                </h1>
-                            </div>
-                            <div class="col-md-8">
-                                <h1>{{ 'unitinsurancepolicy.index.title'|trans }}</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="text-right">
-                            <a href="{{ path('public_unitinsurancepolicy_new', {hash: community.hash}) }}">
-                                <h4>Acceder&nbsp;{{ icon('arrow-circle-right') }}</h4>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <h1 class="page-header">{{ 'page.index.title'|trans }}</h1>
             </div>
         </div>
     </div>

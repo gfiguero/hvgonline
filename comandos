@@ -23,6 +23,7 @@ php app/console generate:bundle --namespace HVG/PublicBundle --dir src --bundle-
 php app/console generate:bundle --namespace HVG/AccessControlBundle --dir src --bundle-name HVGAccessControlBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/AccessControlBundle --dir src --bundle-name HVGAccessControlBundle --format yml --shared --no-interaction
 php app/console generate:bundle --namespace HVG/ExchangeBundle --dir src --bundle-name HVGExchangeBundle --format yml --shared --no-interaction
+php app/console generate:bundle --namespace HVG/ProcessBundle --dir src --bundle-name HVGProcessBundle --format yml --shared --no-interaction
 
 php app/console assetic:dump --env=dev
 

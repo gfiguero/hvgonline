@@ -62,9 +62,11 @@ php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProviderStaff --
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:ProviderService --format=yml --with-write --overwrite --no-interaction --route-prefix=providerservice
 
 ---------------- Seguimiento de Proyectos
+php app/console doctrine:generate:entities HVGSystemBundle:Process --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProcessAction --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Project --path=src
-php app/console doctrine:generate:entities HVGSystemBundle:ProjectObservation --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:ProjectAction --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ProjectObservation --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:ProjectStatus --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:ProjectProposal --path=src
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Project --format=yml --with-write --overwrite --no-interaction --route-prefix=project

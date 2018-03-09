@@ -31,7 +31,7 @@
                                 <th>{{ knp_pagination_sortable(tickets, 'ticket.form.zone'|trans, 'zone') }}{% if sort == 'zone' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 <th>{{ knp_pagination_sortable(tickets, 'ticket.form.liability'|trans, 'liability') }}{% if sort == 'liability' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 <th class="col-md-5">{{ 'ticket.form.description'|trans }}</th>
-                                <th style="min-width: 200px;">{{ knp_pagination_sortable(tickets, 'ticket.form.createdAt'|trans, 'createdAt') }}{% if sort == 'createdAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th style="min-width: 200px;">{{ knp_pagination_sortable(tickets, 'ticket.form.updatedAt'|trans, 'updatedAt') }}{% if sort == 'updatedAt' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -51,7 +51,7 @@
                                 <td>{% if ticket.zone %}{{ ticket.zone.name }}{% endif %}</td>
                                 <td>{% if ticket.liability %}{{ ticket.liability.person }}{% endif %}</td>
                                 <td>{% if ticket.description %}{{ ticket.description }}{% endif %}</td>
-                                <td>{% if ticket.createdAt %}<span class="fa fa-calendar-o fa-fw" data-toggle="tooltip" data-placement="left" title="{{ ticket.createdAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL y - HH:mm") }}"></span>&nbsp;{{ ticket.createdAt|ago }}{% endif %}</td>
+                                <td>{% if ticket.updatedAt %}<span class="fa fa-calendar-o fa-fw" data-toggle="tooltip" data-placement="left" title="{{ ticket.updatedAt|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "dd LLLL y - HH:mm") }}"></span>&nbsp;{{ ticket.updatedAt|ago }}{% endif %}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

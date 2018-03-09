@@ -1,0 +1,4 @@
+services:
+#    hvg_process.example:
+#        class: HVG\ProcessBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

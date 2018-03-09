@@ -1,0 +1,3 @@
+hvg_process_homepage:
+    path:     /
+    defaults: { _controller: HVGProcessBundle:Default:index }

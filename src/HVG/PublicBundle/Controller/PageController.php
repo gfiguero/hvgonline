@@ -10,8 +10,12 @@ class PageController extends Controller
 {
     public function indexAction(Request $request)
     {
-        dump($this->getRequest()->getHost());
-        die();
+        $host = $this->getRequest()->getHost();
         $em = $this->getDoctrine()->getManager();
+        $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHost($host);
+        dump($community);
+        return $this->render('HVGPublicBundle:Page:index.html.twig', array(
+            'community' => $community,
+        ));
     }
 }

@@ -1,0 +1,17 @@
+{% extends 'HVGPublicBundle:Base:base.html.twig' %}
+{% use 'HVGPublicBundle:Page:header.html.twig' %}
+{% use 'HVGPublicBundle:Page:sidebar.html.twig' %}
+
+{% block body %}
+    {% block header %}{{ parent() }}{% endblock %}
+    <div class="container-fluid">
+        <div class="row" id="page-layout">
+            <div class="col-md-2">
+                {% block sidebar %}{{ parent() }}{% endblock %}
+            </div>
+            <div class="col-md-10">
+                {% block public %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

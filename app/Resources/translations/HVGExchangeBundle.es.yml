@@ -83,6 +83,7 @@ ticket:
         ticketstatus: Estado
         area: Area
         createdAt: Registrado
+        updatedAt: Actualizado
         description: Descripción
         contactname: Nombre de Contacto
         contactphone: Número de Contacto

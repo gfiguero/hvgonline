@@ -1,0 +1,44 @@
+HVG\SystemBundle\Entity\Process:
+    type: entity
+    table: Process
+    repositoryClass: HVG\SystemBundle\Entity\ProcessRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: processes
+    oneToMany:
+        actions:
+            targetEntity: HVG\SystemBundle\Entity\ProcessAction
+            mappedBy: process
+    fields:
+        name:
+            type: string
+            length: 200
+            nullable: true
+        description:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: false
+    lifecycleCallbacks: {  }

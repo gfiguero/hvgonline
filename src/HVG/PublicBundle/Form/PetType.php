@@ -11,6 +11,8 @@ use HVG\PublicBundle\Form\Type\PetGroupType;
 use HVG\PublicBundle\Form\Type\PetColorType;
 use HVG\PublicBundle\Form\Type\PetGenderType;
 
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 class PetType extends AbstractType
 {
     /**
@@ -40,7 +42,7 @@ class PetType extends AbstractType
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))
-            ->add('email', null, array(
+            ->add('email', EmailType::class, array(
                 'label' => 'pet.form.email',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
@@ -73,20 +75,26 @@ class PetType extends AbstractType
                 'required' => true,
                 'placeholder' => 'Seleccione Color',
             ))
+            ->add('weight', null, array(
+                'label' => 'pet.form.weight',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg', 'placeholder' => 'pet.form.placeholder.weight'),
+                'translation_domain' => 'HVGPublicBundle',
+                'required' => true,
+            ))
             ->add('race', null, array(
                 'label' => 'pet.form.race',
                 'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
                 'translation_domain' => 'HVGPublicBundle',
             ))
-            ->add('weight', null, array(
-                'label' => 'pet.form.weight',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg' ),
+            ->add('rfid', null, array(
+                'label' => 'pet.form.rfid',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'class' => 'input input-lg', 'placeholder' => 'pet.form.placeholder.rfid'),
                 'translation_domain' => 'HVGPublicBundle',
-                'required' => true,
+                'required' => false,
             ))
             ->add('photographyfile', 'file', array(
                 'label' => 'pet.form.photography',
-                'attr'  => array( 'label_col' => 4, 'widget_col' => 8 ),
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'data-msg-placeholder' => 'Archivo de imagen'),
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))

@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             {% if community is defined %}
-                <a class="navbar-brand" href="{{ path('public_dashboard_index', {'hash' : community.hash}) }}">{{ community }}</a>
+                <a class="navbar-brand" href="{{ path('public_page_index', {'hash' : community.hash}) }}">{{ community }}</a>
             {% endif %}
         </div>
         <div class="navbar-collapse collapse">

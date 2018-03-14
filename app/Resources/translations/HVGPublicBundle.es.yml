@@ -2,6 +2,10 @@ dashboard:
     index:
         title: Atención a residentes - HVG Administraciones
 
+page:
+    index:
+        title: Atención a residentes - HVG Administraciones
+
 unitinsurancepolicy:
     index:
         title: Pólizas de Seguros
@@ -34,7 +38,7 @@ pet:
         title: Registro de Mascotas
     new:
         title: Solicitud de Autorización para Tenencia Responsable de Mascotas
-        submit: Registrar mascota
+        submit: Solicitar autorización
         flash: La mascota ha sido registrada correctamente.
         message: |
             <p>Mediante el presente formulario, solicito al comité de administración la autorización para mantener y criar al interior de nuestro departamento una mascota comprometiéndome desde ya a su tenencia responsable y a cumplir el reglamento interno sobre tenencia responsable de mascotas.</p>
@@ -44,91 +48,97 @@ pet:
         name: Nombre de la mascota
         owner: Persona responsable
         race: Raza (opcional)
-        weight: Peso [Kg]
+        weight: Peso (gramos)
         gender: Género
         color: Color
         photography: Fotografía
         phone: Teléfono
         email: Email
+        rfid: Número de microchip (opcional)
         petgroup: Especie de mascota
-        terms: 'Declaro conocer, aceptar el <a href="#" data-toggle="modal" data-target="#modalTerms">reglamento sobre tenencia responsable de mascotas</a> y me comprometo a su fiel cumplimiento y declaro que el propietario de la vivienda esta en conocimiento aceptando la presentación de esta solicitud.'
+        terms: |
+            <p>Declaro conocer y aceptar el <a href="#" data-toggle="modal" data-target="#modalTerms">reglamento sobre tenencia responsable de mascotas</a> y me comprometo a su fiel cumplimiento.
+            <p>Declaro que el propietario de la vivienda acepta la presentación de esta solicitud.</p>
+            <p>Declaro que esta mascota cuenta con los cuidados veterinarios adecuados y con todas sus vacunas al día.</p>
+        placeholder:
+            weight: 1 Kilogramo = 1000 gramos
+            rfid: 123456789012345
+            photography: mimascota.jpg
     terms:
         title: Reglamento sobre tenencia responsable de mascotas
         close: Cerrar
         body: |
-            <p>El reglamento de copropiedad de nuestra comunidad dispone que salvo autorización escrita del comité de administración, se prohíbe tener perros, gatos o animales que causen ruidos molestos, amenacen a los transeúntes o residentes o atenten contra la higiene del recinto del condominio.</p>
-            <p>Dado lo anterior y conscientes de una realidad que prevalece por historia en nuestro condominio y que no podemos desconocer, el comité de administración ha resuelto establecer normas mínimas de tenencia responsable que deberán cumplir las personas que deseen contar con autorización para mantener mascotas al interior del condominio, sin perjuicio de la facultad de revocar dichas autorizaciones en los casos en que no se dé cumplimiento a las siguientes disposiciones.</p>
-
+            <h2>Tenencia Responsable de Mascotas</h2>
+            <p class="text-justify">Conscientes de una realidad que prevalece por historia y que no podemos desconocer, el Comité de Administración ha resuelto establecer normas mínimas de tenencia responsable que deberán cumplir las personas que deseen contar con autorización para mantener mascotas al interior del condominio, sin perjuicio de la facultad de revocar dichas autorizaciones en los casos en que no se dé cumplimiento a las siguientes disposiciones.</p>
             <h4>Sobre tipos de mascotas permitidos en el condominio</h4>
-            <p>La comunidad es un conjunto habitacional residencial, por lo que, toda mascota debe guardar relación con las condiciones propias de un condominio residencial. En consecuencia, no se autorizará la tenencia de especies de tamaño grande, de conocida agresividad, o cuya tenencia tenga restricciones sanitarias o estén prohibidas por ley.</p>
-
+            <p class="text-justify">La comunidad es un conjunto habitacional residencial, por lo que, toda mascota debe guardar relación con las condiciones propias de un condominio residencial. En consecuencia, no se autorizará la tenencia de especies de tamaño grande, de conocida agresividad, o cuya tenencia tenga restricciones sanitarias o estén prohibidas por ley.</p>
+            <p class="text-justify">La ocurrencia de actos de violencia u agresión con participación de mascotas facultara al comité de administración para revocar la autorización para la tenencia del animal.</p>
             <h4>Sobre la cantidad de mascotas por departamento</h4>
-            <p>Atendido el metraje de las viviendas de este condominio sólo se autorizará la tenencia de una mascota por departamento, excepcionalmente se podrán autorizar la crianza de una segunda o tercera mascota si se mantiene un historial de tenencia responsable y no se generan infracciones al reglamento.</p>
-
+            <p class="text-justify">Atendido el metraje de las viviendas de este condominio sólo se autorizará la tenencia de una mascota por departamento, excepcionalmente se podrán autorizar la crianza de una segunda o tercera mascota si se mantiene un historial de tenencia responsable, no se generan infracciones al reglamento o molestias a los vecinos como ruidos, olores u otras consecuencias negativas que afecten las áreas comunes u otras unidades.</p>
             <h4>Sobre el cuidado de las mascotas</h4>
-            <p>Los residentes responsables de una mascota deberán adoptar todos los cuidados necesarios para garantizar el bienestar del animal y evitar la generación de ruidos, olores u otros efectos que pudiesen perjudicar a los demás residentes del condominio.</p>
-
-            <p>En este sentido será obligatorio:
+            <p class="text-justify">Toda mascota o animal de compañía, cualquiera sea su especie y raza, deberá recibir un buen trato de parte de su dueño o poseedor y de la comunidad en general, sin ser sometidos a sufrimientos a lo largo de su vida, como el abandono, maltrato, crueldad y la omisión de cubrir sus necesidades físicas, sanitarias, ambientales y de comportamiento.</p>
+            <p class="text-justify">La tenencia responsable de mascotas o animales de compañía corresponde al conjunto de obligaciones que contrae una persona cuando decide aceptar y mantener una mascota o animal de compañía, y que consiste, entre otras, en registrarlo ante la autoridad competente, proporcionarle alimento, albergue y buen trato, brindarle los cuidados veterinarios indispensables para su bienestar y no someterlo a sufrimientos a lo largo de su vida. La tenencia responsable comprende también el respeto a las normas de salud y seguridad pública que sean aplicables, así como a las reglas sobre responsabilidad a que están sujetas las personas que incurran en infracción de ellas, y la obligación de adoptar todas las medidas necesarias para evitar que la mascota o animal de compañía, cause daños a la persona o propiedad de otro.</p>
+            <p class="text-justify">En consecuencia, los residentes responsables de una mascota deberán adoptar todos los cuidados necesarios para garantizar el bienestar del animal y evitar la generación de ruidos, olores u otros efectos que pudiesen perjudicar a los demás residentes del condominio o sus áreas comunes.</p>
+            <p class="text-justify">En este sentido será obligatorio:
                 <ul>
-                    <li>Mantener a los animales con todas las vacunas y tratamientos necesarios para su normal desarrollo, tema que será requerido y condicionante al momento de solicitar la autorización</li>
-                    <li>Alimentar y cuidar a las mascotas diariamente, quedando prohibido el abandono de animales tanto al interior de departamentos como así también en las áreas comunes.</li>
-                    <li>Pasear a las mascotas con una correa en todo momento, estando prohibido el tránsito de cualquier tipo de mascotas en áreas comunes sin correa.</li>
-                    <li>Recoger todas las fecas de su mascota y desecharlas en los botes de basura envueltas en papel o bolsa</li>
-                    <li>Diluir la orina de su mascota con solución acuosa que neutralice el olor y sea inocua al ambiente (por ejemplo agua con vinagre blanco en partes iguales.</li>
-                    <li>Está prohibido que las mascotas orinen al interior de los edificios y sus áreas comunes, en los portales de accesos a los edificios, administración, club house, etc y en zona de esparcimiento de las personas como la cancha de tenis, multicancha, el área los quinchos, área de piscina y su jardín circundante y otra que en el futura se defina como tal</li>
-                    <li>Evitar la formación de peleas entre mascotas.</li>
-                    <li>El uso de ascensores será preferencial para peatones sin mascotas, y si una mascota se encuentra al interior del ascensor, deberá abstenerse de ingresar con una nueva mascota para evitar la ocurrencia de peleas y daños a terceros.</li>
+                    <li class="text-justify">Mantener a los animales con todas las vacunas y tratamientos necesarios para su normal desarrollo, tema que será requerido y condicionante al momento de solicitar la autorización</li>
+                    <li class="text-justify">Alimentar y cuidar a las mascotas diariamente, quedando prohibido el abandono de animales tanto al interior de departamentos como así también en las áreas comunes.</li>
+                    <li class="text-justify">Pasear a las mascotas con una correa en todo momento, estando prohibido el tránsito de cualquier tipo de mascotas en áreas comunes sin correa.</li>
+                    <li class="text-justify">Recoger todas las fecas de su mascota inmediatamente y desecharlas en los botes de basura envueltas en papel o bolsa</li>
+                    <li class="text-justify">Diluir la orina de su mascota inmediatamente con solución acuosa que neutralice el olor y sea inocua al ambiente (por ejemplo, agua con vinagre blanco en partes iguales)</li>
+                    <li class="text-justify">Está prohibido que las mascotas orinen al interior de los edificios y sus áreas comunes, en los portales de accesos a los edificios, administración, club house, etc y en zona de esparcimiento de las personas como la cancha de tenis, multicancha, el área los quinchos, área de piscina y su jardín circundante y otra que en el futura se defina como tal</li>
+                    <li class="text-justify">Evitar la generación de ruidos molestos producto de ladridos, maullidos o similares, lo cual regirá durante las 24 horas del día.</li>
+                    <li class="text-justify">Evitar la formación de peleas entre mascotas.</li>
+                    <li class="text-justify">El uso de ascensores será preferencial para peatones sin mascotas, y si una mascota se encuentra al interior del ascensor, deberá abstenerse de ingresar con una nueva mascota para evitar la ocurrencia de peleas y daños a terceros.</li>
+                    <li class="text-justify">Abstenerse de arrojar cualquier clase de liquido por los despiches del balcón, considerándose un agravante adicional el que estos líquidos contengan restos de orina, fechas u otros desechos generados por mascotas.</li>
+                    <li class="text-justify">Todas las mascotas o animales de compañía de la especie canina y felina, deberán portar otros medios de identificación visibles al momento de circular fuera de su domicilio, residencia o lugar destinado para su cuidado, los que deberán indicar el nombre del animal, número de microchip y el número telefónico de contacto de su dueño o poseedor.</li>
                 </ul>
             </p>
-
             <h4>Sobre el registro de mascotas</h4>
-            <p>Toda solicitud de autorización para mantener una mascota al interior de los departamentos, deberá ser presentada por vía web completando el formulario respectivo en el portal www.condominiomallen.cl en donde deberá informar.</p>
-
+            <p class="text-justify">Toda solicitud de autorización para mantener una mascota al interior de los departamentos deberá ser presentada por vía web completando el formulario respectivo en el portal del condominio en donde deberá informar.</p>
             <ul>
-                <li>Sobre el responsable de la mascota
-                    <ul>
-                        <li>Nombre Completo</li>
-                        <li>RUN</li>
-                        <li>Departamento</li>
-                        <li>Teléfono</li>
-                        <li>Correo electrónico</li>
-                    </ul>
-                </li>
-
-                <li>Sobre la Mascota
-                    <ul>
-                        <li>Nombre</li>
-                        <li>Especie</li>
-                        <li>Raza</li>
-                        <li>Fotografía de cuerpo completo</li>
-                        <li>Genero</li>
-                        <li>Peso</li>
-                    </ul>
-                </li>
-                <li>Se deberá aceptar el conocimiento de las normas relativas a la tenencia responsable de mascotas y comprometer su cumplimiento.</li>
-                <li>Se deberá declarar que el propietario del inmueble está en conocimiento y acepta la presente solicitud.</li>
-                <li>Se establecerá un periodo de marcha blanca para el registro, el cual será informado oportunamente, plazo que vencido dará curso a la aplicación de todas las disposiciones que se establecen por reglamento. La Administración del condominio informará por vía correo electrónico la aceptación o rechazo de la solicitud de autorización para tenencia de mascotas, las solicitudes rechazadas podrán ser apeladas por escrito a través del formulario de apelaciones, el cual podrá ser retirado en secretaría y al cual deberá acompañar los antecedentes que respalden la apelación.</li>
+                <li>Sobre el responsable de la mascota.</li>
+                <ul>
+                    <li>Nombre Completo</li>
+                    <li>RUN</li>
+                    <li>Departamento</li>
+                    <li>Teléfono</li>
+                    <li>Correo electrónico</li>
+                </ul>
+                <li>Sobre la Mascota.</li>
+                <ul>
+                    <li>Nombre</li>
+                    <li>Numero de Chip (15 dígitos)</li>
+                    <li>Especie</li>
+                    <li>Raza</li>
+                    <li>Fotografía de cuerpo completo</li>
+                    <li>Genero</li>
+                    <li>Peso</li>
+                </ul>
+                <li class="text-justify">Se deberá aceptar el conocimiento de las normas relativas a la tenencia responsable de mascotas y comprometer su cumplimiento.</li>
+                <li class="text-justify">Se deberá declarar que el propietario del inmueble está en conocimiento y acepta la presente solicitud.</li>
+                <li class="text-justify">Se deberá declarar que la mascota cuenta con un tratamiento veterinario adecuado con todas sus vacunas al día.</li>
+                <li class="text-justify">Se establecerá un periodo de marcha blanca entre el 10 y el 31 de marzo de 2018, vencido este plazo se dará curso a la aplicación de todas las disposiciones que se establecen por este reglamento y será constitutivo de multa mantener mascotas sin contar con una autorización otorgada en base a las disposiciones de prevente reglamento.</li>
             </ul>
-
-
-            <p>La administración mantendrá un listado público con las mascotas registradas/autorizadas por cada unidad con objeto de permitir la colaboración de la comunidad en la supervisión del cumplimiento del presente registro. Quienes soliciten la autorización para mantener una mascota deberán aceptar que los datos de su mascota sean publicados junto al número de departamento.</p>
-            <p>El presente registro no sustituye el registro de mascotas que se deberá efectuar en el registro nacional de mascotas conforme a la legislación vigente. La falta de autorización/registro para mantener una mascota, la entrega de datos falsos o inexactos serán causal suficiente para hacer efectivas las sanciones por infracción al presente reglamento (multas).</p>
-
+            <p class="text-justify">La Administración del condominio informará por vía correo electrónico la aceptación o rechazo de la solicitud de autorización para tenencia de mascotas, las solicitudes rechazadas podrán ser apeladas por escrito completado mediante formulario de contacto disponible en la página web del condominio  al cual deberá acompañar los antecedentes que respalden la apelación.</p>
+            <p class="text-justify">La administración mantendrá un listado público con las mascotas registradas/autorizadas por cada unidad con objeto de permitir la colaboración de la comunidad en la supervisión del cumplimiento del presente registro. Quienes soliciten la autorización para mantener una mascota deberán aceptar que los datos o fotografía de su mascota sean publicados junto al número de departamento.</p>
+            <p class="text-justify">El presente registro no sustituye el registro de mascotas que se deberá efectuar en el registro nacional de mascotas conforme a la legislación vigente en el portal www.registratumascota.cl</p>
+            <p class="text-justify">La falta de autorización/registro para mantener una mascota, la entrega de datos falsos o inexactos serán causal suficiente para hacer efectivas las sanciones por infracción al presente reglamento. (Multas)</p>
             <h4>Sobre el aporte por mascotas</h4>
-            <p>La mantención de las áreas comunes que es utilizada por mascotas implica un costo adicional para la comunidad por la necesidad de habilitar basureros, cartelerías y supervisión del cumplimiento de las normas del presente reglamento, por lo que los responsables de las mascotas que utilicen permanente o eventualmente las áreas comunes deberán efectuar un aporte para solventar estos gastos. El cual será de $1.000 mensuales por cada mascota, valor que será cobrado juntamente con los gastos comunes.</p>
-            <p>Se presumirá que todo perro utiliza a lo menos de forma eventual las áreas comunes por lo que su tenencia implicará necesariamente la obligación de realizar el aporte.</p>
-            <p>El presente aporte no implica un desconocimiento de la obligación de cada propietario respecto del aseo de las áreas que sean ensuciadas por su mascota.</p>
-
+            <p class="text-justify">La mantención de las áreas comunes que es utilizada por mascotas implica un costo adicional para la comunidad por la necesidad de habilitar basureros, cartelerías y supervisión del cumplimiento de las normas del presente reglamento. Dado lo expuesto los responsables de las mascotas que utilicen permanente o eventualmente las áreas comunes deberán efectuar un aporte para solventar estos gastos. El cual será inicialmente de $1.000 mensuales por cada mascota, valor que será cobrado juntamente con los gastos comunes. Y que se incrementara con el tiempo en base a las necesidades que generen en la comunidad la presencia de mascotas.</p>
+            <p class="text-justify">Se presumirá que todo perro utiliza a lo menos de forma eventual las áreas comunes por lo que su tenencia implicará necesariamente la obligación de realizar el aporte.</p>
+            <p class="text-justify">El presente aporte no implica un desconocimiento de la obligación de cada propietario respecto del aseo de las áreas que sean ensuciadas por su mascota.</p>
             <h4>Sobre el cumplimiento de la normativa legal</h4>
-            <p>El responsable de una mascota debe cumplir adicionalmente la normativa legal vigente relativa a la tenencia responsable de mascotas, Ley 21.020, su reglamento, ordenanzas municipales y demás disposiciones legales, pudiendo solicitarse la acreditación del cumplimiento de dichas disposiciones.</p>
-
+            <p class="text-justify">El responsable de una mascota debe cumplir adicionalmente la normativa legal vigente relativa a la tenencia responsable de mascotas, Ley 21.020, su reglamento, ordenanzas municipales y demás disposiciones legales, pudiendo solicitarse la acreditación del cumplimiento de dichas disposiciones.</p>
             <h4>Sobre el incumplimiento del presente reglamento</h4>
-            <p>Toda infracción al presente reglamento, o a la legislación vigente sobre tenencia responsable de mascotas facultará al comité de administración a revocar una autorización que hubiere sido concedida y/o aplicar una o más multas, las que podrán variar entre 1 y 3 UTM, multas que podrán ser aplicadas directamente por la administración o el personal del condominio, para lo cual en el transcurso de los próximos meses se irá implementando un modelo de control visual o electrónico que podrá ser requerido en los momentos que una mascota sea paseada al interior del condominio.</p>
-            <p>Las multas cursadas serán cargadas al gasto común del respectivo departamento, cualquier pago realizado será abonado en primer lugar al pago de multas y el saldo, si lo hubiere, será abonado al gasto común.</p>
-
+            <p class="text-justify">Toda infracción al presente reglamento, al reglamento de copropiedad, o a la legislación vigente sobre tenencia responsable de mascotas facultará al comité de administración a revocar una autorización que hubiere sido concedida y/o aplicar una o más multas, cada una de las cuales podrá ser de hasta 3 UTM, multas que podrán ser aplicadas por la administración de oficio o previa denuncia de  cualquier persona, será notificada por el personal de seguridad del condominio, y el presunto infractor podrá efectuar sus descargos vía formulario de contacto disponible en el sitio web del condominio, para lo cual se le concederá un plazo de 3 días corridos. Esta resolución será apelable en el plazo de 3 días.</p>
+            <p class="text-justify">La administración del condominio podrá disponer de medios electrónicos para leer el chip de las mascotas se utilicen áreas comunes, siendo obligación de los responsables de cada mascota otorgar las facilidades para efectuar el referido control</p>
+            <p class="text-justify">Las unidades a las que se les revoque la autorización para mantener mascotas deberán retirarlas del condominio en un plazo máximo de 15 días corridos, luego de lo cual será constitutivo de una multa semanal la sola tenencia del animal.</p>
+            <p class="text-justify">Las multas cursadas serán cargadas al gasto común del respectivo departamento, cualquier pago realizado será abonado en primer lugar al pago de multas y el saldo, si lo hubiere, será abonado al gasto común.</p>
+            <p class="text-justify">Se solicita a todo propietario informar de la existencia de estas disposiciones a sus arrendatarios u ocupantes, incorporando su concomimiento conjuntamente con el reglamento de copropiedad en los respectivos contratos de arriendo. Sin perjuicio de lo cual las multas cursadas serán siempre cargadas a cada departamento, sin importar si la infracción es cometida por un arrendatario, visitante u otra persona que ingresa al condominio con autorización de un residente o propietario.</p>
+            <p class="text-justify">El comité de administración podrá introducir modificaciones al presente reglamento para adecuarlo a las necesidades del condominio y a las contingencias que se generen con su puesta en marcha.</p>
             <h4>Hazte Cargo</h4>
-            <p>Te invitamos a disfrutar de tu mascota brindándole todos los cuidados, educación y cariño como un integrante más de la familia. Adjuntamos un manual de tenencia responsable con el cual podrás interiorizarte más en la materia.</p>'
-
+            <p class="text-justify">Te invitamos a disfrutar de tu mascota brindándole todos los cuidados, educación y cariño como un integrante más de la familia. En la página web del condominio, sección documentos, podrás encontrar un manual de tenencia responsable con el cual podrás interiorizarte más en la materia.</p>
 ticket:
     index:
         title: Formulario de contacto

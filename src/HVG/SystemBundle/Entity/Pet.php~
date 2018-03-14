@@ -198,6 +198,30 @@ class Pet
     private $photography;
 
     /**
+     * Set photography
+     *
+     * @param string $photography
+     *
+     * @return Pet
+     */
+    public function setPhotography($photography)
+    {
+        $this->photography = $photography;
+
+        return $this;
+    }
+
+    /**
+     * Get photography
+     *
+     * @return string
+     */
+    public function getPhotography()
+    {
+        return $this->photography;
+    }
+
+    /**
      * @Vich\UploadableField(mapping="pet_photography_file", fileNameProperty="photography")
      * @var File
      */
@@ -205,6 +229,7 @@ class Pet
 
     /**
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $photographyfile
+     * @return Pet
      */
     
     public function setPhotographyFile(File $photographyfile = null)
@@ -324,29 +349,6 @@ class Pet
         return $this->color;
     }
 
-    /**
-     * Set photography
-     *
-     * @param string $photography
-     *
-     * @return Pet
-     */
-    public function setPhotography($photography)
-    {
-        $this->photography = $photography;
-
-        return $this;
-    }
-
-    /**
-     * Get photography
-     *
-     * @return string
-     */
-    public function getPhotography()
-    {
-        return $this->photography;
-    }
     /**
      * @var string
      */
@@ -491,5 +493,34 @@ class Pet
     public function getPetgroup()
     {
         return $this->petgroup;
+    }
+    /**
+     * @var integer
+     */
+    private $weight;
+
+
+    /**
+     * Set weight
+     *
+     * @param integer $weight
+     *
+     * @return Pet
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return integer
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 }

@@ -523,4 +523,33 @@ class Pet
     {
         return $this->weight;
     }
+    /**
+     * @var integer
+     */
+    private $rfid;
+
+
+    /**
+     * Set rfid
+     *
+     * @param integer $rfid
+     *
+     * @return Pet
+     */
+    public function setRfid($rfid)
+    {
+        $this->rfid = $rfid;
+
+        return $this;
+    }
+
+    /**
+     * Get rfid
+     *
+     * @return integer
+     */
+    public function getRfid()
+    {
+        return $this->rfid;
+    }
 }

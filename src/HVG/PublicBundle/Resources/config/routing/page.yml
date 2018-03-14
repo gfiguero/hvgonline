@@ -1,5 +1,5 @@
 public_page_index:
-    path:     /
+    path:     /{hash}
     defaults: { _controller: "HVGPublicBundle:Page:index" }
     methods:  [GET]
 

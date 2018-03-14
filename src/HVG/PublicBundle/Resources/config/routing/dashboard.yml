@@ -1,4 +1,4 @@
 public_dashboard_index:
-    path:     /{hash}
+    path:     /{hash}/dashboard
     defaults: { _controller: "HVGPublicBundle:Dashboard:index" }
     methods:  GET

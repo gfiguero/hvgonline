@@ -39,13 +39,13 @@ parameters:
         e: Hembra Esterilizada
         s: Sin sexar
     petcolors:
-        1: Negro
-        2: Blanco
-        3: Café
-        4: Gris
-        5: Blanco y negro
-        6: Blanco y café
-        7: Otro
+        1: Blanco, Perla, Marfil
+        2: Negro, Ébano, Grafito, Azabache
+        3: Gris, Acero, Plomo, Humo, Ceniza, Isabela, Sal pimienta, Azul, Lila, Lavanda, Plateado, Plata
+        4: Crema, Barquillo, Arena, Beige, Cervato
+        5: Amarillo, Anaranjado, Fuego, Naranjo, Dorado, Limón, Albaricoque, Paja, Rubio, Oro
+        6: Café, Marrón, Castaño, Cebellina, Avellana, Chocolate, Pardo, Sepia, Foca, Canela, Caramelo, Ocre
+        7: Rojo, Caoba, Alazan, Óxido, Cobre, Carmesí, Burdeo, Carmín
     ticketstatuses:
         1: Nuevo
         2: Asignado

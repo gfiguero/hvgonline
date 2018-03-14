@@ -35,7 +35,9 @@ HVG\SystemBundle\Entity\Pet:
         color:
             type: integer
         rfid:
-            type: integer
+            type: bigint
+            unique: true
+            nullable: true
         photography:
             type: string
             length: 100

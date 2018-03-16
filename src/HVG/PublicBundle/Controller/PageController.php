@@ -12,6 +12,7 @@ class PageController extends Controller
     {
         $host = $this->getRequest()->getHost();
         $em = $this->getDoctrine()->getManager();
+//        $request->getSession()->getFlashBag()->add( 'success', 'OK' );
 //        $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHost($host);
         $community = $em->getRepository('HVGSystemBundle:Community')->findOneByHash($hash);
         return $this->render('HVGPublicBundle:Page:index.html.twig', array(

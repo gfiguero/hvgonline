@@ -26,6 +26,7 @@
                 {% for current in unitgroups %}
                     <li {% if current == unitgroup %}class="active"{% endif %}><a href="{{ path('agent_unitresident_index', {'community' : community.id, 'unitgroup' : current.id}) }}">{{ current.name }}</a></li>
                 {% endfor %}
+                <li class="active"><a href="{{ path('agent_unitresident_search', {'community' : community.id}) }}">{{ icon('search fa-fw') }}&nbsp;{{ 'unitresident.search.link'|trans }}</a></li>
             </ul>
             <p></p>
         {% endif %}{% endif %}

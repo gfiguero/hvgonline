@@ -173,6 +173,10 @@ unitresident:
         link: Borrar residente
         submit: Confirmar
         cancel: Cancelar
+    search:
+        title: Buscar Residente
+        link: Buscar Residente
+        list: Búsqueda de residente
     form:
         name: Nombre
         email: Email

@@ -48,7 +48,7 @@
                                 <td>{% if pet.race %}{{ pet.race }}{% endif %}</td>
                                 <td>{% if pet.weight %}{{ pet.weight }}{% endif %}</td>
                                 <td>{% if pet.gender %}{{ petgenders[pet.gender] }}{% endif %}</td>
-                                <td>{% if pet.color %}{{ petcolors[pet.color] }}{% endif %}</td>
+                                <td>{% if pet.color %}{{ attribute(petcolors[pet.color]|split(','), 0) }}{% endif %}</td>
                                 <td>{% if pet.petgroup %}{{ petgroups[pet.petgroup] }}{% endif %}</td>
                                 <td>{% if pet.unit %}{{ pet.unit }}{% endif %}</td>
                             </tr>

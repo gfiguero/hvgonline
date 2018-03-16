@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<body>
+    {% trans_default_domain 'HVGPublicBundle' %}
+    <h1>{{ 'pet.email.new.greeting'|trans({'%name%':pet.owner.name}) }}</h1>
+    <p>{{ 'pet.email.new.message'|trans }}</p>
+    <p>{{ 'pet.email.new.presentation'|trans({'%pet_id%':pet.id}) }}</p>
+    <hr>
+    <dl>
+        <dt><b>{{ 'pet.form.unit'|trans }}</b></dt><dd>{% if pet.unit %}{{ pet.unit.name }}{% endif %}</dd>
+        <dt><b>{{ 'pet.form.petgroup'|trans }}</b></dt><dd>{% if pet.petgroup %}{{ pet.petgroup }}{% endif %}</dd>
+        <dt><b>{{ 'pet.form.race'|trans }}</b></dt><dd>{% if pet.race %}{{ pet.race }}{% endif %}</dd>
+        <dt><b>{{ 'pet.form.gender'|trans }}</b></dt><dd>{% if pet.gender %}{{ pet.gender }}{% endif %}</dd>
+        <dt><b>{{ 'pet.form.weight'|trans }}</b></dt><dd>{% if pet.weight %}{{ pet.weight }}{% endif %}</dd>
+        <dt><b>{{ 'pet.form.phone'|trans }}</b></dt><dd>{% if pet.phone %}{{ pet.phone }}{% endif %}</dd>
+        <dt><b>{{ 'pet.form.color'|trans }}</b></dt><dd>{% if pet.color %}{{ pet.color }}{% endif %}</dd>
+        <dt><b>{{ 'pet.form.rfid'|trans }}</b></dt><dd>{% if pet.rfid %}{{ pet.rfid }}{% endif %}</dd>
+    </dl>
+    <hr>
+    <p>{{ 'pet.email.new.regards'|trans }}</p>
+    <p>{{ 'pet.email.new.signature'|trans }}</p>
+</body>
+</html>
+
+

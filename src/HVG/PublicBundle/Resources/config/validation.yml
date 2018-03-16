@@ -4,3 +4,9 @@ HVG\SystemBundle\Entity\Ticket:
             - Email:
                 message: El email "{{ value }}" no es una dirección válida.
                 checkMX: true
+
+HVG\SystemBundle\Entity\Pet:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: rfid
+            message: 'El identificador de microchip de la mascota ya está registrado'

@@ -43,4 +43,13 @@ class PetController extends Controller
             'community' => $community,
         ));
     }
+
+    public function testAction(Request $request)
+    {
+        
+        return $this->render('HVGPublicBundle:Pet:new.html.twig', array(
+            'newForm' => $newForm->createView(),
+            'community' => $community,
+        ));
+    }
 }

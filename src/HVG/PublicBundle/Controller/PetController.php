@@ -33,6 +33,17 @@ class PetController extends Controller
                 }
                 $em->persist($pet);
                 $em->flush();
+
+                $email = $pet->getEmail();
+                if($email) {
+                    $message = new \Swift_Message($pet->getUnit()->getCommunity() . ' - Registro de mascota');
+                    $message->setFrom('orion@hvg.cl', 'HVG Administraciones');
+                    $message->setTo($email);
+                    $message->setEncoder(\Swift_Encoding::get8BitEncoding());
+                    $message->setBody($this->renderView('HVGPublicBundle:Email:pet.html.twig', array('pet' => $pet)), 'text/html');
+                    $this->get('mailer')->send($message);
+                }
+
                 $request->getSession()->getFlashBag()->add( 'success', 'pet.new.flash' );
                 return $this->redirect($this->generateUrl('public_dashboard_index', array('hash' => $hash)));
             }
@@ -46,10 +57,11 @@ class PetController extends Controller
 
     public function testAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $pet = $em->getRepository('HVGSystemBundle:Pet')->find(1);
         
-        return $this->render('HVGPublicBundle:Pet:new.html.twig', array(
-            'newForm' => $newForm->createView(),
-            'community' => $community,
+        return $this->render('HVGPublicBundle:Email:pet.html.twig', array(
+            'pet' => $pet,
         ));
     }
 }

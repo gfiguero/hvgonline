@@ -3,3 +3,8 @@ public_pet_new:
     defaults: { _controller: "HVGPublicBundle:Pet:new" }
     methods:  [GET, POST]
 
+public_pet_test:
+    path:     /test
+    defaults: { _controller: "HVGPublicBundle:Pet:test" }
+    methods:  [GET, POST]
+

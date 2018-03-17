@@ -39,7 +39,7 @@ pet:
     new:
         title: Solicitud de Autorización para Tenencia Responsable de Mascotas
         submit: Solicitar autorización
-        flash: La mascota ha sido registrada correctamente.
+        flash: La solicitud ha sido registrada correctamente. Se ha enviado una copia del registro a su dirección de correo.
         message: |
             <p>Mediante el presente formulario, solicito al comité de administración la autorización para mantener y criar al interior de nuestro departamento una mascota comprometiéndome desde ya a su tenencia responsable y a cumplir el reglamento interno sobre tenencia responsable de mascotas.</p>
             <p>Esta solicitud sera revisada y la respuesta sera enviada vía correo electrónico, pudiendo ser revocada si se infringen las normas sobre tenencia responsable.</p>
@@ -139,6 +139,13 @@ pet:
             <p class="text-justify">El comité de administración podrá introducir modificaciones al presente reglamento para adecuarlo a las necesidades del condominio y a las contingencias que se generen con su puesta en marcha.</p>
             <h4>Hazte Cargo</h4>
             <p class="text-justify">Te invitamos a disfrutar de tu mascota brindándole todos los cuidados, educación y cariño como un integrante más de la familia. En la página web del condominio, sección documentos, podrás encontrar un manual de tenencia responsable con el cual podrás interiorizarte más en la materia.</p>
+    email:
+        new:
+            greeting: Hemos recibido su solicitud de registro de mascota.
+            message: Los datos han sido regitrados en nuestro sistema, y están en proceso de aprobación o rechazo. Este mensaje ha sido generado automáticamente, por ello agradecemos no responder a esta misma dirección de correo. Para cualquier consulta, envíenos un ticket desde el formulario de contacto en la página web del condominio.
+            presentation: 'Se describe a continuación, el detalle de su registro:'
+            regards: Saludos cordiales,
+            signature: Equipo de HVG Administraciones.
 ticket:
     index:
         title: Formulario de contacto

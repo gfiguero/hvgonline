@@ -189,7 +189,6 @@ class UnitResidentController extends Controller
             if($searchForm->isValid()) {
                 $search = $searchForm['search']->getData();
                 $unitresidents = $em->getRepository('HVGSystemBundle:UnitResident')->findBySearch($community, $search);
-                dump($unitresidents);
             }
         }
 

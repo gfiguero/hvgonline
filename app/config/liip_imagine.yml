@@ -23,10 +23,10 @@ liip_imagine:
         pet_small:
             quality: 75
             filters:
-                upscale: { min: [40, 30] }
-                thumbnail: { size: [40, 30], mode: outbound }
+                upscale: { min: [160, 120] }
+                thumbnail: { size: [160, 120], mode: outbound }
         pet_medium:
             quality: 75
             filters:
                 upscale: { min: [400, 300] }
-                thumbnail: { size: [400, 300], mode: outbound }
+                thumbnail: { size: [400, 300], mode: inset }

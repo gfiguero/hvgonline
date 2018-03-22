@@ -29,7 +29,7 @@ HVG\SystemBundle\Entity\Guest:
     fields:
         carLicence:
             type: string
-            length: 6
+            length: 40
             nullable: true
         note:
             type: text

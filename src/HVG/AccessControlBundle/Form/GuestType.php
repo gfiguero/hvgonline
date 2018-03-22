@@ -43,7 +43,7 @@ class GuestType extends AbstractType
                 'label' => 'guest.form.carlicence',
                 'translation_domain' => 'HVGAccessControlBundle',
                 'required' => false,
-                'attr' => array('label_col' => 3, 'widget_col' => 9, 'class' => 'input input-lg'),
+                'attr' => array('label_col' => 3, 'widget_col' => 9, 'class' => 'input input-lg', 'maxlength' => 40),
             ))
             ->add('guestcarpark', null, array(
                 'label' => 'guest.form.guestcarpark',

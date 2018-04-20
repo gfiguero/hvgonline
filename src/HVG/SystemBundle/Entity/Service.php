@@ -189,4 +189,72 @@ class Service
     {
         return $this->providers;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $servicelogs;
+
+    /**
+     * @var \HVG\SystemBundle\Entity\Community
+     */
+    private $community;
+
+
+    /**
+     * Add servicelog
+     *
+     * @param \HVG\SystemBundle\Entity\ServiceLog $servicelog
+     *
+     * @return Service
+     */
+    public function addServicelog(\HVG\SystemBundle\Entity\ServiceLog $servicelog)
+    {
+        $this->servicelogs[] = $servicelog;
+
+        return $this;
+    }
+
+    /**
+     * Remove servicelog
+     *
+     * @param \HVG\SystemBundle\Entity\ServiceLog $servicelog
+     */
+    public function removeServicelog(\HVG\SystemBundle\Entity\ServiceLog $servicelog)
+    {
+        $this->servicelogs->removeElement($servicelog);
+    }
+
+    /**
+     * Get servicelogs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getServicelogs()
+    {
+        return $this->servicelogs;
+    }
+
+    /**
+     * Set community
+     *
+     * @param \HVG\SystemBundle\Entity\Community $community
+     *
+     * @return Service
+     */
+    public function setCommunity(\HVG\SystemBundle\Entity\Community $community = null)
+    {
+        $this->community = $community;
+
+        return $this;
+    }
+
+    /**
+     * Get community
+     *
+     * @return \HVG\SystemBundle\Entity\Community
+     */
+    public function getCommunity()
+    {
+        return $this->community;
+    }
 }

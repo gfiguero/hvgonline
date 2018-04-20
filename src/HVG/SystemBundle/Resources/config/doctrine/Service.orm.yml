@@ -1,0 +1,23 @@
+HVG\SystemBundle\Entity\Service:
+    type: entity
+    table: Service
+    repositoryClass: HVG\SystemBundle\Entity\ServiceRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToMany:
+        servicelogs:
+            targetEntity: HVG\SystemBundle\Entity\ServiceLog
+            mappedBy: service
+    manyToOne:
+        community:
+            targetEntity: HVG\SystemBundle\Entity\Community
+            inversedBy: services
+    fields:
+        name:
+            type: string
+            length: 100
+    lifecycleCallbacks: {  }

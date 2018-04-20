@@ -1,0 +1,9 @@
+{% extends 'HVGConfigurationBundle:Base:layout.html.twig' %}
+{% use 'HVGConfigurationBundle:Base:header.html.twig' %}
+{% use 'HVGConfigurationBundle:Base:aside.html.twig' %}
+{% use 'HVGConfigurationBundle:Checkpoint:tools.html.twig' %}
+
+{% block configuration %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block checkpoint %}{% endblock %}
+{% endblock %}

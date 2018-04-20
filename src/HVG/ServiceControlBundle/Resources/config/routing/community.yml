@@ -1,0 +1,5 @@
+servicecontrol_community_index:
+    path:     /index
+    defaults: { _controller: "HVGServiceControlBundle:Community:index" }
+    methods:  GET
+

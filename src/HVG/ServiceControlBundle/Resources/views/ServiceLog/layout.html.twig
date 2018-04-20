@@ -1,0 +1,7 @@
+{% extends 'HVGServiceControlBundle:Base:layout.html.twig' %}
+{% use 'HVGServiceControlBundle:ServiceLog:tools.html.twig' %}
+
+{% block servicecontrol %}
+    {% block tools %}{{ parent() }}{% endblock %}
+    {% block servicelog %}{% endblock %}
+{% endblock %}

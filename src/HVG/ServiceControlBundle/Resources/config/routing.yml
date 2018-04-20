@@ -1,0 +1,15 @@
+hvg_servicecontrol_community:
+    resource: "@HVGServiceControlBundle/Resources/config/routing/community.yml"
+    prefix:   /community
+
+hvg_servicecontrol_service:
+    resource: "@HVGServiceControlBundle/Resources/config/routing/service.yml"
+    prefix:   /service
+
+hvg_servicecontrol_serviceagent:
+    resource: "@HVGServiceControlBundle/Resources/config/routing/serviceagent.yml"
+    prefix:   /serviceagent
+
+hvg_servicecontrol_servicelog:
+    resource: "@HVGServiceControlBundle/Resources/config/routing/servicelog.yml"
+    prefix:   /servicelog

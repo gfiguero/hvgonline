@@ -1,0 +1,13 @@
+{% extends 'HVGServiceControlBundle:Base:base.html.twig' %}
+{% use 'HVGServiceControlBundle:Base:navbar.html.twig' %}
+
+{% block body %}
+    {% block navbar %}{{ parent() }}{% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% block servicecontrol %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

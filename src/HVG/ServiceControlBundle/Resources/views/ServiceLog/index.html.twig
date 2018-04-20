@@ -1,0 +1,27 @@
+{% extends 'HVGServiceControlBundle:ServiceLog:layout.html.twig' %}
+
+{% trans_default_domain 'HVGServiceControlBundle' %}
+
+{% block title %}{{ 'servicelog.index.title'|trans }}{% endblock %}
+
+{% block servicelog %}
+    {% if servicelogs is not empty %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ 'servicelog.index.title'|trans }}</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-middle">
+            {% for log in servicelogs %}
+                <tr>
+                    <td>{{ log.createdat|localizeddate('full', 'full', 'es_ES', 'America/Santiago', "d LLLL HH:mm") }}</td>
+                    <td>{{ log.description }}</td>
+                    <td>{{ log.serviceagent.name }}</td>
+                    <td>{{ log.service.name }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

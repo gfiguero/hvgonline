@@ -1,0 +1,25 @@
+configuration_checkpoint_index:
+    path:     /index/
+    defaults: { _controller: "HVGConfigurationBundle:Checkpoint:index" }
+    methods:  GET
+
+configuration_checkpoint_new:
+    path:     /new
+    defaults: { _controller: "HVGConfigurationBundle:Checkpoint:new" }
+    methods:  [GET, POST]
+
+configuration_checkpoint_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGConfigurationBundle:Checkpoint:show" }
+    methods:  GET
+
+configuration_checkpoint_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGConfigurationBundle:Checkpoint:edit" }
+    methods:  [GET, POST]
+
+configuration_checkpoint_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGConfigurationBundle:Checkpoint:delete" }
+    methods:  [GET, DELETE]
+

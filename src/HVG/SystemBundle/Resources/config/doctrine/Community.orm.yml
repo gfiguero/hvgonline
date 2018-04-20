@@ -57,6 +57,12 @@ HVG\SystemBundle\Entity\Community:
         accessguards:
             targetEntity: HVG\SystemBundle\Entity\AccessGuard
             mappedBy: community
+        services:
+            targetEntity: HVG\SystemBundle\Entity\Service
+            mappedBy: community
+        serviceagents:
+            targetEntity: HVG\SystemBundle\Entity\ServiceAgent
+            mappedBy: community
     manyToMany:
         users:
             targetEntity: HVG\UserBundle\Entity\User

@@ -1,3 +1,7 @@
+hvg_service_control:
+    resource: "@HVGServiceControlBundle/Resources/config/routing.yml"
+    prefix:   /servicecontrol
+
 hvg_process:
     resource: "@HVGProcessBundle/Resources/config/routing.yml"
     prefix:   /process

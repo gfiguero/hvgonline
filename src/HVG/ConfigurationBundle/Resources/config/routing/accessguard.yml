@@ -1,0 +1,25 @@
+configuration_accessguard_index:
+    path:     /index/
+    defaults: { _controller: "HVGConfigurationBundle:AccessGuard:index" }
+    methods:  GET
+
+configuration_accessguard_new:
+    path:     /new
+    defaults: { _controller: "HVGConfigurationBundle:AccessGuard:new" }
+    methods:  [GET, POST]
+
+configuration_accessguard_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGConfigurationBundle:AccessGuard:show" }
+    methods:  GET
+
+configuration_accessguard_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGConfigurationBundle:AccessGuard:edit" }
+    methods:  [GET, POST]
+
+configuration_accessguard_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGConfigurationBundle:AccessGuard:delete" }
+    methods:  [GET, DELETE]
+

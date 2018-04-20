@@ -1,0 +1,28 @@
+serviceagent:
+    index:
+        title: Agentes de servicio
+    change:
+        title: Cambio de agente
+        submit: Confirmar cambio
+
+community:
+    index:
+        title: Comunidades
+
+service:
+    index:
+        title: Servicios
+    change:
+        title: Cambiar servicio
+        submit: Confirmar cambio
+
+servicelog:
+    index:
+        title: Bitácora de servicios
+        link: Bitácora de servicios
+    new:
+        link: Nuevo registro
+        title: Nuevo registro de bitácora
+        submit: Registrar
+    form:
+        description: Descripción

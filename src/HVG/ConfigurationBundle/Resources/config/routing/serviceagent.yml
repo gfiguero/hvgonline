@@ -1,0 +1,25 @@
+configuration_serviceagent_index:
+    path:     /index/
+    defaults: { _controller: "HVGConfigurationBundle:ServiceAgent:index" }
+    methods:  GET
+
+configuration_serviceagent_new:
+    path:     /new
+    defaults: { _controller: "HVGConfigurationBundle:ServiceAgent:new" }
+    methods:  [GET, POST]
+
+configuration_serviceagent_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGConfigurationBundle:ServiceAgent:show" }
+    methods:  GET
+
+configuration_serviceagent_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGConfigurationBundle:ServiceAgent:edit" }
+    methods:  [GET, POST]
+
+configuration_serviceagent_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGConfigurationBundle:ServiceAgent:delete" }
+    methods:  [GET, DELETE]
+

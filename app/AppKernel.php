@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new HVG\ExchangeBundle\HVGExchangeBundle(),
             new HVG\ConfigurationBundle\HVGConfigurationBundle(),
             new HVG\ProcessBundle\HVGProcessBundle(),
+            new HVG\ServiceControlBundle\HVGServiceControlBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

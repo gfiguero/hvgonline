@@ -1,0 +1,23 @@
+{% extends 'HVGServiceControlBundle:Base:layout.html.twig' %}
+
+{% trans_default_domain 'HVGServiceControlBundle' %}
+
+{% block title %}{{ 'service.index.title'|trans }}{% endblock %}
+
+{% block servicecontrol %}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">{{ 'service.change.title'|trans }}</h1>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-pills">
+                {% for current in services %}
+                    <li {% if current == service %}class="active"{% endif %}><a href="{{ path('servicecontrol_service_change', {'hash' : community.hash, 'serviceagent' : serviceagent.id, 'service' : current.id }) }}" >{{ current.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div>
+        <a href="{{ path('servicecontrol_servicelog_index', {'hash' : community.hash, 'service' : service.id, 'serviceagent' : serviceagent.id }) }}" class="btn btn-primary btn-lg pull-right">{{ 'service.change.submit'|trans }}</a>
+    </div>
+{% endblock %}

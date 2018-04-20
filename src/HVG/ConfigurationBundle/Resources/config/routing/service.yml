@@ -1,0 +1,25 @@
+configuration_service_index:
+    path:     /index/
+    defaults: { _controller: "HVGConfigurationBundle:Service:index" }
+    methods:  GET
+
+configuration_service_new:
+    path:     /new
+    defaults: { _controller: "HVGConfigurationBundle:Service:new" }
+    methods:  [GET, POST]
+
+configuration_service_show:
+    path:     /{id}/show
+    defaults: { _controller: "HVGConfigurationBundle:Service:show" }
+    methods:  GET
+
+configuration_service_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "HVGConfigurationBundle:Service:edit" }
+    methods:  [GET, POST]
+
+configuration_service_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "HVGConfigurationBundle:Service:delete" }
+    methods:  [GET, DELETE]
+

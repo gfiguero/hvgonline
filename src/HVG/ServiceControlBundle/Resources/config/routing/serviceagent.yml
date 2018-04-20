@@ -1,0 +1,9 @@
+servicecontrol_serviceagent_index:
+    path:     /{hash}/{service}
+    defaults: { _controller: "HVGServiceControlBundle:ServiceAgent:index" }
+    methods:  GET
+
+servicecontrol_serviceagent_change:
+    path:     /{hash}/{service}/{serviceagent}/change
+    defaults: { _controller: "HVGServiceControlBundle:ServiceAgent:change" }
+    methods:  GET

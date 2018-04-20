@@ -1000,4 +1000,82 @@ class Community
     {
         return $this->processes;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $services;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $serviceagents;
+
+
+    /**
+     * Add service
+     *
+     * @param \HVG\SystemBundle\Entity\Service $service
+     *
+     * @return Community
+     */
+    public function addService(\HVG\SystemBundle\Entity\Service $service)
+    {
+        $this->services[] = $service;
+
+        return $this;
+    }
+
+    /**
+     * Remove service
+     *
+     * @param \HVG\SystemBundle\Entity\Service $service
+     */
+    public function removeService(\HVG\SystemBundle\Entity\Service $service)
+    {
+        $this->services->removeElement($service);
+    }
+
+    /**
+     * Get services
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getServices()
+    {
+        return $this->services;
+    }
+
+    /**
+     * Add serviceagent
+     *
+     * @param \HVG\SystemBundle\Entity\ServiceAgent $serviceagent
+     *
+     * @return Community
+     */
+    public function addServiceagent(\HVG\SystemBundle\Entity\ServiceAgent $serviceagent)
+    {
+        $this->serviceagents[] = $serviceagent;
+
+        return $this;
+    }
+
+    /**
+     * Remove serviceagent
+     *
+     * @param \HVG\SystemBundle\Entity\ServiceAgent $serviceagent
+     */
+    public function removeServiceagent(\HVG\SystemBundle\Entity\ServiceAgent $serviceagent)
+    {
+        $this->serviceagents->removeElement($serviceagent);
+    }
+
+    /**
+     * Get serviceagents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getServiceagents()
+    {
+        return $this->serviceagents;
+    }
 }

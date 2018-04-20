@@ -1,0 +1,54 @@
+{% extends 'HVGConfigurationBundle:Checkpoint:layout.html.twig' %}
+
+{% set translation_domain = 'HVGConfigurationBundle' %}
+
+{% trans_default_domain translation_domain %}
+
+{% block title %}{{ 'checkpoint.index.title'|trans }}{% endblock %}
+
+{% block checkpoint %}
+    <div class="row" id="page-list">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">{{ 'checkpoint.index.list'|trans }}</h1>
+                </div>
+                <div class="table-responsive">
+                    <table class="records_list table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 120px;">
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('times fa-fw') }}</a></div>
+                                </th>
+                                <th>{{ knp_pagination_sortable(checkpoints, 'checkpoint.form.name'|trans, 'name') }}{% if sort == 'name' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                                <th>{{ knp_pagination_sortable(checkpoints, 'checkpoint.form.community'|trans, 'community') }}{% if sort == 'community' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for checkpoint in checkpoints %}
+                            <tr>
+                                <td>
+                                    <div class="btn-group"><a href="{{ path('configuration_checkpoint_show', {'id' : checkpoint.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('configuration_checkpoint_edit', {'id' : checkpoint.id}) }}" class="btn btn-xs btn-warning">{{ icon('edit fa-fw') }}</a></div>
+                                    <div class="btn-group"><a href="{{ path('configuration_checkpoint_delete', {'id' : checkpoint.id}) }}" class="btn btn-xs btn-danger">{{ icon('times fa-fw') }}</a></div>
+                                </td>
+                                <td>{% if checkpoint.name %}{{ checkpoint.name }}{% endif %}</td>
+                                <td>{% if checkpoint.community %}{{ checkpoint.community }}{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% if checkpoints is not empty %}<div class="text-center">{{ knp_pagination_render(checkpoints) }}</div>{% endif %}
+
+        </div>
+    </div>
+    <!-- /#page-list -->
+
+{% endblock %}
+
+{% block javascript %}<script type="text/javascript">$(function () { $('[data-toggle="tooltip"]').tooltip() })</script>{% endblock %}

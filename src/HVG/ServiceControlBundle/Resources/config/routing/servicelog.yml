@@ -1,0 +1,15 @@
+servicecontrol_servicelog_index:
+    path:     /{hash}/{service}/{serviceagent}
+    defaults: { _controller: "HVGServiceControlBundle:ServiceLog:index" }
+    methods:  GET
+
+servicecontrol_servicelog_search:
+    path:     /{hash}/{service}/{serviceagent}/search
+    defaults: { _controller: "HVGServiceControlBundle:ServiceLog:search" }
+    methods:  [GET, POST]
+
+servicecontrol_servicelog_new:
+    path:     /{hash}/{service}/{serviceagent}/new
+    defaults: { _controller: "HVGServiceControlBundle:ServiceLog:new" }
+    methods:  [GET, POST]
+

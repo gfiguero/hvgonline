@@ -1,3 +1,19 @@
+hvg_configuration_accessguard:
+    resource: "@HVGConfigurationBundle/Resources/config/routing/accessguard.yml"
+    prefix:   /accessguard
+
+hvg_configuration_checkpoint:
+    resource: "@HVGConfigurationBundle/Resources/config/routing/checkpoint.yml"
+    prefix:   /checkpoint
+
+hvg_configuration_serviceagent:
+    resource: "@HVGConfigurationBundle/Resources/config/routing/serviceagent.yml"
+    prefix:   /serviceagent
+
+hvg_configuration_service:
+    resource: "@HVGConfigurationBundle/Resources/config/routing/service.yml"
+    prefix:   /service
+
 hvg_configuration_zone:
     resource: "@HVGConfigurationBundle/Resources/config/routing/zone.yml"
     prefix:   /zone

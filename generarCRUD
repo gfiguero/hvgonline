@@ -15,6 +15,9 @@ php app/console doctrine:generate:entities HVGSystemBundle:Checkpoint --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:AccessGuard --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:Zone --path=src
 php app/console doctrine:generate:entities HVGSystemBundle:AccessLog --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:Service --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ServiceLog --path=src
+php app/console doctrine:generate:entities HVGSystemBundle:ServiceAgent --path=src
 
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Result --format=yml --with-write --overwrite --no-interaction --route-prefix=result
 php app/console generate:doctrine:crud --entity=HVGSystemBundle:Community --format=yml --with-write --overwrite --no-interaction --route-prefix=community

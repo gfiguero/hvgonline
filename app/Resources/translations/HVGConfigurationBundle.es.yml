@@ -6,6 +6,10 @@ sidemenu:
     root:
         user: Usuarios
         zone: Zonas
+        service: Servicios
+        serviceagent: Agentes de servicio
+        checkpoint: Accesos
+        accessguard: Guardias
 
 user:
     form:
@@ -24,3 +28,91 @@ user:
     index:
         list: Lista de usuarios
         title: Usuarios
+
+service:
+    index:
+        title: Servicios
+        link: Servicios
+        list: Lista de Servicios
+    show:
+        title: Datos de Servicio
+        link: Detalles del Servicio
+    new:
+        title: Nuevo Servicio
+        link: Nuevo servicio
+        submit: Registrar servicio
+        flash: El servicio fué registrado exitosamente
+    edit:
+        title: Edición de servicio
+        link: Editar servicio
+        submit: Confirmar Cambios
+        flash: El servicio fué modificado satisfactoriamente
+    form:
+        name: Nombre
+        community: Comunidad
+
+serviceagent:
+    index:
+        title: Agentes de servicio
+        link: Agentes de servicio
+        list: Lista de Agentes de servicio
+    show:
+        title: Datos de agente
+        link: Detalles del agente
+    new:
+        title: Nuevo agente
+        link: Nuevo agente
+        submit: Registrar agente
+        flash: El agente fué registrado exitosamente
+    edit:
+        title: Edición de agente
+        link: Editar agente
+        submit: Confirmar Cambios
+        flash: El agente fué modificado satisfactoriamente
+    form:
+        name: Nombre
+        community: Comunidad
+
+checkpoint:
+    index:
+        title: Accesos
+        link: Accesos
+        list: Lista de Accesos
+    show:
+        title: Datos de acceso
+        link: Detalles del acceso
+    new:
+        title: Nuevo acceso
+        link: Nuevo acceso
+        submit: Registrar acceso
+        flash: El acceso fué registrado exitosamente
+    edit:
+        title: Edición de acceso
+        link: Editar acceso
+        submit: Confirmar Cambios
+        flash: El acceso fué modificado satisfactoriamente
+    form:
+        name: Nombre
+        community: Comunidad
+
+accessguard:
+    index:
+        title: Guardias
+        link: Guardias
+        list: Lista de Guardias
+    show:
+        title: Datos de guardia
+        link: Detalles del guardia
+    new:
+        title: Nuevo guardia
+        link: Nuevo guardia
+        submit: Registrar guardia
+        flash: El guardia fué registrado exitosamente
+    edit:
+        title: Edición de guardia
+        link: Editar guardia
+        submit: Confirmar Cambios
+        flash: El guardia fué modificado satisfactoriamente
+    form:
+        name: Nombre
+        community: Comunidad

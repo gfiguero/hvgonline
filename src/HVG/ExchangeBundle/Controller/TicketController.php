@@ -260,6 +260,10 @@ class TicketController extends Controller
                     $message->setTo($email);
                     $message->setEncoder(\Swift_Encoding::get8BitEncoding());
                     $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:action.html.twig', array('ticket' => $ticket, 'reason' => $ticketAction->getDescription())), 'text/html');
+                    $file = $ticketAction->getFile();
+                    if ($file) {
+                        $message->attach(\Swift_Attachment::fromPath(realpath($file), $file->getMimeType()));
+                    }
                     $this->get('mailer')->send($message);
                 }
             }

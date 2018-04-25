@@ -652,7 +652,7 @@ pet:
         name: Nombre de la mascota
         owner: Persona responsable
         race: Raza (opcional)
-        weight: Peso [Kg]
+        weight: Peso [g]
         gender: Género
         color: Color
         photography: Fotografía

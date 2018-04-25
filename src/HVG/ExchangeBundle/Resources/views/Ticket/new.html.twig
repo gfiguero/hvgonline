@@ -27,3 +27,22 @@
     <!-- /#page-new -->
 
 {% endblock %}
+
+
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var optionsFileinput = {
+        showPreview: false,
+        showRemove: false,
+        showUpload: false,
+        showCancel: false,
+        showClose: false,
+        showZoom: false,
+        browseClass: 'btn btn-primary btn-block',
+        browseLabel: 'Seleccionar Archivo'
+    }
+    $(".fileinput").find('input').fileinput(optionsFileinput);
+});
+</script>
+{% endblock %}

@@ -46,6 +46,12 @@ class TicketType extends AbstractType
                 'choices' => $community->getZones(),
                 'choice_label' => 'name',
             ))
+            ->add('file', 'file', array(
+                'label' => 'ticket.form.file',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'data-msg-placeholder' => 'Archivo'),
+                'translation_domain' => 'HVGExchangeBundle',
+                'required' => false,
+            ))
         ;
     }
     

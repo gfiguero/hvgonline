@@ -25,6 +25,7 @@
                                 </th>
                                 {#}
                                 <th><div class="btn-group"><a href="#" class="btn btn-xs btn-default disabled">{{ icon('search fa-fw') }}</a></div></th>
+                                <th><div class="btn-group"><a href="#" class="btn btn-xs btn-warning disabled">{{ icon('paperclip fa-fw') }}</a></div></th>
                                 <th>{{ knp_pagination_sortable(tickets, 'ticket.form.id'|trans, 'id') }}{% if sort == 'id' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 <th>{{ knp_pagination_sortable(tickets, 'ticket.form.ticketstatus'|trans, 'ticketstatus') }}{% if sort == 'ticketstatus' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
                                 <th>{{ knp_pagination_sortable(tickets, 'ticket.form.unit'|trans, 'unit') }}{% if sort == 'unit' %}{% if direction == 'desc' %}{{ icon('caret-down') }}{% else %}{{ icon('caret-up') }}{% endif %}{% endif %}</th>
@@ -45,6 +46,7 @@
                                 </td>
                                 {#}
                                 <td><div class="btn-group"><a href="{{ path('exchange_ticket_show', {'ticket' : ticket.id}) }}" class="btn btn-xs btn-default">{{ icon('search fa-fw') }}</a></div></td>
+                                <td>{% if ticket.filename %}<div class="btn-group"><a target="_blank" href="{{ path('exchange_ticket_getfile', { id : ticket.id }) }}" class="btn btn-xs btn-warning">{{ icon('paperclip fa-fw') }}</a></div>{% endif %}</td>
                                 <td>{% if ticket.id %}{{ ticket.id }}{% endif %}</td>
                                 <td>{% if ticket.status %}<span class="label label-info">{{ ticketstatuses[ticket.status] }}</span>{% endif %}</td>
                                 <td>{% if ticket.unit %}<span class="label label-primary">{{ ticket.unit.community.name }}</span>&nbsp;<span class="label label-primary">{{ ticket.unit.unitgroup.name }}</span>&nbsp;<span class="label label-primary">{{ ticket.unit.name }}</span>{% endif %}</td>

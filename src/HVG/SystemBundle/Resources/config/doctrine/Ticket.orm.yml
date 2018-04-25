@@ -67,6 +67,7 @@ HVG\SystemBundle\Entity\Ticket:
         filename:
             type: string
             length: 100
+            nullable: true
         createdAt:
             type: datetime
             gedmo:

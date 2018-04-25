@@ -62,3 +62,8 @@ agent_ticket_newpetition:
     path:     /{id}/newpetition
     defaults: { _controller: "HVGAgentBundle:Ticket:newpetition" }
     methods:  [GET, POST]
+
+agent_ticket_getfile:
+    path:     /{id}/getfile
+    defaults: { _controller: "HVGAgentBundle:Ticket:getfile" }
+    methods:  GET

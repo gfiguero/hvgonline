@@ -152,7 +152,7 @@ ticket:
     new:
         title: Información, reclamos y sugerencias.
         submit: Enviar
-        flash: El ticket ha sido registrado correctamente.
+        flash: El ticket ha sido registrado correctamente. Hemos enviado un email.
         message: |
             <p></p>
             <p></p>
@@ -163,6 +163,7 @@ ticket:
         contactname: Nombre de contacto
         contactemail: Email de contacto
         contactphone: Teléfono de contacto
+        file: Archivo adjunto
         placeholder:
             unit: Seleccione departamento
             zone: Seleccione asunto

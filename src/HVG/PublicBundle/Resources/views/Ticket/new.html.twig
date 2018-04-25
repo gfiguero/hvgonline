@@ -24,3 +24,22 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var optionsFileinput = {
+        showPreview: false,
+        showRemove: false,
+        showUpload: false,
+        showCancel: false,
+        showClose: false,
+        showZoom: false,
+        captionClass: 'input input-lg',
+        browseClass: 'btn btn-primary btn-block btn-lg',
+        browseLabel: 'Seleccionar Archivo'
+    }
+    $(".fileinput").find('input').fileinput(optionsFileinput);
+});
+</script>
+{% endblock %}

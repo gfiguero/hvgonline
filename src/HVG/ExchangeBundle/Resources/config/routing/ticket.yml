@@ -58,3 +58,7 @@ exchange_ticket_test:
     defaults: { _controller: "HVGExchangeBundle:Ticket:test" }
     methods:  [GET, POST]
 
+exchange_ticket_getfile:
+    path:     /{id}/getfile
+    defaults: { _controller: "HVGExchangeBundle:Ticket:getfile" }
+    methods:  GET

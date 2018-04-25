@@ -25,6 +25,7 @@
                         <dt>{{ 'ticket.form.contactphone'|trans }}</dt><dd>{% if ticket.contactphone %}{{ ticket.contactphone }}{% endif %}</dd>
                         <dt>{{ 'ticket.form.contactemail'|trans }}</dt><dd>{% if ticket.contactemail %}{{ ticket.contactemail }}{% endif %}</dd>
                         <dt>{{ 'ticket.form.description'|trans }}</dt><dd>{% if ticket.description %}{{ ticket.description }}{% endif %}</dd>
+                        <dt>{{ 'ticket.form.file'|trans }}</dt><dd>{% if ticket.filename %}<a target="_blank" href="{{ path('exchange_ticket_getfile', { id : ticket.id }) }}">{{ ticket.filename }}</a>{% endif %}</dd>
                     </dl>
                 </div>
             </div>

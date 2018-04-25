@@ -64,6 +64,9 @@ HVG\SystemBundle\Entity\Ticket:
         committal:
             type: date
             nullable: true
+        filename:
+            type: string
+            length: 100
         createdAt:
             type: datetime
             gedmo:

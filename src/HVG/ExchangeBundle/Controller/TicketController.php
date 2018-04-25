@@ -16,6 +16,9 @@ use HVG\ExchangeBundle\Form\TicketType;
 use HVG\ExchangeBundle\Form\TicketActionType;
 use HVG\ExchangeBundle\Form\StatusType;
 
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+
 class TicketController extends Controller
 {
     public function indexAction(Request $request, $status = null, Community $community = null, UnitGroup $unitgroup = null, Unit $unit = null)
@@ -339,6 +342,17 @@ class TicketController extends Controller
     public function testAction(Request $request, Ticket $ticket)
     {
         return $this->render('HVGExchangeBundle:TicketEmail:action.html.twig', array('ticket' => $ticket, 'reason' => 'prueba de email'));
+    }
+
+    public function getfileAction(Request $request, Ticket $ticket)
+    {
+        $fieldName = 'file';
+        $storage = $this->get('vich_uploader.storage');
+        $path = $storage->resolvePath($ticket, $fieldName);
+        $filename = $ticket->getFilename();
+        $response = new BinaryFileResponse($path);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $filename);
+        return $response;
     }
 
 }

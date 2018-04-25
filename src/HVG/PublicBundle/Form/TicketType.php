@@ -56,6 +56,12 @@ class TicketType extends AbstractType
                 'translation_domain' => 'HVGPublicBundle',
                 'required' => true,
             ))
+            ->add('file', 'file', array(
+                'label' => 'ticket.form.file',
+                'attr'  => array( 'label_col' => 4, 'widget_col' => 8, 'data-msg-placeholder' => 'Archivo'),
+                'translation_domain' => 'HVGPublicBundle',
+                'required' => false,
+            ))
         ;
     }
     

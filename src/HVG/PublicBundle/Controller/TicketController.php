@@ -35,6 +35,7 @@ class TicketController extends Controller
                     $message->setBody($this->renderView('HVGExchangeBundle:TicketEmail:new.html.twig', array('ticket' => $ticket)), 'text/html');
                     $this->get('mailer')->send($message);
                 }
+                $request->getSession()->getFlashBag()->add( 'success', 'ticket.new.flash' );
                 return $this->redirect($this->generateUrl('public_dashboard_index', array('hash' => $hash)));
             }
         }

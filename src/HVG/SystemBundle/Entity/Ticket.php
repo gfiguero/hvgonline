@@ -2,8 +2,13 @@
 
 namespace HVG\SystemBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * Ticket
+ * @Vich\Uploadable
  */
 class Ticket
 {
@@ -571,4 +576,64 @@ class Ticket
     {
         return $this->status;
     }
+    /**
+     * @var string
+     */
+    private $filename;
+
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     *
+     * @return Ticket
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get filename
+     *
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @Vich\UploadableField(mapping="ticket_file", fileNameProperty="filename")
+     * @var File
+     */
+    private $file;
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @return Ticket
+     */
+    
+    public function setFile(File $file = null)
+    {
+        $this->file = $file;
+
+        if ($file) {
+            $this->updatedAt = new \DateTime();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
 }

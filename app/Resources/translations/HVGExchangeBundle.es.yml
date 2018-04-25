@@ -88,6 +88,7 @@ ticket:
         contactname: Nombre de Contacto
         contactphone: Número de Contacto
         contactemail: Email de Contacto
+        file: Archivo adjunto
         advice: '<strong>ADVERTENCIA</strong>. Si selecciona "Enviar email", la información es enviada directamente al residente que ha registrado el ticket. <strong>Por favor use un lenguaje apropiado</strong>.'
         placeholder:
             area: No Asignada

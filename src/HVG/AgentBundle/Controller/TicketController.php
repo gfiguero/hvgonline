@@ -360,4 +360,15 @@ class TicketController extends Controller
         ));
     }
 
+    public function getfileAction(Request $request, Ticket $ticket)
+    {
+        $fieldName = 'file';
+        $storage = $this->get('vich_uploader.storage');
+        $path = $storage->resolvePath($ticket, $fieldName);
+        $filename = $ticket->getFilename();
+        $response = new BinaryFileResponse($path);
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $filename);
+        return $response;
+    }
+
 }
